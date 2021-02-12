@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MOIRA</string>
+    <string name="apply_complete">지원을 완료했어요!</string>
+    <string name="home">홈으로</string>
+    <string name="apply_list">지원목록 보러가기</string>
+    <string name="find_contest">공모전 찾기</string>
+    <string name="register">등록하기</string>
 </resources>
