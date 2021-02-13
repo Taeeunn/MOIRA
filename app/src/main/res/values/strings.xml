@@ -14,4 +14,7 @@
     <string name="related_tag">관련 태그</string>
     <string name="team_recruit">팀원 모집</string>
     <string name="entire">전체보기</string>
+    <string name="recruit_info">모집 정보</string>
+    <string name="project_type">프로젝트 종류</string>
+    <string name="recruit_position">모집중인 포지션</string>
 </resources>
