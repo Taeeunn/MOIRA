@@ -9,4 +9,5 @@
     <string name="naver_login">NAVER 계정으로 로그인하기</string>
     <string name="kakao_login">KAKAO 계정으로 로그인하기</string>
     <string name="contest_list">공모전목록</string>
+    <string name="make_team">팀 만들기</string>
 </resources>
