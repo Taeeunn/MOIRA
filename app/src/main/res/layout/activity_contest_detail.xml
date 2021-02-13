@@ -54,7 +54,10 @@
             android:layout_marginTop="5dp"
             android:text="주최기관"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/contest_title" />
+            app:layout_constraintTop_toBottomOf="@+id/contest_title"
+            android:textSize="16sp"
+            android:textColor="#969696"
+            android:lineSpacingExtra="8sp"/>
 
         <ImageView
             android:id="@+id/contest_image"
