@@ -10,4 +10,8 @@
     <string name="kakao_login">KAKAO 계정으로 로그인하기</string>
     <string name="contest_list">공모전목록</string>
     <string name="make_team">팀 만들기</string>
+    <string name="recruit_list">모집글 전체보기</string>
+    <string name="related_tag">관련 태그</string>
+    <string name="team_recruit">팀원 모집</string>
+    <string name="entire">전체보기</string>
 </resources>

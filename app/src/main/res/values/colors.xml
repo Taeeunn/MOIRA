@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="naver">#53D800</color>
     <color name="kakao">#FFDB41</color>
+    <color name="light_gray">#c0c0c0</color>
 </resources>
