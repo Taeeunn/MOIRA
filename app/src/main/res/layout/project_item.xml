@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/contest_image"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+
+    <TextView
+        android:id="@+id/contest_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="55dp"
+        android:text="공모전명 공모전명 공모전명 공모전명 공모전명 공모전명 공모전명"
+        android:textAppearance="@style/contest_name"
+        app:layout_constraintLeft_toRightOf="@+id/contest_image"
+        app:layout_constraintRight_toLeftOf="@+id/move_to_contest"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginTop="10dp"
+        android:text="주최기관"
+        android:textColor="#969696"
+        android:textSize="10sp"
+        android:lineSpacingExtra="5sp"
+        app:layout_constraintLeft_toRightOf="@+id/contest_image"
+        app:layout_constraintRight_toLeftOf="@+id/move_to_contest"
+        app:layout_constraintTop_toBottomOf="@+id/contest_name" />
+
+    <ImageButton
+        android:id="@+id/move_to_contest"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/contest_image"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/contest_image"
+        app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
