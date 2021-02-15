@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.high5ive.android.moira">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:fullBackupContent="false"
@@ -11,20 +13,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".MakeTeamActivity"/>
-        <activity android:name=".RecruitListActivity">
+        <activity android:name=".RecruitListActivity"/>
+        <activity android:name=".RecruitDetailActivity" />
+        <activity android:name=".ContestDetailActivity" />
+        <activity android:name=".ContestListActivity" />
+        <activity android:name=".FindContestActivity" />
+        <activity android:name=".ApplyCompleteActivity" />
+        <activity android:name=".LoginActivity" >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
         </activity>
-        <activity android:name=".RecruitDetailActivity" />
-        <activity android:name=".ContestDetailActivity" />
-        <activity android:name=".ContestListActivity" />
-        <activity android:name=".FindContestActivity" />
-        <activity android:name=".ApplyCompleteActivity" />
-        <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity" />
+
+        <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+            <!-- Redirect URI: "kakao{NATIVE_APP_KEY}://oauth“ -->
+             <data android:host="oauth"
+                android:scheme="kakao80833a0235285489b82981db2a4c698e" />
+        </intent-filter>
+    </activity>
+
+
     </application>
 
 </manifest>

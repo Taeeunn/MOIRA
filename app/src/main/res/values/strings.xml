@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">MOIRA</string>
+    <string name="naver_client_id">Wb1bLmcaPiT1E6VW_xI3</string>
+    <string name="naver_client_secret">cW1A3BXG9Z</string>
+    <string name="naver_client_name">MOIRA</string>
     <string name="app_description">최고의 팀이 만들어지는 곳</string>
     <string name="apply_complete">지원을 완료했어요!</string>
     <string name="home">홈으로</string>
@@ -17,4 +20,5 @@
     <string name="recruit_info">모집 정보</string>
     <string name="project_type">프로젝트 종류</string>
     <string name="recruit_position">모집중인 포지션</string>
+    <string name="kakao_app_key">80833a0235285489b82981db2a4c698e</string>
 </resources>
