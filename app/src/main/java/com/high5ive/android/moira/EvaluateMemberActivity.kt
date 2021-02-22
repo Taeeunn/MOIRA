@@ -10,18 +10,18 @@ import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.high5ive.android.moira.databinding.ActivityEvaluateMemberBinding
 import com.high5ive.android.moira.databinding.ActivityTeamDetailBinding
 import com.high5ive.android.moira.databinding.MemberItemBinding
 import kotlinx.android.synthetic.main.activity_recruit_list.*
 
+class EvaluateMemberActivity : AppCompatActivity() {
 
-class TeamDetailActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityTeamDetailBinding
+    private lateinit var binding: ActivityEvaluateMemberBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=DataBindingUtil.setContentView(this, R.layout.activity_team_detail)
+        binding= DataBindingUtil.setContentView(this, R.layout.activity_evaluate_member)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -38,9 +38,9 @@ class TeamDetailActivity : AppCompatActivity() {
         }
 
         recycler_view.apply{
-            layoutManager = LinearLayoutManager(this@TeamDetailActivity)
+            layoutManager = LinearLayoutManager(this@EvaluateMemberActivity)
             adapter = MemberAdapter(members) { member ->
-                Toast.makeText(this@TeamDetailActivity, "$member", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@EvaluateMemberActivity, "$member", Toast.LENGTH_SHORT).show()
             }
         }
     }

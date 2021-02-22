@@ -6,7 +6,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".TeamDetailActivity">
+        tools:context=".EvaluateActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -27,7 +27,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/my_team_name"
+                    android:text="@string/evaluate_member"
                     android:textAppearance="@style/toolbar_title"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -65,65 +65,16 @@
                 app:layout_constraintTop_toTopOf="parent">
 
 
-                <ImageView
-                    android:id="@+id/team_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="256dp"
-                    android:layout_marginTop="12dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_launcher_foreground" />
-
-                <TextView
-                    android:id="@+id/team_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:letterSpacing="-0.02"
-                    android:lineSpacingExtra="8sp"
-                    android:text="팀 규칙이나 팀 설명 내용입니다. 팀 규칙이나 팀 설명 내용입니다. 팀 규칙이나 팀 설명 내용입니다."
-                    android:textColor="#969696"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/team_image" />
-
-
-                <View
-                    android:id="@+id/horizontal_line"
-                    android:layout_width="match_parent"
-                    android:layout_height="5dp"
-                    android:layout_marginTop="43dp"
-                    android:background="#ededed"
-                    app:layout_constraintTop_toBottomOf="@+id/team_description" />
-
-
-                <TextView
-                    android:id="@+id/team_member"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="12dp"
-                    android:lineSpacingExtra="9sp"
-                    android:text="@string/team_member"
-                    android:textAppearance="@style/team_recruit"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
-
-
                 <include
                     android:id="@+id/leader"
                     layout="@layout/leader_item"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="28dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="12dp"
-                    app:layout_constraintTop_toBottomOf="@+id/team_member" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_view"

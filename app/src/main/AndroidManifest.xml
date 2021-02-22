@@ -12,20 +12,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".TeamDetailActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".EvaluateMemberActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".MakeTeamActivity" />
-        <activity android:name=".RecruitListActivity"/>
+        <activity android:name=".TeamDetailActivity"/>
 
+        <activity android:name=".MakeTeamActivity" />
+        <activity android:name=".RecruitListActivity" />
         <activity android:name=".RecruitDetailActivity" />
         <activity android:name=".ContestDetailActivity" />
-
-
         <activity android:name=".ContestListActivity" />
         <activity android:name=".FindContestActivity" />
         <activity android:name=".ApplyCompleteActivity" />

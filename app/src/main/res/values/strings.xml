@@ -14,6 +14,7 @@
     <string name="contest_list">공모전목록</string>
     <string name="my_team_name">나의 팀 이름</string>
     <string name="team_member">팀원</string>
+    <string name="evaluate_member">팀원 평가하기</string>
     <string name="make_team">팀 만들기</string>
     <string name="recruit_list">모집글 전체보기</string>
     <string name="related_tag">관련 태그</string>
