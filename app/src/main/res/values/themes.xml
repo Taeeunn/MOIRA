@@ -112,7 +112,7 @@
     </style>
 
     <style name="rating">
-        <item name="android:textSize">50sp</item>
+        <item name="android:textSize">40sp</item>
         <item name="android:textColor">#6a6a6a</item>
         <item name="android:textStyle">bold</item>
     </style>

@@ -25,9 +25,9 @@ class ApplicantReviewActivity : AppCompatActivity() {
         for (i in 0..30){
             reviewList.add(
                 Review(
-                    "닉네임 $i",
+                    "사용자 닉네임 $i",
                     i * 0.16,
-                    "최고의 팀원입니다"
+                    "최고의 팀원입니다. 최고의 팀원입니다. 최고의 팀원입니다. 최고의 팀원입니다."
                 )
             )
         }
