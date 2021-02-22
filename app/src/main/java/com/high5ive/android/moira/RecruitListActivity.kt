@@ -25,8 +25,8 @@ class RecruitListActivity : AppCompatActivity() {
         for (i in 0..30){
             recruit.add(
                 Recruit(
-                    "모집글 $i",
-                    "닉네임 $i"
+                    "팀원 모집글 제목 팀원 모집글 제목 팀원 모집글 제목  $i",
+                    "사용자 닉네임 $i"
                 )
             )
         }
