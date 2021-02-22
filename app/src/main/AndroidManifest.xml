@@ -14,7 +14,13 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".ApplicantReviewActivity"/>
 
-        <activity android:name=".PostListActivity"/>
+        <activity android:name=".PostListActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".ApplyListActivity" />
         <activity android:name=".ApplicantListActivity" />
 
@@ -24,13 +30,7 @@
         <activity android:name=".TeamDetailActivity" />
 
         <activity android:name=".MakeTeamActivity" />
-        <activity android:name=".RecruitListActivity" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
+        <activity android:name=".RecruitListActivity" />
 
 
         <activity android:name=".RecruitDetailActivity" />

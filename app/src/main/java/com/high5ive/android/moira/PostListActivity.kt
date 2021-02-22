@@ -23,8 +23,8 @@ class PostListActivity : AppCompatActivity() {
 
 
         val postList = arrayListOf<Post>()
-        for (i in 0..10){
-            postList.add(Post("모집글 제목 $i"))
+        for (i in 0..20){
+            postList.add(Post("모집글 제목 모집글 제목 모집글 제목 모집글 제목 $i"))
         }
 
         recycler_view.apply{
