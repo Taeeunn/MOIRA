@@ -24,7 +24,7 @@ class ApplyListActivity : AppCompatActivity() {
 
         val applyList = arrayListOf<Apply>()
         for (i in 0..10){
-            applyList.add(Apply("모집글 제목 $i"))
+            applyList.add(Apply("모집글 제목 모집글 제목 모집글 제목 모집글 제목 $i"))
         }
 
         recycler_view.apply{
