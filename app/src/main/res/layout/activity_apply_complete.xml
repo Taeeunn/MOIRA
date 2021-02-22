@@ -24,9 +24,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/apply_complete"
-        android:layout_marginTop="24dp"
-        android:textStyle="normal"
-        android:textSize="16sp"
+        android:layout_marginTop="30dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
         android:textColor="#212121"
         android:letterSpacing="-0.02"
         android:lineSpacingExtra="8sp"
@@ -34,15 +34,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:barrierDirection="bottom"
+        app:barrierMargin="25dp"
+        app:constraint_referenced_ids="textView" />
+
     <Button
         android:id="@+id/toHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="85dp"
         android:layout_marginBottom="208dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp"
         android:text="@string/home"
+        android:background="#f2f2f2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barrier"
         app:layout_constraintEnd_toStartOf="@+id/toApplyList" />
 
     <Button
@@ -52,9 +66,14 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="84dp"
         android:layout_marginBottom="208dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp"
         android:text="@string/move_apply_list"
+        android:background="#f2f2f2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barrier"
         app:layout_constraintStart_toEndOf="@+id/toHome" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

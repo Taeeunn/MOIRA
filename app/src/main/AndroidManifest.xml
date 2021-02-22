@@ -12,13 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ApplicantReviewActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
+        <activity android:name=".ApplicantReviewActivity"/>
 
         <activity android:name=".PostListActivity"/>
         <activity android:name=".ApplyListActivity" />
@@ -40,7 +34,13 @@
 
         <activity android:name=".ContestListActivity" />
         <activity android:name=".FindContestActivity" />
-        <activity android:name=".ApplyCompleteActivity" />
+        <activity android:name=".ApplyCompleteActivity" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity">
