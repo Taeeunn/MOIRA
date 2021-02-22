@@ -31,7 +31,7 @@
             android:layout_width="196dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="11dp"
-            android:text="모집글 제목 모집글 제목 모집글 제목 모집글 제목"
+            android:text="@{apply.title}"
             android:textAppearance="@style/contest_name"
             app:layout_constraintLeft_toRightOf="@+id/recruit_image"
             app:layout_constraintTop_toTopOf="parent" />
