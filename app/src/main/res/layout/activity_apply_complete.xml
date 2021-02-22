@@ -52,7 +52,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="84dp"
         android:layout_marginBottom="208dp"
-        android:text="@string/apply_list"
+        android:text="@string/move_apply_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/toHome" />

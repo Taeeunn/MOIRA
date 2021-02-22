@@ -6,7 +6,7 @@
     <string name="app_description">최고의 팀이 만들어지는 곳</string>
     <string name="apply_complete">지원을 완료했어요!</string>
     <string name="home">홈으로</string>
-    <string name="apply_list">지원목록 보러가기</string>
+    <string name="move_apply_list">지원목록 보러가기</string>
     <string name="find_contest">공모전 찾기</string>
     <string name="register">등록하기</string>
     <string name="naver_login">NAVER 계정으로 로그인하기</string>
@@ -16,9 +16,12 @@
     <string name="team_member">팀원</string>
     <string name="evaluate_member">팀원 평가하기</string>
     <string name="applicant_list">지원자 목록</string>
+    <string name="apply_list">지원 목록</string>
+    <string name="apply_history">지원 내역</string>
     <string name="recruitment_completed">모집완료</string>
     <string name="write_comment">댓글쓰기</string>
     <string name="apply">지원하기</string>
+    <string name="apply_cancel">지원 취소</string>
     <string name="make_team">팀 만들기</string>
     <string name="recruit_list">모집글 전체보기</string>
     <string name="related_tag">관련 태그</string>
