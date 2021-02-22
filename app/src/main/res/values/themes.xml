@@ -133,5 +133,10 @@
         <item name="android:textColor">#343434</item>
     </style>
 
+    <style name="position_text">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#262626</item>
+    </style>
+
 
 </resources>

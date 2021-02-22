@@ -46,14 +46,23 @@
 
 
             <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="18dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="10dp"
+                android:id="@+id/heart_btn"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="15dp"
+                android:background="@android:color/transparent"
+                app:layout_constraintRight_toLeftOf="@+id/share_btn"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_favorite_border_24" />
+
+            <ImageButton
+                android:id="@+id/share_btn"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_marginEnd="19dp"
                 android:background="@android:color/transparent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_baseline_share_24" />
 
             <TextView
@@ -70,6 +79,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/contest_title" />
 
+
+            <View
+                android:id="@+id/vertical_line"
+                android:layout_width="1dp"
+                android:layout_height="13dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="4.5dp"
+                android:layout_marginTop="5dp"
+                android:background="#d6d5d5"
+                app:layout_constraintStart_toEndOf="@+id/nickname"
+                app:layout_constraintTop_toBottomOf="@+id/contest_title" />
+
             <TextView
                 android:id="@+id/date"
                 android:layout_width="wrap_content"
@@ -81,14 +102,51 @@
                 android:text="2021.01.12"
                 android:textColor="#bcbcbc"
                 android:textSize="10sp"
-                app:layout_constraintStart_toEndOf="@+id/nickname"
+                app:layout_constraintStart_toEndOf="@+id/vertical_line"
                 app:layout_constraintTop_toBottomOf="@+id/contest_title" />
+
+            <View
+                android:id="@+id/vertical_line2"
+                android:layout_width="1dp"
+                android:layout_height="13dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="4.5dp"
+                android:layout_marginTop="5dp"
+                android:background="#d6d5d5"
+                app:layout_constraintStart_toEndOf="@+id/date"
+                app:layout_constraintTop_toBottomOf="@+id/contest_title" />
+
+            <ImageView
+                android:id="@+id/view_icon"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="4.5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/ic_baseline_remove_red_eye_24"
+                app:layout_constraintStart_toEndOf="@+id/vertical_line2"
+                app:layout_constraintTop_toBottomOf="@+id/contest_title" />
+
+            <TextView
+                android:id="@+id/views"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2.5dp"
+                android:layout_marginTop="5dp"
+                android:letterSpacing="-0.03"
+                android:lineSpacingExtra="1sp"
+                android:text="1,234"
+                android:textColor="#bcbcbc"
+                android:textSize="10sp"
+                app:layout_constraintStart_toEndOf="@+id/view_icon"
+                app:layout_constraintTop_toBottomOf="@+id/contest_title" />
+
 
             <ImageView
                 android:id="@+id/recruit_image"
                 android:layout_width="match_parent"
                 android:layout_height="256dp"
-                android:layout_marginTop="11dp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nickname"
@@ -122,138 +180,191 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/contest_description" />
 
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                app:barrierDirection="bottom"
+                app:barrierMargin="10dp"
+                app:constraint_referenced_ids="related_tag" />
+
+            <TextView
+                android:id="@+id/tag1"
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:background="#f2f2f2"
+                android:lineSpacingExtra="6sp"
+                android:paddingLeft="15dp"
+                android:paddingTop="5dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="5dp"
+                android:text="관련태그"
+                android:textAppearance="@style/favorite_tag"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/barrier1" />
+
+
+            <TextView
+                android:id="@+id/tag2"
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:background="#f2f2f2"
+                android:lineSpacingExtra="6sp"
+                android:paddingLeft="15dp"
+                android:paddingTop="5dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="5dp"
+                android:text="관련태그"
+                android:textAppearance="@style/favorite_tag"
+                app:layout_constraintLeft_toRightOf="@+id/tag1"
+                app:layout_constraintTop_toBottomOf="@id/barrier1" />
+
+
+            <TextView
+                android:id="@+id/tag3"
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="10dp"
+                android:background="#f2f2f2"
+                android:lineSpacingExtra="6sp"
+                android:paddingLeft="15dp"
+                android:paddingTop="5dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="5dp"
+                android:text="관련태그"
+                android:textAppearance="@style/favorite_tag"
+                app:layout_constraintLeft_toRightOf="@+id/tag2"
+                app:layout_constraintTop_toBottomOf="@id/barrier1" />
+
+
+            <TextView
+                android:id="@+id/tag4"
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="10dp"
+                android:background="#f2f2f2"
+                android:lineSpacingExtra="6sp"
+                android:paddingLeft="15dp"
+                android:paddingTop="5dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="5dp"
+                android:text="관련태그"
+                android:textAppearance="@style/favorite_tag"
+                app:layout_constraintLeft_toRightOf="@+id/tag3"
+                app:layout_constraintTop_toBottomOf="@id/barrier1" />
+
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier2"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="tag1, tag2, tag3, tag4" />
+
+
+            <TextView
+                android:id="@+id/tag5"
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:background="#f2f2f2"
+                android:lineSpacingExtra="6sp"
+                android:paddingLeft="15dp"
+                android:paddingTop="5dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="5dp"
+                android:text="관련태그"
+                android:textAppearance="@style/favorite_tag"
+                app:layout_constraintRight_toLeftOf="@+id/tag6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/barrier2" />
+
+
+            <TextView
+                android:id="@+id/tag6"
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="10dp"
+                android:background="#f2f2f2"
+                android:lineSpacingExtra="6sp"
+                android:paddingLeft="15dp"
+                android:paddingTop="5dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="5dp"
+                android:text="관련태그"
+                android:textAppearance="@style/favorite_tag"
+                app:layout_constraintLeft_toRightOf="@+id/tag5"
+                app:layout_constraintTop_toBottomOf="@id/barrier2" />
+
+
+            <TextView
+                android:id="@+id/tag7"
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="10dp"
+                android:background="#f2f2f2"
+                android:lineSpacingExtra="6sp"
+                android:paddingLeft="15dp"
+                android:paddingTop="5dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="5dp"
+                android:text="관련태그"
+                android:textAppearance="@style/favorite_tag"
+                app:layout_constraintLeft_toRightOf="@+id/tag6"
+                app:layout_constraintTop_toBottomOf="@id/barrier2" />
+
+
+            <TextView
+                android:id="@+id/tag8"
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="10dp"
+                android:background="#f2f2f2"
+                android:lineSpacingExtra="6sp"
+                android:paddingLeft="15dp"
+                android:paddingTop="5dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="5dp"
+                android:text="관련태그"
+                android:textAppearance="@style/favorite_tag"
+                app:layout_constraintLeft_toRightOf="@+id/tag7"
+                app:layout_constraintTop_toBottomOf="@id/barrier2" />
+
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier3"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                app:barrierDirection="bottom"
+
+                app:constraint_referenced_ids="tag5, tag6, tag7, tag8" />
+
+
             <View
                 android:id="@+id/horizontal_line"
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:layout_marginTop="40dp"
+                android:layout_height="8dp"
+                android:layout_marginTop="16dp"
                 android:background="#ededed"
-                app:layout_constraintTop_toBottomOf="@+id/related_tag" />
+                app:layout_constraintTop_toBottomOf="@+id/barrier3" />
 
-
-            <TextView
-                android:id="@+id/team_recruit"
-                android:layout_width="wrap_content"
+            <include
+                android:id="@+id/recruit_info"
+                layout="@layout/recruit_info"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="20dp"
-                android:lineSpacingExtra="9sp"
-                android:text="@string/recruit_info"
-                android:textAppearance="@style/team_recruit"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
-
-
-            <TextView
-                android:id="@+id/project_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:lineSpacingExtra="6sp"
-                android:text="@string/project_type"
-                android:textAppearance="@style/project_type"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/team_recruit" />
-
-
-            <ImageView
-                android:id="@+id/contest_image"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="27dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/project_type"
-                app:srcCompat="@drawable/ic_launcher_background" />
-
-
-            <TextView
-                android:id="@+id/contest_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="27dp"
-                android:layout_marginEnd="8dp"
-                android:text="공모전명 공모전명 공모전명 공모전명 공모전명 공모전명 공모전명"
-                android:textAppearance="@style/contest_name"
-                app:layout_constraintLeft_toRightOf="@+id/contest_image"
-                app:layout_constraintRight_toLeftOf="@+id/move_to_contest"
-                app:layout_constraintTop_toBottomOf="@+id/project_type" />
-
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="10dp"
-                android:lineSpacingExtra="5sp"
-                android:text="주최기관"
-                android:textColor="#969696"
-                android:textSize="10sp"
-                app:layout_constraintLeft_toRightOf="@+id/contest_image"
-                app:layout_constraintRight_toLeftOf="@+id/move_to_contest"
-                app:layout_constraintTop_toBottomOf="@+id/contest_name" />
-
-            <ImageButton
-                android:id="@+id/move_to_contest"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:tint="#b9b9b9"
-                android:layout_marginEnd="16dp"
-                android:background="@android:color/transparent"
-                app:layout_constraintBottom_toBottomOf="@+id/contest_image"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/contest_image"
-                app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
-
-
-            <View
-                android:id="@+id/horizontal_line2"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:background="@color/light_gray"
-                app:layout_constraintTop_toBottomOf="@+id/contest_image" />
-
-
-            <TextView
-                android:id="@+id/recruit_position"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:lineSpacingExtra="6sp"
-                android:text="@string/recruit_position"
-                android:textAppearance="@style/project_type"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/horizontal_line2" />
-
-            <View
-                android:id="@+id/horizontal_line3"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:background="@color/light_gray"
-                app:layout_constraintTop_toBottomOf="@+id/recruit_position" />
-
-
-            <TextView
-                android:id="@+id/related_tag2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="40dp"
-                android:lineSpacingExtra="6sp"
-                android:text="@string/related_tag"
-                android:textAppearance="@style/related_tag"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/horizontal_line3" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -264,21 +375,22 @@
         android:layout_width="0dp"
         android:layout_height="56dp"
         android:background="#c4c4c4"
-        app:layout_constraintHorizontal_bias="0.5"
         android:text="@string/write_comment"
-        app:layout_constraintEnd_toStartOf="@+id/applyBtn"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintEnd_toStartOf="@+id/applyBtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/applyBtn"
         android:layout_width="0dp"
         android:layout_height="56dp"
         android:background="#989898"
-        app:layout_constraintHorizontal_bias="0.5"
         android:text="@string/apply"
-        app:layout_constraintStart_toEndOf="@+id/commentBtn"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/commentBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

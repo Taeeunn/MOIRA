@@ -3,7 +3,12 @@ package com.high5ive.android.moira
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.high5ive.android.moira.adapter.PositionAdapter
+import com.high5ive.android.moira.data.Position
+import kotlinx.android.synthetic.main.activity_recruit_list.*
 
 class RecruitDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +22,19 @@ class RecruitDetailActivity : AppCompatActivity() {
         ab.setDisplayHomeAsUpEnabled(true)
 
 
+        val positionList = arrayListOf(
+            Position("개발자", 1), Position("디자이너", 1), Position("PM", 1)
+        )
 
+      
+
+        recycler_view.apply{
+            layoutManager = LinearLayoutManager(this@RecruitDetailActivity)
+            adapter =
+                PositionAdapter(positionList) { position ->
+                    Toast.makeText(this@RecruitDetailActivity, "$position", Toast.LENGTH_SHORT).show()
+                }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

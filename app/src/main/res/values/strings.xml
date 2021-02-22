@@ -35,4 +35,5 @@
     <string name="recruit_position">모집중인 포지션</string>
     <string name="kakao_app_key">80833a0235285489b82981db2a4c698e</string>
     <string name="add">add</string>
+    <string name="position_num">%d명</string>
 </resources>
