@@ -2,8 +2,15 @@ package com.high5ive.android.moira
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.MenuItem
+import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_recruit_list.*
 
 class ContestDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,6 +22,17 @@ class ContestDetailActivity : AppCompatActivity() {
         val ab = supportActionBar!!
         ab.setDisplayShowTitleEnabled(false)
         ab.setDisplayHomeAsUpEnabled(true)
+        val recruit = arrayListOf<Recruit>()
+        for (i in 0..10){
+            recruit.add(Recruit("모집글 $i", "닉네임 $i"))
+        }
+
+        recycler_view.apply{
+            layoutManager = LinearLayoutManager(this@ContestDetailActivity)
+            adapter = RecruitAdapter(recruit) { person ->
+                Toast.makeText(this@ContestDetailActivity, "$person", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -27,3 +45,5 @@ class ContestDetailActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 }
+
+

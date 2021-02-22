@@ -8,10 +8,10 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_recruit_list.*
 
-class RecruitListActivity : AppCompatActivity() {
+class ApplicantListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_recruit_list)
+        setContentView(R.layout.activity_applicant_list)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -25,9 +25,9 @@ class RecruitListActivity : AppCompatActivity() {
         }
 
         recycler_view.apply{
-            layoutManager = LinearLayoutManager(this@RecruitListActivity)
+            layoutManager = LinearLayoutManager(this@ApplicantListActivity)
             adapter = RecruitAdapter(recruit) { person ->
-                Toast.makeText(this@RecruitListActivity, "$person", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ApplicantListActivity, "$person", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -42,5 +42,3 @@ class RecruitListActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 }
-
-
