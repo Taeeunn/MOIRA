@@ -1,8 +1,10 @@
-package com.high5ive.android.moira
+package com.high5ive.android.moira.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.high5ive.android.moira.data.Member
+import com.high5ive.android.moira.R
 import com.high5ive.android.moira.databinding.MemberItemBinding
 
 class MemberAdapter(val items: List<Member>,
@@ -13,7 +15,10 @@ class MemberAdapter(val items: List<Member>,
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemberViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.member_item, parent, false)
-        val viewHolder=MemberViewHolder(MemberItemBinding.bind(view))
+        val viewHolder=
+            MemberViewHolder(
+                MemberItemBinding.bind(view)
+            )
 
         view.setOnClickListener {
             clickListener.invoke(items[viewHolder.adapterPosition])
@@ -24,7 +29,7 @@ class MemberAdapter(val items: List<Member>,
     override fun getItemCount() = items.size
 
 
-    override fun onBindViewHolder(holder: MemberAdapter.MemberViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MemberViewHolder, position: Int) {
         holder.binding.member = items[position]
     }
 }

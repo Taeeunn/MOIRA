@@ -6,6 +6,8 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.high5ive.android.moira.adapter.PostAdapter
+import com.high5ive.android.moira.data.Post
 import kotlinx.android.synthetic.main.activity_recruit_list.*
 
 class PostListActivity : AppCompatActivity() {
@@ -27,9 +29,10 @@ class PostListActivity : AppCompatActivity() {
 
         recycler_view.apply{
             layoutManager = LinearLayoutManager(this@PostListActivity)
-            adapter = PostAdapter(postList) { post ->
-                Toast.makeText(this@PostListActivity, "$post", Toast.LENGTH_SHORT).show()
-            }
+            adapter =
+                PostAdapter(postList) { post ->
+                    Toast.makeText(this@PostListActivity, "$post", Toast.LENGTH_SHORT).show()
+                }
         }
     }
 

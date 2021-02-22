@@ -6,6 +6,8 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.high5ive.android.moira.adapter.ApplyAdapter
+import com.high5ive.android.moira.data.Apply
 import kotlinx.android.synthetic.main.activity_recruit_list.*
 
 class ApplyListActivity : AppCompatActivity() {
@@ -27,9 +29,10 @@ class ApplyListActivity : AppCompatActivity() {
 
         recycler_view.apply{
             layoutManager = LinearLayoutManager(this@ApplyListActivity)
-            adapter = ApplyAdapter(applyList) { apply ->
-                Toast.makeText(this@ApplyListActivity, "$apply", Toast.LENGTH_SHORT).show()
-            }
+            adapter =
+                ApplyAdapter(applyList) { apply ->
+                    Toast.makeText(this@ApplyListActivity, "$apply", Toast.LENGTH_SHORT).show()
+                }
         }
     }
 

@@ -16,7 +16,13 @@
 
         <activity android:name=".PostListActivity"/>
         <activity android:name=".ApplyListActivity" />
-        <activity android:name=".ApplicantListActivity" />
+        <activity android:name=".ApplicantListActivity" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
 
         <activity android:name=".EvaluateMemberActivity" />
 
@@ -28,13 +34,8 @@
 
 
         <activity android:name=".RecruitDetailActivity" />
-        <activity android:name=".ContestDetailActivity" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".ContestDetailActivity" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
 
 
         <activity android:name=".ContestListActivity" />

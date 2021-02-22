@@ -6,6 +6,8 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.high5ive.android.moira.adapter.ReviewAdapter
+import com.high5ive.android.moira.data.Review
 import kotlinx.android.synthetic.main.activity_recruit_list.*
 
 class ApplicantReviewActivity : AppCompatActivity() {
@@ -21,14 +23,22 @@ class ApplicantReviewActivity : AppCompatActivity() {
 
         val reviewList = arrayListOf<Review>()
         for (i in 0..30){
-            reviewList.add(Review("닉네임 $i", i * 0.16, "최고의 팀원입니다"))
+            reviewList.add(
+                Review(
+                    "닉네임 $i",
+                    i * 0.16,
+                    "최고의 팀원입니다"
+                )
+            )
         }
 
         recycler_view.apply{
             layoutManager = LinearLayoutManager(this@ApplicantReviewActivity)
-            adapter = ReviewAdapter(reviewList) { person ->
-                Toast.makeText(this@ApplicantReviewActivity, "$person", Toast.LENGTH_SHORT).show()
-            }
+            adapter =
+                ReviewAdapter(reviewList) { person ->
+                    Toast.makeText(this@ApplicantReviewActivity, "$person", Toast.LENGTH_SHORT)
+                        .show()
+                }
         }
     }
 

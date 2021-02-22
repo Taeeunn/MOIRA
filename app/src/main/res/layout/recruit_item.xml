@@ -4,7 +4,7 @@
     <data>
         <variable
             name="recruit"
-            type="com.high5ive.android.moira.Recruit" />
+            type="com.high5ive.android.moira.data.Recruit" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

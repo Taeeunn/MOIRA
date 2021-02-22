@@ -3,7 +3,7 @@
     <data>
         <variable
             name="member"
-            type="com.high5ive.android.moira.Member" />
+            type="com.high5ive.android.moira.data.Member" />
     </data>
 
 

@@ -7,7 +7,7 @@
 
         <variable
             name="review"
-            type="com.high5ive.android.moira.Review" />
+            type="com.high5ive.android.moira.data.Review" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

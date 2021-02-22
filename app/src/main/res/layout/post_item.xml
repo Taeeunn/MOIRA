@@ -7,7 +7,7 @@
 
         <variable
             name="post"
-            type="com.high5ive.android.moira.Post" />
+            type="com.high5ive.android.moira.data.Post" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
