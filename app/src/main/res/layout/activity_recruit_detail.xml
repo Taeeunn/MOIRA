@@ -29,6 +29,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="70dp"
             app:layout_constraintTop_toTopOf="parent">
 
 
@@ -126,7 +127,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
                 android:layout_marginTop="40dp"
-                android:background="@color/light_gray"
+                android:background="#ededed"
                 app:layout_constraintTop_toBottomOf="@+id/related_tag" />
 
 
@@ -199,7 +200,7 @@
                 android:id="@+id/move_to_contest"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-
+                android:tint="#b9b9b9"
                 android:layout_marginEnd="16dp"
                 android:background="@android:color/transparent"
                 app:layout_constraintBottom_toBottomOf="@+id/contest_image"
@@ -257,6 +258,27 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/commentBtn"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="#c4c4c4"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:text="@string/write_comment"
+        app:layout_constraintEnd_toStartOf="@+id/applyBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <Button
+        android:id="@+id/applyBtn"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="#989898"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:text="@string/apply"
+        app:layout_constraintStart_toEndOf="@+id/commentBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
