@@ -24,7 +24,7 @@ class ContestDetailActivity : AppCompatActivity() {
         ab.setDisplayHomeAsUpEnabled(true)
         val recruit = arrayListOf<Recruit>()
         for (i in 0..10){
-            recruit.add(Recruit("모집글 $i", "닉네임 $i"))
+            recruit.add(Recruit("팀원 모집글 제목 팀원 모집글 제목 팀원 모집글 제목  $i", "사용자 닉네임 $i"))
         }
 
         recycler_view.apply{
