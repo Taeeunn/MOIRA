@@ -1,59 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<layout>
 
-    <ImageView
-        android:id="@+id/recruit_image"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:srcCompat="@drawable/ic_launcher_background" />
+    <data>
+        <variable
+            name="recruit"
+            type="com.high5ive.android.moira.Recruit" />
+    </data>
 
-
-    <TextView
-        android:id="@+id/recruit_name"
-        android:layout_width="196dp"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:text="팀원 모집글 제목 팀원 모집글 제목 팀원 모집글 제목"
-        android:textAppearance="@style/contest_name"
-        app:layout_constraintLeft_toRightOf="@+id/recruit_image"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:id="@+id/recruit_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_launcher_background" />
 
 
-    <TextView
-        android:id="@+id/nickname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="5dp"
-        android:letterSpacing="-0.03"
-        android:lineSpacingExtra="5sp"
-        android:text="사용자 닉네임"
-        android:textColor="#292929"
-        android:textSize="10sp"
-        app:layout_constraintLeft_toRightOf="@+id/recruit_image"
-        app:layout_constraintTop_toBottomOf="@+id/recruit_name" />
-
-    <TextView
-        android:id="@+id/date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4.5dp"
-        android:layout_marginTop="5dp"
-        android:letterSpacing="-0.03"
-        android:lineSpacingExtra="1sp"
-        android:text="2021.01.12"
-        android:textColor="#bcbcbc"
-        android:textSize="10sp"
-        app:layout_constraintStart_toEndOf="@+id/nickname"
-        app:layout_constraintTop_toBottomOf="@+id/recruit_name" />
+        <TextView
+            android:id="@+id/recruit_name"
+            android:layout_width="196dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:text="@{recruit.title}"
+            android:textAppearance="@style/contest_name"
+            app:layout_constraintLeft_toRightOf="@+id/recruit_image"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="5dp"
+            android:letterSpacing="-0.03"
+            android:lineSpacingExtra="5sp"
+            android:text="@{recruit.nickname}"
+            android:textColor="#292929"
+            android:textSize="10sp"
+            app:layout_constraintLeft_toRightOf="@+id/recruit_image"
+            app:layout_constraintTop_toBottomOf="@+id/recruit_name" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4.5dp"
+            android:layout_marginTop="5dp"
+            android:letterSpacing="-0.03"
+            android:lineSpacingExtra="1sp"
+            android:text="2021.01.12"
+            android:textColor="#bcbcbc"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/nickname"
+            app:layout_constraintTop_toBottomOf="@+id/recruit_name" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
