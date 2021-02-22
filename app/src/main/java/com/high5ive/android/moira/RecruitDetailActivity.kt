@@ -15,6 +15,9 @@ class RecruitDetailActivity : AppCompatActivity() {
         val ab = supportActionBar!!
         ab.setDisplayShowTitleEnabled(false)
         ab.setDisplayHomeAsUpEnabled(true)
+
+
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
