@@ -36,4 +36,8 @@
     <string name="kakao_app_key">80833a0235285489b82981db2a4c698e</string>
     <string name="add">add</string>
     <string name="position_num">%d명</string>
+    <string name="project_duration">프로젝트 기간</string>
+    <string name="region">지역</string>
+    <string name="enter_project_name">프로젝트 제목을 입력해주세요.</string>
+    <string name="enter_project_content">프로젝트 소개를 입력해주세요.</string>
 </resources>
