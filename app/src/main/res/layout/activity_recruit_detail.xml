@@ -370,7 +370,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-    <Button
+    <android.widget.Button
         android:id="@+id/commentBtn"
         android:layout_width="0dp"
         android:layout_height="56dp"
@@ -381,7 +381,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/applyBtn"
         android:layout_width="0dp"
         android:layout_height="56dp"

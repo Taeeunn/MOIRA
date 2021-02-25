@@ -95,7 +95,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/button"
         android:layout_width="60dp"
         android:layout_height="20dp"
@@ -109,7 +109,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
 
-    <View
+    <android.widget.Button
         android:id="@+id/horizontal_line2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -131,7 +131,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line2" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/button2"
         android:layout_width="60dp"
         android:layout_height="20dp"
@@ -167,7 +167,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line3" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/button3"
         android:layout_width="60dp"
         android:layout_height="20dp"
@@ -203,7 +203,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line4" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/button4"
         android:layout_width="60dp"
         android:layout_height="20dp"

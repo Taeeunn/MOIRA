@@ -42,7 +42,7 @@
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        app:layout_constraintStart_toStartOf="parent"/>-->
 
-    <Button
+    <android.widget.Button
         android:id="@+id/naver_login_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
 
-    <Button
+    <android.widget.Button
         android:id="@+id/kakao_login_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
