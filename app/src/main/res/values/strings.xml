@@ -40,4 +40,6 @@
     <string name="region">지역</string>
     <string name="enter_project_name">프로젝트 제목을 입력해주세요.</string>
     <string name="enter_project_content">프로젝트 소개를 입력해주세요.</string>
+    <string name="contest">공모전</string>
+    <string name="side_project">사이드 프로젝트</string>
 </resources>

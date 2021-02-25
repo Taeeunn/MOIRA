@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -13,13 +12,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:text="@string/recruit_info"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:textColor="#000000"
         android:lineSpacingExtra="4sp"
+        android:text="@string/recruit_info"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/project_type"
         android:layout_width="wrap_content"
@@ -32,155 +32,187 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/team_recruit" />
 
-    <View
-        android:id="@+id/project_type_chip"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
-        android:background="#f0f0f0"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/project_type" />
 
-<!--    <com.google.android.material.chip.ChipGroup-->
-<!--        android:id="@+id/project_type_chip"-->
-<!--        style="@style/Widget.MaterialComponents.Chip.Action"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="공모전"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:layout_marginTop="12dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/project_type" />-->
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group"
+        style="@style/Widget.MaterialComponents.Chip.Filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/project_type"
+        app:singleSelection="true">
+
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip1"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/contest" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip2"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/side_project" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+
+    <!--    <com.google.android.material.chip.ChipGroup-->
+    <!--        android:id="@+id/project_type_chip"-->
+    <!--        style="@style/Widget.MaterialComponents.Chip.Action"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="공모전"-->
+    <!--        android:layout_marginStart="16dp"-->
+    <!--        android:layout_marginTop="12dp"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/project_type" />-->
 
     <View
         android:id="@+id/horizontal_line"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="16dp"
-        android:background="#f0f0f0"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/project_type_chip" />
+        android:background="#f0f0f0"
+        app:layout_constraintTop_toBottomOf="@+id/chip_group" />
+
     <TextView
         android:id="@+id/project_duration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/project_duration"
-        android:layout_marginTop="24dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/project_duration"
         android:textAppearance="@style/project_info"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
+
     <Button
         android:id="@+id/button"
         android:layout_width="60dp"
         android:layout_height="20dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="24dp"
         android:layout_marginStart="16dp"
-        android:text="@string/register"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
         android:background="@android:color/transparent"
         android:lineSpacingExtra="8sp"
+        android:text="@string/register"
         android:textAppearance="@style/register_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
+
     <View
         android:id="@+id/horizontal_line2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#f0f0f0"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
+        android:background="#f0f0f0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/project_duration"/>
+        app:layout_constraintTop_toBottomOf="@+id/project_duration" />
+
     <TextView
         android:id="@+id/region"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/region"
-        android:layout_marginTop="24dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/region"
         android:textAppearance="@style/project_info"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line2" />
+
     <Button
         android:id="@+id/button2"
         android:layout_width="60dp"
         android:layout_height="20dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="24dp"
         android:layout_marginStart="16dp"
-        android:text="@string/register"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
         android:background="@android:color/transparent"
         android:lineSpacingExtra="8sp"
+        android:text="@string/register"
         android:textAppearance="@style/register_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line2" />
+
     <View
         android:id="@+id/horizontal_line3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#f0f0f0"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
+        android:background="#f0f0f0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/region"/>
+        app:layout_constraintTop_toBottomOf="@+id/region" />
+
     <TextView
         android:id="@+id/recruit_position"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/recruit_position"
-        android:layout_marginTop="24dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/recruit_position"
         android:textAppearance="@style/project_info"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line3" />
+
     <Button
         android:id="@+id/button3"
         android:layout_width="60dp"
         android:layout_height="20dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="24dp"
         android:layout_marginStart="16dp"
-        android:text="@string/register"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
         android:background="@android:color/transparent"
         android:lineSpacingExtra="8sp"
+        android:text="@string/register"
         android:textAppearance="@style/register_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line3" />
+
     <View
         android:id="@+id/horizontal_line4"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#f0f0f0"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
+        android:background="#f0f0f0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recruit_position"/>
+        app:layout_constraintTop_toBottomOf="@+id/recruit_position" />
+
     <TextView
         android:id="@+id/related_tag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/related_tag"
-        android:layout_marginTop="24dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/related_tag"
         android:textAppearance="@style/project_info"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line4" />
+
     <Button
         android:id="@+id/button4"
         android:layout_width="60dp"
         android:layout_height="20dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="24dp"
         android:layout_marginStart="16dp"
-        android:text="@string/register"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
         android:background="@android:color/transparent"
         android:lineSpacingExtra="8sp"
+        android:text="@string/register"
         android:textAppearance="@style/register_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line4" />
