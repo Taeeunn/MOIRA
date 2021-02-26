@@ -120,12 +120,11 @@
                 android:textAppearance="@style/btn_text"
                 android:text="@string/applicant_list"
                 app:layout_constraintEnd_toEndOf="parent"
-
                 app:layout_constraintTop_toBottomOf="@id/barrier" />
 
 
             <android.widget.Button
-                android:id="@+id/bVio_count"
+                android:id="@+id/applicant_count"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_gravity="end|center_vertical"
