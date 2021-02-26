@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.high5ive.android.moira.HomeFragment"
+        android:label="홈"
+        tools:layout="@layout/home_fragment" />
+    <fragment
+        android:id="@+id/teamFindingFragment"
+        android:name="com.high5ive.android.moira.TeamFindingFragment"
+        android:label="팀원찾기"
+        tools:layout="@layout/team_finding_fragment" />
+    <fragment
+        android:id="@+id/myTeamFragment"
+        android:name="com.high5ive.android.moira.MyTeamFragment"
+        android:label="나의 팀"
+        tools:layout="@layout/my_team_fragment" />
+    <fragment
+        android:id="@+id/myPageFragment"
+        android:name="com.high5ive.android.moira.MyPageFragment"
+        android:label="마이페이지"
+        tools:layout="@layout/my_page_fragment" />
+
+</navigation>

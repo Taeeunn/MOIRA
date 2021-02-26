@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:title="홈"
+        android:icon="@drawable/ic_baseline_favorite_border_24" />
+    <item
+        android:id="@+id/teamFindingFragment"
+        android:title="@string/find_team_member"
+        android:icon="@drawable/ic_baseline_favorite_border_24"/>
+    <item
+        android:id="@+id/myTeamFragment"
+        android:title="@string/my_team"
+        android:icon="@drawable/ic_baseline_favorite_border_24"/>
+    <item
+        android:id="@+id/myPageFragment"
+        android:title="@string/mypage"
+        android:icon="@drawable/ic_baseline_favorite_border_24"/>
+</menu>
