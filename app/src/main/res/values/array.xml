@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string-array name="education_status_array">
+        <item>재학</item>
+        <item>수료</item>
+        <item>졸업</item>
+    </string-array>
 
 </resources>

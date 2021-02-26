@@ -26,11 +26,23 @@
         <item name="colorControlHighlight">#aaaaaa</item>
     </style>
 
+    <style name="EditTextTheme2" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">#aaaaaa</item>
+        <item name="colorControlActivated">#156fff</item>
+        <item name="colorControlHighlight">#156fff</item>
+    </style>
+
     <style name="tab_text" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:lineSpacingExtra">8sp</item>
         <item name="android:textAllCaps">true</item>
+    </style>
+
+
+    <style name="ThemeSpinner">
+        <item name="colorAccent">#aaaaaa</item>
+        <item name="colorControlNormal">#aaaaaa</item>
     </style>
 
 <!--    <style name="custom_tab_layout" parent="Widget.Design.TabLayout">-->
