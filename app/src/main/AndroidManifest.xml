@@ -12,14 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MOIRA">
-        <activity android:name=".AddSchoolActivity"></activity>
-        <activity android:name=".AddEducationActivity">
+        <activity android:name=".EvaluateMemberDetailActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AddSchoolActivity" />
+        <activity android:name=".AddEducationActivity"/>
         <activity android:name=".TeamListActivity" />
         <activity android:name=".ApplicantReviewActivity" />
         <activity android:name=".PostListActivity" />

@@ -58,4 +58,5 @@
     <string name="graduation_year_month">졸업 연월</string>
     <string name="graduation">졸업</string>
     <string name="add_school">학교 추가하기</string>
+    <string name="complete">완료하기</string>
 </resources>
