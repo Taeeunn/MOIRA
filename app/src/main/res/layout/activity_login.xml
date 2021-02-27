@@ -7,18 +7,16 @@
     tools:context=".ui.signup.SetNicknameActivity">
 
 
-
-
     <TextView
         android:id="@+id/app_name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:fontFamily="@font/gmarket_sans_bold"
-        android:textAppearance="@style/moira_name"
         android:layout_marginTop="179dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/gmarket_sans_bold"
+        android:text="@string/app_name"
+        android:textAppearance="@style/moira_name"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -28,47 +26,47 @@
         android:layout_marginTop="12dp"
         android:text="@string/app_description"
         android:textAppearance="@style/moira_description"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/app_name_text" />
 
-<!--    <com.nhn.android.naverlogin.ui.view.OAuthLoginButton-->
-<!--        android:id="@+id/buttonOAuthLoginImg"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:layout_marginEnd="16dp"-->
-<!--        android:layout_marginBottom="176.07dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"/>-->
+    <!--    <com.nhn.android.naverlogin.ui.view.OAuthLoginButton-->
+    <!--        android:id="@+id/buttonOAuthLoginImg"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="16dp"-->
+    <!--        android:layout_marginEnd="16dp"-->
+    <!--        android:layout_marginBottom="176.07dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"/>-->
 
-<!--    <android.widget.Button-->
-<!--        android:id="@+id/naver_login_btn"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="@string/naver_login"-->
-<!--        android:textAppearance="@style/login_button"-->
-<!--        android:background="@drawable/round_rectangle"-->
-<!--        android:backgroundTint="@color/naver"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:layout_marginEnd="16dp"-->
-<!--        android:layout_marginBottom="176.07dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent" />-->
+    <!--    <android.widget.Button-->
+    <!--        android:id="@+id/naver_login_btn"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="@string/naver_login"-->
+    <!--        android:textAppearance="@style/login_button"-->
+    <!--        android:background="@drawable/round_rectangle"-->
+    <!--        android:backgroundTint="@color/naver"-->
+    <!--        android:layout_marginStart="16dp"-->
+    <!--        android:layout_marginEnd="16dp"-->
+    <!--        android:layout_marginBottom="176.07dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent" />-->
 
 
     <android.widget.Button
         android:id="@+id/kakao_login_btn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="@string/kakao_login"
-        android:textAppearance="@style/login_button"
-        android:background="@drawable/ic_kakao_login"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="32dp"
+        android:background="@drawable/ic_kakao_login"
+        android:text="@string/kakao_login"
+        android:textAppearance="@style/login_button"
         app:layout_constraintBottom_toTopOf="@+id/lookaround_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -77,12 +75,12 @@
         android:id="@+id/lookaround_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="89dp"
         android:text="@string/look_around"
         android:textAppearance="@style/look_around"
-        android:layout_marginBottom="89dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

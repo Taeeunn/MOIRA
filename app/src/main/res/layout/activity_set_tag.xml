@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    tools:context=".ui.signup.SetTagActivity">
+
+    <TextView
+        android:id="@+id/select_tag_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:text="@string/select_tag"
+        android:textAppearance="@style/hello_enter_nickname"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/use_purpose_tag_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="46dp"
+        android:text="@string/use_purpose_related_tag"
+        android:textAppearance="@style/tag_title_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/select_tag_text" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/use_purpose_tag_group"
+        style="@style/Widget.MaterialComponents.Chip.Filter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/use_purpose_tag_text">
+
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/user_purpose_tag1"
+            style="@style/MaterialChips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="태그명" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/user_purpose_tag2"
+            style="@style/MaterialChips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="태그명태그명태그명" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/user_purpose_tag3"
+            style="@style/MaterialChips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="태그명" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/user_purpose_tag4"
+            style="@style/MaterialChips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="태그명태그명태그" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/user_purpose_tag5"
+            style="@style/MaterialChips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="태그명" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <TextView
+        android:id="@+id/design_tag_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="디자인 관련 태그"
+        android:textAppearance="@style/tag_title_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/use_purpose_tag_group" />
+
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/design_tag_group"
+        style="@style/Widget.MaterialComponents.Chip.Filter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/design_tag_text">
+
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/design_tag1"
+            style="@style/MaterialChips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="태그명" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/design_tag2"
+            style="@style/MaterialChips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="태그명태그명태그명" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/design_tag3"
+            style="@style/MaterialChips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="태그명" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/design_tag4"
+            style="@style/MaterialChips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="태그명태그명태그" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/design_tag5"
+            style="@style/MaterialChips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="태그명" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+
+    <LinearLayout
+        android:id="@+id/to_next_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:text="@string/start"
+            android:textAppearance="@style/to_next_btn_black" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="15.5dp"
+            android:src="@drawable/ic_baseline_arrow_forward_ios_20" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
