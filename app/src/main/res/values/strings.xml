@@ -63,4 +63,5 @@
     <string name="career">경력</string>
     <string name="award_history">수상내역</string>
     <string name="rating">평점</string>
+    <string name="look_around"><u>둘러볼게요</u></string>
 </resources>
