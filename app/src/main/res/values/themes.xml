@@ -25,15 +25,17 @@
 
     </style>
 
-    <style name="ShapeAppearanceOverlay.MaterialComponents.Chip" parent="">
-        <item name="cornerRadius">2dp</item>
-    </style>
 
 
-    <style name="MaterialChips" parent="@style/Widget.MaterialComponents.Chip.Filter">
+    <style name="MaterialChips" parent="@style/Widget.MaterialComponents.Chip.Choice">
         <!-- ... -->
-        <item name="chipBackgroundColor">#f2f2f2</item>
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialComponents.Chip</item>
+        <item name="chipBackgroundColor">@color/bg_chip_state</item>
+        <item name="chipCornerRadius">2dp</item>
+        <item name="chipMinHeight">32dp</item>
+        <item name="rippleColor">@color/main_blue</item>
+        <item name="android:textColor">@color/text_chip_state</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:textAppearance">@style/tag_text</item>
     </style>
 
 
@@ -62,6 +64,15 @@
         <item name="android:textStyle">bold</item>
         <item name="android:lineSpacingExtra">8sp</item>
     </style>
+
+
+    <style name="tag_text">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+    </style>
+
 
 
     <style name="EditTextTheme2" parent="Theme.AppCompat.Light.DarkActionBar">
