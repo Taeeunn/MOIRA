@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.addinfo.AddSchoolActivity">
+    tools:context=".ui.addinfo.AddMajorActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -25,7 +25,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/add_school"
+                android:text="@string/add_major"
                 android:textAppearance="@style/toolbar_title"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +54,7 @@
     <SearchView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:queryHint="학교명을 입력해주세요."
+        android:queryHint="전공명을 입력해주세요."
         android:searchIcon="@null"
         android:iconifiedByDefault="false"
         android:layout_marginTop="16dp"

@@ -1,4 +1,4 @@
-package com.high5ive.android.moira
+package com.high5ive.android.moira.ui.addinfo
 
 import android.app.DatePickerDialog.OnDateSetListener
 import android.os.Bundle
@@ -9,9 +9,9 @@ import android.widget.AdapterView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
-import com.high5ive.android.moira.data.Education
+import com.high5ive.android.moira.R
+import com.high5ive.android.moira.YearMonthPickerDialog
 import com.high5ive.android.moira.databinding.ActivityAddEducationBinding
-import com.high5ive.android.moira.databinding.ActivityEvaluateMemberBinding
 import kotlinx.android.synthetic.main.activity_add_education.*
 
 
@@ -27,7 +27,9 @@ class AddEducationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= DataBindingUtil.setContentView(this, R.layout.activity_add_education)
+        binding= DataBindingUtil.setContentView(this,
+            R.layout.activity_add_education
+        )
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -37,14 +39,16 @@ class AddEducationActivity : AppCompatActivity() {
 
 
         admission_et.setOnClickListener {
-            val pd: YearMonthPickerDialog<View> = YearMonthPickerDialog()
+            val pd: YearMonthPickerDialog<View> =
+                YearMonthPickerDialog()
             pd.setListener(listener)
             pd.show(supportFragmentManager, "YearMonthPickerTest")
         }
 
 
         graduation_et.setOnClickListener {
-            val pd: YearMonthPickerDialog<View> = YearMonthPickerDialog()
+            val pd: YearMonthPickerDialog<View> =
+                YearMonthPickerDialog()
             pd.setListener(listener)
             pd.show(supportFragmentManager, "YearMonthPickerTest")
 

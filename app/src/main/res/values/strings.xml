@@ -79,4 +79,5 @@
     <string name="favorite_tag">관심태그</string>
     <string name="add_tag">+ 추가하기</string>
     <string name="badge">칭찬 배지</string>
+    <string name="add_major">전공 추가하기</string>
 </resources>
