@@ -12,14 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MOIRA">
-        <activity android:name=".ui.addinfo.career.AddCareerActivity">
+        <activity android:name=".ui.addinfo.career.AddCompanyActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.addinfo.major.AddMajorActivity"/>
+        <activity android:name=".ui.addinfo.career.AddCareerActivity"/>
+        <activity android:name=".ui.addinfo.major.AddMajorActivity" />
         <activity android:name=".ui.search.SearchActivity" />
         <activity android:name=".ui.signup.SetTagActivity" />
         <activity android:name=".ui.signup.SetPositionActivity" />

@@ -88,4 +88,5 @@
     <string name="join_company">입사</string>
     <string name="join_company_year_month">입사 연월</string>
     <string name="resignation_year_month">퇴사 연월</string>
+    <string name="add_company">기업 추가하기</string>
 </resources>
