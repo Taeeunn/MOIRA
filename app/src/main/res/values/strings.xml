@@ -80,4 +80,12 @@
     <string name="add_tag">+ 추가하기</string>
     <string name="badge">칭찬 배지</string>
     <string name="add_major">전공 추가하기</string>
+    <string name="add_career">경력 추가하기</string>
+    <string name="company_name">기업명</string>
+    <string name="enter_company_name">기업명을 입력해주세요.</string>
+    <string name="job_department">직무 / 부서명</string>
+    <string name="enter_job_department">직무 및 부서명을 입력해주세요.</string>
+    <string name="join_company">입사</string>
+    <string name="join_company_year_month">입사 연월</string>
+    <string name="resignation_year_month">퇴사 연월</string>
 </resources>

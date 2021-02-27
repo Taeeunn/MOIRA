@@ -1,4 +1,4 @@
-package com.high5ive.android.moira.ui.addinfo
+package com.high5ive.android.moira.ui.addinfo.education
 
 import android.app.DatePickerDialog.OnDateSetListener
 import android.os.Bundle
