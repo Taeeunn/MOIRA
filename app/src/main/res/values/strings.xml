@@ -93,4 +93,6 @@
     <string name="add_link">링크 추가하기</string>
     <string name="link_url">링크/URL</string>
     <string name="add_tag">관심태그 추가하기</string>
+    <string name="add_award_history">수상내역 추가하기</string>
+    <string name="contest_name">대회명</string>
 </resources>

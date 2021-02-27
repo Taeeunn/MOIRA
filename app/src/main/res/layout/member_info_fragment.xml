@@ -212,7 +212,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="19dp"
-        android:text="@string/add_tag"
+        android:text="@string/plus_add"
         android:textAppearance="@style/project_info"
         android:textStyle="normal"
         android:textSize="13sp"
