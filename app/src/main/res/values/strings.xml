@@ -95,4 +95,7 @@
     <string name="add_tag">관심태그 추가하기</string>
     <string name="add_award_history">수상내역 추가하기</string>
     <string name="contest_name">대회명</string>
+    <string name="add_certificate">자격증 추가하기</string>
+    <string name="certificate_name">자격증명</string>
+    <string name="acquisition_date">취득일</string>
 </resources>

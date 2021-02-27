@@ -12,13 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MOIRA">
-        <activity android:name=".ui.addinfo.award.AddAwardHistoryActivity">
+        <activity android:name=".ui.addinfo.certificate.AddCertificateActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.addinfo.tag.AddTagActivity"/>
+        <activity android:name=".ui.addinfo.award.AddAwardHistoryActivity"/>
+        <activity android:name=".ui.addinfo.tag.AddTagActivity" />
         <activity android:name=".ui.addinfo.link.AddLinkActivity" />
         <activity android:name=".ui.addinfo.career.AddJobDepartmentActivity" />
         <activity android:name=".ui.addinfo.career.AddCompanyActivity" />

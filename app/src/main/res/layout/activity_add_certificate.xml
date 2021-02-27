@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.addinfo.certificate.AddCertificateActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:contentInsetStartWithNavigation="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:theme="@style/toolbar_theme_close">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_certificate"
+                android:textAppearance="@style/toolbar_title"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+
+            <android.widget.Button
+                android:id="@+id/button"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="@string/register"
+                android:background="@android:color/transparent"
+                android:lineSpacingExtra="8sp"
+                android:textAppearance="@style/register_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/contest_name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/certificate_name"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="16dp"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="#363636"
+        android:lineSpacingExtra="8sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <EditText
+        android:id="@+id/contest_name_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:ems="10"
+        android:hint="자격증 명을 입력해주세요."
+        android:inputType="text"
+        android:layout_marginTop="12dp"
+        android:paddingBottom="15dp"
+        android:textColor="@color/black"
+        android:textStyle="normal"
+        android:textSize="13sp"
+        android:lineSpacingExtra="6sp"
+        android:theme="@style/EditTextTheme"
+        app:layout_constraintTop_toBottomOf="@+id/contest_name_text"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <TextView
+        android:id="@+id/award_history_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/acquisition_date"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="#363636"
+        android:lineSpacingExtra="8sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contest_name_et" />
+
+    <EditText
+        android:id="@+id/award_history_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:ems="10"
+        android:hint="취득연월"
+        android:inputType="text"
+        android:layout_marginTop="12dp"
+        android:paddingBottom="15dp"
+        android:textColor="@color/black"
+        android:textStyle="normal"
+        android:textSize="13sp"
+        android:lineSpacingExtra="6sp"
+        android:theme="@style/EditTextTheme"
+        app:layout_constraintTop_toBottomOf="@+id/award_history_text"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
