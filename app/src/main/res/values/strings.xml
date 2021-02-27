@@ -71,4 +71,6 @@
     <string name="select_tag">내가 관심있는 태그를\n선택해주세요.</string>
     <string name="use_purpose_related_tag">사용목적 관련 태그</string>
     <string name="start">시작하기</string>
+    <string name="search">검색</string>
+    <string name="do_search">검색하기</string>
 </resources>
