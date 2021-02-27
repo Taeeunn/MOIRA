@@ -98,4 +98,7 @@
     <string name="add_certificate">자격증 추가하기</string>
     <string name="certificate_name">자격증명</string>
     <string name="acquisition_date">취득일</string>
+    <string name="user_nickname">사용자 닉네임</string>
+    <string name="message_box">쪽지함</string>
+    <string name="notification">알림</string>
 </resources>
