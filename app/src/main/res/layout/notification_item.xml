@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp"
+    android:paddingStart="16dp">
+
+    <ImageView
+        android:id="@+id/notification_img"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        app:srcCompat="@drawable/circle"
+        app:tint="@color/light_gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/notification_text"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:text="사용자 닉네임님 외 5명이 모집글 제목 모집… 에 지원했습니다."
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="40dp"
+        android:textStyle="normal"
+        android:textSize="12sp"
+        android:textColor="#000000"
+        android:lineSpacingExtra="6sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/notification_img"/>
+
+    <TextView
+        android:id="@+id/notification_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3분전"
+        android:textStyle="normal"
+        android:textSize="10sp"
+        android:textColor="#c4c4c4"
+        android:lineSpacingExtra="5sp"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="12dp"
+        app:layout_constraintLeft_toRightOf="@+id/notification_img"
+        app:layout_constraintTop_toBottomOf="@+id/notification_text"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
