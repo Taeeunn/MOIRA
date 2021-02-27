@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ApplicantProfileActivity">
+    tools:context=".ui.applicant.ApplicantProfileActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -48,10 +48,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
-                android:lineSpacingExtra="9sp"
                 android:text="사용자 닉네임"
-                android:textColor="#000000"
-                android:textSize="20sp"
+                android:textAppearance="@style/member_nickname_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/member_image" />
@@ -62,10 +60,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
-                android:lineSpacingExtra="6sp"
                 android:text="사용자의 한줄소개입니다."
-                android:textColor="#3e3e3e"
-                android:textSize="11sp"
+                android:textAppearance="@style/member_intro_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/member_nickname" />
@@ -76,49 +72,77 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="36dp"
+                app:tabTextAppearance="@style/tab_text"
                 app:layout_constraintTop_toBottomOf="@+id/member_intro"
                 app:tabRippleColor="@null"
                 app:tabSelectedTextColor="@color/black"
-                app:tabTextAppearance="@style/tab_text"
-                app:tabTextColor="#969696" />
+                app:tabTextColor="#0d0d0d"/>
 
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewPager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="100dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tabLayout"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="100dp"/>
+                app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-
-    <android.widget.Button
-        android:id="@+id/commentBtn"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:background="#c4c4c4"
-        android:text="1:1 채팅"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/applyBtn"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <android.widget.Button
-        android:id="@+id/applyBtn"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="#989898"
-        android:text="@string/recruitment_completed"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/commentBtn" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/favorite_img_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:padding="11dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_baseline_favorite_border_24"
+            android:tint="#757575"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent" />
+
+        <ImageButton
+            android:id="@+id/share_img_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:background="@android:color/transparent"
+            android:padding="11dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_baseline_share_24"
+            android:tint="#757575"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/favorite_img_btn"
+            app:layout_constraintTop_toBottomOf="parent" />
+
+
+        <android.widget.Button
+            android:id="@+id/send_msg_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="62dp"
+            android:background="@android:color/transparent"
+            android:text="@string/send_message"
+            android:textAppearance="@style/send_message"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,12 +1,11 @@
-package com.high5ive.android.moira
+package com.high5ive.android.moira.ui.applicant
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
-import androidx.fragment.app.FragmentActivity
 import com.google.android.material.tabs.TabLayoutMediator
-import com.high5ive.android.moira.adapter.ViewPagerAdapter
+import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.ViewPagerAdapter2
 import kotlinx.android.synthetic.main.my_team_fragment.*
 

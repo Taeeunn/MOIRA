@@ -54,8 +54,6 @@
         android:searchIcon="@null"
         android:iconifiedByDefault="false"
         android:layout_marginTop="16dp"
-
-        android:textSize="5sp"
         app:theme="@style/SearchViewStyle"
         android:lineSpacingExtra="6sp"
         android:queryBackground="@android:color/transparent"

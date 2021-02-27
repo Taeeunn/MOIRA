@@ -43,7 +43,7 @@ class MemberInfoFragment : Fragment() {
             )
         }
 
-        recycler_view.apply{
+        award_recycler_view.apply{
             layoutManager = LinearLayoutManager(context)
             adapter =
                 AwardAdapter(awardList) { award ->

@@ -12,22 +12,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MOIRA">
-        <activity android:name=".ui.search.SearchActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ui.search.SearchActivity"/>
         <activity android:name=".ui.signup.SetTagActivity"/>
         <activity android:name=".ui.signup.SetPositionActivity" />
         <activity android:name=".ui.signup.SetNicknameActivity" />
-        <activity android:name=".ApplicantProfileActivity" />
+        <activity android:name=".ui.applicant.ApplicantProfileActivity" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".EvaluateMemberDetailActivity" />
         <activity android:name=".AddSchoolActivity" />
         <activity android:name=".AddEducationActivity" />
         <activity android:name=".TeamListActivity" />
-        <activity android:name=".ApplicantReviewActivity" />
+        <activity android:name=".ApplicantReviewActivity"/>
         <activity android:name=".PostListActivity" />
         <activity android:name=".ApplyListActivity" />
         <activity android:name=".ApplicantListActivity" />

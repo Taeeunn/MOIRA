@@ -5,123 +5,224 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MemberInfoFragment">
+    tools:context=".MemberInfoFragment"
+    android:paddingTop="36dp"
+    android:paddingHorizontal="16dp">
 
 
     <TextView
         android:id="@+id/education"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
         android:text="@string/education"
-        android:textAppearance="@style/project_info"
+        android:textAppearance="@style/member_info_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/education_info"
         android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="16dp"
-        android:lineSpacingExtra="8sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:text="가나대학교 가나다라학과"
-        android:textAppearance="@style/recruit_count"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textAppearance="@style/member_info_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/education" />
 
     <View
         android:id="@+id/horizontal_line"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:background="#f0f0f0"
+        android:layout_marginTop="18dp"
+        android:background="#e6e6e6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/education" />
+        app:layout_constraintTop_toBottomOf="@+id/education_info" />
 
 
     <TextView
         android:id="@+id/career"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="18.5dp"
         android:text="@string/career"
-        android:textAppearance="@style/project_info"
+        android:textAppearance="@style/member_info_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
 
     <TextView
         android:id="@+id/career_info"
         android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12.5dp"
         android:lineSpacingExtra="8sp"
         android:text="가나다라회사"
-        android:textAppearance="@style/recruit_count"
+        android:textAppearance="@style/member_info_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/career" />
+
+    <TextView
+        android:id="@+id/career_duration_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12.5dp"
+        android:text="2018.02 ~ 2018.03"
+        android:textColor="#9b9b9b"
+        android:textAppearance="@style/member_info_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/career_info" />
 
     <View
         android:id="@+id/horizontal_line2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="#f0f0f0"
+        android:layout_marginTop="18dp"
+        android:background="#e6e6e6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/career_info" />
-
+        app:layout_constraintTop_toBottomOf="@+id/career_duration_info" />
 
     <TextView
-        android:id="@+id/award_history"
+        android:id="@+id/certificate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="23dp"
-        android:text="@string/award_history"
-        android:textAppearance="@style/project_info"
+        android:layout_marginTop="18dp"
+        android:text="자격증"
+        android:textAppearance="@style/member_info_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line2" />
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+        android:id="@+id/certificate_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="18dp"
         app:layoutManager="LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@+id/award_history" />
+        app:layout_constraintTop_toBottomOf="@+id/certificate" />
+
 
     <View
         android:id="@+id/horizontal_line3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="16dp"
-        android:background="#f0f0f0"
+        android:layout_marginTop="18dp"
+        android:background="#e6e6e6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recycler_view" />
+        app:layout_constraintTop_toBottomOf="@+id/certificate_recycler_view" />
+
+    <TextView
+        android:id="@+id/award_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18.5dp"
+        android:text="@string/award_history"
+        android:textAppearance="@style/member_info_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontal_line3" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/award_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@+id/award_history" />
+
+    <View
+        android:id="@+id/horizontal_line4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="18dp"
+        android:background="#e6e6e6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/award_recycler_view" />
 
 
     <TextView
-        android:id="@+id/related_tag"
+        android:id="@+id/link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="23dp"
-        android:text="@string/related_tag"
-        android:textAppearance="@style/project_info"
+        android:layout_marginTop="18.5dp"
+        android:text="@string/link"
+        android:textAppearance="@style/member_info_title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizontal_line3" />
+        app:layout_constraintTop_toBottomOf="@+id/horizontal_line4" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/link_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@+id/link" />
+
+
+    <View
+        android:id="@+id/horizontal_line5"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="18dp"
+        android:background="#e6e6e6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/link_recycler_view" />
+
+
+    <TextView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18.5dp"
+        android:text="@string/image"
+        android:textAppearance="@style/member_info_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontal_line5" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/image_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25.5dp"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@+id/image" />
+
+
+    <View
+        android:id="@+id/horizontal_line6"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="28dp"
+        android:background="#e6e6e6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_recycler_view" />
+
+
+    <TextView
+        android:id="@+id/favorite_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:text="@string/favorite_tag"
+        android:textAppearance="@style/member_info_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontal_line6" />
+
+    <TextView
+        android:id="@+id/add_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:text="@string/add_tag"
+        android:textAppearance="@style/project_info"
+        android:textStyle="normal"
+        android:textSize="13sp"
+        android:textColor="#aaaaaa"
+        android:lineSpacingExtra="6sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontal_line6"/>
+
+
+
 
 
 
