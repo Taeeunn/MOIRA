@@ -10,7 +10,7 @@
     <string name="find_contest">공모전 찾기</string>
     <string name="register">등록하기</string>
     <string name="naver_login">NAVER 계정으로 로그인하기</string>
-    <string name="kakao_login">KAKAO 계정으로 로그인하기</string>
+    <string name="kakao_login">카카오 로그인</string>
     <string name="contest_list">공모전목록</string>
     <string name="my_team_name">나의 팀 이름</string>
     <string name="team_member">팀원</string>
@@ -64,4 +64,7 @@
     <string name="award_history">수상내역</string>
     <string name="rating">평점</string>
     <string name="look_around"><u>둘러볼게요</u></string>
+    <string name="hello_enter_nickname">반갑습니다!\n닉네임을 입력해주세요.</string>
+    <string name="enter_nickname">닉네임을 입력해주세요.</string>
+    <string name="to_next">다음으로</string>
 </resources>

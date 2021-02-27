@@ -21,7 +21,7 @@
         app:fontStyle="normal"
         app:fontWeight="700" />
 
-
+    <!--light-->
     <font
         android:font="@font/gmarket_sans_light"
         android:fontStyle="normal"

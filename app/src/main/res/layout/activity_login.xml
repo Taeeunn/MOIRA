@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.SetNicknameActivity">
+    tools:context=".ui.signup.SetNicknameActivity">
 
 
 
@@ -14,6 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
+        android:fontFamily="@font/gmarket_sans_bold"
         android:textAppearance="@style/moira_name"
         android:layout_marginTop="179dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,11 +62,10 @@
     <android.widget.Button
         android:id="@+id/kakao_login_btn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:text="@string/kakao_login"
         android:textAppearance="@style/login_button"
-        android:background="@drawable/round_rectangle"
-        android:backgroundTint="@color/kakao"
+        android:background="@drawable/ic_kakao_login"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="32dp"

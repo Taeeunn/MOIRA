@@ -1,13 +1,8 @@
 package com.high5ive.android.moira.ui.login
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.style.UnderlineSpan
-import android.util.Log
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import com.high5ive.android.moira.R
@@ -15,9 +10,7 @@ import com.kakao.sdk.auth.LoginClient
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.KakaoSdk
 import com.nhn.android.naverlogin.OAuthLogin
-import com.nhn.android.naverlogin.OAuthLoginHandler
 import kotlinx.android.synthetic.main.activity_login.*
-import com.kakao.sdk.common.util.Utility
 
 class LoginActivity : AppCompatActivity() {
 

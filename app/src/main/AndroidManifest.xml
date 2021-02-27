@@ -12,8 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MOIRA">
-        <activity android:name=".ui.SetNicknameActivity"/>
-        <activity android:name=".ApplicantProfileActivity"/>
+        <activity android:name=".ui.signup.SetNicknameActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+        <activity android:name=".ApplicantProfileActivity" />
         <activity android:name=".EvaluateMemberDetailActivity" />
         <activity android:name=".AddSchoolActivity" />
         <activity android:name=".AddEducationActivity" />
@@ -31,13 +37,7 @@
         <activity android:name=".ContestListActivity" />
         <activity android:name=".FindContestActivity" />
         <activity android:name=".ApplyCompleteActivity" />
-        <activity android:name=".ui.login.LoginActivity" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
+        <activity android:name=".ui.login.LoginActivity"/>
         <activity android:name=".MainActivity" />
         <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity">
             <intent-filter>

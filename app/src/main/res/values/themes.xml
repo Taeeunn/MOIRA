@@ -34,6 +34,17 @@
         <item name="colorControlHighlight">#aaaaaa</item>
     </style>
 
+    <style name="EnterNicknameEditText" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">#b5b5b5</item>
+        <item name="colorControlActivated">#0068ff</item>
+        <item name="colorControlHighlight">#0068ff</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+    </style>
+
+
     <style name="EditTextTheme2" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorControlNormal">#aaaaaa</item>
         <item name="colorControlActivated">#156fff</item>
@@ -83,10 +94,25 @@
         <item name="android:textStyle">normal</item>
     </style>
 
+    <style name="hello_enter_nickname">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#191919</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="to_next_btn">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#adadad</item>
+        <item name="android:lineSpacingExtra">9sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 
     <style name="login_button">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:textColor">#000000</item>
         <item name="android:textStyle">bold</item>
     </style>
 
