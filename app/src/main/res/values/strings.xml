@@ -67,4 +67,5 @@
     <string name="hello_enter_nickname">반갑습니다!\n닉네임을 입력해주세요.</string>
     <string name="enter_nickname">닉네임을 입력해주세요.</string>
     <string name="to_next">다음으로</string>
+    <string name="select_position">해당하는 포지션을\n선택해주세요.</string>
 </resources>
