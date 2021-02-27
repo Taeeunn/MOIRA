@@ -90,4 +90,6 @@
     <string name="resignation_year_month">퇴사 연월</string>
     <string name="add_company">기업 추가하기</string>
     <string name="add_job_department">직무 / 부서명 추가하기</string>
+    <string name="add_link">링크 추가하기</string>
+    <string name="link_url">링크/URL</string>
 </resources>

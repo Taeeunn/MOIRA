@@ -48,7 +48,6 @@
 <!--        <item name="backgroundTint">#f2f2f2</item>-->
 <!--    </style>-->
 
-
     <style name="EditTextTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorControlNormal">#aaaaaa</item>
         <item name="colorControlActivated">#aaaaaa</item>
