@@ -12,7 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MOIRA">
-        <activity android:name=".ui.CommentActivity"/>
+        <activity android:name=".ui.teamfinding.recruit.CommentActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".ui.mypage.scrap.ScrapActivity" />
         <activity android:name=".ui.message.MessageBoxActivity" />
         <activity android:name=".ui.noti.NotifyActivity" />
@@ -28,13 +34,7 @@
         <activity android:name=".ui.signup.SetTagActivity" />
         <activity android:name=".ui.signup.SetPositionActivity" />
         <activity android:name=".ui.signup.SetNicknameActivity" />
-        <activity android:name=".ui.applicant.ApplicantProfileActivity" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
+        <activity android:name=".ui.applicant.ApplicantProfileActivity" />
         <activity android:name=".EvaluateMemberDetailActivity" />
         <activity android:name=".ui.addinfo.education.AddSchoolActivity" />
         <activity android:name=".ui.addinfo.education.AddEducationActivity" />

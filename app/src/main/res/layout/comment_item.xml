@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="comments"
             type="com.high5ive.android.moira.data.Comment" />
@@ -18,8 +19,8 @@
             android:id="@+id/user_image"
             android:layout_width="46dp"
             android:layout_height="46dp"
-            android:layout_marginTop="29dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="29dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/circle"
@@ -31,11 +32,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
             android:layout_marginTop="28dp"
-            android:text="@{comments.nickname}"
-            android:textStyle="bold"
-            android:textSize="14sp"
-            android:textColor="#000000"
             android:lineSpacingExtra="6sp"
+            android:text="@{comments.nickname}"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:textStyle="bold"
             app:layout_constraintLeft_toRightOf="@+id/user_image"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,11 +46,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
             android:layout_marginTop="31dp"
-            android:text="@{comments.date}"
-            android:textStyle="normal"
-            android:textSize="10sp"
-            android:textColor="#bcbcbc"
             android:lineSpacingExtra="1sp"
+            android:text="@{comments.date}"
+            android:textColor="#bcbcbc"
+            android:textSize="10sp"
+            android:textStyle="normal"
             app:layout_constraintLeft_toRightOf="@+id/user_nickname"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -64,11 +65,12 @@
             android:text="@string/register"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_more_horiz_24" />
+            app:srcCompat="@drawable/ic_baseline_more_horiz_24"
+            app:tint="#000000" />
 
         <TextView
             android:id="@+id/comment"
-            android:layout_width="255dp"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
             android:layout_marginTop="6dp"
@@ -96,7 +98,6 @@
             android:layout_marginTop="23dp"
             android:background="#ebebeb"
             app:layout_constraintTop_toBottomOf="@+id/barrier" />
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

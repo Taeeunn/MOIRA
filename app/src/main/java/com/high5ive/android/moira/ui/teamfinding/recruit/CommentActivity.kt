@@ -1,4 +1,4 @@
-package com.high5ive.android.moira.ui
+package com.high5ive.android.moira.ui.teamfinding.recruit
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,7 +20,6 @@ class CommentActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         val ab = supportActionBar!!
         ab.setDisplayShowTitleEnabled(false)
-        ab.setDisplayHomeAsUpEnabled(true)
 
 
         val commentList = arrayListOf<Comment>()

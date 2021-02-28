@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.CommentActivity">
+    tools:context=".ui.teamfinding.recruit.CommentActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -77,10 +77,11 @@
 
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
-            android:layout_width="wrap_content"
+            android:id="@+id/new_comment_et"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginEnd="70dp"
             android:background="@drawable/round_rectangle_6"
             android:backgroundTint="#f0f0f0"
             android:ems="10"
@@ -95,10 +96,11 @@
             android:theme="@style/EditTextTheme"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/register_comment_btn"
             app:layout_constraintTop_toTopOf="parent" />
 
         <android.widget.Button
-            android:id="@+id/send_msg_btn"
+            android:id="@+id/register_comment_btn"
             android:layout_width="26dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="22dp"
@@ -110,6 +112,7 @@
             android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/new_comment_et"
             app:layout_constraintTop_toTopOf="parent" />
 
 
