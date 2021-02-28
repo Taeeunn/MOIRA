@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MakeTeamActivity">
+    tools:context=".ui.teamfinding.newpost.NewPostActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
@@ -36,21 +37,22 @@
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
+                android:background="@android:color/transparent"
                 android:lineSpacingExtra="8sp"
                 android:text="@string/register"
-                android:background="@android:color/transparent"
                 android:textAppearance="@style/register_button"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </com.google.android.material.appbar.MaterialToolbar>
 
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar">
 
@@ -58,6 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="70dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintTop_toTopOf="parent">
 
 
@@ -65,26 +68,34 @@
                 android:id="@+id/project_name_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginHorizontal="16dp"
+                android:background="@null"
                 android:ems="10"
                 android:hint="@string/enter_project_name"
                 android:inputType="text"
                 android:lineSpacingExtra="9sp"
-                android:paddingBottom="23dp"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:theme="@style/EditTextTheme"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/horizontal_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="23dp"
+                android:background="#e6e6e6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/project_name_et" />
+
 
             <EditText
                 android:id="@+id/project_content_et"
                 android:layout_width="match_parent"
                 android:layout_height="244dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="19dp"
-                android:layout_marginEnd="16dp"
                 android:background="@null"
                 android:ems="10"
                 android:gravity="top"
@@ -96,7 +107,7 @@
                 android:textSize="16sp"
                 android:theme="@style/EditTextTheme"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/project_name_et" />
+                app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
 
             <include
                 android:id="@+id/recruit_info"

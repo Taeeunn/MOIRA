@@ -33,7 +33,7 @@
 
 
     <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chip_group"
+        android:id="@+id/project_type_chip_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -43,14 +43,14 @@
 
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chip1"
+            android:id="@+id/project_type_chip1"
             style="@style/MaterialChipsAction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/contest" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chip2"
+            android:id="@+id/project_type_chip2"
             style="@style/MaterialChipsAction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
         android:layout_height="1dp"
         android:layout_marginTop="16dp"
         android:background="#f0f0f0"
-        app:layout_constraintTop_toBottomOf="@+id/chip_group" />
+        app:layout_constraintTop_toBottomOf="@+id/project_type_chip_group" />
 
     <TextView
         android:id="@+id/project_duration"
@@ -80,17 +80,17 @@
 
     <android.widget.Button
         android:id="@+id/button"
-        android:layout_width="60dp"
+        android:layout_width="65dp"
         android:layout_height="20dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="27dp"
         android:background="@android:color/transparent"
         android:lineSpacingExtra="8sp"
-        android:text="@string/register"
-        android:textAppearance="@style/register_button"
+        android:text="@string/plus_register"
+        android:textAppearance="@style/new_post_register_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
 
-    <android.widget.Button
+    <View
         android:id="@+id/horizontal_line2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -111,13 +111,13 @@
 
     <android.widget.Button
         android:id="@+id/button2"
-        android:layout_width="60dp"
+        android:layout_width="65dp"
         android:layout_height="20dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="27dp"
         android:background="@android:color/transparent"
         android:lineSpacingExtra="8sp"
-        android:text="@string/register"
-        android:textAppearance="@style/register_button"
+        android:text="@string/plus_register"
+        android:textAppearance="@style/new_post_register_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line2" />
 
@@ -142,13 +142,13 @@
 
     <android.widget.Button
         android:id="@+id/button3"
-        android:layout_width="60dp"
+        android:layout_width="65dp"
         android:layout_height="20dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="27dp"
         android:background="@android:color/transparent"
         android:lineSpacingExtra="8sp"
-        android:text="@string/register"
-        android:textAppearance="@style/register_button"
+        android:text="@string/plus_register"
+        android:textAppearance="@style/new_post_register_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line3" />
 
@@ -173,14 +173,36 @@
 
     <android.widget.Button
         android:id="@+id/button4"
-        android:layout_width="60dp"
+        android:layout_width="65dp"
         android:layout_height="20dp"
         android:layout_marginTop="24dp"
         android:background="@android:color/transparent"
         android:lineSpacingExtra="8sp"
-        android:text="@string/register"
-        android:textAppearance="@style/register_button"
+        android:text="@string/plus_register"
+        android:textAppearance="@style/new_post_register_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line4" />
+
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/tag_chip_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/related_tag"
+        app:singleSelection="true">
+
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/tag_chip1"
+            style="@style/MaterialChipsAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+ 태그" />
+
+
+    </com.google.android.material.chip.ChipGroup>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
