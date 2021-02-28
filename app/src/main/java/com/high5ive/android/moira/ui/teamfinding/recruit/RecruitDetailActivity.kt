@@ -1,4 +1,4 @@
-package com.high5ive.android.moira
+package com.high5ive.android.moira.ui.teamfinding.recruit
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,9 +6,10 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.PositionAdapter
 import com.high5ive.android.moira.data.Position
-import kotlinx.android.synthetic.main.activity_recruit_list.*
+import kotlinx.android.synthetic.main.recruit_info.*
 
 class RecruitDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +29,7 @@ class RecruitDetailActivity : AppCompatActivity() {
 
       
 
-        recycler_view.apply{
+        position_recycler_view.apply{
             layoutManager = LinearLayoutManager(this@RecruitDetailActivity)
             adapter =
                 PositionAdapter(positionList) { position ->

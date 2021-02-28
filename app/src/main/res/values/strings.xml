@@ -23,7 +23,6 @@
     <string name="post_list">작성한 글</string>
     <string name="review">리뷰</string>
     <string name="write_comment">댓글쓰기</string>
-    <string name="apply">지원하기</string>
     <string name="apply_cancel">지원 취소</string>
     <string name="edit_post">글 수정하기</string>
     <string name="make_team">팀 만들기</string>
@@ -115,4 +114,5 @@
     <string name="comment">댓글</string>
     <string name="registration">등록</string>
     <string name="evaluate_team_member">팀원 평가하기</string>
+    <string name="apply">지원하기</string>
 </resources>

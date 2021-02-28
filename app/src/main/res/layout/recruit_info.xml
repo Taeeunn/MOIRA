@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingHorizontal="16dp"
     android:paddingBottom="40dp">
 
 
@@ -10,21 +11,20 @@
         android:id="@+id/team_recruit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:lineSpacingExtra="9sp"
+        android:lineSpacingExtra="4sp"
         android:text="@string/recruit_info"
-        android:textAppearance="@style/team_recruit"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/project_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:lineSpacingExtra="6sp"
         android:text="@string/project_type"
         android:textAppearance="@style/project_type"
@@ -32,272 +32,170 @@
         app:layout_constraintTop_toBottomOf="@+id/team_recruit" />
 
 
-    <ImageView
-        android:id="@+id/contest_image"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="27dp"
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/project_type_chip_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/project_type"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        app:singleSelection="true">
 
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/project_type_chip1"
+            style="@style/MaterialChipsAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/contest" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/project_type_chip2"
+            style="@style/MaterialChipsAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/side_project" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+
+    <View
+        android:id="@+id/horizontal_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="#f0f0f0"
+        app:layout_constraintTop_toBottomOf="@+id/project_type_chip_group" />
 
     <TextView
-        android:id="@+id/contest_name"
-        android:layout_width="0dp"
+        android:id="@+id/project_duration"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="8dp"
-        android:text="공모전명 공모전명 공모전명 공모전명 공모전명 공모전명 공모전명"
-        android:textAppearance="@style/contest_name"
-        app:layout_constraintLeft_toRightOf="@+id/contest_image"
-        app:layout_constraintRight_toLeftOf="@+id/move_to_contest"
-        app:layout_constraintTop_toBottomOf="@+id/project_type" />
-
+        android:layout_marginTop="16dp"
+        android:text="@string/project_duration"
+        android:textAppearance="@style/project_info"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="0dp"
+        android:id="@+id/project_duration_text"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="5dp"
-        android:lineSpacingExtra="5sp"
-        android:text="주최기관"
-        android:textColor="#969696"
-        android:textSize="10sp"
-        app:layout_constraintLeft_toRightOf="@+id/contest_image"
-        app:layout_constraintRight_toLeftOf="@+id/move_to_contest"
-        app:layout_constraintTop_toBottomOf="@+id/contest_name" />
-
-    <ImageButton
-        android:id="@+id/move_to_contest"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_marginEnd="16dp"
-        android:background="@android:color/transparent"
-        android:tint="#b9b9b9"
-        app:layout_constraintBottom_toBottomOf="@+id/contest_image"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/contest_image"
-        app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_20" />
-
+        android:layout_marginTop="18dp"
+        android:lineSpacingExtra="6sp"
+        android:text="6개월 이상"
+        android:textColor="#262626"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
 
     <View
         android:id="@+id/horizontal_line2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
         android:background="#f0f0f0"
-        app:layout_constraintTop_toBottomOf="@+id/contest_image" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/project_duration" />
 
     <TextView
-        android:id="@+id/recruit_position"
+        android:id="@+id/region"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:lineSpacingExtra="6sp"
-        android:text="@string/recruit_position"
-        android:textAppearance="@style/project_type"
+        android:text="@string/region"
+        android:textAppearance="@style/project_info"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line2" />
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/region_text"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:layoutManager="LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@+id/recruit_position" />
+        android:layout_marginTop="18dp"
+        android:lineSpacingExtra="6sp"
+        android:text="서울 / 경기"
+        android:textColor="#262626"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontal_line2" />
 
     <View
         android:id="@+id/horizontal_line3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
         android:background="#f0f0f0"
-        app:layout_constraintTop_toBottomOf="@+id/recycler_view" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/region" />
 
+    <TextView
+        android:id="@+id/recruit_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/recruit_position"
+        android:textAppearance="@style/project_info"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontal_line3" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/position_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@+id/recruit_position" />
+
+
+    <View
+        android:id="@+id/horizontal_line4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="#f0f0f0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/position_recycler_view" />
 
     <TextView
         android:id="@+id/related_tag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:lineSpacingExtra="6sp"
         android:text="@string/related_tag"
-        android:textAppearance="@style/related_tag"
+        android:textAppearance="@style/project_info"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizontal_line3" />
+        app:layout_constraintTop_toBottomOf="@+id/horizontal_line4" />
 
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier1"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        app:barrierDirection="bottom"
-        app:barrierMargin="10dp"
-        app:constraint_referenced_ids="related_tag" />
 
-    <TextView
-        android:id="@+id/tag1"
-        android:layout_width="wrap_content"
-        android:layout_height="26dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:background="#f2f2f2"
-        android:lineSpacingExtra="6sp"
-        android:paddingLeft="15dp"
-        android:paddingTop="5dp"
-        android:paddingRight="15dp"
-        android:paddingBottom="5dp"
-        android:text="관련태그"
-        android:textAppearance="@style/favorite_tag"
-        app:layout_constraintRight_toLeftOf="@+id/tag2"
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/tag_chip_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/barrier1" />
+        app:layout_constraintTop_toBottomOf="@+id/related_tag"
+        app:singleSelection="true">
 
 
-    <TextView
-        android:id="@+id/tag2"
-        android:layout_width="wrap_content"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="10dp"
-        android:background="#f2f2f2"
-        android:lineSpacingExtra="6sp"
-        android:paddingLeft="15dp"
-        android:paddingTop="5dp"
-        android:paddingRight="15dp"
-        android:paddingBottom="5dp"
-        android:text="관련태그"
-        android:textAppearance="@style/favorite_tag"
-        app:layout_constraintLeft_toRightOf="@+id/tag1"
-        app:layout_constraintTop_toBottomOf="@id/barrier1" />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/tag_chip1"
+            style="@style/MaterialChipsAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="디자인" />
 
+        <com.google.android.material.chip.Chip
+            android:id="@+id/tag_chip2"
+            style="@style/MaterialChipsAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="제품디자인" />
 
-    <TextView
-        android:id="@+id/tag3"
-        android:layout_width="wrap_content"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="10dp"
-        android:background="#f2f2f2"
-        android:lineSpacingExtra="6sp"
-        android:paddingLeft="15dp"
-        android:paddingTop="5dp"
-        android:paddingRight="15dp"
-        android:paddingBottom="5dp"
-        android:text="관련태그"
-        android:textAppearance="@style/favorite_tag"
-        app:layout_constraintLeft_toRightOf="@+id/tag2"
-        app:layout_constraintTop_toBottomOf="@id/barrier1" />
-
-
-    <TextView
-        android:id="@+id/tag4"
-        android:layout_width="wrap_content"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="10dp"
-        android:background="#f2f2f2"
-        android:lineSpacingExtra="6sp"
-        android:paddingLeft="15dp"
-        android:paddingTop="5dp"
-        android:paddingRight="15dp"
-        android:paddingBottom="5dp"
-        android:text="관련태그"
-        android:textAppearance="@style/favorite_tag"
-        app:layout_constraintLeft_toRightOf="@+id/tag3"
-        app:layout_constraintTop_toBottomOf="@id/barrier1" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier2"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="tag1, tag2, tag3, tag4" />
-
-
-    <TextView
-        android:id="@+id/tag5"
-        android:layout_width="wrap_content"
-        android:layout_height="26dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:background="#f2f2f2"
-        android:lineSpacingExtra="6sp"
-        android:paddingLeft="15dp"
-        android:paddingTop="5dp"
-        android:paddingRight="15dp"
-        android:paddingBottom="5dp"
-        android:text="관련태그"
-        android:textAppearance="@style/favorite_tag"
-        app:layout_constraintRight_toLeftOf="@+id/tag6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/barrier2" />
-
-
-    <TextView
-        android:id="@+id/tag6"
-        android:layout_width="wrap_content"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="10dp"
-        android:background="#f2f2f2"
-        android:lineSpacingExtra="6sp"
-        android:paddingLeft="15dp"
-        android:paddingTop="5dp"
-        android:paddingRight="15dp"
-        android:paddingBottom="5dp"
-        android:text="관련태그"
-        android:textAppearance="@style/favorite_tag"
-        app:layout_constraintLeft_toRightOf="@+id/tag5"
-        app:layout_constraintTop_toBottomOf="@id/barrier2" />
-
-
-    <TextView
-        android:id="@+id/tag7"
-        android:layout_width="wrap_content"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="10dp"
-        android:background="#f2f2f2"
-        android:lineSpacingExtra="6sp"
-        android:paddingLeft="15dp"
-        android:paddingTop="5dp"
-        android:paddingRight="15dp"
-        android:paddingBottom="5dp"
-        android:text="관련태그"
-        android:textAppearance="@style/favorite_tag"
-        app:layout_constraintLeft_toRightOf="@+id/tag6"
-        app:layout_constraintTop_toBottomOf="@id/barrier2" />
-
-
-    <TextView
-        android:id="@+id/tag8"
-        android:layout_width="wrap_content"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="10dp"
-        android:background="#f2f2f2"
-        android:lineSpacingExtra="6sp"
-        android:paddingLeft="15dp"
-        android:paddingTop="5dp"
-        android:paddingRight="15dp"
-        android:paddingBottom="5dp"
-        android:text="관련태그"
-        android:textAppearance="@style/favorite_tag"
-        app:layout_constraintLeft_toRightOf="@+id/tag7"
-        app:layout_constraintTop_toBottomOf="@id/barrier2" />
+    </com.google.android.material.chip.ChipGroup>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
