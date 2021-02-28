@@ -33,7 +33,7 @@ class TeamFindingFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(TeamFindingViewModel::class.java)
         // TODO: Use the ViewModel
 
-        viewPager.adapter = ViewPagerAdapter(context as FragmentActivity)
+        viewPager.adapter = TeamFindingViewPagerAdapter(context as FragmentActivity)
         val tabLayoutTextArray = arrayOf("모집글","인재풀")
         TabLayoutMediator(tabLayout,viewPager){tab,position->
             tab.text = tabLayoutTextArray[position]
