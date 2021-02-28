@@ -17,7 +17,7 @@
         tools:layout="@layout/team_finding_fragment" />
     <fragment
         android:id="@+id/myTeamFragment"
-        android:name="com.high5ive.android.moira.MyTeamFragment"
+        android:name="com.high5ive.android.moira.ui.myteam.MyTeamFragment"
         android:label="나의 팀"
         tools:layout="@layout/my_team_fragment" />
     <fragment

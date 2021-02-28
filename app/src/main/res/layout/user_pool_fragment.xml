@@ -28,51 +28,16 @@
 
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="410dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="29dp"
-        app:layout_constraintTop_toBottomOf="@id/spinner1">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:paddingBottom="70dp"
-            app:layoutManager="LinearLayoutManager" />
+        android:clipToPadding="false"
+        android:paddingBottom="150dp"
+        app:layout_constraintTop_toBottomOf="@id/spinner1" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <!--        <com.google.android.material.chip.Chip-->
-    <!--            android:id="@+id/design_tag1"-->
-    <!--            style="@style/MaterialChipsEntry"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:text="태그명" />-->
-
-    <!--        <com.google.android.material.chip.Chip-->
-    <!--            android:id="@+id/design_tag2"-->
-    <!--            style="@style/MaterialChipsAction"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:text="태그명태그명" />-->
-
-    <!--        <com.google.android.material.chip.Chip-->
-    <!--            android:id="@+id/design_tag3"-->
-    <!--            style="@style/MaterialChipsAction"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:text="태그명" />-->
-
-    <!--        <com.google.android.material.chip.Chip-->
-    <!--            android:id="@+id/design_tag4"-->
-    <!--            style="@style/MaterialChipsAction"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:text="태그명태그명태그" />-->
 
 
 
