@@ -1,4 +1,4 @@
-package com.high5ive.android.moira
+package com.high5ive.android.moira.ui.teamfinding
 
 import androidx.lifecycle.ViewModel
 
