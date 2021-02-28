@@ -62,7 +62,7 @@
         android:lineSpacingExtra="6sp"
         android:queryBackground="@android:color/transparent"
         android:backgroundTint="@color/light_gray"
-        android:background="@drawable/round_rectangle"
+        android:background="@drawable/round_rectangle_6"
         android:layout_marginHorizontal="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
