@@ -1,30 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
+<layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
-            name="user"
-            type="com.high5ive.android.moira.data.User" />
+            name="comments"
+            type="com.high5ive.android.moira.data.Comment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="4dp"
-        android:background="@drawable/round_rectangle_with_border"
-        android:paddingHorizontal="13dp"
-        android:paddingBottom="14dp">
+        android:layout_height="wrap_content">
 
 
         <ImageView
             android:id="@+id/user_image"
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            android:layout_marginTop="19dp"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="29dp"
+            android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/circle"
@@ -35,26 +30,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
-            android:layout_marginTop="18dp"
-            android:lineSpacingExtra="6sp"
-            android:text="@string/user_nickname"
-            android:textColor="#000000"
-            android:textSize="14sp"
+            android:layout_marginTop="28dp"
+            android:text="@{comments.nickname}"
             android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="#000000"
+            android:lineSpacingExtra="6sp"
             app:layout_constraintLeft_toRightOf="@+id/user_image"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/user_position"
+            android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="23dp"
-            android:lineSpacingExtra="5sp"
-            android:text="@string/position_name"
-            android:textColor="#b2b2b2"
-            android:textSize="10sp"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="31dp"
+            android:text="@{comments.date}"
             android:textStyle="normal"
+            android:textSize="10sp"
+            android:textColor="#bcbcbc"
+            android:lineSpacingExtra="1sp"
             app:layout_constraintLeft_toRightOf="@+id/user_nickname"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -63,7 +58,8 @@
             android:id="@+id/menu_btn"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
             android:background="@android:color/transparent"
             android:text="@string/register"
             app:layout_constraintEnd_toEndOf="parent"
@@ -71,75 +67,37 @@
             app:srcCompat="@drawable/ic_baseline_more_horiz_24" />
 
         <TextView
-            android:id="@+id/user_intro"
-            android:layout_width="wrap_content"
+            android:id="@+id/comment"
+            android:layout_width="255dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
             android:layout_marginTop="6dp"
             android:lineSpacingExtra="6sp"
-            android:text="사용자 한줄소개입니다. 사용자 한줄소개입니다."
+            android:text="@{comments.content}"
             android:textColor="#000000"
             android:textSize="12sp"
             android:textStyle="normal"
             app:layout_constraintLeft_toRightOf="@+id/user_image"
             app:layout_constraintTop_toBottomOf="@+id/user_nickname" />
 
+
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/barrier"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:barrierDirection="bottom"
-            app:constraint_referenced_ids="user_image, user_intro" />
+            app:constraint_referenced_ids="user_image, comment" />
 
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/design_tag_group"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
+        <View
+            android:id="@+id/horizontal_line"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:layout_marginEnd="50dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/barrier">
+            android:layout_height="1dp"
+            android:layout_marginTop="23dp"
+            android:background="#ebebeb"
+            app:layout_constraintTop_toBottomOf="@+id/barrier" />
 
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/design_tag1"
-                style="@style/MaterialChipsAction"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="관련태그" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/design_tag2"
-                style="@style/MaterialChipsAction"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="관련태그" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/design_tag3"
-                style="@style/MaterialChipsAction"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="관련태그" />
-
-
-        </com.google.android.material.chip.ChipGroup>
-
-        <ImageButton
-            android:id="@+id/interest_btn"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="2dp"
-            android:layout_marginBottom="3dp"
-            android:background="@android:color/transparent"
-            android:scaleType="fitCenter"
-            android:text="@string/register"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_baseline_favorite_border_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

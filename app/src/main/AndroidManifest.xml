@@ -12,9 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MOIRA">
-        <activity android:name=".ui.mypage.scrap.ScrapActivity"/>
+        <activity android:name=".ui.CommentActivity"/>
+        <activity android:name=".ui.mypage.scrap.ScrapActivity" />
         <activity android:name=".ui.message.MessageBoxActivity" />
-        <activity android:name=".ui.noti.NotifyActivity"/>
+        <activity android:name=".ui.noti.NotifyActivity" />
         <activity android:name=".ui.addinfo.certificate.AddCertificateActivity" />
         <activity android:name=".ui.addinfo.award.AddAwardHistoryActivity" />
         <activity android:name=".ui.addinfo.tag.AddTagActivity" />

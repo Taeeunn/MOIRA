@@ -112,4 +112,6 @@
     <string name="scrap_list">스크랩 목록</string>
     <string name="user_nickname">사용자 닉네임</string>
     <string name="position_name">포지션명</string>
+    <string name="comment">댓글</string>
+    <string name="registration">등록</string>
 </resources>
