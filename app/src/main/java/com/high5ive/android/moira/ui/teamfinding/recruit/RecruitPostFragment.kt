@@ -51,9 +51,6 @@ class RecruitPostFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(RecruitPostViewModel::class.java)
         // TODO: Use the ViewModel
 
-
-
-
         var tagList = mutableListOf<String>()
         tagList.add("태그명1")
         tagList.add("태그명2")

@@ -114,4 +114,5 @@
     <string name="position_name">포지션명</string>
     <string name="comment">댓글</string>
     <string name="registration">등록</string>
+    <string name="evaluate_team_member">팀원 평가하기</string>
 </resources>
