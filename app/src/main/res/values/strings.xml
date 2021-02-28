@@ -116,4 +116,5 @@
     <string name="evaluate_team_member">팀원 평가하기</string>
     <string name="apply">지원하기</string>
     <string name="plus_register">+ 등록하기</string>
+    <string name="show_total">전체보기</string>
 </resources>

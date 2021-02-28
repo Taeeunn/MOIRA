@@ -1,4 +1,4 @@
-package com.high5ive.android.moira.ui.search
+package com.high5ive.android.moira.ui.teamfinding.search
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

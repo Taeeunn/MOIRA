@@ -96,6 +96,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
+        android:overScrollMode="never"
         app:layoutManager="LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@+id/certificate" />
 
@@ -125,6 +126,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
+        android:overScrollMode="never"
         app:layoutManager="LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@+id/award_history" />
 
@@ -198,7 +200,7 @@
 
 
     <TextView
-        android:id="@+id/favorite_tag"
+        android:id="@+id/interest_tag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="19dp"
@@ -207,22 +209,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line6" />
 
-    <TextView
-        android:id="@+id/add_tag"
-        android:layout_width="wrap_content"
+
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/interest_tag_group"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        android:text="@string/plus_add"
-        android:textAppearance="@style/project_info"
-        android:textStyle="normal"
-        android:textSize="13sp"
-        android:textColor="#aaaaaa"
-        android:lineSpacingExtra="6sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizontal_line6"/>
+        android:layout_marginTop="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/interest_tag">
 
 
+        <com.google.android.material.chip.Chip
+            android:id="@+id/interest_tag1"
+            style="@style/MaterialChipsAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="관련태그" />
 
+        <com.google.android.material.chip.Chip
+            android:id="@+id/interest_tag2"
+            style="@style/MaterialChipsAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="관련태그" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/interest_tag3"
+            style="@style/MaterialChipsAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="관련태그" />
+
+
+    </com.google.android.material.chip.ChipGroup>
 
 
 
