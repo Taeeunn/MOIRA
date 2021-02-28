@@ -101,4 +101,14 @@
     <string name="user_nickname">사용자 닉네임</string>
     <string name="message_box">쪽지함</string>
     <string name="notification">알림</string>
+    <string name="post">작성한 글</string>
+    <string name="apply_post">지원한 글</string>
+    <string name="scrap">스크랩</string>
+    <string name="edit_my_info">내 정보 수정하기</string>
+    <string name="my_activity">내 활동</string>
+    <string name="received_evaluation">내가 받은 평가</string>
+    <string name="customer_service">고객센터</string>
+    <string name="notice">공지사항</string>
+    <string name="question">문의하기</string>
+    <string name="scrap_list">스크랩 목록</string>
 </resources>

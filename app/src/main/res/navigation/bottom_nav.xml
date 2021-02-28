@@ -22,7 +22,7 @@
         tools:layout="@layout/my_team_fragment" />
     <fragment
         android:id="@+id/myPageFragment"
-        android:name="com.high5ive.android.moira.MyPageFragment"
+        android:name="com.high5ive.android.moira.ui.mypage.MyPageFragment"
         android:label="마이페이지"
         tools:layout="@layout/my_page_fragment" />
 
