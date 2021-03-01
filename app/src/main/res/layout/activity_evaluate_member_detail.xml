@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EvaluateMemberDetailActivity">
+    tools:context=".ui.myteam.evaluate.EvaluateMemberDetailActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
@@ -60,9 +60,9 @@
 
             <ImageView
                 android:id="@+id/member_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="42dp"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -78,6 +78,7 @@
                 android:text="사용자 닉네임"
                 android:textColor="#000000"
                 android:textSize="20sp"
+                android:textStyle="normal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/member_image" />
@@ -154,15 +155,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginEnd="16dp"
                 android:background="@null"
                 android:ems="10"
                 android:gravity="top"
                 android:hint="리뷰 남기는 공간입니다."
-                android:textColor="@color/black"
                 android:inputType="textMultiLine"
                 android:lineSpacingExtra="6sp"
+                android:textColor="@color/black"
                 android:textSize="14sp"
                 android:theme="@style/EditTextTheme"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -195,7 +196,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="8dp"
                 android:lineSpacingExtra="8sp"
                 android:text="함께한 팀원에게 주고싶은 칭찬 배지를 선택해주세요."
                 android:textColor="#4a4a4a"
@@ -203,8 +204,55 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/badge" />
 
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="30dp"
+                android:paddingVertical="5dp"
+                android:paddingBottom="70dp"
+                android:scrollbars="none"
+                app:layout_constraintTop_toBottomOf="@+id/badge_comment">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/tag_image1"
+                        android:layout_width="104dp"
+                        android:layout_height="136dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:src="@drawable/round_rectangle_2"
+                        app:tint="@color/light_gray" />
+
+                    <ImageView
+                        android:id="@+id/tag_image2"
+                        android:layout_width="104dp"
+                        android:layout_height="136dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:src="@drawable/round_rectangle_2"
+                        app:tint="@color/light_gray" />
+
+                    <ImageView
+                        android:id="@+id/tag_image3"
+                        android:layout_width="104dp"
+                        android:layout_height="136dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:src="@drawable/round_rectangle_2"
+                        app:tint="@color/light_gray" />
+
+                    <ImageView
+                        android:id="@+id/tag_image4"
+                        android:layout_width="104dp"
+                        android:layout_height="136dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:src="@drawable/round_rectangle_2"
+                        app:tint="@color/light_gray" />
+
+                </LinearLayout>
+            </HorizontalScrollView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

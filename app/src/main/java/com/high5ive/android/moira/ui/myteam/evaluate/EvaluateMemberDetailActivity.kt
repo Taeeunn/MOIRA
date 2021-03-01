@@ -1,9 +1,10 @@
-package com.high5ive.android.moira
+package com.high5ive.android.moira.ui.myteam.evaluate
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
+import com.high5ive.android.moira.R
 
 class EvaluateMemberDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

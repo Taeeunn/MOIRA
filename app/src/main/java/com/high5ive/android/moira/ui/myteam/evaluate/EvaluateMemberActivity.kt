@@ -1,4 +1,4 @@
-package com.high5ive.android.moira
+package com.high5ive.android.moira.ui.myteam.evaluate
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.MemberAdapter
 import com.high5ive.android.moira.data.Member
 import com.high5ive.android.moira.databinding.ActivityEvaluateMemberBinding
@@ -18,7 +19,9 @@ class EvaluateMemberActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= DataBindingUtil.setContentView(this, R.layout.activity_evaluate_member)
+        binding= DataBindingUtil.setContentView(this,
+            R.layout.activity_evaluate_member
+        )
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)

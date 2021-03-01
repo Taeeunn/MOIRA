@@ -29,7 +29,13 @@
         <activity android:name=".ui.signup.SetPositionActivity" />
         <activity android:name=".ui.signup.SetNicknameActivity" />
         <activity android:name=".ui.applicant.ApplicantProfileActivity" />
-        <activity android:name=".EvaluateMemberDetailActivity" />
+        <activity android:name=".ui.myteam.evaluate.EvaluateMemberDetailActivity" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".ui.addinfo.education.AddSchoolActivity" />
         <activity android:name=".ui.addinfo.education.AddEducationActivity" />
         <activity android:name=".TeamListActivity" />
@@ -37,14 +43,8 @@
         <activity android:name=".PostListActivity" />
         <activity android:name=".ApplyListActivity" />
         <activity android:name=".ApplicantListActivity" />
-        <activity android:name=".EvaluateMemberActivity" />
-        <activity android:name=".ui.myteam.TeamDetailActivity" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
+        <activity android:name=".ui.myteam.evaluate.EvaluateMemberActivity" />
+        <activity android:name=".ui.myteam.TeamDetailActivity"/>
         <activity android:name=".ui.teamfinding.newpost.NewPostActivity" />
         <activity android:name=".RecruitListActivity" />
         <activity android:name=".ui.teamfinding.recruit.RecruitDetailActivity"/>
