@@ -1,8 +1,7 @@
-package com.high5ive.android.moira.ui.noti
+package com.high5ive.android.moira.ui.notify
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.FragmentActivity
 import com.google.android.material.tabs.TabLayoutMediator
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.ViewPagerAdapter

@@ -66,6 +66,7 @@
             android:layout_marginTop="12dp"
             android:background="@android:color/transparent"
             android:text="@string/register"
+            app:tint="#000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_baseline_more_horiz_24" />
@@ -136,6 +137,7 @@
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
             android:text="@string/register"
+            app:tint="#757575"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_baseline_favorite_border_24" />

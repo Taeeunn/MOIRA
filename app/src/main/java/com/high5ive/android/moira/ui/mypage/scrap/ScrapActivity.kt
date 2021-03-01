@@ -13,7 +13,7 @@ class ScrapActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scrap)
 
-        viewPager.adapter = ViewPagerAdapter(this)
+        viewPager.adapter = ScrapViewPagerAdapter(this)
         val tabLayoutTextArray = arrayOf("모집글","인재풀")
         TabLayoutMediator(tabLayout,viewPager){tab,position->
             tab.text = tabLayoutTextArray[position]

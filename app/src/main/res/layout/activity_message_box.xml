@@ -39,6 +39,7 @@
                 android:layout_marginEnd="16dp"
                 android:background="@android:color/transparent"
                 android:text="@string/register"
+                app:tint="#000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

@@ -1,4 +1,4 @@
-package com.high5ive.android.moira
+package com.high5ive.android.moira.ui.teamfinding.apply
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,14 +6,15 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.high5ive.android.moira.adapter.PostAdapter
-import com.high5ive.android.moira.data.Post
+import com.high5ive.android.moira.R
+import com.high5ive.android.moira.adapter.ApplyAdapter
+import com.high5ive.android.moira.data.Apply
 import kotlinx.android.synthetic.main.activity_recruit_list.*
 
-class PostListActivity : AppCompatActivity() {
+class ApplyListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_post_list)
+        setContentView(R.layout.activity_apply_list)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -22,16 +23,16 @@ class PostListActivity : AppCompatActivity() {
         ab.setDisplayHomeAsUpEnabled(true)
 
 
-        val postList = arrayListOf<Post>()
-        for (i in 0..20){
-            postList.add(Post("모집글 제목 모집글 제목 모집글 제목 모집글 제목 $i"))
+        val applyList = arrayListOf<Apply>()
+        for (i in 0..10){
+            applyList.add(Apply("모집글 제목 모집글 제목 모집글 제목 모집글 제목 $i"))
         }
 
         recycler_view.apply{
-            layoutManager = LinearLayoutManager(this@PostListActivity)
+            layoutManager = LinearLayoutManager(this@ApplyListActivity)
             adapter =
-                PostAdapter(postList) { post ->
-                    Toast.makeText(this@PostListActivity, "$post", Toast.LENGTH_SHORT).show()
+                ApplyAdapter(applyList) { apply ->
+                    Toast.makeText(this@ApplyListActivity, "$apply", Toast.LENGTH_SHORT).show()
                 }
         }
     }

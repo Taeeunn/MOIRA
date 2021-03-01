@@ -12,18 +12,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MOIRA">
-        <activity android:name=".ui.mypage.EditProfileActivity">
+        <activity android:name=".ui.message.MessageHistoryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.teamfinding.apply.ApplyActivity"/>
+        <activity android:name=".ui.mypage.EditProfileActivity" />
+        <activity android:name=".ui.teamfinding.apply.ApplyActivity" />
         <activity android:name=".ui.teamfinding.recruit.CommentActivity" />
         <activity android:name=".ui.mypage.scrap.ScrapActivity" />
-        <activity android:name=".ui.message.MessageBoxActivity" />
-        <activity android:name=".ui.noti.NotifyActivity" />
+        <activity android:name=".ui.message.MessageBoxActivity"/>
+        <activity android:name=".ui.notify.NotifyActivity" />
         <activity android:name=".ui.addinfo.certificate.AddCertificateActivity" />
         <activity android:name=".ui.addinfo.award.AddAwardHistoryActivity" />
         <activity android:name=".ui.addinfo.tag.AddTagActivity" />
@@ -42,8 +43,8 @@
         <activity android:name=".ui.addinfo.education.AddEducationActivity" />
         <activity android:name=".TeamListActivity" />
         <activity android:name=".ui.applicant.ApplicantReviewActivity" />
-        <activity android:name=".PostListActivity" />
-        <activity android:name=".ApplyListActivity" />
+        <activity android:name=".ui.mypage.PostListActivity" />
+        <activity android:name=".ui.teamfinding.apply.ApplyListActivity" />
         <activity android:name=".ui.applicant.ApplicantListActivity" />
         <activity android:name=".ui.myteam.evaluate.EvaluateMemberActivity" />
         <activity android:name=".ui.myteam.TeamDetailActivity" />
