@@ -117,4 +117,7 @@
     <string name="apply">지원하기</string>
     <string name="plus_register">+ 등록하기</string>
     <string name="show_total">전체보기</string>
+    <string name="nickname">닉네임</string>
+    <string name="position">포지션</string>
+    <string name="one_line_intro">한줄소개</string>
 </resources>
