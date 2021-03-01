@@ -91,15 +91,17 @@
                 app:layout_constraintTop_toBottomOf="@id/horizontal_line" />
 
 
-            <TextView
+            <EditText
                 android:id="@+id/nickname_et"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="19.5dp"
                 android:lineSpacingExtra="6sp"
-                android:text="닉네임을 입력해주세요."
-                android:textColor="#aaaaaa"
+                android:hint="닉네임을 입력해주세요."
+                android:background="@null"
+                android:theme="@style/EditTextTheme"
+                android:textColor="@color/black"
                 android:textSize="13sp"
                 android:textStyle="normal"
                 app:layout_constraintLeft_toRightOf="@+id/barrier"
@@ -126,15 +128,17 @@
                 app:layout_constraintTop_toBottomOf="@id/horizontal_line2" />
 
 
-            <TextView
+            <EditText
                 android:id="@+id/position_et"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="19.5dp"
                 android:lineSpacingExtra="6sp"
-                android:text="포지션을 입력해주세요."
-                android:textColor="#aaaaaa"
+                android:hint="포지션을 입력해주세요."
+                android:background="@null"
+                android:theme="@style/EditTextTheme"
+                android:textColor="@color/black"
                 android:textSize="13sp"
                 android:textStyle="normal"
                 app:layout_constraintLeft_toRightOf="@+id/barrier"
@@ -163,16 +167,18 @@
                 app:layout_constraintTop_toBottomOf="@id/horizontal_line3" />
 
 
-            <TextView
+            <EditText
                 android:id="@+id/introduction_et"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="19.5dp"
-                android:text="한줄소개를 입력해주세요."
+                android:hint="한줄소개를 입력해주세요."
                 android:textStyle="normal"
                 android:textSize="13sp"
-                android:textColor="#aaaaaa"
+                android:background="@null"
+                android:theme="@style/EditTextTheme"
+                android:textColor="@color/black"
                 android:lineSpacingExtra="6sp"
                 app:layout_constraintLeft_toRightOf="@+id/barrier"
                 app:layout_constraintTop_toBottomOf="@id/horizontal_line3" />
@@ -247,8 +253,8 @@
 
 
             <include
-                android:id="@+id/select_info"
-                layout="@layout/select_info"
+                android:id="@+id/edit_info"
+                layout="@layout/edit_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/horizontal_line5" />
@@ -256,10 +262,4 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-    <android.widget.Button
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="#989898"
-        android:text="@string/apply"
-        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
