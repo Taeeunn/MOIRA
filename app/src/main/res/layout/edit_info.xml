@@ -6,54 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".MemberInfoFragment"
-    android:paddingTop="24dp"
+    android:paddingTop="36dp"
     android:paddingBottom="50dp"
     android:paddingHorizontal="16dp">
 
-
-    <TextView
-        android:id="@+id/select_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="선택 사항"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:textColor="#2c2c2c"
-        android:lineSpacingExtra="8sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/select_info_comment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="나에 대한 정보를 자세하게 입력할수록 매칭될 확률이 높아집니다."
-        android:textStyle="normal"
-        android:textSize="12sp"
-        android:textColor="#aaaaaa"
-        android:lineSpacingExtra="6sp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/select_info"/>
-
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:barrierMargin="40.5dp"
-        app:constraint_referenced_ids="select_info_comment" />
 
     <TextView
         android:id="@+id/education"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/education"
-        android:layout_marginTop="40.5dp"
         android:textAppearance="@style/member_info_title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/select_info_comment" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/education_info"
@@ -71,7 +36,7 @@
         android:layout_height="30dp"
         android:layout_marginEnd="2dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/barrier"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/horizontal_line"/>
 
     <View
@@ -348,8 +313,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/horizontal_line6"
         app:layout_constraintBottom_toBottomOf="parent"/>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

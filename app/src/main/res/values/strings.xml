@@ -120,4 +120,5 @@
     <string name="nickname">닉네임</string>
     <string name="position">포지션</string>
     <string name="one_line_intro">한줄소개</string>
+    <string name="edit_profile">프로필 수정</string>
 </resources>

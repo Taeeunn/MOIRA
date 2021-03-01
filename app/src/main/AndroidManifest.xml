@@ -12,12 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MOIRA">
+        <activity android:name=".ui.mypage.EditProfileActivity"></activity>
         <activity android:name=".ui.teamfinding.apply.ApplyActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
         <activity android:name=".ui.teamfinding.recruit.CommentActivity" />
         <activity android:name=".ui.mypage.scrap.ScrapActivity" />
@@ -43,7 +44,7 @@
         <activity android:name=".ui.applicant.ApplicantReviewActivity" />
         <activity android:name=".PostListActivity" />
         <activity android:name=".ApplyListActivity" />
-        <activity android:name=".ui.applicant.ApplicantListActivity"/>
+        <activity android:name=".ui.applicant.ApplicantListActivity" />
         <activity android:name=".ui.myteam.evaluate.EvaluateMemberActivity" />
         <activity android:name=".ui.myteam.TeamDetailActivity" />
         <activity android:name=".ui.teamfinding.newpost.NewPostActivity" />
