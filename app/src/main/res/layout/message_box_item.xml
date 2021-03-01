@@ -72,7 +72,7 @@
             android:background="@drawable/small_circle"
             android:letterSpacing="-0.03"
             android:lineSpacingExtra="1sp"
-            android:text="9+"
+            android:text="6"
             android:textColor="#bcbcbc"
             android:textSize="12sp"
             android:textStyle="normal"

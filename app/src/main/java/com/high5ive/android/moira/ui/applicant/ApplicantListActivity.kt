@@ -1,4 +1,4 @@
-package com.high5ive.android.moira
+package com.high5ive.android.moira.ui.applicant
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,14 +6,15 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.high5ive.android.moira.adapter.ReviewAdapter
-import com.high5ive.android.moira.data.Review
+import com.high5ive.android.moira.R
+import com.high5ive.android.moira.adapter.MemberAdapter
+import com.high5ive.android.moira.data.Member
 import kotlinx.android.synthetic.main.activity_recruit_list.*
 
-class ApplicantReviewActivity : AppCompatActivity() {
+class ApplicantListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_applicant_review)
+        setContentView(R.layout.activity_applicant_list)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -21,23 +22,21 @@ class ApplicantReviewActivity : AppCompatActivity() {
         ab.setDisplayShowTitleEnabled(false)
         ab.setDisplayHomeAsUpEnabled(true)
 
-        val reviewList = arrayListOf<Review>()
-        for (i in 0..30){
-            reviewList.add(
-                Review(
+        val members = arrayListOf<Member>()
+        for (i in 0..10){
+            members.add(
+                Member(
                     "사용자 닉네임 $i",
-                    i * 0.16,
-                    "최고의 팀원입니다. 최고의 팀원입니다. 최고의 팀원입니다. 최고의 팀원입니다."
+                    "개발자 $i"
                 )
             )
         }
 
         recycler_view.apply{
-            layoutManager = LinearLayoutManager(this@ApplicantReviewActivity)
+            layoutManager = LinearLayoutManager(this@ApplicantListActivity)
             adapter =
-                ReviewAdapter(reviewList) { person ->
-                    Toast.makeText(this@ApplicantReviewActivity, "$person", Toast.LENGTH_SHORT)
-                        .show()
+                MemberAdapter(members) { member ->
+                    Toast.makeText(this@ApplicantListActivity, "$member", Toast.LENGTH_SHORT).show()
                 }
         }
     }

@@ -9,221 +9,219 @@
     </data>
 
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.addinfo.education.AddEducationActivity">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        app:contentInsetLeft="0dp"
-        app:contentInsetStart="0dp"
-        app:contentInsetStartWithNavigation="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:theme="@style/toolbar_theme_close">
+        android:layout_height="match_parent"
+        tools:context=".ui.addinfo.education.AddEducationActivity">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            app:contentInsetStartWithNavigation="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:theme="@style/toolbar_theme_close">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/add_education"
-                android:textAppearance="@style/toolbar_title"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-
-            <android.widget.Button
-                android:id="@+id/button"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:text="@string/register"
-                android:background="@android:color/transparent"
-                android:lineSpacingExtra="8sp"
-                android:textAppearance="@style/register_button"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_education"
+                    android:textAppearance="@style/toolbar_title"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.appcompat.widget.Toolbar>
-
-    <TextView
-        android:id="@+id/school_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/school_name"
-        android:textAppearance="@style/project_info"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
-    <EditText
-        android:id="@+id/school_name_et"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="@string/enter_school_name"
-        android:layout_marginTop="12dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:paddingBottom="17dp"
-        android:textColor="@color/black"
-        android:textSize="13sp"
-        android:lineSpacingExtra="6sp"
-        android:theme="@style/EditTextTheme2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/school_name" />
-
-    <TextView
-        android:id="@+id/major"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/major"
-        android:textAppearance="@style/project_info"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/school_name_et" />
-
-    <EditText
-        android:id="@+id/major_et"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="@string/enter_major"
-        android:layout_marginTop="12dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:paddingBottom="17dp"
-        android:textColor="@color/black"
-        android:textSize="13sp"
-        android:lineSpacingExtra="6sp"
-        android:theme="@style/EditTextTheme2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/major" />
+                <android.widget.Button
+                    android:id="@+id/button"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:background="@android:color/transparent"
+                    android:lineSpacingExtra="8sp"
+                    android:text="@string/register"
+                    android:textAppearance="@style/register_button"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
-    <TextView
-        android:id="@+id/admission"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/admission"
-        android:textAppearance="@style/project_info"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/major_et" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <EditText
-        android:id="@+id/admission_et"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:focusable="false"
-        android:text="@{education.admission}"
-        android:hint="@string/admission_year_month"
-        android:layout_marginTop="12dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:paddingBottom="17dp"
-        android:textColor="@color/black"
-        android:textSize="13sp"
-        android:lineSpacingExtra="6sp"
-        android:theme="@style/EditTextTheme2"
-        app:layout_constraintRight_toLeftOf="@+id/barrier"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/admission" />
+        </androidx.appcompat.widget.Toolbar>
 
+        <TextView
+            android:id="@+id/school_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/school_name"
+            android:textAppearance="@style/project_info"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="start"
-        app:constraint_referenced_ids="graduation_et"/>
+        <EditText
+            android:id="@+id/school_name_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:ems="10"
+            android:hint="@string/enter_school_name"
+            android:inputType="text"
+            android:lineSpacingExtra="6sp"
+            android:paddingBottom="17dp"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            android:theme="@style/EditTextTheme2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/school_name" />
 
+        <TextView
+            android:id="@+id/major"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/major"
+            android:textAppearance="@style/project_info"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/school_name_et" />
 
-    <TextView
-        android:id="@+id/graduation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/graduation"
-        android:textAppearance="@style/project_info"
-        android:layout_marginTop="15dp"
-        app:layout_constraintLeft_toRightOf="@+id/barrier"
-        app:layout_constraintTop_toBottomOf="@+id/major_et" />
-
-
-    <EditText
-        android:id="@+id/graduation_et"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="@string/graduation_year_month"
-        android:focusable="false"
-        android:layout_marginTop="12dp"
-        android:text="@{education.graduation}"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:paddingBottom="17dp"
-        android:textColor="@color/black"
-        android:textSize="13sp"
-        android:lineSpacingExtra="6sp"
-        android:theme="@style/EditTextTheme2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/barrier"
-        app:layout_constraintTop_toBottomOf="@+id/admission" />
+        <EditText
+            android:id="@+id/major_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:ems="10"
+            android:hint="@string/enter_major"
+            android:inputType="text"
+            android:lineSpacingExtra="6sp"
+            android:paddingBottom="17dp"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            android:theme="@style/EditTextTheme2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/major" />
 
 
-    <TextView
-        android:id="@+id/status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/status"
-        android:textAppearance="@style/project_info"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/admission_et" />
+        <TextView
+            android:id="@+id/admission"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/admission"
+            android:textAppearance="@style/project_info"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/major_et" />
 
-    <Spinner
-        android:id="@+id/status_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:textAppearance="@style/project_info"
-        android:entries="@array/education_status_array"
-        style="@style/Widget.AppCompat.Spinner.Underlined"
-        android:theme="@style/ThemeSpinner"
-        android:paddingBottom="16dp"
-        android:spinnerMode="dialog"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/status" />
+        <EditText
+            android:id="@+id/admission_et"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:ems="10"
+            android:focusable="false"
+            android:hint="@string/admission_year_month"
+            android:inputType="text"
+            android:lineSpacingExtra="6sp"
+            android:paddingBottom="17dp"
+            android:text="@{education.admission}"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            android:theme="@style/EditTextTheme2"
+            app:layout_constraintRight_toLeftOf="@+id/barrier"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/admission" />
 
 
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="start"
+            app:constraint_referenced_ids="graduation_et" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/graduation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/graduation"
+            android:textAppearance="@style/project_info"
+            app:layout_constraintLeft_toRightOf="@+id/barrier"
+            app:layout_constraintTop_toBottomOf="@+id/major_et" />
+
+
+        <EditText
+            android:id="@+id/graduation_et"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:ems="10"
+            android:focusable="false"
+            android:hint="@string/graduation_year_month"
+            android:inputType="text"
+            android:lineSpacingExtra="6sp"
+            android:paddingBottom="17dp"
+            android:text="@{education.graduation}"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            android:theme="@style/EditTextTheme2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/barrier"
+            app:layout_constraintTop_toBottomOf="@+id/admission" />
+
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/status"
+            android:textAppearance="@style/project_info"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/admission_et" />
+
+        <Spinner
+            android:id="@+id/status_spinner"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:entries="@array/education_status_array"
+            android:paddingBottom="16dp"
+            android:spinnerMode="dialog"
+            android:textAppearance="@style/project_info"
+            android:theme="@style/ThemeSpinner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/status" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
