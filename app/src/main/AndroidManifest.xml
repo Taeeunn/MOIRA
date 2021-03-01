@@ -29,13 +29,7 @@
         <activity android:name=".ui.signup.SetPositionActivity" />
         <activity android:name=".ui.signup.SetNicknameActivity" />
         <activity android:name=".ui.applicant.ApplicantProfileActivity" />
-        <activity android:name=".ui.myteam.evaluate.EvaluateMemberDetailActivity" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
+        <activity android:name=".ui.myteam.evaluate.EvaluateMemberDetailActivity"/>
         <activity android:name=".ui.addinfo.education.AddSchoolActivity" />
         <activity android:name=".ui.addinfo.education.AddEducationActivity" />
         <activity android:name=".TeamListActivity" />
@@ -53,7 +47,13 @@
         <activity android:name=".FindContestActivity" />
         <activity android:name=".ui.apply.ApplyCompleteActivity" />
         <activity android:name=".ui.login.LoginActivity" />
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
