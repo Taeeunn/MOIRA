@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".login.KakaoLoginApplication"
         android:allowBackup="true"
         android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
@@ -12,18 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MOIRA">
-        <activity android:name=".ui.message.MessageHistoryActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ui.message.MessageHistoryActivity" />
         <activity android:name=".ui.mypage.EditProfileActivity" />
         <activity android:name=".ui.teamfinding.apply.ApplyActivity" />
         <activity android:name=".ui.teamfinding.recruit.CommentActivity" />
         <activity android:name=".ui.mypage.scrap.ScrapActivity" />
-        <activity android:name=".ui.message.MessageBoxActivity"/>
+        <activity android:name=".ui.message.MessageBoxActivity" />
         <activity android:name=".ui.notify.NotifyActivity" />
         <activity android:name=".ui.addinfo.certificate.AddCertificateActivity" />
         <activity android:name=".ui.addinfo.award.AddAwardHistoryActivity" />
@@ -55,8 +50,15 @@
         <activity android:name=".ContestListActivity" />
         <activity android:name=".FindContestActivity" />
         <activity android:name=".ui.teamfinding.apply.ApplyCompleteActivity" />
-        <activity android:name=".ui.login.LoginActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".ui.login.LoginActivity" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity"/>
+
         <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -64,7 +66,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <!-- Redirect URI: "kakao{NATIVE_APP_KEY}://oauth“ -->
                 <data
                     android:host="oauth"
                     android:scheme="kakao80833a0235285489b82981db2a4c698e" />
