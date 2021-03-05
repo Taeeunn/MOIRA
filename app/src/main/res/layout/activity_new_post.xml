@@ -33,7 +33,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <android.widget.Button
-                android:id="@+id/button"
+                android:id="@+id/register_button"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -109,12 +109,30 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
 
+
+            <LinearLayout
+                android:id="@+id/tools"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:background="#dedede"
+                android:paddingHorizontal="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/project_content_et">
+
+                <ImageButton
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_baseline_photo_camera_24"
+                    android:layout_gravity="center_vertical"/>
+
+            </LinearLayout>
+
             <include
                 android:id="@+id/recruit_info"
                 layout="@layout/make_recruit_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/project_content_et" />
+                app:layout_constraintTop_toBottomOf="@+id/tools" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,7 +12,8 @@
         android:layout_marginStart="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        app:srcCompat="@drawable/round_rectangle_2"
+        app:tint="@color/light_gray"/>
 
 
     <TextView

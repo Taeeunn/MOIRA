@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MemberEvaluateFragment"
+    tools:context=".ui.applicant.MemberEvaluateFragment"
     android:paddingTop="36dp">
 
 
@@ -64,7 +64,7 @@
 
 
     <TextView
-        android:id="@+id/show_total"
+        android:id="@+id/show_total_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/show_total"

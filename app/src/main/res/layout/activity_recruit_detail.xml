@@ -153,7 +153,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nickname"
-                app:srcCompat="@drawable/ic_launcher_foreground" />
+                app:srcCompat="@drawable/round_rectangle_2"
+                app:tint="@color/light_gray"/>
 
             <TextView
                 android:id="@+id/contest_description"
@@ -273,7 +274,7 @@
 
 
         <ImageButton
-            android:id="@+id/chat_img_btn"
+            android:id="@+id/comment_img_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="2dp"
@@ -288,7 +289,7 @@
 
 
         <android.widget.Button
-            android:id="@+id/send_msg_btn"
+            android:id="@+id/apply_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginEnd="45dp"

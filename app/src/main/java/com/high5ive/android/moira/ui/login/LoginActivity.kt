@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.high5ive.android.moira.MainActivity
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.databinding.ActivityLoginBinding
+import com.high5ive.android.moira.ui.signup.SetNicknameActivity
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.KakaoSdk
 import com.kakao.sdk.common.util.Utility
@@ -56,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
 
                 showTokenInfo()
                 getUserInfo()
-                startActivity(Intent(this, MainActivity::class.java))
+                startActivity(Intent(this, SetNicknameActivity::class.java))
             }
         }
 

@@ -1,5 +1,6 @@
 package com.high5ive.android.moira.ui.myteam
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -11,6 +12,8 @@ import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.MemberAdapter
 import com.high5ive.android.moira.data.Member
 import com.high5ive.android.moira.databinding.ActivityTeamDetailBinding
+import com.high5ive.android.moira.ui.applicant.ApplicantProfileActivity
+import com.high5ive.android.moira.ui.teamfinding.user.UserProfileActivity
 import kotlinx.android.synthetic.main.activity_recruit_list.*
 
 
@@ -48,6 +51,7 @@ class TeamDetailActivity : AppCompatActivity() {
             adapter =
                 MemberAdapter(members) { member ->
                     Toast.makeText(this@TeamDetailActivity, "$member", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this@TeamDetailActivity, UserProfileActivity::class.java))
                 }
         }
     }

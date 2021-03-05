@@ -1,5 +1,6 @@
-package com.high5ive.android.moira.ui.teamfinding.apply
+package com.high5ive.android.moira.ui.mypage.apply
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -9,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.ApplyAdapter
 import com.high5ive.android.moira.data.Apply
+import com.high5ive.android.moira.ui.applicant.ApplicantListActivity
+import com.high5ive.android.moira.ui.teamfinding.recruit.RecruitDetailActivity
 import kotlinx.android.synthetic.main.activity_recruit_list.*
 
 class ApplyListActivity : AppCompatActivity() {
@@ -31,8 +34,15 @@ class ApplyListActivity : AppCompatActivity() {
         recycler_view.apply{
             layoutManager = LinearLayoutManager(this@ApplyListActivity)
             adapter =
-                ApplyAdapter(applyList) { apply ->
+                ApplyAdapter(applyList) { apply, type ->
                     Toast.makeText(this@ApplyListActivity, "$apply", Toast.LENGTH_SHORT).show()
+
+//                    if (type==0) {
+//                        startActivity(Intent(this@ApplyListActivity, RecruitDetailActivity::class.java))
+//                    }
+//                    else if(type==1){
+//                        startActivity(Intent(this@ApplyListActivity, ApplicantListActivity::class.java))
+//                    }
                 }
         }
     }

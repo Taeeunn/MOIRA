@@ -44,7 +44,7 @@
         app:constraint_referenced_ids="textView" />
 
     <android.widget.Button
-        android:id="@+id/toHome"
+        android:id="@+id/to_home_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="85dp"
@@ -60,10 +60,10 @@
         android:lineSpacingExtra="6sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/barrier"
-        app:layout_constraintEnd_toStartOf="@+id/toApplyList" />
+        app:layout_constraintEnd_toStartOf="@+id/show_apply_list_btn" />
 
     <android.widget.Button
-        android:id="@+id/toApplyList"
+        android:id="@+id/show_apply_list_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -80,6 +80,6 @@
         android:backgroundTint="#f2f2f2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/barrier"
-        app:layout_constraintStart_toEndOf="@+id/toHome" />
+        app:layout_constraintStart_toEndOf="@+id/to_home_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

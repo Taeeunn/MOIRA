@@ -1,16 +1,20 @@
 package com.high5ive.android.moira.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.Team
 
 import com.high5ive.android.moira.databinding.TeamItemBinding
+import com.high5ive.android.moira.ui.teamfinding.recruit.RecruitDetailActivity
+import kotlinx.android.synthetic.main.team_item.view.*
 
 
 class TeamAdapter(val items: List<Team>,
-                  private val clickListener: (team: Team) -> Unit) :
+                  private val clickListener: (team: Team, type: Int) -> Unit) :
     RecyclerView.Adapter<TeamAdapter.TeamViewHolder>(){
     class TeamViewHolder(val binding: TeamItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -23,8 +27,14 @@ class TeamAdapter(val items: List<Team>,
             )
 
         view.setOnClickListener {
-            clickListener.invoke(items[viewHolder.adapterPosition])
+            clickListener.invoke(items[viewHolder.adapterPosition], 0)
         }
+
+        view.evaluate_team_member_btn.setOnClickListener {
+            clickListener.invoke(items[viewHolder.adapterPosition], 1)
+        }
+
+
         return viewHolder
     }
 

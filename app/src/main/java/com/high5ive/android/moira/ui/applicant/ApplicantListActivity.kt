@@ -1,5 +1,6 @@
 package com.high5ive.android.moira.ui.applicant
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -37,6 +38,7 @@ class ApplicantListActivity : AppCompatActivity() {
             adapter =
                 MemberAdapter(members) { member ->
                     Toast.makeText(this@ApplicantListActivity, "$member", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this@ApplicantListActivity, ApplicantProfileActivity::class.java))
                 }
         }
     }

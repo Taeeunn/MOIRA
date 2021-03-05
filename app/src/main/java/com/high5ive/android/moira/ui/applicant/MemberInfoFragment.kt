@@ -1,4 +1,4 @@
-package com.high5ive.android.moira
+package com.high5ive.android.moira.ui.applicant
 
 
 import androidx.lifecycle.ViewModelProvider
@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.AwardAdapter
 import com.high5ive.android.moira.data.Award
 import kotlinx.android.synthetic.main.member_info_fragment.*
@@ -16,7 +17,8 @@ import kotlinx.android.synthetic.main.member_info_fragment.*
 class MemberInfoFragment : Fragment() {
 
     companion object {
-        fun newInstance() = MemberInfoFragment()
+        fun newInstance() =
+            MemberInfoFragment()
     }
 
     private lateinit var viewModel: MemberInfoViewModel

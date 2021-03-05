@@ -101,12 +101,12 @@
                 app:constraint_referenced_ids="user_image, user_intro" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/first"
+                android:id="@+id/post_container"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="31dp"
-                app:layout_constraintRight_toLeftOf="@+id/second"
+                app:layout_constraintRight_toLeftOf="@+id/apply_container"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/barrier">
 
@@ -139,12 +139,12 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/second"
+                android:id="@+id/apply_container"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="31dp"
-                app:layout_constraintLeft_toRightOf="@+id/first"
-                app:layout_constraintRight_toLeftOf="@+id/third"
+                app:layout_constraintLeft_toRightOf="@+id/post_container"
+                app:layout_constraintRight_toLeftOf="@+id/scrap_container"
                 app:layout_constraintTop_toBottomOf="@+id/barrier">
 
                 <TextView
@@ -176,14 +176,14 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/third"
+                android:id="@+id/scrap_container"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="31dp"
                 android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.333"
-                app:layout_constraintLeft_toRightOf="@+id/second"
+                app:layout_constraintLeft_toRightOf="@+id/apply_container"
                 app:layout_constraintTop_toBottomOf="@+id/barrier">
 
 
@@ -230,7 +230,7 @@
                 android:textStyle="normal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/second" />
+                app:layout_constraintTop_toBottomOf="@+id/apply_container" />
 
 
             <View

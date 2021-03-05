@@ -1,5 +1,6 @@
-package com.high5ive.android.moira.ui.mypage
+package com.high5ive.android.moira.ui.mypage.post
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -9,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.PostAdapter
 import com.high5ive.android.moira.data.Post
+import com.high5ive.android.moira.ui.applicant.ApplicantListActivity
+import com.high5ive.android.moira.ui.teamfinding.recruit.RecruitDetailActivity
 import kotlinx.android.synthetic.main.activity_recruit_list.*
 
 class PostListActivity : AppCompatActivity() {
@@ -31,8 +34,15 @@ class PostListActivity : AppCompatActivity() {
         recycler_view.apply{
             layoutManager = LinearLayoutManager(this@PostListActivity)
             adapter =
-                PostAdapter(postList) { post ->
+                PostAdapter(postList) { post, type ->
                     Toast.makeText(this@PostListActivity, "$post", Toast.LENGTH_SHORT).show()
+                    if (type==0) {
+                        startActivity(Intent(this@PostListActivity, RecruitDetailActivity::class.java))
+                    }
+                    else if(type==1){
+                        startActivity(Intent(this@PostListActivity, ApplicantListActivity::class.java))
+                    }
+
                 }
         }
     }

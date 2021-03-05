@@ -1,5 +1,6 @@
 package com.high5ive.android.moira.ui.teamfinding.recruit
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -9,6 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.PositionAdapter
 import com.high5ive.android.moira.data.Position
+import com.high5ive.android.moira.ui.applicant.ApplicantListActivity
+import com.high5ive.android.moira.ui.teamfinding.apply.ApplyActivity
+import kotlinx.android.synthetic.main.activity_recruit_detail.*
 import kotlinx.android.synthetic.main.recruit_info.*
 
 class RecruitDetailActivity : AppCompatActivity() {
@@ -23,11 +27,19 @@ class RecruitDetailActivity : AppCompatActivity() {
         ab.setDisplayHomeAsUpEnabled(true)
 
 
+        comment_img_btn.setOnClickListener {
+            startActivity(Intent(this@RecruitDetailActivity, CommentActivity::class.java))
+        }
+
+        apply_btn.setOnClickListener {
+            startActivity(Intent(this@RecruitDetailActivity, ApplyActivity::class.java))
+        }
+
+
         val positionList = arrayListOf(
             Position("개발자", 1), Position("디자이너", 1), Position("PM", 1)
         )
 
-      
 
         position_recycler_view.apply{
             layoutManager = LinearLayoutManager(this@RecruitDetailActivity)

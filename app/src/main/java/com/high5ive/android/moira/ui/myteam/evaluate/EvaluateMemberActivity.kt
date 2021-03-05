@@ -1,5 +1,6 @@
 package com.high5ive.android.moira.ui.myteam.evaluate
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -11,7 +12,10 @@ import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.MemberAdapter
 import com.high5ive.android.moira.data.Member
 import com.high5ive.android.moira.databinding.ActivityEvaluateMemberBinding
+import kotlinx.android.synthetic.main.activity_evaluate_member.*
+import kotlinx.android.synthetic.main.activity_evaluate_member_detail.*
 import kotlinx.android.synthetic.main.activity_recruit_list.*
+import kotlinx.android.synthetic.main.activity_recruit_list.recycler_view
 
 class EvaluateMemberActivity : AppCompatActivity() {
 
@@ -33,6 +37,14 @@ class EvaluateMemberActivity : AppCompatActivity() {
         binding.leader.member=
             Member("팀장 닉네임", "android 개발자")
 
+        leader.setOnClickListener{
+            startActivity(Intent(this, EvaluateMemberDetailActivity::class.java))
+        }
+
+//        complete_button.setOnClickListener{
+//            startActivity(Intent(this, EvaluateMemberActivity::class.java))
+//        }
+
         val members = arrayListOf<Member>()
         for (i in 0..5){
             members.add(
@@ -49,6 +61,7 @@ class EvaluateMemberActivity : AppCompatActivity() {
                 MemberAdapter(members) { member ->
                     Toast.makeText(this@EvaluateMemberActivity, "$member", Toast.LENGTH_SHORT)
                         .show()
+                    startActivity(Intent(context, EvaluateMemberDetailActivity::class.java))
                 }
         }
     }

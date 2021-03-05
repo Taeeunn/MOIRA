@@ -32,7 +32,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <android.widget.Button
-                android:id="@+id/button"
+                android:id="@+id/complete_button"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -219,37 +219,52 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <ImageView
+                    <ToggleButton
                         android:id="@+id/tag_image1"
                         android:layout_width="104dp"
                         android:layout_height="136dp"
                         android:layout_marginHorizontal="5dp"
-                        android:src="@drawable/round_rectangle_2"
-                        app:tint="@color/light_gray" />
+                        android:background="@drawable/badge_btn_toggle"
+                        android:textOff="@null"
+                        android:textOn="@null" />
 
-                    <ImageView
+
+                    <ToggleButton
                         android:id="@+id/tag_image2"
                         android:layout_width="104dp"
                         android:layout_height="136dp"
                         android:layout_marginHorizontal="5dp"
-                        android:src="@drawable/round_rectangle_2"
-                        app:tint="@color/light_gray" />
+                        android:background="@drawable/badge_btn_toggle"
+                        android:textOff="@null"
+                        android:textOn="@null" />
 
-                    <ImageView
+
+                    <ToggleButton
                         android:id="@+id/tag_image3"
                         android:layout_width="104dp"
                         android:layout_height="136dp"
                         android:layout_marginHorizontal="5dp"
-                        android:src="@drawable/round_rectangle_2"
-                        app:tint="@color/light_gray" />
+                        android:background="@drawable/badge_btn_toggle"
+                        android:textOff="@null"
+                        android:textOn="@null" />
 
-                    <ImageView
+                    <ToggleButton
                         android:id="@+id/tag_image4"
                         android:layout_width="104dp"
                         android:layout_height="136dp"
                         android:layout_marginHorizontal="5dp"
-                        android:src="@drawable/round_rectangle_2"
-                        app:tint="@color/light_gray" />
+                        android:background="@drawable/badge_btn_toggle"
+                        android:textOff="@null"
+                        android:textOn="@null" />
+
+                    <ToggleButton
+                        android:id="@+id/tag_image5"
+                        android:layout_width="104dp"
+                        android:layout_height="136dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:background="@drawable/badge_btn_toggle"
+                        android:textOff="@null"
+                        android:textOn="@null" />
 
                 </LinearLayout>
             </HorizontalScrollView>

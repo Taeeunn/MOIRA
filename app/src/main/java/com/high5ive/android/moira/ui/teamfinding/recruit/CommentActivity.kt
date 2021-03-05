@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.CommentAdapter
 import com.high5ive.android.moira.data.Comment
+import kotlinx.android.synthetic.main.activity_comment.*
 import kotlinx.android.synthetic.main.activity_recruit_list.*
+import kotlinx.android.synthetic.main.activity_recruit_list.recycler_view
 
 class CommentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +23,9 @@ class CommentActivity : AppCompatActivity() {
         val ab = supportActionBar!!
         ab.setDisplayShowTitleEnabled(false)
 
+        close_button.setOnClickListener {
+            finish()
+        }
 
         val commentList = arrayListOf<Comment>()
         for (i in 0..10){

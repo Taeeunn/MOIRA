@@ -7,4 +7,14 @@
         <item>졸업</item>
     </string-array>
 
+    <string-array name="sort_array">
+        <item>최신순</item>
+        <item>인기순</item>
+    </string-array>
+
+    <string-array name="position_array">
+        <item>디자인</item>
+        <item>개발자</item>
+    </string-array>
+
 </resources>

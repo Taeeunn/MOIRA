@@ -3,8 +3,8 @@ package com.high5ive.android.moira.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.high5ive.android.moira.MemberEvaluateFragment
-import com.high5ive.android.moira.MemberInfoFragment
+import com.high5ive.android.moira.ui.applicant.MemberEvaluateFragment
+import com.high5ive.android.moira.ui.applicant.MemberInfoFragment
 import com.high5ive.android.moira.ui.myteam.inprogress.InProgressTeamFragment
 
 class ViewPagerAdapter2(fa: FragmentActivity): FragmentStateAdapter(fa){

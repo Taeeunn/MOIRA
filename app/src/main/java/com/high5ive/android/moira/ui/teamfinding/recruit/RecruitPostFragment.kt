@@ -1,5 +1,6 @@
 package com.high5ive.android.moira.ui.teamfinding.recruit
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import com.google.android.material.chip.ChipGroup
+import com.high5ive.android.moira.MainActivity
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.AwardAdapter
 import com.high5ive.android.moira.adapter.RecruitAdapter
@@ -72,6 +74,7 @@ class RecruitPostFragment : Fragment() {
             adapter =
                 RecruitAdapter(recruit) { person ->
                     Toast.makeText(context, "$person", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(context, RecruitDetailActivity::class.java))
                 }
         }
     }
@@ -88,6 +91,7 @@ class RecruitPostFragment : Fragment() {
             }
 
             chip.text = tagName
+            chip.setTextAppearance(R.style.tag_text)
             chip.setCloseIconResource(R.drawable.ic_baseline_close_24)
             chip.isCloseIconEnabled = true
             //Added click listener on close icon to remove tag from ChipGroup
