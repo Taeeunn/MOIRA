@@ -13,7 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MOIRA">
-        <activity android:name=".ui.teamfinding.user.UserProfileActivity"></activity>
+        <activity android:name=".ui.initial.InitialActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.teamfinding.user.UserProfileActivity" />
         <activity android:name=".ui.message.MessageHistoryActivity" />
         <activity android:name=".ui.mypage.EditProfileActivity" />
         <activity android:name=".ui.teamfinding.apply.ApplyActivity" />
@@ -30,9 +37,6 @@
         <activity android:name=".ui.addinfo.career.AddCareerActivity" />
         <activity android:name=".ui.addinfo.major.AddMajorActivity" />
         <activity android:name=".ui.teamfinding.search.SearchActivity" />
-        <activity android:name=".ui.signup.SetTagActivity" />
-        <activity android:name=".ui.signup.SetPositionActivity" />
-        <activity android:name=".ui.signup.SetNicknameActivity" />
         <activity android:name=".ui.applicant.ApplicantProfileActivity" />
         <activity android:name=".ui.myteam.evaluate.EvaluateMemberDetailActivity" />
         <activity android:name=".ui.addinfo.education.AddSchoolActivity" />
@@ -51,13 +55,6 @@
         <activity android:name=".ContestListActivity" />
         <activity android:name=".FindContestActivity" />
         <activity android:name=".ui.teamfinding.apply.ApplyCompleteActivity" />
-        <activity android:name=".ui.login.LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".MainActivity" />
         <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity">
             <intent-filter>

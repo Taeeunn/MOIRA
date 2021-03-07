@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/initial_nav"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.high5ive.android.moira.ui.initial.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_setNicknameFragment"
+            app:destination="@id/setNicknameFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/setPositionFragment"
+        android:name="com.high5ive.android.moira.ui.initial.SetPositionFragment"
+        android:label="set_position_fragment"
+        tools:layout="@layout/set_position_fragment" >
+        <action
+            android:id="@+id/action_setPositionFragment_to_setTagFragment"
+            app:destination="@id/setTagFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit"/>
+    </fragment>
+    <fragment
+        android:id="@+id/setNicknameFragment"
+        android:name="com.high5ive.android.moira.ui.initial.SetNicknameFragment"
+        android:label="set_nickname_fragment"
+        tools:layout="@layout/set_nickname_fragment" >
+        <action
+            android:id="@+id/action_setNicknameFragment_to_setPositionFragment"
+            app:destination="@id/setPositionFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit"/>
+    </fragment>
+    <fragment
+        android:id="@+id/setTagFragment"
+        android:name="com.high5ive.android.moira.ui.initial.SetTagFragment"
+        android:label="set_tag_fragment"
+        tools:layout="@layout/set_tag_fragment"
+        app:enterAnim="@anim/fragment_open_enter"
+        app:exitAnim="@anim/fragment_open_exit"
+        app:popEnterAnim="@anim/fragment_close_enter"
+        app:popExitAnim="@anim/fragment_close_exit"/>
+</navigation>

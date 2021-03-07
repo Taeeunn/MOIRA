@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.signup.SetPositionActivity">
+    tools:context=".ui.initial.SetPositionFragment">
 
     <TextView
         android:id="@+id/select_position_text"
@@ -57,24 +57,24 @@
             android:layout_height="match_parent"
             android:layout_marginTop="9dp">
 
-        <ToggleButton
-            android:id="@+id/position3_btn"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="포지션3"
-            android:layout_marginEnd="4dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/enter_nickname_text"/>
+            <ToggleButton
+                android:id="@+id/position3_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="포지션3"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/enter_nickname_text"/>
 
 
-        <ToggleButton
-            android:id="@+id/position4_btn"
-            android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:text="포지션4"
-            android:layout_marginStart="4dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/enter_nickname_text"/>
+            <ToggleButton
+                android:id="@+id/position4_btn"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:text="포지션4"
+                android:layout_marginStart="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/enter_nickname_text"/>
 
         </TableRow>
 

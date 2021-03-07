@@ -9,9 +9,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.ViewPagerAdapter2
 import com.high5ive.android.moira.ui.message.MessageHistoryActivity
-import com.high5ive.android.moira.ui.signup.SetNicknameActivity
 import kotlinx.android.synthetic.main.activity_user_profile.*
-import kotlinx.android.synthetic.main.my_team_fragment.*
 import kotlinx.android.synthetic.main.my_team_fragment.tabLayout
 import kotlinx.android.synthetic.main.my_team_fragment.viewPager
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.signup.SetNicknameActivity">
+    tools:context=".ui.initial.SetNicknameFragment">
 
     <TextView
         android:id="@+id/enter_nickname_text"
@@ -62,15 +62,4 @@
 
     </LinearLayout>
 
-<!--    <android.widget.Button-->
-<!--        android:id="@+id/button6"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="@string/to_next"-->
-<!--        android:textAppearance="@style/to_next_btn"-->
-<!--        android:drawableEnd="@drawable/ic_baseline_arrow_forward_ios_24"-->
-<!--        android:layout_marginEnd="16dp"-->
-<!--        android:layout_marginBottom="78dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"/>-->
 </androidx.constraintlayout.widget.ConstraintLayout>

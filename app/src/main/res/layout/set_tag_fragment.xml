@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginStart="16dp"
-    tools:context=".ui.signup.SetTagActivity">
+    tools:context=".ui.initial.SetTagFragment">
 
     <TextView
         android:id="@+id/select_tag_text"
