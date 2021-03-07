@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.ui.mypage.apply.ApplyListActivity
+import com.high5ive.android.moira.ui.mypage.edit.EditProfileActivity
 import com.high5ive.android.moira.ui.mypage.post.PostListActivity
 import com.high5ive.android.moira.ui.mypage.scrap.ScrapListActivity
 import kotlinx.android.synthetic.main.my_page_fragment.*

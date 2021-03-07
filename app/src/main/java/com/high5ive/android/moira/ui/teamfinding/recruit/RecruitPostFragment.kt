@@ -24,7 +24,6 @@ import com.high5ive.android.moira.adapter.AwardAdapter
 import com.high5ive.android.moira.adapter.RecruitAdapter
 import com.high5ive.android.moira.data.Award
 import com.high5ive.android.moira.data.Recruit
-import kotlinx.android.synthetic.main.activity_recruit_list.*
 import kotlinx.android.synthetic.main.member_info_fragment.*
 import kotlinx.android.synthetic.main.recruit_post_fragment.*
 import kotlinx.android.synthetic.main.recruit_post_fragment.recycler_view

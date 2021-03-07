@@ -8,9 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.tabs.TabLayoutMediator
-import com.high5ive.android.moira.MyTeamViewModel
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.adapter.ViewPagerAdapter
 import kotlinx.android.synthetic.main.my_team_fragment.*
 
 class MyTeamFragment : Fragment() {

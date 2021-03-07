@@ -1,4 +1,4 @@
-package com.high5ive.android.moira.ui.applicant
+package com.high5ive.android.moira.ui.applicant.list
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.MemberAdapter
 import com.high5ive.android.moira.data.Member
-import kotlinx.android.synthetic.main.activity_recruit_list.*
+import com.high5ive.android.moira.ui.applicant.profile.ApplicantProfileActivity
+import kotlinx.android.synthetic.main.activity_applicant_list.*
+
 
 class ApplicantListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

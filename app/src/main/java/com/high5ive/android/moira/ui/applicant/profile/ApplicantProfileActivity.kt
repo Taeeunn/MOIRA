@@ -1,4 +1,4 @@
-package com.high5ive.android.moira.ui.applicant
+package com.high5ive.android.moira.ui.applicant.profile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 import com.google.android.material.tabs.TabLayoutMediator
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.adapter.ViewPagerAdapter2
+import com.high5ive.android.moira.common.MemberViewPagerAdapter
 import kotlinx.android.synthetic.main.my_team_fragment.*
 
 class ApplicantProfileActivity : AppCompatActivity() {
@@ -14,7 +14,8 @@ class ApplicantProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_applicant_profile)
 
-        viewPager.adapter = ViewPagerAdapter2(this)
+        viewPager.adapter =
+            MemberViewPagerAdapter(this)
         val tabLayoutTextArray = arrayOf("사용자 정보","사용자 평가")
         TabLayoutMediator(tabLayout,viewPager){tab,position->
             tab.text = tabLayoutTextArray[position]

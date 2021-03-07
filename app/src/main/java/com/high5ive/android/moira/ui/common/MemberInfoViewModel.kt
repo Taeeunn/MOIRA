@@ -1,4 +1,4 @@
-package com.high5ive.android.moira.ui.applicant
+package com.high5ive.android.moira.ui.common
 
 import androidx.lifecycle.ViewModel
 

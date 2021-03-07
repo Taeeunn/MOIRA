@@ -1,4 +1,4 @@
-package com.high5ive.android.moira.ui.initial
+package com.high5ive.android.moira.ui.initial.login
 
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.high5ive.android.moira.R
+import com.high5ive.android.moira.ui.initial.OnTransitionListener
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.user.UserApiClient
 import kotlinx.android.synthetic.main.login_fragment.*
@@ -18,7 +19,8 @@ import kotlinx.android.synthetic.main.login_fragment.*
 class LoginFragment : Fragment(), View.OnClickListener {
 
     companion object {
-        fun newInstance() = LoginFragment()
+        fun newInstance() =
+            LoginFragment()
     }
 
     private lateinit var viewModel: LoginViewModel

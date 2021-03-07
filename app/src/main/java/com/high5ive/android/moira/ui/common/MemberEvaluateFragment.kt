@@ -1,4 +1,4 @@
-package com.high5ive.android.moira.ui.applicant
+package com.high5ive.android.moira.ui.common
 
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.high5ive.android.moira.R
+import com.high5ive.android.moira.ui.applicant.review.ApplicantReviewActivity
 import kotlinx.android.synthetic.main.member_evaluate_fragment.*
 
 class MemberEvaluateFragment : Fragment() {

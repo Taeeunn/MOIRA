@@ -12,9 +12,8 @@ import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.MemberAdapter
 import com.high5ive.android.moira.data.Member
 import com.high5ive.android.moira.databinding.ActivityTeamDetailBinding
-import com.high5ive.android.moira.ui.applicant.ApplicantProfileActivity
 import com.high5ive.android.moira.ui.teamfinding.user.UserProfileActivity
-import kotlinx.android.synthetic.main.activity_recruit_list.*
+import kotlinx.android.synthetic.main.activity_team_detail.*
 
 
 class TeamDetailActivity : AppCompatActivity() {

@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.tabs.TabLayoutMediator
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.adapter.ViewPagerAdapter
+import com.high5ive.android.moira.common.MemberViewPagerAdapter
 import kotlinx.android.synthetic.main.my_team_fragment.*
 
 class NotifyActivity : AppCompatActivity() {
@@ -12,7 +12,7 @@ class NotifyActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notify)
 
-        viewPager.adapter = ViewPagerAdapter(this)
+        viewPager.adapter = MemberViewPagerAdapter(this)
         val tabLayoutTextArray = arrayOf("지원 소식","받은 초대")
         TabLayoutMediator(tabLayout,viewPager){tab,position->
             tab.text = tabLayoutTextArray[position]

@@ -14,8 +14,7 @@ import com.high5ive.android.moira.data.Member
 import com.high5ive.android.moira.databinding.ActivityEvaluateMemberBinding
 import kotlinx.android.synthetic.main.activity_evaluate_member.*
 import kotlinx.android.synthetic.main.activity_evaluate_member_detail.*
-import kotlinx.android.synthetic.main.activity_recruit_list.*
-import kotlinx.android.synthetic.main.activity_recruit_list.recycler_view
+
 
 class EvaluateMemberActivity : AppCompatActivity() {
 

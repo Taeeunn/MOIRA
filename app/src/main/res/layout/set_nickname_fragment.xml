@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.initial.SetNicknameFragment">
+    tools:context=".ui.initial.nickname.SetNicknameFragment">
 
     <TextView
         android:id="@+id/enter_nickname_text"

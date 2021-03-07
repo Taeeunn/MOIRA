@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.PostAdapter
 import com.high5ive.android.moira.data.Post
-import com.high5ive.android.moira.ui.applicant.ApplicantListActivity
+import com.high5ive.android.moira.ui.applicant.list.ApplicantListActivity
 import com.high5ive.android.moira.ui.teamfinding.recruit.RecruitDetailActivity
-import kotlinx.android.synthetic.main.activity_recruit_list.*
+import kotlinx.android.synthetic.main.activity_post_list.*
 
 class PostListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -10,10 +10,8 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.tabs.TabLayoutMediator
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.ui.mypage.EditProfileActivity
 import com.high5ive.android.moira.ui.teamfinding.newpost.NewPostActivity
 import com.high5ive.android.moira.ui.teamfinding.search.SearchActivity
-import kotlinx.android.synthetic.main.my_team_fragment.*
 import kotlinx.android.synthetic.main.my_team_fragment.search_button
 import kotlinx.android.synthetic.main.my_team_fragment.tabLayout
 import kotlinx.android.synthetic.main.my_team_fragment.viewPager

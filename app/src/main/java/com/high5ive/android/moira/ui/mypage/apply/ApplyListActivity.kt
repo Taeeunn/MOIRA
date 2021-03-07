@@ -1,6 +1,5 @@
 package com.high5ive.android.moira.ui.mypage.apply
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -10,9 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.ApplyAdapter
 import com.high5ive.android.moira.data.Apply
-import com.high5ive.android.moira.ui.applicant.ApplicantListActivity
-import com.high5ive.android.moira.ui.teamfinding.recruit.RecruitDetailActivity
-import kotlinx.android.synthetic.main.activity_recruit_list.*
+import kotlinx.android.synthetic.main.activity_apply_list.*
+
 
 class ApplyListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -12,13 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.adapter.MemberAdapter
 import com.high5ive.android.moira.adapter.UserAdapter
-import com.high5ive.android.moira.data.Member
 import com.high5ive.android.moira.data.User
-import com.high5ive.android.moira.ui.applicant.ApplicantProfileActivity
-import kotlinx.android.synthetic.main.activity_recruit_list.*
-import kotlinx.android.synthetic.main.activity_recruit_list.recycler_view
 import kotlinx.android.synthetic.main.recruit_post_fragment.*
 
 class UserPoolFragment : Fragment() {

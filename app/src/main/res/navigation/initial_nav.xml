@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.high5ive.android.moira.ui.initial.LoginFragment"
+        android:name="com.high5ive.android.moira.ui.initial.login.LoginFragment"
         android:label="LoginFragment" >
         <action
             android:id="@+id/action_loginFragment_to_setNicknameFragment"
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/setPositionFragment"
-        android:name="com.high5ive.android.moira.ui.initial.SetPositionFragment"
+        android:name="com.high5ive.android.moira.ui.initial.position.SetPositionFragment"
         android:label="set_position_fragment"
         tools:layout="@layout/set_position_fragment" >
         <action
@@ -32,7 +32,7 @@
     </fragment>
     <fragment
         android:id="@+id/setNicknameFragment"
-        android:name="com.high5ive.android.moira.ui.initial.SetNicknameFragment"
+        android:name="com.high5ive.android.moira.ui.initial.nickname.SetNicknameFragment"
         android:label="set_nickname_fragment"
         tools:layout="@layout/set_nickname_fragment" >
         <action
@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/setTagFragment"
-        android:name="com.high5ive.android.moira.ui.initial.SetTagFragment"
+        android:name="com.high5ive.android.moira.ui.initial.tag.SetTagFragment"
         android:label="set_tag_fragment"
         tools:layout="@layout/set_tag_fragment"
         app:enterAnim="@anim/fragment_open_enter"

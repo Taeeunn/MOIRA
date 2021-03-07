@@ -10,8 +10,7 @@ import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.CommentAdapter
 import com.high5ive.android.moira.data.Comment
 import kotlinx.android.synthetic.main.activity_comment.*
-import kotlinx.android.synthetic.main.activity_recruit_list.*
-import kotlinx.android.synthetic.main.activity_recruit_list.recycler_view
+
 
 class CommentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

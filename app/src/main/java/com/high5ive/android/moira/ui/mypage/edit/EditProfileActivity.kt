@@ -1,4 +1,4 @@
-package com.high5ive.android.moira.ui.mypage
+package com.high5ive.android.moira.ui.mypage.edit
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +8,7 @@ import androidx.appcompat.widget.Toolbar
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.ui.myteam.evaluate.EvaluateMemberActivity
+import com.high5ive.android.moira.ui.mypage.MyPageFragment
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.edit_info.view.*
 
