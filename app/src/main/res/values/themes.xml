@@ -85,6 +85,23 @@
     </style>
 
 
+    <style name="helper_text">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:textColor">#b5b5b5</item>
+    </style>
+
+
+
+<!--    <style name="hint_text">-->
+<!--        <item name="android:textSize">16sp</item>-->
+<!--        <item name="android:textStyle">bold</item>-->
+<!--        <item name="android:lineSpacingExtra">8sp</item>-->
+<!--        <item name="android:textColor">#b5b5b5</item>-->
+<!--    </style>-->
+
+
 
     <style name="EditTextTheme2" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorControlNormal">#aaaaaa</item>

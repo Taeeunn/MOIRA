@@ -41,7 +41,6 @@
         <activity android:name=".ui.myteam.evaluate.EvaluateMemberDetailActivity" />
         <activity android:name=".ui.addinfo.education.AddSchoolActivity" />
         <activity android:name=".ui.addinfo.education.AddEducationActivity" />
-        <activity android:name=".TeamListActivity" />
         <activity android:name=".ui.applicant.review.ApplicantReviewActivity" />
         <activity android:name=".ui.mypage.post.PostListActivity" />
         <activity android:name=".ui.mypage.apply.ApplyListActivity" />
@@ -49,11 +48,7 @@
         <activity android:name=".ui.myteam.evaluate.EvaluateMemberActivity" />
         <activity android:name=".ui.myteam.TeamDetailActivity" />
         <activity android:name=".ui.teamfinding.newpost.NewPostActivity" />
-        <activity android:name=".RecruitListActivity" />
         <activity android:name=".ui.teamfinding.recruit.RecruitDetailActivity" />
-        <activity android:name=".ContestDetailActivity" />
-        <activity android:name=".ContestListActivity" />
-        <activity android:name=".FindContestActivity" />
         <activity android:name=".ui.teamfinding.apply.ApplyCompleteActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity">

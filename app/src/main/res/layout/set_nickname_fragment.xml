@@ -17,20 +17,63 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/enter_nickname_et"
+
+<!--    <EditText-->
+<!--        android:id="@+id/enter_nickname_et"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:ems="10"-->
+<!--        android:inputType="textPersonName"-->
+<!--        android:hint="@string/enter_nickname"-->
+<!--        android:layout_marginHorizontal="16dp"-->
+<!--        android:theme="@style/EnterNicknameEditText"-->
+<!--        android:layout_marginTop="46dp"-->
+<!--        android:paddingBottom="25dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/enter_nickname_text" />-->
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/helper_text"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="3dp"-->
+<!--        android:layout_marginStart="3dp"-->
+<!--        android:text="*한글 6글자, 영문 12글자까지 입력 가능합니다. (특수문자, 공백 사용불가) "-->
+<!--        android:textAppearance="@style/helper_text"-->
+<!--        app:layout_constraintStart_toStartOf="@id/enter_nickname_et"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/enter_nickname_et" />-->
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nickname_text_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="@string/enter_nickname"
         android:layout_marginHorizontal="16dp"
-        android:theme="@style/EnterNicknameEditText"
         android:layout_marginTop="46dp"
-        android:paddingBottom="25dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:hint="@string/enter_nickname"
+        app:hintTextColor="#b5b5b5"
+        app:errorTextColor="@color/red"
+        app:errorIconDrawable="@null"
+        app:helperText="*한글 6글자, 영문 12글자까지 입력 가능합니다. (특수문자, 공백 사용불가)"
+        app:helperTextTextAppearance="@style/helper_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enter_nickname_text" />
+        app:layout_constraintTop_toBottomOf="@+id/enter_nickname_text">
+
+        <EditText
+            android:id="@+id/enter_nickname_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:paddingTop="20dp"
+            android:paddingBottom="15dp"
+            android:inputType="textPersonName"
+            android:theme="@style/EnterNicknameEditText" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <LinearLayout
@@ -61,5 +104,7 @@
             app:tint="#adadad" />
 
     </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
