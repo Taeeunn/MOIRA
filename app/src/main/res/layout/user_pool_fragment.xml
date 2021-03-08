@@ -19,7 +19,6 @@
         <Spinner
             android:id="@+id/spinner1"
             style="@style/Widget.AppCompat.DropDownItem.Spinner"
-            app:theme="@style/SpinnerItemStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:entries="@array/position_array" />
@@ -38,7 +37,6 @@
         <Spinner
             android:id="@+id/spinner2"
             style="@style/Widget.AppCompat.DropDownItem.Spinner"
-            app:theme="@style/SpinnerItemStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:entries="@array/sort_array" />

@@ -20,11 +20,9 @@
         <Spinner
             android:id="@+id/spinner"
             style="@style/Widget.AppCompat.DropDownItem.Spinner"
-            app:theme="@style/SpinnerItemStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:entries="@array/sort_array"
-            android:lineSpacingExtra="6sp" />
+            android:entries="@array/sort_array" />
     </RelativeLayout>
 
 

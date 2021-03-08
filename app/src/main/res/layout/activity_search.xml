@@ -56,7 +56,6 @@
         android:layout_marginTop="16dp"
         app:theme="@style/SearchViewStyle"
         android:lineSpacingExtra="6sp"
-        android:closeIcon="@drawable/ic_baseline_close_24"
         android:queryBackground="@android:color/transparent"
         android:backgroundTint="@color/light_gray"
         android:background="@drawable/round_rectangle_6"

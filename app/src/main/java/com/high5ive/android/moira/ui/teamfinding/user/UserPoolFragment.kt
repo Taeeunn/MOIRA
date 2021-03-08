@@ -75,6 +75,7 @@ class UserPoolFragment : Fragment() {
             }
 
             chip.text = tagName
+            chip.setCloseIconSizeResource(R.dimen.tag_close_icon)
 //            chip.setTextAppearance(R.style.tag_text)
 //            chip.setCloseIconResource(R.drawable.ic_baseline_close_24)
             chip.isCloseIconEnabled = true

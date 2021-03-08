@@ -9,13 +9,12 @@ import androidx.appcompat.widget.Toolbar
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.ui.addinfo.award.AddAwardHistoryActivity
-import com.high5ive.android.moira.ui.addinfo.career.AddCareerActivity
-import com.high5ive.android.moira.ui.addinfo.certificate.AddCertificateActivity
-import com.high5ive.android.moira.ui.addinfo.education.AddEducationActivity
-import com.high5ive.android.moira.ui.addinfo.link.AddLinkActivity
-import com.high5ive.android.moira.ui.addinfo.tag.AddTagActivity
-import com.high5ive.android.moira.ui.mypage.MyPageFragment
+import com.high5ive.android.moira.ui.mypage.edit.addinfo.award.AddAwardHistoryActivity
+import com.high5ive.android.moira.ui.mypage.edit.addinfo.career.AddCareerActivity
+import com.high5ive.android.moira.ui.mypage.edit.addinfo.certificate.AddCertificateActivity
+import com.high5ive.android.moira.ui.mypage.edit.addinfo.education.AddEducationActivity
+import com.high5ive.android.moira.ui.mypage.edit.addinfo.link.AddLinkActivity
+import com.high5ive.android.moira.ui.mypage.edit.addinfo.tag.AddTagActivity
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.edit_info.*
 import kotlinx.android.synthetic.main.edit_info.view.*
@@ -59,6 +58,7 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener{
 
             chip.text = tagName
             chip.setTextAppearance(R.style.tag_text)
+            chip.setCloseIconSizeResource(R.dimen.tag_close_icon)
             chip.isCloseIconEnabled = true
             //Added click listener on close icon to remove tag from ChipGroup
             chip.setOnCloseIconClickListener {

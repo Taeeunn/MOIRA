@@ -85,6 +85,8 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
                     positiveButton(R.string.complete) {
                         Snackbar.make(v, R.string.project_completed, Snackbar.LENGTH_SHORT).show()
                     }
+
+                    negativeButton(R.string.cancle)
                 }
             }
         }

@@ -1,4 +1,4 @@
-package com.high5ive.android.moira.ui.addinfo.education
+package com.high5ive.android.moira.ui.mypage.edit.addinfo.education
 
 import android.app.DatePickerDialog.OnDateSetListener
 import android.content.Intent
@@ -6,12 +6,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
-import android.widget.AdapterView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import com.afollestad.materialdialogs.MaterialDialog
-import com.afollestad.materialdialogs.callbacks.onDismiss
 import com.afollestad.materialdialogs.list.listItemsSingleChoice
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.YearMonthPickerDialog

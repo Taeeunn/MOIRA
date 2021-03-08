@@ -92,7 +92,7 @@ class RecruitPostFragment : Fragment() {
             chip.text = tagName
 //            chip.setTextAppearance(R.style.tag_text)
 //            chip.setCloseIconResource(R.drawable.ic_baseline_highlight_off_24)
-//            chip.setCloseIconSizeResource(R.dimen.tag_close_icon)
+            chip.setCloseIconSizeResource(R.dimen.tag_close_icon)
             chip.isCloseIconEnabled = true
             //Added click listener on close icon to remove tag from ChipGroup
             chip.setOnCloseIconClickListener {

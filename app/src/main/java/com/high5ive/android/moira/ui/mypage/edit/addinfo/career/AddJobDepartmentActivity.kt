@@ -1,4 +1,4 @@
-package com.high5ive.android.moira.ui.addinfo.career
+package com.high5ive.android.moira.ui.mypage.edit.addinfo.career
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
