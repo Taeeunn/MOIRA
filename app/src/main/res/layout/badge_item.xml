@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="badge"
+            type="com.high5ive.android.moira.data.Badge" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/applyItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="20dp">
+
+        <ImageView
+            android:id="@+id/badge_image"
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            app:tint="@color/purple_200"
+            android:src="@drawable/circle"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{badge.name}"
+            android:layout_marginStart="15dp"
+            android:textStyle="normal"
+            android:textSize="13sp"
+            android:textColor="#352641"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="15sp"
+            app:layout_constraintStart_toEndOf="@+id/badge_image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/badge_count(badge.count)}"
+            android:textStyle="normal"
+            android:textSize="13sp"
+            android:textColor="#352641"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

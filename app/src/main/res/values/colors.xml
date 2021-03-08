@@ -12,4 +12,8 @@
     <color name="light_gray">#e6e6e6</color>
     <color name="main_blue">#0068ff</color>
     <color name="red">#ff0000</color>
+
+    <color name="ted_image_picker_primary">@color/main_blue</color>
+    <color name="ted_image_picker_primary_pressed">@color/main_blue</color>
+
 </resources>

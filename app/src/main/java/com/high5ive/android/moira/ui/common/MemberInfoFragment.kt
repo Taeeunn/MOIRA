@@ -30,10 +30,8 @@ class MemberInfoFragment : Fragment() {
         return inflater.inflate(R.layout.member_info_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MemberInfoViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val awardList = arrayListOf<Award>()
         for (i in 0..5){
@@ -52,6 +50,14 @@ class MemberInfoFragment : Fragment() {
                     Toast.makeText(context, "$award", Toast.LENGTH_SHORT).show()
                 }
         }
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel = ViewModelProvider(this).get(MemberInfoViewModel::class.java)
+        // TODO: Use the ViewModel
+
+
     }
 
 }

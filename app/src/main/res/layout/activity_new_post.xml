@@ -109,6 +109,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
 
+            <LinearLayout
+                android:id="@+id/picture_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/project_content_et"/>
+
 
             <LinearLayout
                 android:id="@+id/tools"
@@ -117,9 +125,10 @@
                 android:orientation="horizontal"
                 android:background="#dedede"
                 android:paddingHorizontal="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/project_content_et">
+                app:layout_constraintTop_toBottomOf="@+id/picture_layout">
 
                 <ImageButton
+                    android:id="@+id/picture_btn"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_baseline_photo_camera_24"

@@ -3,8 +3,13 @@
     package="com.high5ive.android.moira">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
 
-    <application
+
+
+    <application android:requestLegacyExternalStorage="true"
         android:name=".login.KakaoLoginApplication"
         android:allowBackup="true"
         android:fullBackupContent="false"
