@@ -55,8 +55,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    // 네이버 로그인
-    implementation 'com.naver.nid:naveridlogin-android-sdk:4.2.6'
+//    // 네이버 로그인
+//    implementation 'com.naver.nid:naveridlogin-android-sdk:4.2.6'
 
     implementation "com.kakao.sdk:v2-user:2.4.0" // 카카오 로그인
     implementation "com.kakao.sdk:v2-talk:2.4.0" // 친구, 메시지(카카오톡)
@@ -64,13 +64,12 @@ dependencies {
 
     implementation 'com.google.android.material:material:1.1.0'
 
-    implementation 'gun0912.ted:tedbottompicker:2.0.1'
-    implementation 'gun0912.ted:tedpermission:2.2.3'
+//    implementation 'gun0912.ted:tedbottompicker:2.0.1'
     implementation 'com.afollestad.material-dialogs:core:3.3.0'
-////    implementation 'gun0912.ted:tedbottompicker:2.0.1'
+
 //    implementation 'com.github.ShahabGT:InstagramPicker:2.1.1'
-//    implementation 'com.github.dhaval2404:imagepicker-support:1.7.1'
-//    implementation 'gun0912.ted:tedimagepicker:1.1.10'
+    implementation 'com.github.dhaval2404:imagepicker-support:1.7.1'
+    implementation 'gun0912.ted:tedimagepicker:1.1.10'
 //
 //
 //    implementation 'com.github.esafirm.android-image-picker:imagepicker:2.4.3'

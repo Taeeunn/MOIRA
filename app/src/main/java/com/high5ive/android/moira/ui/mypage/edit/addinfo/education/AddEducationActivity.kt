@@ -82,7 +82,6 @@ class AddEducationActivity : AppCompatActivity(), View.OnClickListener {
             R.id.status_et -> {
                 MaterialDialog(this).show {
                     listItemsSingleChoice(R.array.education_status_array) { _, _, text ->
-                        Log.v("dismiss2", "dismiss")
                         v.status_et.setText(text)
                     }
 

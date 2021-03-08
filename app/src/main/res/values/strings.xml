@@ -127,6 +127,7 @@
     <string name="cancle">취소</string>
     <string name="take_picture">사진 촬영</string>
     <string name="select_gallery">갤러리 선택</string>
+    <string name="select_picture">사진 선택하기</string>
     <string name="select_complete">선택완료</string>
     <string name="complete_project">프로젝트 완료하기</string>
     <string name="complete_project_message">프로젝트가 모두 완료되었다면 완료하기 버튼을 눌러주세요.</string>

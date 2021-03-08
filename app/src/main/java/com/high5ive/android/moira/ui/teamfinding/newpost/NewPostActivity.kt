@@ -1,27 +1,31 @@
 package com.high5ive.android.moira.ui.teamfinding.newpost
 
 import android.Manifest
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.MenuItem
+import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import com.gun0912.tedpermission.PermissionListener
-import com.gun0912.tedpermission.TedPermission
+import com.afollestad.materialdialogs.MaterialDialog
+import com.github.dhaval2404.imagepicker.ImagePicker
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.common.PermissionCheck
-import com.high5ive.android.moira.ui.teamfinding.search.SearchActivity
-import gun0912.tedbottompicker.TedBottomPicker
+import gun0912.tedimagepicker.builder.TedImagePicker
 import kotlinx.android.synthetic.main.activity_new_post.*
+import java.io.File
 
 
-class NewPostActivity : AppCompatActivity() {
+class NewPostActivity : AppCompatActivity(), View.OnClickListener {
 
+//    var requestPermissions = arrayOf(Manifest.permission.CAMERA,
+//                                    Manifest.permission.WRITE_EXTERNAL_STORAGE)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,130 +37,59 @@ class NewPostActivity : AppCompatActivity() {
         ab.setDisplayShowTitleEnabled(false)
         ab.setDisplayHomeAsUpEnabled(true)
 
-        var requestPermissions = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
 
 
-        PermissionCheck(this@NewPostActivity, requestPermissions)
+        picture_btn.setOnClickListener(this)
+        register_button.setOnClickListener(this)
 
-        picture_btn.setOnClickListener {
+//            TedBottomPicker.with(this@NewPostActivity)
+//                .setPeekHeight(1600)
+//                .showTitle(false)
+//                .setCompleteButtonText("Done")
+//                .setEmptySelectionText("No Select")
+//                .showMultiImage { uriList ->
+//
+//                    for (uri in uriList) {
+//                        val newImage = ImageView(this)
+//                        newImage.setImageURI(uri)
+//
+//
+//                        val lp = LinearLayout.LayoutParams(
+//                            LinearLayout.LayoutParams.MATCH_PARENT,
+//                            205.toPx(this)
+//                        )
+//                        lp.setMargins(0, 0, 0, 20.toPx(this))
+//                        newImage.layoutParams = lp
+//                        picture_layout.addView(newImage)
+//                    }
+//                }
 
-            TedBottomPicker.with(this@NewPostActivity)
-                .setPeekHeight(1600)
-                .showTitle(false)
-                .setCompleteButtonText("Done")
-                .setEmptySelectionText("No Select")
-                .showMultiImage { uriList ->
-
-                    for (uri in uriList) {
-                        val newImage = ImageView(this)
-                        newImage.setImageURI(uri)
-
-
-                        val lp = LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.MATCH_PARENT,
-                            205.toPx(this)
-                        )
-                        lp.setMargins(0, 0, 0, 20.toPx(this))
-                        newImage.layoutParams = lp
-                        picture_layout.addView(newImage)
-                    }
-                }
-        }
-
-        register_button.setOnClickListener {
-//            startActivity(Intent(this, SearchActivity::class.java))
-            finish()
-        }
     }
 
-//            MaterialDialog(this).show {
-//                title(R.string.upload_picture)
-//                cornerRadius(0f)
-//                neutralButton(R.string.cancle)
-//
-//                positiveButton(R.string.take_picture) {
-//
-////                    ImagePicker.with(this@NewPostActivity)
-////                        .cameraOnly()    //User can only capture image using Camera
-////                        .start()
-//
-//                }
-//
-//                negativeButton(R.string.select_gallery) {
-////                    ImagePicker.create(this@NewPostActivity) // Activity or Fragment
-////                        .start();
-//
-//                    TedImagePicker.with(this@NewPostActivity)
-//                        .title(R.string.select_gallery)
-//                        .buttonBackground(R.drawable.md_transparent)
-//                        .buttonTextColor(R.color.black)
-//                        .startMultiImage { uriList ->
-//
-////
-//                            for (uri in uriList) {
-//
-//                                Log.v("uriList", convertContentToFileUri(context, uri).toString())
-//                                val newImage = ImageView(context)
-//                                newImage.setImageURI(convertContentToFileUri(context, uri))
-//
-//
-//                                val lp = LinearLayout.LayoutParams(
-//                                    LinearLayout.LayoutParams.MATCH_PARENT,
-//                                    205.toPx(ToastUtil.context)
-//                                )
-//                                lp.setMargins(0, 0, 0, 20.toPx(ToastUtil.context))
-//                                newImage.layoutParams = lp
-//                                picture_layout.addView(newImage)
-//
-//                            }
-//                        }
-//                        }
-//                }
-//            }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (resultCode) {
+            Activity.RESULT_OK -> {
+
+                val fileUri = data?.data
+                val file: File = ImagePicker.getFile(data)!!
+                val filePath: String = ImagePicker.getFilePath(data)!!
+
+                val newImage = ImageView(this)
+                newImage.setImageURI(fileUri)
 
 
-//        register_button.setOnClickListener{
-//            startActivity(Intent(this@NewPostActivity, ApplyCompleteActivity::class.java))
-//        }
-
-
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        Log.v("fileuri", data?.data.toString())
-//        when (resultCode) {
-//            Activity.RESULT_OK -> {
-//                //Image Uri will not be null for RESULT_OK
-//                val fileUri = data?.data
-//                Log.v("fileuri", fileUri.toString())
-//                //You can get File object from intent
-////                val file: File = ImagePicker.getFile(data)!!
-////                //You can also get File Path from intent
-////                val filePath: String = ImagePicker.getFilePath(data)!!
-//
-//                val newImage = ImageView(this)
-//                newImage.setImageURI(fileUri)
-//
-////            val imageHeight = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-////                205f, resources.displayMetrics
-////            ).toInt()
-//
-//                val lp = LinearLayout.LayoutParams(
-//                    LinearLayout.LayoutParams.MATCH_PARENT,
-//                    205.toPx(context)
-//                )
-//                lp.setMargins(0, 0, 0, 20.toPx(context))
-//                newImage.layoutParams = lp
-//                picture_layout.addView(newImage)
-//            }
-//
-////            ImagePicker.RESULT_ERROR -> {
-////                Toast.makeText(this, ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
-////            }
-////            else -> {
-////                Toast.makeText(this, "Task Cancelled", Toast.LENGTH_SHORT).show()
-////            }
-//        }
-//    }
+                val lp = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    205.toPx(this)
+                )
+                lp.setMargins(0, 0, 0, 20.toPx(this))
+                newImage.layoutParams = lp
+                picture_layout.addView(newImage)
+            }
+        }
+    }
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -167,7 +100,6 @@ class NewPostActivity : AppCompatActivity() {
             }
         }
 
-
         return super.onOptionsItemSelected(item)
     }
 
@@ -177,4 +109,63 @@ class NewPostActivity : AppCompatActivity() {
                 DisplayMetrics.DENSITY_DEFAULT
 
 
+    private fun showMultiImage(uriList: List<Uri>) {
+
+        for (uri in uriList) {
+
+            val newImage = ImageView(this)
+            newImage.setImageURI(uri)
+
+            val lp = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                205.toPx(applicationContext)
+            )
+            lp.setMargins(0, 0, 0, 20.toPx(applicationContext))
+            newImage.layoutParams = lp
+            picture_layout.addView(newImage)
+        }
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.register_button -> finish()
+
+            R.id.picture_btn -> {
+
+                MaterialDialog(this).show {
+                    title(R.string.upload_picture)
+                    cornerRadius(0f)
+                    neutralButton(R.string.cancle)
+
+                    positiveButton(R.string.take_picture) {
+
+                        ImagePicker.with(this@NewPostActivity)
+                            .cameraOnly()    //User can only capture image using Camera
+                            .start()
+
+                    }
+
+                    negativeButton(R.string.select_gallery) {
+
+                        TedImagePicker.with(this@NewPostActivity)
+                            .title(R.string.select_picture)
+                            .backButton(R.drawable.ic_baseline_arrow_back_24)
+                            .buttonText(R.string.complete)
+                            .buttonBackground(R.drawable.md_transparent)
+                            .buttonTextColor(R.color.black)
+                            .showCameraTile(false)
+                            .startMultiImage { uriList -> showMultiImage(uriList) }
+                    }
+                }
+            }
+        }
+    }
 }
+
+
+
+
+
+
+
+
