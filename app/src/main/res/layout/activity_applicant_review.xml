@@ -35,11 +35,11 @@
         android:id="@+id/rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/gmarket_sans_medium"
         android:lineSpacingExtra="6sp"
         android:text="3.5"
-        android:fontFamily="@font/gmarket_sans_medium"
         android:textAppearance="@style/rating"
-        android:layout_marginTop="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
@@ -77,15 +77,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="85dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="16dp"
+
+    <RelativeLayout
+        android:id="@+id/spinner_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:background="#33c7c7c7"
+        android:paddingVertical="7dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/horizontal_line" />
+        app:layout_constraintTop_toBottomOf="@id/horizontal_line">
+
+        <Spinner
+            android:id="@+id/spinner"
+            style="@style/Widget.AppCompat.DropDownItem.Spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/position_array"
+
+            app:theme="@style/SpinnerItemStyle" />
+    </RelativeLayout>
+
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
@@ -93,7 +107,7 @@
         android:layout_height="0dp"
         app:barrierDirection="bottom"
         app:barrierMargin="15dp"
-        app:constraint_referenced_ids="review_count, spinner" />
+        app:constraint_referenced_ids="review_count, spinner_container" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

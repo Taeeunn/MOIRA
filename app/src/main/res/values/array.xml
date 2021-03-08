@@ -3,8 +3,9 @@
 
     <string-array name="education_status_array">
         <item>재학</item>
-        <item>수료</item>
         <item>졸업</item>
+        <item>유예 / 수료</item>
+        <item>중퇴</item>
     </string-array>
 
     <string-array name="sort_array">
@@ -15,6 +16,13 @@
     <string-array name="position_array">
         <item>디자인</item>
         <item>개발자</item>
+    </string-array>
+
+    <string-array name="report_reason">
+        <item>불건전한 게시글</item>
+        <item>상업적인 게시글</item>
+        <item>허위 게시글</item>
+        <item>욕설 및 비난 게시글</item>
     </string-array>
 
 </resources>

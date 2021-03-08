@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 import com.high5ive.android.moira.R
+import kotlinx.android.synthetic.main.activity_add_school.*
 
 class AddSchoolActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,6 +17,10 @@ class AddSchoolActivity : AppCompatActivity() {
         val ab = supportActionBar!!
         ab.setDisplayShowTitleEnabled(false)
         ab.setDisplayHomeAsUpEnabled(true)
+
+        register_button.setOnClickListener {
+            finish()
+        }
 
     }
 

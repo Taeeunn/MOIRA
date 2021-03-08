@@ -3,18 +3,25 @@ package com.high5ive.android.moira.ui.teamfinding.recruit
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.callbacks.onDismiss
+import com.afollestad.materialdialogs.list.listItemsSingleChoice
+import com.google.android.material.snackbar.Snackbar
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.PositionAdapter
 import com.high5ive.android.moira.data.Position
 import com.high5ive.android.moira.ui.teamfinding.apply.ApplyActivity
 import kotlinx.android.synthetic.main.activity_recruit_detail.*
+import kotlinx.android.synthetic.main.activity_team_detail.*
 import kotlinx.android.synthetic.main.recruit_info.*
 
-class RecruitDetailActivity : AppCompatActivity() {
+class RecruitDetailActivity : AppCompatActivity(), View.OnClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recruit_detail)
@@ -26,13 +33,9 @@ class RecruitDetailActivity : AppCompatActivity() {
         ab.setDisplayHomeAsUpEnabled(true)
 
 
-        comment_img_btn.setOnClickListener {
-            startActivity(Intent(this@RecruitDetailActivity, CommentActivity::class.java))
-        }
-
-        apply_btn.setOnClickListener {
-            startActivity(Intent(this@RecruitDetailActivity, ApplyActivity::class.java))
-        }
+        comment_img_btn.setOnClickListener(this)
+        apply_btn.setOnClickListener(this)
+        more_button.setOnClickListener(this)
 
 
         val positionList = arrayListOf(
@@ -57,5 +60,26 @@ class RecruitDetailActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onClick(v: View?) {
+        when(v?.id){
+            R.id.comment_img_btn -> startActivity(Intent(this@RecruitDetailActivity, CommentActivity::class.java))
+
+            R.id.apply_btn -> startActivity(Intent(this@RecruitDetailActivity, ApplyActivity::class.java))
+
+            R.id.more_button -> {
+                MaterialDialog(this).show {
+                    title(R.string.report_reason)
+                    positiveButton(R.string.cancle)
+                    positiveButton(R.string.report)
+
+                    listItemsSingleChoice(R.array.report_reason) { _, _, text ->
+                        val msg = resources.getString(R.string.report_completed) + " " + text
+                        Snackbar.make(v, msg, Snackbar.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
     }
 }

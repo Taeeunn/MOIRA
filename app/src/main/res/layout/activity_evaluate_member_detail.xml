@@ -224,8 +224,8 @@
                         android:layout_width="104dp"
                         android:layout_height="136dp"
                         android:layout_marginHorizontal="5dp"
-                        android:background="@drawable/badge_btn_toggle"
-                        android:textOff="@null"
+                        android:background="@drawable/toggle_btn"
+                        android:textOff="배지명1"
                         android:textOn="@null" />
 
 
@@ -234,8 +234,8 @@
                         android:layout_width="104dp"
                         android:layout_height="136dp"
                         android:layout_marginHorizontal="5dp"
-                        android:background="@drawable/badge_btn_toggle"
-                        android:textOff="@null"
+                        android:background="@drawable/toggle_btn"
+                        android:textOff="배지명2"
                         android:textOn="@null" />
 
 
@@ -244,8 +244,8 @@
                         android:layout_width="104dp"
                         android:layout_height="136dp"
                         android:layout_marginHorizontal="5dp"
-                        android:background="@drawable/badge_btn_toggle"
-                        android:textOff="@null"
+                        android:background="@drawable/toggle_btn"
+                        android:textOff="배지명3"
                         android:textOn="@null" />
 
                     <ToggleButton
@@ -253,8 +253,8 @@
                         android:layout_width="104dp"
                         android:layout_height="136dp"
                         android:layout_marginHorizontal="5dp"
-                        android:background="@drawable/badge_btn_toggle"
-                        android:textOff="@null"
+                        android:background="@drawable/toggle_btn"
+                        android:textOff="배지명4"
                         android:textOn="@null" />
 
                     <ToggleButton
@@ -262,8 +262,8 @@
                         android:layout_width="104dp"
                         android:layout_height="136dp"
                         android:layout_marginHorizontal="5dp"
-                        android:background="@drawable/badge_btn_toggle"
-                        android:textOff="@null"
+                        android:background="@drawable/toggle_btn"
+                        android:textOff="배지명5"
                         android:textOn="@null" />
 
                 </LinearLayout>

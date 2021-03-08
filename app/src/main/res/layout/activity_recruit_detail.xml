@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/recruitdetail_layout"
     tools:context=".ui.teamfinding.recruit.RecruitDetailActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -24,7 +25,7 @@
 
 
             <ImageButton
-                android:id="@+id/button"
+                android:id="@+id/more_button"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginEnd="16dp"

@@ -75,8 +75,8 @@ class UserPoolFragment : Fragment() {
             }
 
             chip.text = tagName
-            chip.setTextAppearance(R.style.tag_text)
-            chip.setCloseIconResource(R.drawable.ic_baseline_close_24)
+//            chip.setTextAppearance(R.style.tag_text)
+//            chip.setCloseIconResource(R.drawable.ic_baseline_close_24)
             chip.isCloseIconEnabled = true
             //Added click listener on close icon to remove tag from ChipGroup
             chip.setOnCloseIconClickListener {

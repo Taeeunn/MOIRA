@@ -111,7 +111,7 @@
         android:id="@+id/best_badge_image"
         android:layout_width="match_parent"
         android:layout_height="165dp"
-        android:src="@drawable/ic_launcher_foreground"
+        android:background="@color/light_gray"
         android:layout_marginTop="23dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

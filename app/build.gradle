@@ -66,7 +66,7 @@ dependencies {
 
     implementation 'gun0912.ted:tedbottompicker:2.0.1'
     implementation 'gun0912.ted:tedpermission:2.2.3'
-//    implementation 'com.afollestad.material-dialogs:core:3.3.0'
+    implementation 'com.afollestad.material-dialogs:core:3.3.0'
 ////    implementation 'gun0912.ted:tedbottompicker:2.0.1'
 //    implementation 'com.github.ShahabGT:InstagramPicker:2.1.1'
 //    implementation 'com.github.dhaval2404:imagepicker-support:1.7.1'

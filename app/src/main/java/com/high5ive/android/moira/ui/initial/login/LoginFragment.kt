@@ -78,6 +78,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
                     } else if (token != null) {
                         Log.i("login", "로그인 성공 ${token.accessToken}")
 
+
                         showTokenInfo()
                         getUserInfo()
                         navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)

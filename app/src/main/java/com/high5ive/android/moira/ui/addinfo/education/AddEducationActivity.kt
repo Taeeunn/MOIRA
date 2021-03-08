@@ -1,6 +1,7 @@
 package com.high5ive.android.moira.ui.addinfo.education
 
 import android.app.DatePickerDialog.OnDateSetListener
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -9,13 +10,17 @@ import android.widget.AdapterView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.callbacks.onDismiss
+import com.afollestad.materialdialogs.list.listItemsSingleChoice
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.YearMonthPickerDialog
 import com.high5ive.android.moira.databinding.ActivityAddEducationBinding
 import kotlinx.android.synthetic.main.activity_add_education.*
+import kotlinx.android.synthetic.main.activity_add_education.view.*
 
 
-class AddEducationActivity : AppCompatActivity() {
+class AddEducationActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityAddEducationBinding
 
@@ -38,39 +43,13 @@ class AddEducationActivity : AppCompatActivity() {
         ab.setDisplayHomeAsUpEnabled(true)
 
 
-        admission_et.setOnClickListener {
-            val pd: YearMonthPickerDialog<View> =
-                YearMonthPickerDialog()
-            pd.setListener(listener)
-            pd.show(supportFragmentManager, "YearMonthPickerTest")
-        }
+        register_button.setOnClickListener(this)
+        school_name_et.setOnClickListener(this)
+        admission_et.setOnClickListener(this)
+        graduation_et.setOnClickListener(this)
+        status_et.setOnClickListener(this)
 
 
-        graduation_et.setOnClickListener {
-            val pd: YearMonthPickerDialog<View> =
-                YearMonthPickerDialog()
-            pd.setListener(listener)
-            pd.show(supportFragmentManager, "YearMonthPickerTest")
-
-        }
-
-
-
-        status_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
-            }
-
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-
-            }
-
-        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -81,5 +60,38 @@ class AddEducationActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+
+    override fun onClick(v: View?) {
+        when(v?.id){
+            R.id.register_button -> finish()
+
+            R.id.school_name_et -> startActivity(Intent(this, AddSchoolActivity::class.java))
+
+            R.id.admission_et -> {
+                val pd: YearMonthPickerDialog<View> = YearMonthPickerDialog()
+                pd.setListener(listener)
+                pd.show(supportFragmentManager, "YearMonthPickerTest")
+            }
+
+            R.id.graduation_et -> {
+                val pd: YearMonthPickerDialog<View> = YearMonthPickerDialog()
+                pd.setListener(listener)
+                pd.show(supportFragmentManager, "YearMonthPickerTest")
+            }
+
+            R.id.status_et -> {
+                MaterialDialog(this).show {
+                    listItemsSingleChoice(R.array.education_status_array) { _, _, text ->
+                        Log.v("dismiss2", "dismiss")
+                        v.status_et.setText(text)
+                    }
+
+
+                }
+            }
+
+        }
     }
 }

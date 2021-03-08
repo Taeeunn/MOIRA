@@ -2,6 +2,7 @@ package com.high5ive.android.moira.ui.teamfinding.newpost
 
 import android.Manifest
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.MenuItem
@@ -14,6 +15,7 @@ import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.common.PermissionCheck
+import com.high5ive.android.moira.ui.teamfinding.search.SearchActivity
 import gun0912.tedbottompicker.TedBottomPicker
 import kotlinx.android.synthetic.main.activity_new_post.*
 
@@ -59,6 +61,11 @@ class NewPostActivity : AppCompatActivity() {
                         picture_layout.addView(newImage)
                     }
                 }
+        }
+
+        register_button.setOnClickListener {
+//            startActivity(Intent(this, SearchActivity::class.java))
+            finish()
         }
     }
 

@@ -22,11 +22,7 @@
             app:theme="@style/SpinnerItemStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:entries="@array/position_array"
-            android:textStyle="normal"
-            android:textSize="12sp"
-            android:textColor="#000000"
-            android:lineSpacingExtra="6sp" />
+            android:entries="@array/position_array" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -45,11 +41,7 @@
             app:theme="@style/SpinnerItemStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:entries="@array/sort_array"
-            android:textStyle="normal"
-            android:textSize="12sp"
-            android:textColor="#000000"
-            android:lineSpacingExtra="6sp" />
+            android:entries="@array/sort_array" />
     </RelativeLayout>
 
 
