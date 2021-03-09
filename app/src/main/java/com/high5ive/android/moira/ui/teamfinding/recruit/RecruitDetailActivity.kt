@@ -18,7 +18,6 @@ import com.high5ive.android.moira.adapter.PositionAdapter
 import com.high5ive.android.moira.data.Position
 import com.high5ive.android.moira.ui.teamfinding.apply.ApplyActivity
 import kotlinx.android.synthetic.main.activity_recruit_detail.*
-import kotlinx.android.synthetic.main.activity_team_detail.*
 import kotlinx.android.synthetic.main.recruit_info.*
 
 class RecruitDetailActivity : AppCompatActivity(), View.OnClickListener{

@@ -15,8 +15,11 @@ import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.MemberAdapter
 import com.high5ive.android.moira.data.Member
 import com.high5ive.android.moira.databinding.ActivityTeamDetailBinding
+import com.high5ive.android.moira.ui.myteam.evaluate.EvaluateMemberDetailActivity
 import com.high5ive.android.moira.ui.teamfinding.user.UserProfileActivity
 import kotlinx.android.synthetic.main.activity_team_detail.*
+import kotlinx.android.synthetic.main.activity_team_detail.leader
+import kotlinx.android.synthetic.main.activity_team_detail.recycler_view
 
 
 class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
@@ -40,8 +43,8 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
         binding.leader.member = Member("팀장 닉네임", "android 개발자")
 
 
-        more_button2.setOnClickListener(this)
-
+        more_button.setOnClickListener(this)
+        leader.setOnClickListener(this)
 
         val members = arrayListOf<Member>()
         for (i in 0..5) {
@@ -76,7 +79,7 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.more_button2 -> {
+            R.id.more_button -> {
                 MaterialDialog(this).show {
                     cornerRadius(4f)
                     title(R.string.complete_project)
@@ -88,6 +91,10 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
 
                     negativeButton(R.string.cancle)
                 }
+            }
+
+            R.id.leader -> {
+                startActivity(Intent(this, UserProfileActivity::class.java))
             }
         }
     }
