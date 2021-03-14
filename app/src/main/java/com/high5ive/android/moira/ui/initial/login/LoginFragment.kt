@@ -1,6 +1,7 @@
 package com.high5ive.android.moira.ui.initial.login
 
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -11,10 +12,19 @@ import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.high5ive.android.moira.R
+import com.high5ive.android.moira.data.retrofit.LoginUser
+import com.high5ive.android.moira.network.RetrofitClient
+import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.initial.OnTransitionListener
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.user.UserApiClient
 import kotlinx.android.synthetic.main.login_fragment.*
+import okhttp3.MediaType
+import okhttp3.RequestBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
 
 class LoginFragment : Fragment(), View.OnClickListener {
 
@@ -26,6 +36,11 @@ class LoginFragment : Fragment(), View.OnClickListener {
     private lateinit var viewModel: LoginViewModel
     lateinit var navController: NavController
     private var onTransitionListener: OnTransitionListener? = null
+
+    lateinit var retrofit: Retrofit
+    lateinit var myAPI: RetrofitService
+//    lateinit var token_: String
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +54,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
         navController = Navigation.findNavController(view)
 
+        initRetrofit()
         lookaround_text.setOnClickListener(this)
         kakao_login_btn.setOnClickListener(this)
     }
@@ -81,7 +97,9 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
                         showTokenInfo()
                         getUserInfo()
+                        loginServer(token.accessToken)
                         navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
+
                     }
                 }
 
@@ -89,41 +107,84 @@ class LoginFragment : Fragment(), View.OnClickListener {
                 if (UserApiClient.instance.isKakaoTalkLoginAvailable(requireContext())) {
                     UserApiClient.instance.loginWithKakaoTalk(requireContext(), callback = callback)
                 } else {
-                    UserApiClient.instance.loginWithKakaoAccount(requireContext(), callback = callback)
+                    UserApiClient.instance.loginWithKakaoAccount(
+                        requireContext(),
+                        callback = callback
+                    )
                 }
             }
 
         }
     }
 
-    private fun showTokenInfo(){
+    private fun showTokenInfo() {
         // 토큰 정보 보기
         UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
             if (error != null) {
                 Log.e("token", "토큰 정보 보기 실패", error)
-            }
-            else if (tokenInfo != null) {
-                Log.e("token", "토큰 정보 보기 성공" +
-                        "\n회원번호: ${tokenInfo.id}" +
-                        "\n만료시간: ${tokenInfo.expiresIn} 초")
+            } else if (tokenInfo != null) {
+                Log.e(
+                    "token", "토큰 정보 보기 성공" +
+                            "\n회원번호: ${tokenInfo.id}" +
+                            "\n만료시간: ${tokenInfo.expiresIn} 초"
+                )
             }
         }
     }
 
-    private fun getUserInfo(){
+    private fun getUserInfo() {
         // 사용자 정보 요청 (기본)
         UserApiClient.instance.me { user, error ->
             if (error != null) {
                 Log.e("user", "사용자 정보 요청 실패", error)
-            }
-            else if (user != null) {
-                Log.i("user", "사용자 정보 요청 성공" +
-                        "\n회원번호: ${user.id}" +
-                        "\n이메일: ${user.kakaoAccount?.email}" +
-                        "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
-                        "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}")
+            } else if (user != null) {
+                Log.i(
+                    "user", "사용자 정보 요청 성공" +
+                            "\n회원번호: ${user.id}" +
+                            "\n이메일: ${user.kakaoAccount?.email}" +
+                            "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
+                            "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}"
+                )
             }
         }
+
+
+    }
+
+    private fun initRetrofit() {
+
+        retrofit = RetrofitClient.getInstance() // 2에서 만든 Retrofit client의 instance를 불러옵니다.
+        myAPI = retrofit.create(RetrofitService::class.java) // 여기서 retrofit이 우리의 interface를 구현해주고
+    }
+
+    private fun loginServer(accessToken: String){
+
+        Runnable {
+
+            myAPI.loginUser("kakao", accessToken).enqueue(object : Callback<LoginUser> {
+                override fun onFailure(call: Call<LoginUser>, t: Throwable) {
+                    t.printStackTrace()
+                }
+
+                override fun onResponse(call: Call<LoginUser>, response: Response<LoginUser>) {
+                    Log.v("success", response.code().toString())
+                    Log.v("success", response.body().toString())
+                    val code: Int = response.body()?.code ?: 0
+                    val succeed: Boolean = response.body()?.succeed!!
+                    val message: String = response.body()?.msg ?: "no message"
+                    val data: String = response.body()?.data?: "no data"
+
+                    Log.v("success", succeed.toString())
+                    Log.v("code", code.toString())
+                    Log.v("message", message)
+                    Log.v("data", data)
+
+                    val preferences: SharedPreferences = activity!!.getSharedPreferences("moira", Context.MODE_PRIVATE)
+                    preferences.edit().putString("token", data).apply()
+
+                }
+            })
+        }.run()
     }
 
 }

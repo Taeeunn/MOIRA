@@ -30,6 +30,7 @@ class PostAdapter(val items: List<Post>,
         }
 
 
+
         return viewHolder
     }
 
