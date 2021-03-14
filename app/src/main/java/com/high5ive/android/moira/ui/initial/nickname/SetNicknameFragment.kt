@@ -1,8 +1,11 @@
 package com.high5ive.android.moira.ui.initial.nickname
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -24,6 +27,8 @@ class SetNicknameFragment : Fragment() {
     private lateinit var viewModel: SetNicknameViewModel
 
     lateinit var navController : NavController
+    lateinit var token_: String
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +42,11 @@ class SetNicknameFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         navController = Navigation.findNavController(view)
+
+        val preferences: SharedPreferences =requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
+        token_ = preferences.getString("token", null).toString()
+
+        Log.v("nicknametoken", token_)
 
         to_next_btn.setOnClickListener {
             navController.navigate(R.id.action_setNicknameFragment_to_setPositionFragment)

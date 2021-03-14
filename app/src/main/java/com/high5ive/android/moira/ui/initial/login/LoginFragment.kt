@@ -98,7 +98,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
                         showTokenInfo()
                         getUserInfo()
                         loginServer(token.accessToken)
-                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
+
 
                     }
                 }
@@ -179,8 +179,12 @@ class LoginFragment : Fragment(), View.OnClickListener {
                     Log.v("message", message)
                     Log.v("data", data)
 
-                    val preferences: SharedPreferences = activity!!.getSharedPreferences("moira", Context.MODE_PRIVATE)
+                    val preferences: SharedPreferences = requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
                     preferences.edit().putString("token", data).apply()
+
+                    if (succeed){
+                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
+                    }
 
                 }
             })
