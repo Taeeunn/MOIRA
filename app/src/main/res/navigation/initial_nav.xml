@@ -3,8 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/initial_nav"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/firstFragment">
 
+
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="com.high5ive.android.moira.ui.initial.FirstFragment"
+        android:label="fragment_first"
+        tools:layout="@layout/fragment_first" >
+        <action
+            android:id="@+id/action_firstFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.high5ive.android.moira.ui.initial.login.LoginFragment"
@@ -52,4 +62,5 @@
         app:exitAnim="@anim/fragment_open_exit"
         app:popEnterAnim="@anim/fragment_close_enter"
         app:popExitAnim="@anim/fragment_close_exit"/>
+
 </navigation>
