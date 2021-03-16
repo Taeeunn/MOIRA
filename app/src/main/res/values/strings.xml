@@ -3,7 +3,7 @@
     <string name="naver_client_id">Wb1bLmcaPiT1E6VW_xI3</string>
     <string name="naver_client_secret">cW1A3BXG9Z</string>
     <string name="naver_client_name">MOIRA</string>
-    <string name="app_description">최고의 팀이 만들어지는 곳</string>
+    <string name="app_description">최고의 팀이 만들어지는 곳, 모이라!</string>
     <string name="apply_complete">지원을 완료했어요!</string>
     <string name="home">홈으로</string>
     <string name="move_apply_list">지원목록 보러가기</string>
