@@ -32,25 +32,29 @@
             android:layout_height="match_parent">
 
             <ToggleButton
-                android:id="@+id/position1_btn"
+                android:id="@+id/develop_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textOn="활성화한 포지션"
-                android:textOff="포지션1"
-                android:background="@drawable/toggle_btn"
-                android:layout_marginEnd="4dp"
+                android:textOn="@string/develop"
+                android:textOff="@string/develop"
+                android:gravity="center_horizontal|bottom"
+                android:paddingBottom="20dp"
+                android:textAppearance="@style/position_text"
+                android:background="@drawable/develop_toggle_btn"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/enter_nickname_text"/>
 
 
             <ToggleButton
-                android:id="@+id/position2_btn"
+                android:id="@+id/plan_btn"
                 android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:textOn="활성화한 포지션"
-                android:textOff="포지션2"
-                android:background="@drawable/toggle_btn"
-                android:layout_marginStart="4dp"
+                android:layout_height="match_parent"
+                android:textOn="@string/plan"
+                android:textOff="@string/plan"
+                android:gravity="center_horizontal|bottom"
+                android:paddingBottom="20dp"
+                android:textAppearance="@style/position_text"
+                android:background="@drawable/plan_toggle_btn"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/enter_nickname_text"/>
 
@@ -62,25 +66,16 @@
             android:layout_marginTop="9dp">
 
             <ToggleButton
-                android:id="@+id/position3_btn"
+                android:id="@+id/design_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textOn="활성화한 포지션"
-                android:textOff="포지션3"
-                android:background="@drawable/toggle_btn"
+                android:textOn="@string/design"
+                android:textOff="@string/design"
+                android:gravity="center_horizontal|bottom"
+                android:paddingBottom="20dp"
                 android:layout_marginEnd="4dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/enter_nickname_text"/>
-
-
-            <ToggleButton
-                android:id="@+id/position4_btn"
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:textOn="활성화한 포지션"
-                android:textOff="포지션4"
-                android:background="@drawable/toggle_btn"
-                android:layout_marginStart="4dp"
+                android:textAppearance="@style/position_text"
+                android:background="@drawable/design_toggle_btn"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/enter_nickname_text"/>
 

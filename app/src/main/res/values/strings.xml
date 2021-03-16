@@ -135,4 +135,11 @@
     <string name="report_reason">신고 사유</string>
     <string name="report">신고하기</string>
     <string name="report_completed">신고가 완료되었습니다:</string>
+    <string name="server_developer">서버 개발자</string>
+    <string name="graphic_designer">그래픽 디자이너</string>
+    <string name="motion_graphic_designer">모션 그래픽 디자이너</string>
+    <string name="product_designer">제품 디자이너</string>
+    <string name="develop">개발</string>
+    <string name="plan">기획</string>
+    <string name="design">디자인</string>
 </resources>

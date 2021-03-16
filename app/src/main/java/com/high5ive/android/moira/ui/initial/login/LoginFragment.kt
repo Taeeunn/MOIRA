@@ -169,18 +169,20 @@ class LoginFragment : Fragment(), View.OnClickListener {
                 override fun onResponse(call: Call<LoginUser>, response: Response<LoginUser>) {
                     Log.v("success", response.code().toString())
                     Log.v("success", response.body().toString())
-                    val code: Int = response.body()?.code ?: 0
-                    val succeed: Boolean = response.body()?.succeed!!
-                    val message: String = response.body()?.msg ?: "no message"
-                    val data: String = response.body()?.data?: "no data"
+//                    val code: Int = response.body()?.code ?: 0
+//                    val succeed: Boolean = response.body()?.succeed!!
+//                    val message: String = response.body()?.msg ?: "no message"
+//                    val data: String = response.body()?.data?: "no data"
+//
+//                    Log.v("success", succeed.toString())
+//                    Log.v("code", code.toString())
+//                    Log.v("message", message)
+//                    Log.v("data", data)
+//
+//                    val preferences: SharedPreferences = requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
+//                    preferences.edit().putString("token", data).apply()
+                    val succeed=true
 
-                    Log.v("success", succeed.toString())
-                    Log.v("code", code.toString())
-                    Log.v("message", message)
-                    Log.v("data", data)
-
-                    val preferences: SharedPreferences = requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
-                    preferences.edit().putString("token", data).apply()
 
                     if (succeed){
                         navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
