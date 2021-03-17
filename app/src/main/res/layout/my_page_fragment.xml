@@ -295,18 +295,33 @@
 
 
             <TextView
-                android:id="@+id/notice"
+                android:id="@+id/account_setting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:lineSpacingExtra="6sp"
-                android:text="@string/notice"
+                android:text="@string/account_setting"
                 android:textColor="#262626"
                 android:textSize="14sp"
                 android:textStyle="normal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/customer_service" />
+
+
+            <TextView
+                android:id="@+id/noti_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:lineSpacingExtra="6sp"
+                android:text="알림 설정"
+                android:textColor="#262626"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/account_setting" />
 
 
             <TextView
@@ -316,27 +331,12 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:lineSpacingExtra="6sp"
-                android:text="@string/question"
+                android:text="문의하기"
                 android:textColor="#262626"
                 android:textSize="14sp"
                 android:textStyle="normal"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/notice" />
-
-
-            <TextView
-                android:id="@+id/help"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:lineSpacingExtra="6sp"
-                android:text="도움말"
-                android:textColor="#262626"
-                android:textSize="14sp"
-                android:textStyle="normal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/question" />
+                app:layout_constraintTop_toBottomOf="@+id/noti_setting" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

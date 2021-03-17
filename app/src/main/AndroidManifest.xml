@@ -3,21 +3,21 @@
     package="com.high5ive.android.moira">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
-
-
-    <application android:requestLegacyExternalStorage="true"
+    <application
         android:name=".login.KakaoLoginApplication"
         android:allowBackup="true"
         android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MOIRA">
+        <activity android:name=".ui.mypage.cs.AskActivity"></activity>
         <activity android:name=".ui.initial.InitialActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,19 +33,19 @@
         <activity android:name=".ui.mypage.scrap.ScrapListActivity" />
         <activity android:name=".ui.message.MessageBoxActivity" />
         <activity android:name=".ui.notify.NotifyActivity" />
-        <activity android:name="com.high5ive.android.moira.ui.mypage.edit.addinfo.certificate.AddCertificateActivity" />
-        <activity android:name="com.high5ive.android.moira.ui.mypage.edit.addinfo.award.AddAwardHistoryActivity" />
-        <activity android:name="com.high5ive.android.moira.ui.mypage.edit.addinfo.tag.AddTagActivity" />
-        <activity android:name="com.high5ive.android.moira.ui.mypage.edit.addinfo.link.AddLinkActivity" />
-        <activity android:name="com.high5ive.android.moira.ui.mypage.edit.addinfo.career.AddJobDepartmentActivity" />
-        <activity android:name="com.high5ive.android.moira.ui.mypage.edit.addinfo.career.AddCompanyActivity" />
-        <activity android:name="com.high5ive.android.moira.ui.mypage.edit.addinfo.career.AddCareerActivity" />
-        <activity android:name="com.high5ive.android.moira.ui.mypage.edit.addinfo.education.AddMajorActivity" />
+        <activity android:name=".ui.mypage.edit.addinfo.certificate.AddCertificateActivity" />
+        <activity android:name=".ui.mypage.edit.addinfo.award.AddAwardHistoryActivity" />
+        <activity android:name=".ui.mypage.edit.addinfo.tag.AddTagActivity" />
+        <activity android:name=".ui.mypage.edit.addinfo.link.AddLinkActivity" />
+        <activity android:name=".ui.mypage.edit.addinfo.career.AddJobDepartmentActivity" />
+        <activity android:name=".ui.mypage.edit.addinfo.career.AddCompanyActivity" />
+        <activity android:name=".ui.mypage.edit.addinfo.career.AddCareerActivity" />
+        <activity android:name=".ui.mypage.edit.addinfo.education.AddMajorActivity" />
         <activity android:name=".ui.teamfinding.search.SearchActivity" />
         <activity android:name=".ui.applicant.profile.ApplicantProfileActivity" />
         <activity android:name=".ui.myteam.evaluate.EvaluateMemberDetailActivity" />
-        <activity android:name="com.high5ive.android.moira.ui.mypage.edit.addinfo.education.AddSchoolActivity" />
-        <activity android:name="com.high5ive.android.moira.ui.mypage.edit.addinfo.education.AddEducationActivity" />
+        <activity android:name=".ui.mypage.edit.addinfo.education.AddSchoolActivity" />
+        <activity android:name=".ui.mypage.edit.addinfo.education.AddEducationActivity" />
         <activity android:name=".ui.applicant.review.ApplicantReviewActivity" />
         <activity android:name=".ui.mypage.post.PostListActivity" />
         <activity android:name=".ui.mypage.apply.ApplyListActivity" />

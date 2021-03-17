@@ -107,7 +107,6 @@
     <string name="my_activity">내 활동</string>
     <string name="received_evaluation">내가 받은 평가</string>
     <string name="customer_service">고객센터</string>
-    <string name="notice">공지사항</string>
     <string name="question">문의하기</string>
     <string name="scrap_list">스크랩 목록</string>
     <string name="user_nickname">사용자 닉네임</string>
@@ -140,4 +139,8 @@
     <string name="develop">개발</string>
     <string name="plan">기획</string>
     <string name="design">디자인</string>
+    <string name="enter_ask_content">문의하실 내용을 입력해주세요.</string>
+    <string name="enter_title">제목을 입력해주세요.</string>
+    <string name="ask">문의하기</string>
+    <string name="account_setting">계정 설정</string>
 </resources>
