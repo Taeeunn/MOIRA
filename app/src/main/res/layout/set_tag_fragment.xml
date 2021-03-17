@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="46dp"
-        android:text="@string/use_purpose_related_tag"
+        android:text="@string/detail_position"
         android:textAppearance="@style/tag_title_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/select_tag_text" />
@@ -50,28 +50,35 @@
             style="@style/MaterialChips"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="태그명태그명태그명" />
+            android:text="웹 프론트 개발자" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/user_purpose_tag3"
             style="@style/MaterialChips"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="태그명" />
+            android:text="웹 백엔드 개발자" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/user_purpose_tag4"
             style="@style/MaterialChips"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="태그명태그명태그" />
+            android:text="웹 풀스택 개발자" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/user_purpose_tag5"
             style="@style/MaterialChips"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="태그명" />
+            android:text="안드로이드 개발자" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/user_purpose_tag6"
+            style="@style/MaterialChips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="iOS 개발자" />
 
     </com.google.android.material.chip.ChipGroup>
 
@@ -80,8 +87,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="디자인 관련 태그"
-        android:textAppearance="@style/tag_title_text"
+        android:text="관심 태그"
+       android:textAppearance="@style/tag_title_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/use_purpose_tag_group" />
 
@@ -101,35 +108,14 @@
             style="@style/MaterialChips"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/graphic_designer" />
+            android:text="공모전" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/design_tag2"
             style="@style/MaterialChips"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/motion_graphic_designer" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/design_tag3"
-            style="@style/MaterialChips"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/product_designer" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/design_tag4"
-            style="@style/MaterialChips"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="태그명태그명태그" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/design_tag5"
-            style="@style/MaterialChips"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="태그명" />
+            android:text="단기 프로젝트" />
 
     </com.google.android.material.chip.ChipGroup>
 

@@ -5,7 +5,8 @@
     <string name="naver_client_name">MOIRA</string>
     <string name="app_description">최고의 팀이 만들어지는 곳, 모이라!</string>
     <string name="apply_complete">지원을 완료했어요!</string>
-    <string name="home">홈으로</string>
+    <string name="to_home">홈으로</string>
+    <string name="home">홈</string>
     <string name="move_apply_list">지원목록 보러가기</string>
     <string name="find_contest">공모전 찾기</string>
     <string name="register">등록하기</string>
@@ -69,7 +70,7 @@
     <string name="to_next">다음으로</string>
     <string name="select_position">해당하는 포지션을\n선택해주세요.</string>
     <string name="select_tag">내가 관심있는 태그를\n선택해주세요.</string>
-    <string name="use_purpose_related_tag">사용목적 관련 태그</string>
+    <string name="detail_position">상세 포지션</string>
     <string name="start">시작하기</string>
     <string name="search">검색</string>
     <string name="do_search">검색하기</string>
@@ -136,9 +137,6 @@
     <string name="report">신고하기</string>
     <string name="report_completed">신고가 완료되었습니다:</string>
     <string name="server_developer">서버 개발자</string>
-    <string name="graphic_designer">그래픽 디자이너</string>
-    <string name="motion_graphic_designer">모션 그래픽 디자이너</string>
-    <string name="product_designer">제품 디자이너</string>
     <string name="develop">개발</string>
     <string name="plan">기획</string>
     <string name="design">디자인</string>

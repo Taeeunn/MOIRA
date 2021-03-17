@@ -172,8 +172,12 @@
     <android.widget.Button
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="#989898"
+        android:background="@color/main_blue"
         android:text="@string/recruitment_completed"
+        android:textSize="14sp"
+        android:textColor="#ffffff"
+        android:lineSpacingExtra="6sp"
+        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 

@@ -123,15 +123,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:orientation="horizontal"
-                android:background="#dedede"
+                android:background="@color/white"
                 android:paddingHorizontal="16dp"
+                android:elevation="20dp"
                 app:layout_constraintTop_toBottomOf="@+id/picture_layout">
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/picture_btn"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_baseline_photo_camera_24"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_gallery"
                     android:layout_gravity="center_vertical"/>
 
             </LinearLayout>

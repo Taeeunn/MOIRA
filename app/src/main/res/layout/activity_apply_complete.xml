@@ -7,17 +7,16 @@
     tools:context=".ui.teamfinding.apply.ApplyCompleteActivity">
 
 
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="256dp"
-        android:layout_marginTop="80dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_check_circle"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
-
+        app:layout_constraintVertical_bias="0.301" />
 
     <TextView
         android:id="@+id/textView"
@@ -51,7 +50,7 @@
         android:layout_marginBottom="208dp"
         android:paddingHorizontal="15dp"
         android:paddingVertical="7dp"
-        android:text="@string/home"
+        android:text="@string/to_home"
         android:background="@drawable/round_rectangle_2"
         android:backgroundTint="#f2f2f2"
         android:textStyle="normal"
@@ -81,5 +80,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/barrier"
         app:layout_constraintStart_toEndOf="@+id/to_home_btn" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -67,7 +67,7 @@
             android:layout_height="36dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="20dp"
-            android:background="#33c7c7c7"
+            android:background="#260068ff"
             android:text="@string/evaluate_team_member"
             android:textAppearance="@style/favorite_tag"
             app:layout_constraintBottom_toBottomOf="parent"

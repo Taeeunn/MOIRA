@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
         android:layout_marginStart="16dp"
-        android:text="@string/use_purpose_related_tag"
+        android:text="관심 태그"
         android:textAppearance="@style/tag_title_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />

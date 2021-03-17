@@ -12,7 +12,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#f0f0f0">
+        android:background="#260068ff">
 
         <ImageView
             android:id="@+id/contest_image"
@@ -35,7 +35,7 @@
             android:layout_marginEnd="5dp"
             android:lineSpacingExtra="6sp"
             android:text="모임장"
-            android:background="#33b9b9b9"
+            android:background="#330068ff"
             android:textAppearance="@style/leader_tag"
             android:gravity="center"
             app:layout_constraintLeft_toRightOf="@+id/contest_image"
@@ -67,7 +67,7 @@
             android:layout_marginEnd="55dp"
             android:lineSpacingExtra="6sp"
             android:text="@{member.member_role}"
-            android:textColor="#bcbcbc"
+            android:textColor="#8f8f8f"
             android:textSize="11sp"
             app:layout_constraintLeft_toRightOf="@+id/contest_image"
             app:layout_constraintRight_toLeftOf="@+id/move_to_member"
@@ -79,7 +79,7 @@
             android:layout_height="12dp"
             android:layout_marginEnd="16dp"
             android:background="@android:color/transparent"
-            android:tint="#b1b1b1"
+            android:tint="#8f8f8f"
             android:scaleType="fitCenter"
             app:layout_constraintBottom_toBottomOf="@+id/contest_image"
             app:layout_constraintRight_toRightOf="parent"
