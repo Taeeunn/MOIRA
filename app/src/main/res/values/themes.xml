@@ -20,7 +20,7 @@
 <!--        <item name="android:radioButtonStyle">@style/customRadioButtonFontStyle</item>-->
 <!--        <item name="android:checkboxStyle">@style/customCheckboxFontStyle</item>-->
         <item name="md_color_title">#4a4a4a</item>
-        <item name="md_color_button_text">#4a4a4a</item>
+        <item name="md_color_button_text">@color/main_blue</item>
         <item name="md_font_title">@font/noto_sans_bold</item>
         <item name="md_font_button">@font/noto_sans_medium</item>
         <item name="md_ripple_color">@color/main_blue</item>
