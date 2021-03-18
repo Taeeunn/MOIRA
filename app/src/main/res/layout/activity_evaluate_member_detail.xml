@@ -204,70 +204,53 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/badge" />
 
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="30dp"
-                android:paddingVertical="5dp"
-                android:paddingBottom="70dp"
-                android:scrollbars="none"
-                app:layout_constraintTop_toBottomOf="@+id/badge_comment">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <ToggleButton
-                        android:id="@+id/tag_image1"
-                        android:layout_width="104dp"
-                        android:layout_height="136dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:background="@drawable/develop_toggle_btn"
-                        android:textOff="배지명1"
-                        android:textOn="@null" />
+            <ToggleButton
+                android:id="@+id/badge_image1"
+                android:layout_width="0dp"
+                android:layout_height="136dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/badge1_toggle"
+                android:textOff="@null"
+                android:textOn="@null"
+                android:layout_marginTop="26dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/badge_image2"
+                app:layout_constraintTop_toBottomOf="@+id/badge_comment" />
 
 
-                    <ToggleButton
-                        android:id="@+id/tag_image2"
-                        android:layout_width="104dp"
-                        android:layout_height="136dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:background="@drawable/develop_toggle_btn"
-                        android:textOff="배지명2"
-                        android:textOn="@null" />
+            <ToggleButton
+                android:id="@+id/badge_image2"
+                android:layout_width="0dp"
+                android:layout_height="136dp"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/badge2_toggle"
+                android:textOff="@null"
+                android:textOn="@null"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="26dp"
+                app:layout_constraintStart_toEndOf="@id/badge_image1"
+                app:layout_constraintEnd_toStartOf="@id/badge_image3"
+                app:layout_constraintTop_toBottomOf="@+id/badge_comment" />
 
 
-                    <ToggleButton
-                        android:id="@+id/tag_image3"
-                        android:layout_width="104dp"
-                        android:layout_height="136dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:background="@drawable/develop_toggle_btn"
-                        android:textOff="배지명3"
-                        android:textOn="@null" />
+            <ToggleButton
+                android:id="@+id/badge_image3"
+                android:layout_width="0dp"
+                android:layout_height="136dp"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/badge3_toggle"
+                android:textOff="@null"
+                android:textOn="@null"
+                android:layout_marginEnd="25dp"
+                android:layout_marginTop="26dp"
+                app:layout_constraintStart_toEndOf="@id/badge_image2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/badge_comment" />
 
-                    <ToggleButton
-                        android:id="@+id/tag_image4"
-                        android:layout_width="104dp"
-                        android:layout_height="136dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:background="@drawable/develop_toggle_btn"
-                        android:textOff="배지명4"
-                        android:textOn="@null" />
 
-                    <ToggleButton
-                        android:id="@+id/tag_image5"
-                        android:layout_width="104dp"
-                        android:layout_height="136dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:background="@drawable/develop_toggle_btn"
-                        android:textOff="배지명5"
-                        android:textOn="@null" />
-
-                </LinearLayout>
-            </HorizontalScrollView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
