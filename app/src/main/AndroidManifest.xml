@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MOIRA">
-        <activity android:name=".ui.mypage.cs.AskActivity"></activity>
+        <activity android:name=".ui.home.ProjectStartActivity"></activity>
+        <activity android:name=".ui.mypage.cs.AskActivity" />
         <activity android:name=".ui.initial.InitialActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

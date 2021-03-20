@@ -44,6 +44,10 @@ class HomeFragment : Fragment() {
         chat_frame.setOnClickListener {
             startActivity(Intent(context, MessageBoxActivity::class.java))
         }
+
+        project_start_card.setOnClickListener {
+            startActivity(Intent(context, ProjectStartActivity::class.java))
+        }
     }
 
 }
