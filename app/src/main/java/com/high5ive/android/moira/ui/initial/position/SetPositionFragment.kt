@@ -1,16 +1,22 @@
 package com.high5ive.android.moira.ui.initial.position
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ToggleButton
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.high5ive.android.moira.R
+import kotlinx.android.synthetic.main.set_nickname_fragment.*
 import kotlinx.android.synthetic.main.set_position_fragment.*
+import kotlinx.android.synthetic.main.set_position_fragment.to_next_btn
+import kotlinx.android.synthetic.main.set_position_fragment.toolbar
 
 class SetPositionFragment : Fragment() {
 
@@ -68,12 +74,29 @@ class SetPositionFragment : Fragment() {
             }
         }
 
+        setHasOptionsMenu(true);
+        (activity as AppCompatActivity?)!!.setSupportActionBar(toolbar)
+        val ab = (activity as AppCompatActivity?)!!.supportActionBar!!
+        ab.setDisplayShowTitleEnabled(false)
+        ab.setDisplayHomeAsUpEnabled(true)
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(SetPositionViewModel::class.java)
         // TODO: Use the ViewModel
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                Log.v("hello", "hello")
+                navController.popBackStack()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

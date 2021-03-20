@@ -20,4 +20,5 @@ class InitialActivity : AppCompatActivity(), OnTransitionListener{
     override fun OnTransitionListener() {
         startActivity(Intent(this, MainActivity::class.java))
     }
+
 }

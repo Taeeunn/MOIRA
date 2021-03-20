@@ -6,16 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".ui.initial.nickname.SetNicknameFragment">
 
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:contentInsetStartWithNavigation="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:theme="@style/toolbar_theme_back"/>
+
+
     <TextView
         android:id="@+id/enter_nickname_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hello_enter_nickname"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="25dp"
         android:layout_marginStart="16dp"
         android:textAppearance="@style/hello_enter_nickname"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
 
 <!--    <EditText-->

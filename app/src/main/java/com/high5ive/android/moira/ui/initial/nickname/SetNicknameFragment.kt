@@ -3,19 +3,20 @@ package com.high5ive.android.moira.ui.initial.nickname
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MotionEvent
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.high5ive.android.moira.R
 import kotlinx.android.synthetic.main.set_nickname_fragment.*
+
 
 class SetNicknameFragment : Fragment() {
 
@@ -37,6 +38,7 @@ class SetNicknameFragment : Fragment() {
         return inflater.inflate(R.layout.set_nickname_fragment, container, false)
     }
 
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -52,7 +54,11 @@ class SetNicknameFragment : Fragment() {
             navController.navigate(R.id.action_setNicknameFragment_to_setPositionFragment)
         }
 
-
+        setHasOptionsMenu(true);
+        (activity as AppCompatActivity?)!!.setSupportActionBar(toolbar)
+        val ab = (activity as AppCompatActivity?)!!.supportActionBar!!
+        ab.setDisplayShowTitleEnabled(false)
+        ab.setDisplayHomeAsUpEnabled(true)
 //        enter_nickname_et.setOnClickListener{
 //            nickname_text_layout.isErrorEnabled = true;
 //            nickname_text_layout.error = "*이미 사용중인 닉네임입니다.";
@@ -69,6 +75,17 @@ class SetNicknameFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(SetNicknameViewModel::class.java)
         // TODO: Use the ViewModel
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                Log.v("hello", "hello")
+                navController.popBackStack()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }
