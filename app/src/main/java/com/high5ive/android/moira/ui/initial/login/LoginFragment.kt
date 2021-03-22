@@ -162,7 +162,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
         Runnable {
 
-            myAPI.loginUser("kakao", accessToken).enqueue(object : Callback<LoginUser> {
+            myAPI.loginUser(accessToken, "kakaojj").enqueue(object : Callback<LoginUser> {
                 override fun onFailure(call: Call<LoginUser>, t: Throwable) {
                     t.printStackTrace()
                 }
@@ -170,19 +170,21 @@ class LoginFragment : Fragment(), View.OnClickListener {
                 override fun onResponse(call: Call<LoginUser>, response: Response<LoginUser>) {
                     Log.v("success", response.code().toString())
                     Log.v("success", response.body().toString())
-//                    val code: Int = response.body()?.code ?: 0
-//                    val succeed: Boolean = response.body()?.succeed!!
-//                    val message: String = response.body()?.msg ?: "no message"
-//                    val data: String = response.body()?.data?: "no data"
+                    val code: Int = response.body()?.code ?: 0
+                    val firstLogin: Boolean = response.body()?.data?.firstLogin ?: false
+                    val jwtToken: String = response.body()?.data?.jwtToken ?: "no token"
+                    val msg: String = response.body()?.msg ?: "no msg"
+                    val succeed: Boolean = response.body()?.succeed ?: false
+
+
+                    Log.v("success", succeed.toString())
+                    Log.v("code", code.toString())
+                    Log.v("firstLogin", firstLogin.toString())
+                    Log.v("msg", msg)
+
 //
-//                    Log.v("success", succeed.toString())
-//                    Log.v("code", code.toString())
-//                    Log.v("message", message)
-//                    Log.v("data", data)
-//
-//                    val preferences: SharedPreferences = requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
-//                    preferences.edit().putString("token", data).apply()
-                    val succeed=true
+                    val preferences: SharedPreferences = requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
+                    preferences.edit().putString("token", jwtToken).apply()
 
 
                     if (succeed){

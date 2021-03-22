@@ -24,11 +24,11 @@ interface RetrofitService {
 //        @Part("nickname") nickname: RequestBody,
 //        @Part img : MultipartBody.Part): Call<DataClass>
 
-    @POST("signup")
+    @POST("login")
     @FormUrlEncoded
     fun loginUser(
-        @Field("provider") provider : String,
-        @Field("token") token : String): Call<LoginUser>
+        @Field("accessToken") accessToken : String,
+        @Field("socialProvider") socialProvider : String): Call<LoginUser>
 
 
 //    //B1 -> ok

@@ -7,7 +7,12 @@ package com.high5ive.android.moira.data.retrofit
  */
 data class LoginUser(
     val code: Int,
-    val data: String,
+    val data: LoginData,
     val msg: String,
     val succeed: Boolean
+)
+
+data class LoginData(
+    val firstLogin: Boolean,
+    val jwtToken: String
 )
