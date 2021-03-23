@@ -1,9 +1,6 @@
 package com.high5ive.android.moira.network
 
-import com.high5ive.android.moira.data.retrofit.LoginInfo
-import com.high5ive.android.moira.data.retrofit.LoginUser
-import com.high5ive.android.moira.data.retrofit.MyPage
-import com.high5ive.android.moira.data.retrofit.ResponseData
+import com.high5ive.android.moira.data.retrofit.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -31,11 +28,18 @@ interface RetrofitService {
         @Body body: LoginInfo
     ): Call<LoginUser>
 
+
+    // 2. 회원가입
     // 닉네임 중복 검사
     @GET("signup/nickname")
     fun checkNickname(
         @Query("nickname") nickname : String
     ): Call<ResponseData>
+
+    // 모든 관심 태그 목록
+    @GET("signup/hashtags")
+    fun getHashTags(
+    ): Call<HashTags>
 
 
     // 마이페이지

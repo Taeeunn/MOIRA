@@ -13,11 +13,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.high5ive.android.moira.R
+import com.high5ive.android.moira.data.retrofit.HashTagItem
+import com.high5ive.android.moira.data.retrofit.HashTags
+import com.high5ive.android.moira.data.retrofit.ResponseData
+import com.high5ive.android.moira.network.RetrofitClient
+import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.initial.OnTransitionListener
 import kotlinx.android.synthetic.main.set_nickname_fragment.*
 import kotlinx.android.synthetic.main.set_tag_fragment.*
 import kotlinx.android.synthetic.main.set_tag_fragment.to_next_btn
 import kotlinx.android.synthetic.main.set_tag_fragment.toolbar
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
 
 class SetTagFragment : Fragment() {
 
@@ -29,6 +38,9 @@ class SetTagFragment : Fragment() {
     private lateinit var viewModel: SetTagViewModel
     lateinit var navController : NavController
     private var onTransitionListener: OnTransitionListener? = null
+
+    lateinit var retrofit: Retrofit
+    lateinit var myAPI: RetrofitService
 
 
     override fun onCreateView(
@@ -47,6 +59,9 @@ class SetTagFragment : Fragment() {
 //            startActivity(Intent(activity, MainActivity::class.java))
             onTransitionListener?.OnTransitionListener()
         }
+
+        initRetrofit()
+        getHashTags()
 
         setHasOptionsMenu(true);
         (activity as AppCompatActivity?)!!.setSupportActionBar(toolbar)
@@ -80,6 +95,44 @@ class SetTagFragment : Fragment() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun initRetrofit() {
+
+        retrofit = RetrofitClient.getInstance() // 2에서 만든 Retrofit client의 instance를 불러옵니다.
+        myAPI = retrofit.create(RetrofitService::class.java) // 여기서 retrofit이 우리의 interface를 구현해주고
+    }
+
+    private fun getHashTags() {
+        Runnable {
+
+            myAPI.getHashTags().enqueue(object : Callback<HashTags> {
+                override fun onFailure(call: Call<HashTags>, t: Throwable) {
+                    t.printStackTrace()
+                }
+
+                override fun onResponse(call: Call<HashTags>, response: Response<HashTags>) {
+                    val code: Int = response.body()?.code ?: 0
+                    val msg: String = response.body()?.msg ?: "no msg"
+                    val succeed: Boolean = response.body()?.succeed ?: false
+                    val list: List<HashTagItem> = response.body()?.list ?: emptyList()
+
+
+
+                    Log.v("code", code.toString())
+                    Log.v("success", succeed.toString())
+                    Log.v("msg", msg)
+                    Log.v("list", list.toString())
+                    
+//                    if (firstLogin){
+//                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
+//                    } else{
+//                        startActivity(Intent(context, MainActivity::class.java))
+//                    }
+
+                }
+            })
+        }.run()
     }
 
 }
