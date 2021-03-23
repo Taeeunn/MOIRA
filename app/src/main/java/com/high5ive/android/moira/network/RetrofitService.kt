@@ -30,16 +30,21 @@ interface RetrofitService {
 
 
     // 2. 회원가입
-    // 닉네임 중복 검사
+    // 2-1. 닉네임 중복 검사
     @GET("signup/nickname")
     fun checkNickname(
         @Query("nickname") nickname : String
     ): Call<ResponseData>
 
-    // 모든 관심 태그 목록
+    // 2-2. 모든 관심 태그 목록
     @GET("signup/hashtags")
     fun getHashTags(
     ): Call<HashTags>
+
+    // 2-3. 회원 가입 시 포지션 카테고리 목록
+    @GET("signup/categories")
+    fun getPositionCategories(
+    ): Call<PositionCategory>
 
 
     // 마이페이지

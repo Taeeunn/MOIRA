@@ -13,10 +13,20 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.high5ive.android.moira.R
+import com.high5ive.android.moira.data.retrofit.HashTagItem
+import com.high5ive.android.moira.data.retrofit.HashTags
+import com.high5ive.android.moira.data.retrofit.PositionCategory
+import com.high5ive.android.moira.data.retrofit.PositionItem
+import com.high5ive.android.moira.network.RetrofitClient
+import com.high5ive.android.moira.network.RetrofitService
 import kotlinx.android.synthetic.main.set_nickname_fragment.*
 import kotlinx.android.synthetic.main.set_position_fragment.*
 import kotlinx.android.synthetic.main.set_position_fragment.to_next_btn
 import kotlinx.android.synthetic.main.set_position_fragment.toolbar
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
 
 class SetPositionFragment : Fragment() {
 
@@ -29,6 +39,11 @@ class SetPositionFragment : Fragment() {
 
     lateinit var navController : NavController
     lateinit var position: String
+
+    lateinit var retrofit: Retrofit
+    lateinit var myAPI: RetrofitService
+
+
     var develop: Boolean = false
     var plan: Boolean = false
     var design: Boolean = false
@@ -46,6 +61,9 @@ class SetPositionFragment : Fragment() {
 
         navController = Navigation.findNavController(view)
 
+        initRetrofit()
+        getPositionCategory()
+
         to_next_btn.setOnClickListener {
             navController.navigate(R.id.action_setPositionFragment_to_setTagFragment)
         }
@@ -57,6 +75,7 @@ class SetPositionFragment : Fragment() {
                 position = "develop"
             }
         }
+
 
         plan_btn.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
@@ -97,6 +116,47 @@ class SetPositionFragment : Fragment() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun initRetrofit() {
+
+        retrofit = RetrofitClient.getInstance() // 2에서 만든 Retrofit client의 instance를 불러옵니다.
+        myAPI = retrofit.create(RetrofitService::class.java) // 여기서 retrofit이 우리의 interface를 구현해주고
+    }
+
+    private fun getPositionCategory() {
+        Runnable {
+
+            myAPI.getPositionCategories().enqueue(object : Callback<PositionCategory> {
+                override fun onFailure(call: Call<PositionCategory>, t: Throwable) {
+                    t.printStackTrace()
+                }
+
+                override fun onResponse(
+                    call: Call<PositionCategory>,
+                    response: Response<PositionCategory>
+                ) {
+                    val code: Int = response.body()?.code ?: 0
+                    val msg: String = response.body()?.msg ?: "no msg"
+                    val succeed: Boolean = response.body()?.succeed ?: false
+                    val list: List<PositionItem> = response.body()?.list ?: emptyList()
+
+
+
+                    Log.v("code", code.toString())
+                    Log.v("success", succeed.toString())
+                    Log.v("msg", msg)
+                    Log.v("list", list.toString())
+
+//                    if (firstLogin){
+//                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
+//                    } else{
+//                        startActivity(Intent(context, MainActivity::class.java))
+//                    }
+
+                }
+            })
+        }.run()
     }
 
 }

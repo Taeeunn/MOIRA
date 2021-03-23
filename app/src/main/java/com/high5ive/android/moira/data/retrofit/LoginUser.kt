@@ -20,6 +20,11 @@ data class LoginData(
     val jwtToken: String
 )
 
+data class LoginInfo(
+    val accessToken: String,
+    val socialProvider: String
+)
+
 
 
 
