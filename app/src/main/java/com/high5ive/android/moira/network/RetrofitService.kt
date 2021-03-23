@@ -1,8 +1,9 @@
 package com.high5ive.android.moira.network
 
+import com.high5ive.android.moira.data.retrofit.LoginInfo
 import com.high5ive.android.moira.data.retrofit.LoginUser
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
+import com.high5ive.android.moira.data.retrofit.MyPage
+import com.high5ive.android.moira.data.retrofit.ResponseData
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -24,12 +25,27 @@ interface RetrofitService {
 //        @Part("nickname") nickname: RequestBody,
 //        @Part img : MultipartBody.Part): Call<DataClass>
 
+    // 1. 로그인
     @POST("login")
-    @FormUrlEncoded
     fun loginUser(
-        @Field("accessToken") accessToken : String,
-        @Field("socialProvider") socialProvider : String): Call<LoginUser>
+        @Body body: LoginInfo
+    ): Call<LoginUser>
 
+    // 닉네임 중복 검사
+    @GET("signup/nickname")
+    fun checkNickname(
+        @Query("nickname") nickname : String
+    ): Call<ResponseData>
+
+
+    // 마이페이지
+    @GET("mypage")
+    fun getMyPage(
+        @Header("access-token") token: String): Call<MyPage>
+
+
+//    @GET("/woof.json?ref=apilist.fun")
+//    fun getInfo() : Call<DataClass>
 
 //    //B1 -> ok
 //    @POST("notice")

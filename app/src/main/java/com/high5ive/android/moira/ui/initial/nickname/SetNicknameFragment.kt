@@ -15,7 +15,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.high5ive.android.moira.R
+import com.high5ive.android.moira.data.retrofit.LoginInfo
+import com.high5ive.android.moira.data.retrofit.LoginUser
+import com.high5ive.android.moira.data.retrofit.ResponseData
+import com.high5ive.android.moira.network.RetrofitClient
+import com.high5ive.android.moira.network.RetrofitService
 import kotlinx.android.synthetic.main.set_nickname_fragment.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
 
 
 class SetNicknameFragment : Fragment() {
@@ -28,7 +37,8 @@ class SetNicknameFragment : Fragment() {
     private lateinit var viewModel: SetNicknameViewModel
 
     lateinit var navController : NavController
-    lateinit var token_: String
+    lateinit var retrofit: Retrofit
+    lateinit var myAPI: RetrofitService
 
 
     override fun onCreateView(
@@ -45,13 +55,13 @@ class SetNicknameFragment : Fragment() {
 
         navController = Navigation.findNavController(view)
 
-        val preferences: SharedPreferences =requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
-        token_ = preferences.getString("token", null).toString()
+        initRetrofit()
 
-        Log.v("nicknametoken", token_)
 
         to_next_btn.setOnClickListener {
-            navController.navigate(R.id.action_setNicknameFragment_to_setPositionFragment)
+
+            checkNickName(enter_nickname_et.text.toString())
+
         }
 
         setHasOptionsMenu(true);
@@ -86,6 +96,46 @@ class SetNicknameFragment : Fragment() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun initRetrofit() {
+
+        retrofit = RetrofitClient.getInstance() // 2에서 만든 Retrofit client의 instance를 불러옵니다.
+        myAPI = retrofit.create(RetrofitService::class.java) // 여기서 retrofit이 우리의 interface를 구현해주고
+    }
+
+    private fun checkNickName(nickname: String){
+        Runnable {
+
+            myAPI.checkNickname(nickname).enqueue(object : Callback<ResponseData> {
+                override fun onFailure(call: Call<ResponseData>, t: Throwable) {
+                    t.printStackTrace()
+                }
+
+                override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
+                    val code: Int = response.body()?.code ?: 0
+                    val msg: String = response.body()?.msg ?: "no msg"
+                    val succeed: Boolean = response.body()?.succeed ?: false
+
+
+
+                    Log.v("code", code.toString())
+                    Log.v("success", succeed.toString())
+                    Log.v("msg", msg)
+
+
+                    if (succeed) {
+                        navController.navigate(R.id.action_setNicknameFragment_to_setPositionFragment)
+                    }
+//                    if (firstLogin){
+//                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
+//                    } else{
+//                        startActivity(Intent(context, MainActivity::class.java))
+//                    }
+
+                }
+            })
+        }.run()
     }
 
 }
