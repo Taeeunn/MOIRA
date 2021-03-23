@@ -13,9 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.data.retrofit.HashTagItem
-import com.high5ive.android.moira.data.retrofit.HashTags
-import com.high5ive.android.moira.data.retrofit.ResponseData
+import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.initial.OnTransitionListener
@@ -61,7 +59,9 @@ class SetTagFragment : Fragment() {
         }
 
         initRetrofit()
+        getPositionDetail()
         getHashTags()
+
 
         setHasOptionsMenu(true);
         (activity as AppCompatActivity?)!!.setSupportActionBar(toolbar)
@@ -103,6 +103,41 @@ class SetTagFragment : Fragment() {
         myAPI = retrofit.create(RetrofitService::class.java) // 여기서 retrofit이 우리의 interface를 구현해주고
     }
 
+    private fun getPositionDetail() {
+        Runnable {
+
+            myAPI.getPositionDetail(0).enqueue(object : Callback<PositionDetail> {
+                override fun onFailure(call: Call<PositionDetail>, t: Throwable) {
+                    t.printStackTrace()
+                }
+
+                override fun onResponse(
+                    call: Call<PositionDetail>,
+                    response: Response<PositionDetail>
+                ) {
+                    val code: Int = response.body()?.code ?: 0
+                    val msg: String = response.body()?.msg ?: "no msg"
+                    val succeed: Boolean = response.body()?.succeed ?: false
+                    val list: List<PositionDetailItem> = response.body()?.list ?: emptyList()
+
+
+
+                    Log.v("code", code.toString())
+                    Log.v("success", succeed.toString())
+                    Log.v("msg", msg)
+                    Log.v("list", list.toString())
+
+//                    if (firstLogin){
+//                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
+//                    } else{
+//                        startActivity(Intent(context, MainActivity::class.java))
+//                    }
+
+                }
+            })
+        }.run()
+    }
+
     private fun getHashTags() {
         Runnable {
 
@@ -123,7 +158,7 @@ class SetTagFragment : Fragment() {
                     Log.v("success", succeed.toString())
                     Log.v("msg", msg)
                     Log.v("list", list.toString())
-                    
+
 //                    if (firstLogin){
 //                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
 //                    } else{

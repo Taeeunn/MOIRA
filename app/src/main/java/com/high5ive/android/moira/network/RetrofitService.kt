@@ -2,6 +2,7 @@ package com.high5ive.android.moira.network
 
 import com.high5ive.android.moira.data.retrofit.*
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 /**
@@ -36,15 +37,28 @@ interface RetrofitService {
         @Query("nickname") nickname : String
     ): Call<ResponseData>
 
-    // 2-2. 모든 관심 태그 목록
+    // 2-2. 회원 가입 시 포지션 카테고리 목록
+    @GET("signup/categories")
+    fun getPositionCategories(
+    ): Call<PositionCategory>
+
+    // 2-3. 선택한 포지션 카테고리의 상세 포지션 목록
+    @GET("signup/positions")
+    fun getPositionDetail(
+        @Query("positionCategoryId") positionCategoryId : Int
+    ): Call<PositionDetail>
+
+    // 2-4. 모든 관심 태그 목록
     @GET("signup/hashtags")
     fun getHashTags(
     ): Call<HashTags>
 
-    // 2-3. 회원 가입 시 포지션 카테고리 목록
-    @GET("signup/categories")
-    fun getPositionCategories(
-    ): Call<PositionCategory>
+    // 2-5. 회원가입
+    @POST("signup")
+    fun signupUser(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Body body: SignUpInfo
+    ): Call<ResponseData>
 
 
     // 마이페이지
