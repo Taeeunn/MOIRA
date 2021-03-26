@@ -52,7 +52,7 @@ interface RetrofitService {
     // 2-4. 모든 관심 태그 목록
     @GET("signup/hashtags")
     fun getHashTags(
-    ): Call<HashTags>
+    ): Call<Hashtags>
 
     // 2-5. 회원가입
     @POST("signup")
@@ -66,6 +66,36 @@ interface RetrofitService {
     @GET("mypage")
     fun getMyPage(
         @Header("X-AUTH-TOKEN") token: String): Call<MyPage>
+
+
+    // 마이페이지 - 내가 작성한 글
+    @GET("mypage/written")
+    fun getWrittenPostList(
+        @Header("X-AUTH-TOKEN") token: String): Call<WrittenPost>
+
+
+    // 마이페이지 - 내가 지원한 글
+    @GET("mypage/applied")
+    fun getApplyPostList(
+        @Header("X-AUTH-TOKEN") token: String): Call<ApplyPost>
+
+
+    // 마이페이지 - 내가 스크랩한 글 - 모집글
+    @GET("mypage/like/project")
+    fun getScrapRecruitPostList(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Query("positionCategory") positionCategory : String,
+        @Query("sortby") sortby : String
+    ): Call<RecruitPost>
+
+    // 마이페이지 - 내가 스크랩한 글 - 모집글
+    @GET("mypage/like/pool")
+    fun getScrapUserPoolList(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Query("positionCategory") positionCategory : String,
+        @Query("sortby") sortby : String
+    ): Call<UserPool>
+
 
 
 //    @GET("/woof.json?ref=apilist.fun")

@@ -13,8 +13,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.data.retrofit.HashTagItem
-import com.high5ive.android.moira.data.retrofit.HashTags
 import com.high5ive.android.moira.data.retrofit.PositionCategory
 import com.high5ive.android.moira.data.retrofit.PositionItem
 import com.high5ive.android.moira.network.RetrofitClient

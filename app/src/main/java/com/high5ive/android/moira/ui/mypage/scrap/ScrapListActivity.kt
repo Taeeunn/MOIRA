@@ -21,6 +21,7 @@ class ScrapListActivity : AppCompatActivity() {
 
 
         viewPager.adapter = ScrapViewPagerAdapter(this)
+
         val tabLayoutTextArray = arrayOf("모집글","인재풀")
         TabLayoutMediator(tabLayout,viewPager){tab,position->
             tab.text = tabLayoutTextArray[position]

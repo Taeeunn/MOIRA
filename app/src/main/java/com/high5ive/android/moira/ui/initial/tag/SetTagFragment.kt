@@ -152,16 +152,16 @@ class SetTagFragment : Fragment() {
     private fun getHashTags() {
         Runnable {
 
-            myAPI.getHashTags().enqueue(object : Callback<HashTags> {
-                override fun onFailure(call: Call<HashTags>, t: Throwable) {
+            myAPI.getHashTags().enqueue(object : Callback<Hashtags> {
+                override fun onFailure(call: Call<Hashtags>, t: Throwable) {
                     t.printStackTrace()
                 }
 
-                override fun onResponse(call: Call<HashTags>, response: Response<HashTags>) {
+                override fun onResponse(call: Call<Hashtags>, response: Response<Hashtags>) {
                     val code: Int = response.body()?.code ?: 0
                     val msg: String = response.body()?.msg ?: "no msg"
                     val succeed: Boolean = response.body()?.succeed ?: false
-                    val list: List<HashTagItem> = response.body()?.list ?: emptyList()
+                    val list: List<Hashtag> = response.body()?.list ?: emptyList()
 
 
 
