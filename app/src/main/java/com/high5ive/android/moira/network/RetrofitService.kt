@@ -1,5 +1,6 @@
 package com.high5ive.android.moira.network
 
+import com.google.gson.annotations.SerializedName
 import com.high5ive.android.moira.data.retrofit.*
 import retrofit2.Call
 import retrofit2.Response
@@ -64,7 +65,7 @@ interface RetrofitService {
     // 마이페이지
     @GET("mypage")
     fun getMyPage(
-        @Header("access-token") token: String): Call<MyPage>
+        @Header("X-AUTH-TOKEN") token: String): Call<MyPage>
 
 
 //    @GET("/woof.json?ref=apilist.fun")

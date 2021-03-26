@@ -10,6 +10,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -125,7 +126,13 @@ class SetNicknameFragment : Fragment() {
 
 
                     if (succeed) {
-                        navController.navigate(R.id.action_setNicknameFragment_to_setPositionFragment)
+
+
+                        val bundle = bundleOf("nickname" to nickname)
+                        navController.navigate(R.id.action_setNicknameFragment_to_setPositionFragment, bundle)
+                    } else{
+                        nickname_text_layout.helperText = "*이미 사용중인 닉네임입니다."
+                        nickname_text_layout.setHelperTextColor(resources.getColorStateList(R.color.red))
                     }
 //                    if (firstLogin){
 //                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)

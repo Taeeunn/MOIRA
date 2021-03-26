@@ -1,6 +1,8 @@
 package com.high5ive.android.moira.ui.initial.tag
 
 import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +14,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.high5ive.android.moira.MainActivity
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.network.RetrofitClient
@@ -40,6 +43,8 @@ class SetTagFragment : Fragment() {
     lateinit var retrofit: Retrofit
     lateinit var myAPI: RetrofitService
 
+    lateinit var jwt_token: String
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,9 +58,15 @@ class SetTagFragment : Fragment() {
 
         navController = Navigation.findNavController(view)
 
+        val preferences: SharedPreferences =requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
+        jwt_token = preferences.getString("jwt_token", null).toString()
+
+        Log.v("Jwt", jwt_token)
         to_next_btn.setOnClickListener {
 //            startActivity(Intent(activity, MainActivity::class.java))
-            onTransitionListener?.OnTransitionListener()
+
+            signupUser()
+//            onTransitionListener?.OnTransitionListener()
         }
 
         initRetrofit()
@@ -106,7 +117,7 @@ class SetTagFragment : Fragment() {
     private fun getPositionDetail() {
         Runnable {
 
-            myAPI.getPositionDetail(0).enqueue(object : Callback<PositionDetail> {
+            myAPI.getPositionDetail(1).enqueue(object : Callback<PositionDetail> {
                 override fun onFailure(call: Call<PositionDetail>, t: Throwable) {
                     t.printStackTrace()
                 }
@@ -164,6 +175,49 @@ class SetTagFragment : Fragment() {
 //                    } else{
 //                        startActivity(Intent(context, MainActivity::class.java))
 //                    }
+
+                }
+            })
+        }.run()
+    }
+
+    private fun signupUser() {
+        Runnable {
+
+            val hashtagIdList: List<Int> = listOf(1)
+            val nickname: String = "moira2"
+            val positionId: Int = 1
+
+            val body_data = SignUpInfo(hashtagIdList, nickname, positionId)
+            Log.v("body", body_data.toString() )
+            myAPI.signupUser(jwt_token, body_data).enqueue(object : Callback<ResponseData> {
+                override fun onFailure(call: Call<ResponseData>, t: Throwable) {
+                    t.printStackTrace()
+                }
+
+                override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
+                    Log.v("code", response.code().toString())
+                    Log.v("msg", response.message())
+                    val code: Int = response.body()?.code ?: 0
+                    val msg: String = response.body()?.msg ?: "no msg"
+                    val succeed: Boolean = response.body()?.succeed ?: false
+
+
+                    Log.v("api", call.request().header("X-AUTH-TOKEN").toString())
+                    Log.v("api", call.request().body().toString())
+                    Log.v("code", code.toString())
+                    Log.v("success", succeed.toString())
+                    Log.v("msg", msg)
+
+//                    if (firstLogin){
+//                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
+//                    } else{
+//                        startActivity(Intent(context, MainActivity::class.java))
+//                    }
+
+                    if(succeed){
+                        startActivity(Intent(context, MainActivity::class.java))
+                    }
 
                 }
             })

@@ -41,31 +41,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/app_name_text" />
 
-        <!--    <com.nhn.android.naverlogin.ui.view.OAuthLoginButton-->
-        <!--        android:id="@+id/buttonOAuthLoginImg"-->
-        <!--        android:layout_width="match_parent"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        android:layout_marginStart="16dp"-->
-        <!--        android:layout_marginEnd="16dp"-->
-        <!--        android:layout_marginBottom="176.07dp"-->
-        <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--        app:layout_constraintEnd_toEndOf="parent"-->
-        <!--        app:layout_constraintStart_toStartOf="parent"/>-->
-
-        <!--    <android.widget.Button-->
-        <!--        android:id="@+id/naver_login_btn"-->
-        <!--        android:layout_width="match_parent"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        android:text="@string/naver_login"-->
-        <!--        android:textAppearance="@style/login_button"-->
-        <!--        android:background="@drawable/round_rectangle"-->
-        <!--        android:backgroundTint="@color/naver"-->
-        <!--        android:layout_marginStart="16dp"-->
-        <!--        android:layout_marginEnd="16dp"-->
-        <!--        android:layout_marginBottom="176.07dp"-->
-        <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--        app:layout_constraintEnd_toEndOf="parent"-->
-        <!--        app:layout_constraintStart_toStartOf="parent" />-->
 
 
         <android.widget.Button
@@ -74,25 +49,14 @@
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="32dp"
             android:background="@drawable/ic_kakao_login"
             android:text="@string/kakao_login"
             android:textAppearance="@style/login_button"
-            app:layout_constraintBottom_toTopOf="@+id/lookaround_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/lookaround_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/look_around"
-            android:textAppearance="@style/look_around"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.86" />
+            app:layout_constraintVertical_bias="0.815" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,6 +42,8 @@ class SetPositionFragment : Fragment() {
 
     lateinit var retrofit: Retrofit
     lateinit var myAPI: RetrofitService
+    var nickname = ""
+
 
 
     var develop: Boolean = false
@@ -61,6 +63,8 @@ class SetPositionFragment : Fragment() {
 
         navController = Navigation.findNavController(view)
 
+        nickname = arguments?.getString("nickname")?: ""
+        Log.v("tnickname", nickname)
         initRetrofit()
         getPositionCategory()
 
@@ -75,6 +79,7 @@ class SetPositionFragment : Fragment() {
                 position = "develop"
             }
         }
+
 
 
         plan_btn.setOnCheckedChangeListener { _, isChecked ->

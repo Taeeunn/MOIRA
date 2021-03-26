@@ -15,6 +15,7 @@ import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.retrofit.LoginInfo
 import com.high5ive.android.moira.data.retrofit.LoginUser
 import com.high5ive.android.moira.data.retrofit.MyPage
+import com.high5ive.android.moira.data.retrofit.MyPageData
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.mypage.apply.ApplyListActivity
@@ -50,7 +51,7 @@ class MyPageFragment : Fragment(), View.OnClickListener{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val preferences: SharedPreferences =requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
-        token = preferences.getString("token", null).toString()
+        token = preferences.getString("jwt_token", null).toString()
 
         initRetrofit()
         setMyPage()
@@ -92,18 +93,24 @@ class MyPageFragment : Fragment(), View.OnClickListener{
 
                 override fun onResponse(call: Call<MyPage>, response: Response<MyPage>) {
                     val code: Int = response.body()?.code ?: 0
-//                    val firstLogin: Boolean = response.body()?.data?.firstLogin ?: false
-//                    val jwtToken: String = response.body()?.data?.jwtToken ?: "no token"
+
                     val msg: String = response.body()?.msg ?: "no msg"
                     val succeed: Boolean = response.body()?.succeed ?: false
 
-
-
                     Log.v("code", code.toString())
-//                    Log.v("firstLogin", firstLogin.toString())
-//                    Log.v("jwtToken", jwtToken.toString())
                     Log.v("success", succeed.toString())
                     Log.v("msg", msg)
+
+                    if(succeed){
+                        val data: MyPageData = response.body()?.data!!
+                        Log.v("data", data.toString())
+                        user_nickname.text = data.nickname
+                        user_position.text = data.positionName
+                        user_intro.text = data.shortIntroduction
+                        post_count.text = data.writtenPostCount.toString()
+                        apply_count.text = data.appliedPostCount.toString()
+                        scrap_count.text = data.likedPostCount.toString()
+                    }
 
                 }
             })

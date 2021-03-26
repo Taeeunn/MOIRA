@@ -56,14 +56,13 @@ class LoginFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         navController = Navigation.findNavController(view)
+        initRetrofit()
 
         val preferences: SharedPreferences =requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
         token = preferences.getString("jwt_token", null).toString()
         access_token = preferences.getString("kakao_access_token", null).toString()
 
 
-        initRetrofit()
-        lookaround_text.setOnClickListener(this)
         kakao_login_btn.setOnClickListener(this)
     }
 
@@ -87,19 +86,15 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.lookaround_text -> {
-//                startActivity(Intent(activity, MainActivity::class.java))
-                onTransitionListener?.OnTransitionListener()
-            }
 
             R.id.kakao_login_btn -> {
 
                 showTokenInfo()
                 getUserInfo()
                 loginServer(access_token)
-                Log.v("token", token)
-                Log.v("access", access_token)
-
+//                Log.v("token", token)
+//                Log.v("access", access_token)
+//
 //                val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
 //                    if (error != null) {
 //                        Log.e("login", "로그인 실패", error)
@@ -218,11 +213,11 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
 
                     navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
-//                    if (firstLogin){
-//                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
-//                    } else{
-//                        startActivity(Intent(context, MainActivity::class.java))
-//                    }
+                    if (firstLogin){
+                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
+                    } else{
+                        startActivity(Intent(context, MainActivity::class.java))
+                    }
 
                 }
             })
