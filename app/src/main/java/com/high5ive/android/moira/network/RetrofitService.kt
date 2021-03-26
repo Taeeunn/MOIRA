@@ -62,6 +62,19 @@ interface RetrofitService {
     ): Call<ResponseData>
 
 
+
+
+    //팀 목록 - 나의팀 리스트 조회
+    @GET("myProject")
+    fun getMyTeamList(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Query("sort") sort : String,
+        @Query("status") status : String
+    ): Call<MyTeam>
+
+
+
+
     // 마이페이지
     @GET("mypage")
     fun getMyPage(

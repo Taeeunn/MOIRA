@@ -1,7 +1,8 @@
 package com.high5ive.android.moira.ui.myteam.inprogress
 
+import android.content.Context
 import android.content.Intent
-import androidx.lifecycle.ViewModelProvider
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,68 +10,54 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.adapter.RecruitAdapter
 import com.high5ive.android.moira.adapter.TeamAdapter
-import com.high5ive.android.moira.data.Recruit
 import com.high5ive.android.moira.data.Team
+import com.high5ive.android.moira.data.retrofit.MyTeam
+import com.high5ive.android.moira.data.retrofit.MyTeamItem
+import com.high5ive.android.moira.data.retrofit.RecruitPost
+import com.high5ive.android.moira.data.retrofit.RecruitPostItem
+import com.high5ive.android.moira.network.RetrofitClient
+import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.myteam.TeamDetailActivity
 import com.high5ive.android.moira.ui.myteam.evaluate.EvaluateMemberActivity
-import com.high5ive.android.moira.ui.teamfinding.recruit.RecruitDetailActivity
 import kotlinx.android.synthetic.main.in_progress_team_fragment.*
+import kotlinx.android.synthetic.main.in_progress_team_fragment.recycler_view
 import kotlinx.android.synthetic.main.recruit_post_fragment.*
-import kotlinx.android.synthetic.main.recruit_post_fragment.recycler_view
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
 
 class InProgressTeamFragment : Fragment() {
 
-    companion object {
-        fun newInstance() =
-            InProgressTeamFragment()
+    lateinit var retrofit: Retrofit
+    lateinit var myAPI: RetrofitService
+    lateinit var token: String
+    var sort: String = "date"
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val preferences: SharedPreferences = requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
+        token = preferences.getString("jwt_token", null).toString()
+
+        initRetrofit()
+
     }
-
-    private lateinit var viewModel: InProgressTeamViewModel
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.in_progress_team_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(InProgressTeamViewModel::class.java)
-        // TODO: Use the ViewModel
-
-//        spinner.adapter =
-//            context?.let { ArrayAdapter(it, android.R.layout.simple_spinner_dropdown_item, items) }
-//
-
-
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-            }
-
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
-                when (spinner.getItemAtPosition(position)) {
-                    "최신순" -> {
-                        Log.v("itemselect", "최신순")
-                    }
-                    "인기순" -> {
-                        Log.v("itemselect", "인기순")
-                    }
-                    else -> {
-
-                    }
-                }
-            }
-
-        }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
 
         val teamList = arrayListOf<Team>()
@@ -94,10 +81,81 @@ class InProgressTeamFragment : Fragment() {
                         startActivity(Intent(context, EvaluateMemberActivity::class.java))
                     }
                 }
-//                TeamAdapter(teamList, team, team){
-//
-//                }
+
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        getInProgressTeam()
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                getInProgressTeam()
+            }
+
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+                when (spinner.getItemAtPosition(position)) {
+                    "최신순" -> {
+                        Log.v("itemselect", "최신순")
+                        if(sort == "character") {
+                            getInProgressTeam()
+                            sort = "date"
+                        }
+
+                    }
+                    "가나다순" -> {
+                        Log.v("itemselect", "가나다순")
+                        if(sort == "date") {
+                            getInProgressTeam()
+                            sort = "character"
+                        }
+                    }
+                    else -> {
+
+                    }
+                }
+            }
+
+        }
+    }
+
+    private fun initRetrofit() {
+
+        retrofit = RetrofitClient.getInstance() // 2에서 만든 Retrofit client의 instance를 불러옵니다.
+        myAPI = retrofit.create(RetrofitService::class.java) // 여기서 retrofit이 우리의 interface를 구현해주고
+    }
+
+    private fun getInProgressTeam() {
+        Runnable {
+
+            myAPI.getMyTeamList(token, sort, "PROGRESS").enqueue(object :
+                Callback<MyTeam> {
+                override fun onFailure(call: Call<MyTeam>, t: Throwable) {
+                    t.printStackTrace()
+                }
+
+                override fun onResponse(call: Call<MyTeam>, response: Response<MyTeam>) {
+                    val code: Int = response.body()?.code ?: 0
+
+                    val msg: String = response.body()?.msg ?: "no msg"
+                    val succeed: Boolean = response.body()?.succeed ?: false
+
+                    Log.v("code", code.toString())
+                    Log.v("success", succeed.toString())
+                    Log.v("msg", msg)
+
+                    if(succeed){
+
+                        val list: List<MyTeamItem> = response.body()?.list ?: emptyList()
+                        Log.v("data", list.toString())
+
+                    }
+
+                }
+            })
+        }.run()
     }
 
 }

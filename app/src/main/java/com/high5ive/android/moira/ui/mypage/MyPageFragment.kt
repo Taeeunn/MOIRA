@@ -50,7 +50,6 @@ class MyPageFragment : Fragment(), View.OnClickListener{
         token = preferences.getString("jwt_token", null).toString()
 
         initRetrofit()
-        setMyPage()
 
 
         return inflater.inflate(R.layout.my_page_fragment, container, false)
@@ -59,6 +58,12 @@ class MyPageFragment : Fragment(), View.OnClickListener{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        setMyPage()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
