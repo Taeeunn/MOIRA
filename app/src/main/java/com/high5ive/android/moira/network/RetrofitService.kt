@@ -141,6 +141,21 @@ interface RetrofitService {
     ): Call<UserPool>
 
 
+    // 마이페이지 - 내 정보 수정하기 - 첫 화면
+    @GET("mypage/edit")
+    fun getMyProfileData(
+        @Header("X-AUTH-TOKEN") token: String
+    ): Call<MyProfile>
+
+
+    // 마이페이지 - 내 정보 수정하기 - 프로필 관련 정보 수정하기(프로필 사진 제외)
+    @PUT("mypage/edit/profile")
+    fun editMyProfile(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Body myPageEditProfileUpdateRequestDto: MyPageEditProfileUpdateRequestDto
+    ): Call<EditProfile>
+
+
 
 //    @GET("/woof.json?ref=apilist.fun")
 //    fun getInfo() : Call<DataClass>

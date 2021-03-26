@@ -29,10 +29,6 @@ import retrofit2.Retrofit
 
 class LoginFragment : Fragment(), View.OnClickListener {
 
-    companion object {
-        fun newInstance() =
-            LoginFragment()
-    }
 
     private lateinit var viewModel: LoginViewModel
     lateinit var navController: NavController
@@ -42,7 +38,6 @@ class LoginFragment : Fragment(), View.OnClickListener {
     lateinit var myAPI: RetrofitService
     lateinit var token: String
     lateinit var access_token: String
-//    lateinit var token_: String
 
 
     override fun onCreateView(
@@ -66,13 +61,6 @@ class LoginFragment : Fragment(), View.OnClickListener {
         kakao_login_btn.setOnClickListener(this)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-
-
-        // TODO: Use the ViewModel
-    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

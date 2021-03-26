@@ -31,25 +31,27 @@ import retrofit2.Retrofit
 
 class MyPageFragment : Fragment(), View.OnClickListener{
 
-    companion object {
-        fun newInstance() = MyPageFragment()
-    }
-
-    private lateinit var viewModel: MyPageViewModel
 
     lateinit var retrofit: Retrofit
     lateinit var myAPI: RetrofitService
     lateinit var token: String
 
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val preferences: SharedPreferences = requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
+        token = preferences.getString("jwt_token", null).toString()
+
+        initRetrofit()
+
+    }
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        val preferences: SharedPreferences =requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
-        token = preferences.getString("jwt_token", null).toString()
-
-        initRetrofit()
 
 
         return inflater.inflate(R.layout.my_page_fragment, container, false)
@@ -57,19 +59,6 @@ class MyPageFragment : Fragment(), View.OnClickListener{
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        setMyPage()
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MyPageViewModel::class.java)
-        // TODO: Use the ViewModel
 
         post_container.setOnClickListener(this)
 
@@ -84,6 +73,15 @@ class MyPageFragment : Fragment(), View.OnClickListener{
         noti_setting.setOnClickListener(this)
 
         question.setOnClickListener(this)
+
+        Log.v("hihi", "hihi")
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+
+        setMyPage()
     }
 
     private fun initRetrofit() {
