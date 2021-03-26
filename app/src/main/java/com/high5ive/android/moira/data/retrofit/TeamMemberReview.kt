@@ -18,3 +18,16 @@ data class ComplimentMarkInfo(
     val complimentMarkId: Int,
     val complimentMarkName: String
 )
+
+data class Compliment(
+    val code: Int,
+    val list: List<ComplimentItem>,
+    val msg: String,
+    val succeed: Boolean
+)
+
+data class ComplimentItem(
+    val complimentMarkContent: String,
+    val complimentMarkId: Int,
+    val complimentMarkName: String
+)

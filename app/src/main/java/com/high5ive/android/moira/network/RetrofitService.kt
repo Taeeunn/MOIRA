@@ -88,6 +88,12 @@ interface RetrofitService {
         @Path("projectId") projectId : Int
     ): Call<TeamMember>
 
+    //팀 목록 - 완료한 팀 - 팀원 평가하기 - 팀원 목록
+    @GET("compliment")
+    fun getComplimentList(
+        @Header("X-AUTH-TOKEN") token: String
+    ): Call<Compliment>
+
 
 
     // 팀원 평가하기 - 특정 유저 평가하기

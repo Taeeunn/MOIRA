@@ -24,6 +24,7 @@ class EvaluateMemberDetailActivity : AppCompatActivity(), View.OnClickListener{
     lateinit var retrofit: Retrofit
     lateinit var myAPI: RetrofitService
     lateinit var token: String
+    var index: Int = 1
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,14 +40,20 @@ class EvaluateMemberDetailActivity : AppCompatActivity(), View.OnClickListener{
         val preferences: SharedPreferences = this.getSharedPreferences("moira", Context.MODE_PRIVATE)
         token = preferences.getString("jwt_token", null).toString()
 
-        val index = intent.getIntExtra("index", 1)
+        index = intent.getIntExtra("index", 1)
 
         initRetrofit()
-        completeTeamMemberReview(index)
+
 
 
         complete_button.setOnClickListener(this)
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        getComplimentList()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -62,7 +69,9 @@ class EvaluateMemberDetailActivity : AppCompatActivity(), View.OnClickListener{
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.complete_button -> {
-                startActivity(Intent(this, EvaluateMemberActivity::class.java))
+
+                completeTeamMemberReview(index)
+
             }
         }
     }
@@ -102,6 +111,40 @@ class EvaluateMemberDetailActivity : AppCompatActivity(), View.OnClickListener{
 
                         val data: TeamMemberReviewData = response.body()?.data!!
                         Log.v("data", data.toString())
+
+
+                        finish()
+
+                    }
+
+                }
+            })
+        }.run()
+    }
+
+    private fun getComplimentList() {
+        Runnable {
+
+            myAPI.getComplimentList(token).enqueue(object :
+                Callback<Compliment> {
+                override fun onFailure(call: Call<Compliment>, t: Throwable) {
+                    t.printStackTrace()
+                }
+
+                override fun onResponse(call: Call<Compliment>, response: Response<Compliment>) {
+                    val code: Int = response.body()?.code ?: 0
+
+                    val msg: String = response.body()?.msg ?: "no msg"
+                    val succeed: Boolean = response.body()?.succeed ?: false
+
+                    Log.v("code", code.toString())
+                    Log.v("success", succeed.toString())
+                    Log.v("msg", msg)
+
+                    if(succeed){
+
+                        val list: List<ComplimentItem> = response.body()?.list ?: emptyList()
+                        Log.v("data", list.toString())
 
                     }
 
