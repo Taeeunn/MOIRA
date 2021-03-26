@@ -62,9 +62,60 @@ interface RetrofitService {
     ): Call<ResponseData>
 
 
+    //팀원 찾기 - 인재풀
+    @GET("pool")
+    fun getUserPoolList(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Query("page") page : Int,
+        @Query("positionCategory") positionCategory : String,
+        @Query("sortby") sortby : String
+    ): Call<UserPool>
+
+    // 팀원 찾기 - 인재풀 - ON/OFF
+    @POST("pool")
+    fun registerUserPool(
+        @Header("X-AUTH-TOKEN") token: String
+    ): Call<UserRegistration>
+
+    // 팀원 찾기 - 인재풀 - 게시글 좋아요 ON/OFF
+    @POST("pool/like/{userPoolId}")
+    fun signupUser(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Path("userPoolId") userPoolId : Int
+    ): Call<UserLike>
 
 
-    //팀 목록 - 나의팀 리스트 조회
+    // 팀원 찾기 - 인재풀 - 게시글 상세(사용자정보)
+    @GET("pool/profile/{userPoolId}")
+    fun getUserPoolDetailInfo(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Path("userPoolId") userPoolId : Int
+    ): Call<UserPoolDetailInfo>
+
+    // 팀원 찾기 - 인재풀 - 게시글 상세(사용자평가)
+    @GET("pool/review/{userPoolId}")
+    fun getUserPoolDetailReview(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Path("userPoolId") userPoolId : Int
+    ): Call<UserPoolDetailReview>
+
+    // 팀원 찾기 - 인재풀 - 게시글 상세(사용자평가) - 모든 리뷰 조회
+    @GET("pool/review/detail/{userPoolId}")
+    fun getUserPoolDetailReviewAll(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Query("sort") sort : Int,
+        @Query("userPoolId") userPoolId : Int
+    ): Call<UserPoolDetailReviewAll>
+
+    // 팀원 찾기 - 인재풀 - 검색
+    @GET("pool/search")
+    fun searchUserPool(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Query("keyword") keyword : String
+    ): Call<UserPoolSearch>
+
+
+    // 팀 목록 - 나의팀 리스트 조회
     @GET("myProject")
     fun getMyTeamList(
         @Header("X-AUTH-TOKEN") token: String,
@@ -138,7 +189,7 @@ interface RetrofitService {
         @Header("X-AUTH-TOKEN") token: String,
         @Query("positionCategory") positionCategory : String,
         @Query("sortby") sortby : String
-    ): Call<UserPool>
+    ): Call<ScrapUserPool>
 
 
     // 마이페이지 - 내 정보 수정하기 - 첫 화면

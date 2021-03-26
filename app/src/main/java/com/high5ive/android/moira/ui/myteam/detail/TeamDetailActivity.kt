@@ -37,6 +37,7 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var retrofit: Retrofit
     lateinit var myAPI: RetrofitService
     lateinit var token: String
+    var index: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,10 +49,9 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
         val preferences: SharedPreferences = this.getSharedPreferences("moira", Context.MODE_PRIVATE)
         token = preferences.getString("jwt_token", null).toString()
 
-        val index = intent.getIntExtra("index", 1)
+        index = intent.getIntExtra("index", 1)
 
         initRetrofit()
-        getTeamDetail(index)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -81,6 +81,12 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
                     startActivity(Intent(this@TeamDetailActivity, UserProfileActivity::class.java))
                 }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        getTeamDetail()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -119,7 +125,7 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
         myAPI = retrofit.create(RetrofitService::class.java) // 여기서 retrofit이 우리의 interface를 구현해주고
     }
 
-    private fun getTeamDetail(index: Int){
+    private fun getTeamDetail(){
         Runnable {
 
             myAPI.getMyTeamDetail(token, index).enqueue(object :

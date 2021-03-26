@@ -9,10 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.data.retrofit.RecruitPost
-import com.high5ive.android.moira.data.retrofit.RecruitPostItem
-import com.high5ive.android.moira.data.retrofit.UserPool
-import com.high5ive.android.moira.data.retrofit.UserPoolItem
+import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import retrofit2.Call
@@ -60,12 +57,12 @@ class ScrapUserPoolFragment : Fragment() {
         Runnable {
 
             myAPI.getScrapUserPoolList(token, "develop", "date").enqueue(object :
-                Callback<UserPool> {
-                override fun onFailure(call: Call<UserPool>, t: Throwable) {
+                Callback<ScrapUserPool> {
+                override fun onFailure(call: Call<ScrapUserPool>, t: Throwable) {
                     t.printStackTrace()
                 }
 
-                override fun onResponse(call: Call<UserPool>, response: Response<UserPool>) {
+                override fun onResponse(call: Call<ScrapUserPool>, response: Response<ScrapUserPool>) {
                     val code: Int = response.body()?.code ?: 0
 
                     val msg: String = response.body()?.msg ?: "no msg"
@@ -77,7 +74,7 @@ class ScrapUserPoolFragment : Fragment() {
 
                     if(succeed){
 
-                        val list: List<UserPoolItem> = response.body()?.list ?: emptyList()
+                        val list: List<ScrapUserPoolItem> = response.body()?.list ?: emptyList()
                         Log.v("data", list.toString())
 
                     }

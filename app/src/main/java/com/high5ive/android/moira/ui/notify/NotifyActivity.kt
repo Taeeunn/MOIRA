@@ -12,7 +12,7 @@ class NotifyActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notify)
 
-        viewPager.adapter = MemberViewPagerAdapter(this)
+        viewPager.adapter = MemberViewPagerAdapter(this, 1)
         val tabLayoutTextArray = arrayOf("지원 소식","받은 초대")
         TabLayoutMediator(tabLayout,viewPager){tab,position->
             tab.text = tabLayoutTextArray[position]

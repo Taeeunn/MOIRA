@@ -15,7 +15,7 @@ class ApplicantProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_applicant_profile)
 
         viewPager.adapter =
-            MemberViewPagerAdapter(this)
+            MemberViewPagerAdapter(this, 1)
         val tabLayoutTextArray = arrayOf("사용자 정보","사용자 평가")
         TabLayoutMediator(tabLayout,viewPager){tab,position->
             tab.text = tabLayoutTextArray[position]

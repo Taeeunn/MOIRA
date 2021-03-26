@@ -49,3 +49,19 @@ data class ApplyPostItem(
     val projectTitle: String,
     val writtenTime: String
 )
+
+data class ScrapUserPool(
+    val code: Int,
+    val list: List<ScrapUserPoolItem>,
+    val msg: String,
+    val succeed: Boolean
+)
+
+data class ScrapUserPoolItem(
+    val hashtagList: List<Hashtag>,
+    val nickname: String,
+    val positionName: String,
+    val profileImage: String,
+    val shortIntroduction: String,
+    val userPoolId: Int
+)

@@ -43,41 +43,5 @@ data class MyProfileData(
     val userSchoolResponseDtoList: List<UserSchoolResponseDto>
 )
 
-data class UserAwardResponseDto(
-    val userAwardContent: String,
-    val userAwardId: Int,
-    val userAwardName: String
-)
 
-data class UserCareerResponseDto(
-    val companyName: String,
-    val endAt: String,
-    val startAt: String,
-    val task: String,
-    val userCareerId: Int
-)
 
-data class UserLicenseResponseDto(
-    val acquiredAt: String,
-    val licenseName: String,
-    val userLicenseId: Int
-)
-
-data class UserLinkResponseDto(
-    val userLinkId: Int,
-    val userLinkUrl: String
-)
-
-data class UserSchoolResponseDto(
-    val endedAt: String,
-    val majorName: String,
-    val schoolName: String,
-    val schoolStatus: String,
-    val startedAt: String,
-    val userSchoolId: Int
-)
-
-data class HashtagResponseDto(
-    val hashtagId: Int,
-    val hashtagName: String
-)

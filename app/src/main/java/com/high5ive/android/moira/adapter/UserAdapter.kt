@@ -8,7 +8,7 @@ import com.high5ive.android.moira.data.User
 import com.high5ive.android.moira.databinding.UserItemBinding
 
 class UserAdapter(val items: List<User>,
-                  private val clickListener: (user: User) -> Unit) :
+                  private val clickListener: (index: Int) -> Unit) :
     RecyclerView.Adapter<UserAdapter.UserViewHolder>(){
     class UserViewHolder(val binding: UserItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -21,7 +21,7 @@ class UserAdapter(val items: List<User>,
             )
 
         view.setOnClickListener {
-            clickListener.invoke(items[viewHolder.adapterPosition])
+            clickListener.invoke(viewHolder.adapterPosition + 1)
         }
         return viewHolder
     }
