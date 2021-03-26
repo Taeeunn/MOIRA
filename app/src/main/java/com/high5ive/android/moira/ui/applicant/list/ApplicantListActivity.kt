@@ -30,7 +30,8 @@ class ApplicantListActivity : AppCompatActivity() {
             members.add(
                 Member(
                     "사용자 닉네임 $i",
-                    "개발자 $i"
+                    "개발자 $i",
+                    "팀원"
                 )
             )
         }

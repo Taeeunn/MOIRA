@@ -13,3 +13,26 @@ data class MyTeamItem(
     val projectId: Int,
     val title: String
 )
+
+data class MyTeamDetail(
+    val code: Int,
+    val data: MyTeamDetailData,
+    val msg: String,
+    val succeed: Boolean
+)
+
+data class MyTeamDetailData(
+    val content: String,
+    val imageUrl: String,
+    val memberCount: Int,
+    val myProjectTeammateResponseDTOList: List<MyProjectTeammateResponseDTO>,
+    val title: String
+)
+
+data class MyProjectTeammateResponseDTO(
+    val imageUrl: String,
+    val leader: Boolean,
+    val nickname: String,
+    val position: String,
+    val userId: Int
+)

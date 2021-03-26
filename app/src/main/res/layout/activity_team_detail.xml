@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/teamdetail_layout"
-        tools:context=".ui.myteam.TeamDetailActivity">
+        tools:context=".ui.myteam.detail.TeamDetailActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -131,24 +131,16 @@
                     app:layout_constraintTop_toBottomOf="@+id/team_member" />
 
 
-                <include
-                    android:id="@+id/leader"
-                    layout="@layout/leader_item"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginBottom="12dp"
-                    app:layout_constraintTop_toBottomOf="@+id/team_member_count" />
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clipToPadding="false"
+                    android:layout_marginTop="30dp"
                     android:paddingBottom="90dp"
                     app:layoutManager="LinearLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@+id/leader" />
+                    app:layout_constraintTop_toBottomOf="@+id/team_member_count"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

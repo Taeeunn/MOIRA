@@ -1,8 +1,11 @@
-package com.high5ive.android.moira.ui.myteam
+package com.high5ive.android.moira.ui.myteam.detail
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -14,17 +17,26 @@ import com.google.android.material.snackbar.Snackbar
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.MemberAdapter
 import com.high5ive.android.moira.data.Member
+import com.high5ive.android.moira.data.retrofit.MyTeamDetail
+import com.high5ive.android.moira.data.retrofit.MyTeamDetailData
 import com.high5ive.android.moira.databinding.ActivityTeamDetailBinding
-import com.high5ive.android.moira.ui.myteam.evaluate.EvaluateMemberDetailActivity
+import com.high5ive.android.moira.network.RetrofitClient
+import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.teamfinding.user.UserProfileActivity
 import kotlinx.android.synthetic.main.activity_team_detail.*
-import kotlinx.android.synthetic.main.activity_team_detail.leader
 import kotlinx.android.synthetic.main.activity_team_detail.recycler_view
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
 
 
 class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityTeamDetailBinding
+    lateinit var retrofit: Retrofit
+    lateinit var myAPI: RetrofitService
+    lateinit var token: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +45,14 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
             R.layout.activity_team_detail
         )
 
+        val preferences: SharedPreferences = this.getSharedPreferences("moira", Context.MODE_PRIVATE)
+        token = preferences.getString("jwt_token", null).toString()
+
+        val index = intent.getIntExtra("index", 1)
+
+        initRetrofit()
+        getTeamDetail(index)
+
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         val ab = supportActionBar!!
@@ -40,18 +60,15 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
         ab.setDisplayHomeAsUpEnabled(true)
 
         //binding = DataBindingUtil.setContentView(this, R.layout.leader_item)
-        binding.leader.member = Member("팀장 닉네임", "android 개발자")
-
-
-        more_button.setOnClickListener(this)
-        leader.setOnClickListener(this)
 
         val members = arrayListOf<Member>()
+        members.add(Member("팀장 닉네임", "안드로이드 개발자", "팀장"))
         for (i in 0..5) {
             members.add(
                 Member(
                     "사용자 닉네임 $i",
-                    "개발자 $i"
+                    "개발자 $i",
+                    "팀원"
                 )
             )
         }
@@ -93,10 +110,44 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
 
-            R.id.leader -> {
-                startActivity(Intent(this, UserProfileActivity::class.java))
-            }
         }
+    }
+
+    private fun initRetrofit() {
+
+        retrofit = RetrofitClient.getInstance() // 2에서 만든 Retrofit client의 instance를 불러옵니다.
+        myAPI = retrofit.create(RetrofitService::class.java) // 여기서 retrofit이 우리의 interface를 구현해주고
+    }
+
+    private fun getTeamDetail(index: Int){
+        Runnable {
+
+            myAPI.getMyTeamDetail(token, index).enqueue(object :
+                Callback<MyTeamDetail> {
+                override fun onFailure(call: Call<MyTeamDetail>, t: Throwable) {
+                    t.printStackTrace()
+                }
+
+                override fun onResponse(call: Call<MyTeamDetail>, response: Response<MyTeamDetail>) {
+                    val code: Int = response.body()?.code ?: 0
+
+                    val msg: String = response.body()?.msg ?: "no msg"
+                    val succeed: Boolean = response.body()?.succeed ?: false
+
+                    Log.v("code", code.toString())
+                    Log.v("success", succeed.toString())
+                    Log.v("msg", msg)
+
+                    if(succeed){
+
+                        val data: MyTeamDetailData = response.body()?.data!!
+                        Log.v("data", data.toString())
+
+                    }
+
+                }
+            })
+        }.run()
     }
 }
 

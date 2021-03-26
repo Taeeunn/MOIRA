@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.team_item.view.*
 
 
 class TeamAdapter(val items: List<Team>,
-                  private val clickListener: (team: Team, type: Int) -> Unit) :
+                  private val clickListener: (type: Int, index: Int) -> Unit) :
     RecyclerView.Adapter<TeamAdapter.TeamViewHolder>(){
     class TeamViewHolder(val binding: TeamItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -27,11 +27,11 @@ class TeamAdapter(val items: List<Team>,
             )
 
         view.setOnClickListener {
-            clickListener.invoke(items[viewHolder.adapterPosition], 0)
+            clickListener.invoke(0, viewHolder.adapterPosition + 1)
         }
 
         view.evaluate_team_member_btn.setOnClickListener {
-            clickListener.invoke(items[viewHolder.adapterPosition], 1)
+            clickListener.invoke(1, viewHolder.adapterPosition + 1)
         }
 
 

@@ -1,14 +1,31 @@
 package com.high5ive.android.moira.ui.myteam.evaluate
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.widget.Toolbar
 import com.high5ive.android.moira.R
+import com.high5ive.android.moira.data.retrofit.*
+import com.high5ive.android.moira.network.RetrofitClient
+import com.high5ive.android.moira.network.RetrofitService
 import kotlinx.android.synthetic.main.activity_evaluate_member_detail.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
 
-class EvaluateMemberDetailActivity : AppCompatActivity() {
+class EvaluateMemberDetailActivity : AppCompatActivity(), View.OnClickListener{
+
+    lateinit var retrofit: Retrofit
+    lateinit var myAPI: RetrofitService
+    lateinit var token: String
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_evaluate_member_detail)
@@ -19,9 +36,16 @@ class EvaluateMemberDetailActivity : AppCompatActivity() {
         ab.setDisplayShowTitleEnabled(false)
         ab.setDisplayHomeAsUpEnabled(true)
 
-        complete_button.setOnClickListener {
-            startActivity(Intent(this, EvaluateMemberActivity::class.java))
-        }
+        val preferences: SharedPreferences = this.getSharedPreferences("moira", Context.MODE_PRIVATE)
+        token = preferences.getString("jwt_token", null).toString()
+
+        val index = intent.getIntExtra("index", 1)
+
+        initRetrofit()
+        completeTeamMemberReview(index)
+
+
+        complete_button.setOnClickListener(this)
 
     }
 
@@ -33,5 +57,56 @@ class EvaluateMemberDetailActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onClick(v: View?) {
+        when(v?.id){
+            R.id.complete_button -> {
+                startActivity(Intent(this, EvaluateMemberActivity::class.java))
+            }
+        }
+    }
+
+    private fun initRetrofit() {
+
+        retrofit = RetrofitClient.getInstance() // 2에서 만든 Retrofit client의 instance를 불러옵니다.
+        myAPI = retrofit.create(RetrofitService::class.java) // 여기서 retrofit이 우리의 interface를 구현해주고
+    }
+
+
+    private fun completeTeamMemberReview(index: Int){
+        Runnable {
+
+            val complimentMarkIdList: List<Int> = listOf(1, 2)
+            val mannerPoint: Int = 3
+            val reviewContent: String = "good"
+
+            val body_data = UserReviewAddRequestDto(complimentMarkIdList, mannerPoint, reviewContent, index)
+            myAPI.reviewTeamMember(token, body_data).enqueue(object :
+                Callback<TeamMemberReview> {
+                override fun onFailure(call: Call<TeamMemberReview>, t: Throwable) {
+                    t.printStackTrace()
+                }
+
+                override fun onResponse(call: Call<TeamMemberReview>, response: Response<TeamMemberReview>) {
+                    val code: Int = response.body()?.code ?: 0
+
+                    val msg: String = response.body()?.msg ?: "no msg"
+                    val succeed: Boolean = response.body()?.succeed ?: false
+
+                    Log.v("code", code.toString())
+                    Log.v("success", succeed.toString())
+                    Log.v("msg", msg)
+
+                    if(succeed){
+
+                        val data: TeamMemberReviewData = response.body()?.data!!
+                        Log.v("data", data.toString())
+
+                    }
+
+                }
+            })
+        }.run()
     }
 }

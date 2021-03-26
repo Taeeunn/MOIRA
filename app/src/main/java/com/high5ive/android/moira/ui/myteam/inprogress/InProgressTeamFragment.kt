@@ -17,15 +17,12 @@ import com.high5ive.android.moira.adapter.TeamAdapter
 import com.high5ive.android.moira.data.Team
 import com.high5ive.android.moira.data.retrofit.MyTeam
 import com.high5ive.android.moira.data.retrofit.MyTeamItem
-import com.high5ive.android.moira.data.retrofit.RecruitPost
-import com.high5ive.android.moira.data.retrofit.RecruitPostItem
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
-import com.high5ive.android.moira.ui.myteam.TeamDetailActivity
+import com.high5ive.android.moira.ui.myteam.detail.TeamDetailActivity
 import com.high5ive.android.moira.ui.myteam.evaluate.EvaluateMemberActivity
 import kotlinx.android.synthetic.main.in_progress_team_fragment.*
 import kotlinx.android.synthetic.main.in_progress_team_fragment.recycler_view
-import kotlinx.android.synthetic.main.recruit_post_fragment.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -72,13 +69,18 @@ class InProgressTeamFragment : Fragment() {
         recycler_view.apply {
             layoutManager = GridLayoutManager(context, 2)
             adapter =
-                TeamAdapter(teamList) { team, type ->
+                TeamAdapter(teamList) { type, index ->
 
-                    Toast.makeText(context, "$team", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "$index", Toast.LENGTH_SHORT).show()
                     if (type == 0) {
-                        startActivity(Intent(context, TeamDetailActivity::class.java))
+                        val intent = Intent(context, TeamDetailActivity::class.java)
+                        intent.putExtra("index", index)
+                        startActivity(intent)
+
                     } else if (type == 1) {
-                        startActivity(Intent(context, EvaluateMemberActivity::class.java))
+                        val intent = Intent(context, EvaluateMemberActivity::class.java)
+                        intent.putExtra("index", index)
+                        startActivity(intent)
                     }
                 }
 

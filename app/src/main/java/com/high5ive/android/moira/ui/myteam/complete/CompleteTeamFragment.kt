@@ -3,7 +3,6 @@ package com.high5ive.android.moira.ui.myteam.complete
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,7 +10,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.high5ive.android.moira.R
@@ -21,10 +19,9 @@ import com.high5ive.android.moira.data.retrofit.MyTeam
 import com.high5ive.android.moira.data.retrofit.MyTeamItem
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
-import com.high5ive.android.moira.ui.myteam.TeamDetailActivity
+import com.high5ive.android.moira.ui.myteam.detail.TeamDetailActivity
 import com.high5ive.android.moira.ui.myteam.evaluate.EvaluateMemberActivity
 import kotlinx.android.synthetic.main.in_progress_team_fragment.*
-import kotlinx.android.synthetic.main.recruit_post_fragment.*
 import kotlinx.android.synthetic.main.recruit_post_fragment.recycler_view
 import retrofit2.Call
 import retrofit2.Callback
@@ -71,15 +68,19 @@ class CompleteTeamFragment : Fragment() {
         recycler_view.apply{
             layoutManager = GridLayoutManager(context, 2)
             adapter =
-                TeamAdapter(teamList) { team, type ->
+                TeamAdapter(teamList) { type, index ->
                     Log.v("tagsss", type.toString())
 
-                    Toast.makeText(context, "$team", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "$index", Toast.LENGTH_SHORT).show()
                     if (type==0) {
-                        startActivity(Intent(context, TeamDetailActivity::class.java))
+                        val intent = Intent(context, TeamDetailActivity::class.java)
+                        intent.putExtra("index", index)
+                        startActivity(intent)
                     }
                     else if(type==1){
-                        startActivity(Intent(context, EvaluateMemberActivity::class.java))
+                        val intent = Intent(context, EvaluateMemberActivity::class.java)
+                        intent.putExtra("index", index)
+                        startActivity(intent)
                     }
                 }
         }

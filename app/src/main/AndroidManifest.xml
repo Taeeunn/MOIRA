@@ -52,7 +52,7 @@
         <activity android:name=".ui.mypage.apply.ApplyListActivity" />
         <activity android:name=".ui.applicant.list.ApplicantListActivity" />
         <activity android:name=".ui.myteam.evaluate.EvaluateMemberActivity" />
-        <activity android:name=".ui.myteam.TeamDetailActivity" />
+        <activity android:name=".ui.myteam.detail.TeamDetailActivity" />
         <activity android:name=".ui.teamfinding.newpost.NewPostActivity" />
         <activity android:name=".ui.teamfinding.recruit.RecruitDetailActivity" />
         <activity android:name=".ui.teamfinding.apply.ApplyCompleteActivity" />

@@ -27,6 +27,23 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/circle" />
 
+        <TextView
+            android:id="@+id/leader_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="5dp"
+            android:paddingHorizontal="7dp"
+            android:lineSpacingExtra="6sp"
+            android:text="모임장"
+            android:visibility="gone"
+            android:background="#330068ff"
+            android:textAppearance="@style/leader_tag"
+            android:gravity="center"
+            app:layout_constraintLeft_toRightOf="@+id/contest_image"
+            app:layout_constraintRight_toLeftOf="@+id/member_nickname"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/member_nickname"
@@ -38,7 +55,7 @@
             android:lineSpacingExtra="6sp"
             android:text="@{member.member_nickname}"
             android:textAppearance="@style/member_name"
-            app:layout_constraintLeft_toRightOf="@+id/contest_image"
+            app:layout_constraintLeft_toRightOf="@+id/leader_tag"
             app:layout_constraintRight_toLeftOf="@+id/move_to_member"
             app:layout_constraintTop_toTopOf="parent" />
 

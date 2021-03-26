@@ -73,6 +73,31 @@ interface RetrofitService {
     ): Call<MyTeam>
 
 
+    //팀 목록 - 나의팀 리스트 조회
+    @GET("myProject/{projectId}")
+    fun getMyTeamDetail(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Path("projectId") projectId : Int
+    ): Call<MyTeamDetail>
+
+
+    //팀 목록 - 완료한 팀 - 팀원 평가하기 - 팀원 목록
+    @GET("project/{projectId}/member")
+    fun getTeamMemberList(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Path("projectId") projectId : Int
+    ): Call<TeamMember>
+
+
+
+    // 팀원 평가하기 - 특정 유저 평가하기
+    @POST("review")
+    fun reviewTeamMember(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Body userReviewAddRequestDto: UserReviewAddRequestDto
+    ): Call<TeamMemberReview>
+
+
 
 
     // 마이페이지
