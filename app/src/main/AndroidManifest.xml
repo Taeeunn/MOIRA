@@ -26,7 +26,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.teamfinding.user.UserProfileActivity" />
+        <activity android:name=".ui.teamfinding.user.UserProfileDetailActivity" />
         <activity android:name=".ui.message.MessageHistoryActivity" />
         <activity android:name=".ui.mypage.edit.EditProfileActivity" />
         <activity android:name=".ui.teamfinding.apply.ApplyActivity" />
@@ -54,7 +54,7 @@
         <activity android:name=".ui.myteam.evaluate.EvaluateMemberActivity" />
         <activity android:name=".ui.myteam.detail.TeamDetailActivity" />
         <activity android:name=".ui.teamfinding.newpost.NewPostActivity" />
-        <activity android:name=".ui.teamfinding.recruit.RecruitDetailActivity" />
+        <activity android:name=".ui.teamfinding.recruit.RecruitPostDetailActivity" />
         <activity android:name=".ui.teamfinding.apply.ApplyCompleteActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity">

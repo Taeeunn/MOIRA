@@ -3,7 +3,6 @@ package com.high5ive.android.moira.ui.teamfinding.user
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -18,8 +17,6 @@ import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.UserAdapter
 import com.high5ive.android.moira.data.User
 import com.high5ive.android.moira.data.retrofit.UserPool
-import com.high5ive.android.moira.data.retrofit.UserPoolDetailInfo
-import com.high5ive.android.moira.data.retrofit.UserPoolDetailInfoData
 import com.high5ive.android.moira.data.retrofit.UserPoolItem
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
@@ -78,7 +75,7 @@ class UserPoolFragment : Fragment() {
                 UserAdapter(userList) { index ->
                     Toast.makeText(context, "$index", Toast.LENGTH_SHORT).show()
 
-                    val intent = Intent(context, UserProfileActivity::class.java)
+                    val intent = Intent(context, UserProfileDetailActivity::class.java)
                     intent.putExtra("index", index)
                     startActivity(intent)
                 }

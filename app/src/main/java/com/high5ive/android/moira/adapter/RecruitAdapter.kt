@@ -1,5 +1,6 @@
 package com.high5ive.android.moira.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,7 +9,7 @@ import com.high5ive.android.moira.data.Recruit
 import com.high5ive.android.moira.databinding.RecruitItemBinding
 
 class RecruitAdapter(val items: List<Recruit>,
-                     private val clickListener: (recruit: Recruit) -> Unit) :
+                     private val clickListener: (index: Int) -> Unit) :
     RecyclerView.Adapter<RecruitAdapter.RecruitViewHolder>(){
     class RecruitViewHolder(val binding: RecruitItemBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -21,7 +22,8 @@ class RecruitAdapter(val items: List<Recruit>,
             )
 
         view.setOnClickListener {
-            clickListener.invoke(items[viewHolder.adapterPosition])
+
+            clickListener.invoke(viewHolder.binding.recruit!!.id)
 
         }
 
@@ -32,6 +34,8 @@ class RecruitAdapter(val items: List<Recruit>,
     override fun getItemCount() = items.size
     override fun onBindViewHolder(holder: RecruitViewHolder, position: Int) {
         holder.binding.recruit = items[position]
+
+
     }
 
 }

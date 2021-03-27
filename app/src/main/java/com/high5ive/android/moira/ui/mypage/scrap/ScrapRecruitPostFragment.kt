@@ -9,10 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.data.retrofit.ApplyPost
-import com.high5ive.android.moira.data.retrofit.ApplyPostItem
-import com.high5ive.android.moira.data.retrofit.RecruitPost
-import com.high5ive.android.moira.data.retrofit.RecruitPostItem
+import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import retrofit2.Call
@@ -62,12 +59,12 @@ class ScrapRecruitPostFragment : Fragment() {
     private fun getScrapRecruitPost() {
         Runnable {
 
-            myAPI.getScrapRecruitPostList(token, "develop", "date").enqueue(object : Callback<RecruitPost> {
-                override fun onFailure(call: Call<RecruitPost>, t: Throwable) {
+            myAPI.getScrapRecruitPostList(token, "develop", "date").enqueue(object : Callback<ScrapRecruitPost> {
+                override fun onFailure(call: Call<ScrapRecruitPost>, t: Throwable) {
                     t.printStackTrace()
                 }
 
-                override fun onResponse(call: Call<RecruitPost>, response: Response<RecruitPost>) {
+                override fun onResponse(call: Call<ScrapRecruitPost>, response: Response<ScrapRecruitPost>) {
                     val code: Int = response.body()?.code ?: 0
 
                     val msg: String = response.body()?.msg ?: "no msg"
@@ -79,7 +76,7 @@ class ScrapRecruitPostFragment : Fragment() {
 
                     if(succeed){
 
-                        val list: List<RecruitPostItem> = response.body()?.list ?: emptyList()
+                        val list: List<ScrapRecruitPostItem> = response.body()?.list ?: emptyList()
                         Log.v("data", list.toString())
 
                     }

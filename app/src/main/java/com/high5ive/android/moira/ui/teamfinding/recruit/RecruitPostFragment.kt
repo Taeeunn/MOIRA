@@ -1,56 +1,58 @@
 package com.high5ive.android.moira.ui.teamfinding.recruit
 
+import android.content.Context
 import android.content.Intent
-import android.content.res.ColorStateList
-import android.graphics.Color
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.TypedValue
-import android.view.ContextThemeWrapper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
-import com.google.android.material.chip.ChipGroup
-import com.high5ive.android.moira.MainActivity
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.adapter.AwardAdapter
 import com.high5ive.android.moira.adapter.RecruitAdapter
-import com.high5ive.android.moira.data.Award
 import com.high5ive.android.moira.data.Recruit
-import kotlinx.android.synthetic.main.member_info_fragment.*
+import com.high5ive.android.moira.data.retrofit.RecruitPost
+import com.high5ive.android.moira.data.retrofit.RecruitPostItem
+import com.high5ive.android.moira.network.RetrofitClient
+import com.high5ive.android.moira.network.RetrofitService
 import kotlinx.android.synthetic.main.recruit_post_fragment.*
 import kotlinx.android.synthetic.main.recruit_post_fragment.recycler_view
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
 
 
 //https://mobikul.com/android-chips-dynamicaly-add-remove-tags-chips-view/
 class RecruitPostFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = RecruitPostFragment()
-    }
+    lateinit var retrofit: Retrofit
+    lateinit var myAPI: RetrofitService
+    lateinit var token: String
 
-    private lateinit var viewModel: RecruitPostViewModel
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val preferences: SharedPreferences = requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
+        token = preferences.getString("jwt_token", null).toString()
+
+        initRetrofit()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
         return inflater.inflate(R.layout.recruit_post_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(RecruitPostViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         var tagList = mutableListOf<String>()
         tagList.add("태그명1")
@@ -63,7 +65,8 @@ class RecruitPostFragment : Fragment() {
             recruit.add(
                 Recruit(
                     "팀원 모집글 제목 팀원 모집글 제목 팀원 모집글 제목  $i",
-                    "사용자 닉네임 $i"
+                    "사용자 닉네임 $i",
+                    i+1
                 )
             )
         }
@@ -71,11 +74,25 @@ class RecruitPostFragment : Fragment() {
         recycler_view.apply{
             layoutManager = LinearLayoutManager(context)
             adapter =
-                RecruitAdapter(recruit) { person ->
-                    Toast.makeText(context, "$person", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(context, RecruitDetailActivity::class.java))
+                RecruitAdapter(recruit) { index ->
+                    Toast.makeText(context, "$index", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(context, RecruitPostDetailActivity::class.java)
+                    intent.putExtra("index", index)
+                    startActivity(intent)
                 }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        getRecruitPostList()
+    }
+
+    private fun initRetrofit() {
+
+        retrofit = RetrofitClient.getInstance() // 2에서 만든 Retrofit client의 instance를 불러옵니다.
+        myAPI = retrofit.create(RetrofitService::class.java) // 여기서 retrofit이 우리의 interface를 구현해주고
     }
 
 
@@ -101,6 +118,43 @@ class RecruitPostFragment : Fragment() {
             }
             tag_group.addView(chip)
         }
+    }
+
+    private fun getRecruitPostList() {
+        Runnable {
+
+            val page: Int = 0
+            val position: String = "개발자"
+            val sort: String = "date"
+            val tag: String = "해시태그1,해시태그2"
+
+            myAPI.getRecruitPostList(token, page, position, null, null).enqueue(object :
+                Callback<RecruitPost> {
+                override fun onFailure(call: Call<RecruitPost>, t: Throwable) {
+                    t.printStackTrace()
+                }
+
+                override fun onResponse(call: Call<RecruitPost>, response: Response<RecruitPost>) {
+                    val code: Int = response.body()?.code ?: 0
+
+                    val msg: String = response.body()?.msg ?: "no msg"
+                    val succeed: Boolean = response.body()?.succeed ?: false
+
+                    Log.v("code", code.toString())
+                    Log.v("success", succeed.toString())
+                    Log.v("msg", msg)
+
+                    Log.v("url", call.request().url().toString())
+                    if(succeed){
+
+                        val list: List<RecruitPostItem> = response.body()?.list!!
+                        Log.v("data", list.toString())
+
+                    }
+
+                }
+            })
+        }.run()
     }
 
 }

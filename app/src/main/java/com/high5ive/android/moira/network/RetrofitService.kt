@@ -41,7 +41,7 @@ interface RetrofitService {
     // 2-2. 회원 가입 시 포지션 카테고리 목록
     @GET("signup/categories")
     fun getPositionCategories(
-    ): Call<PositionCategory>
+    ): Call<PositionCategoryResponse>
 
     // 2-3. 선택한 포지션 카테고리의 상세 포지션 목록
     @GET("signup/positions")
@@ -60,6 +60,50 @@ interface RetrofitService {
         @Header("X-AUTH-TOKEN") token: String,
         @Body body: SignUpInfo
     ): Call<ResponseData>
+
+
+    // 팀원 모집 - 모집글 리스트
+    @GET("project")
+    fun getRecruitPostList(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Query("page") page : Int?,
+        @Query("position") position : String?,
+        @Query("sort") sort : String?,
+        @Query("tag") tag : String?
+    ): Call<RecruitPost>
+
+
+    // 팀원 모집 - 모집글 리스트
+    @GET("project/{projectId}")
+    fun getRecruitPostDetail(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Path("projectId") projectId : Int
+    ): Call<RecruitPostDetail>
+
+
+    // 나의 팀 - 상세 페이지(팀장) - 팀 수정하기
+    @PUT("project/{projectId}")
+    fun editRecruitPostContent(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Path("projectId") projectId : Int,
+        @Body projectModifyTitleRequestDTO : ProjectModifyTitleRequestDTO
+    ): Call<ResponseData>
+
+    // 팀 모집 - 팀 모집글 상세 - 좋아요
+    @PUT("project/{projectId}/like")
+    fun likeRecruitPost(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Path("projectId") projectId : Int
+    ): Call<ResponseData>
+
+
+    // 팀원 모집 - 팀 만들기
+    @POST("project")
+    fun makeNewRecruitPost(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Body projectRequestDTO: NewRecruitPost
+    ): Call<NewRecruitPostResponse>
+
 
 
     //팀원 찾기 - 인재풀
@@ -132,6 +176,15 @@ interface RetrofitService {
     ): Call<MyTeamDetail>
 
 
+    // 나의 팀 - 상세 페이지(팀장) - 프로젝트 완료하기(수정)
+    @PUT("project/{projectId}/status")
+    fun editProjectStatus(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Path("projectId") projectId : Int,
+        @Query("projectModifyStatusRequestDTO") projectStatus : ProjectModifyStatusRequestDTO
+    ): Call<ResponseData>
+
+
     //팀 목록 - 완료한 팀 - 팀원 평가하기 - 팀원 목록
     @GET("project/{projectId}/member")
     fun getTeamMemberList(
@@ -181,7 +234,7 @@ interface RetrofitService {
         @Header("X-AUTH-TOKEN") token: String,
         @Query("positionCategory") positionCategory : String,
         @Query("sortby") sortby : String
-    ): Call<RecruitPost>
+    ): Call<ScrapRecruitPost>
 
     // 마이페이지 - 내가 스크랩한 글 - 모집글
     @GET("mypage/like/pool")

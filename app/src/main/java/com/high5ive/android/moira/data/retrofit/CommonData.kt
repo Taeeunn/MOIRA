@@ -89,3 +89,9 @@ data class UserSchoolResponseDto(
     val startedAt: String,
     val userSchoolId: Int
 )
+
+
+data class PositionCategory(
+    val count: Int,
+    val positionCategoryName: String
+)

@@ -17,9 +17,8 @@ import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.applicant.list.ApplicantListActivity
-import com.high5ive.android.moira.ui.teamfinding.recruit.RecruitDetailActivity
+import com.high5ive.android.moira.ui.teamfinding.recruit.RecruitPostDetailActivity
 import kotlinx.android.synthetic.main.activity_post_list.*
-import kotlinx.android.synthetic.main.my_page_fragment.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -59,7 +58,7 @@ class PostListActivity : AppCompatActivity() {
                 PostAdapter(postList) { post, type ->
                     Toast.makeText(this@PostListActivity, "$post", Toast.LENGTH_SHORT).show()
                     if (type==0) {
-                        startActivity(Intent(this@PostListActivity, RecruitDetailActivity::class.java))
+                        startActivity(Intent(this@PostListActivity, RecruitPostDetailActivity::class.java))
                     }
                     else if(type==1){
                         startActivity(Intent(this@PostListActivity, ApplicantListActivity::class.java))

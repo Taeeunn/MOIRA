@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/recruitdetail_layout"
-    tools:context=".ui.teamfinding.recruit.RecruitDetailActivity">
+    tools:context=".ui.teamfinding.recruit.RecruitPostDetailActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

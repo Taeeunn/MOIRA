@@ -22,8 +22,7 @@ import com.high5ive.android.moira.data.retrofit.MyTeamDetailData
 import com.high5ive.android.moira.databinding.ActivityTeamDetailBinding
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
-import com.high5ive.android.moira.ui.teamfinding.user.UserProfileActivity
-import kotlinx.android.synthetic.main.activity_team_detail.*
+import com.high5ive.android.moira.ui.teamfinding.user.UserProfileDetailActivity
 import kotlinx.android.synthetic.main.activity_team_detail.recycler_view
 import retrofit2.Call
 import retrofit2.Callback
@@ -78,7 +77,7 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
             adapter =
                 MemberAdapter(members) { member ->
                     Toast.makeText(this@TeamDetailActivity, "$member", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this@TeamDetailActivity, UserProfileActivity::class.java))
+                    startActivity(Intent(this@TeamDetailActivity, UserProfileDetailActivity::class.java))
                 }
         }
     }

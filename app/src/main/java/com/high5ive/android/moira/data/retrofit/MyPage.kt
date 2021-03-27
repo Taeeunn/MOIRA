@@ -50,6 +50,22 @@ data class ApplyPostItem(
     val writtenTime: String
 )
 
+data class ScrapRecruitPost(
+    val code: Int,
+    val list: List<ScrapRecruitPostItem>,
+    val msg: String,
+    val succeed: Boolean
+)
+
+data class ScrapRecruitPostItem(
+    val hashtagList: List<Hashtag>,
+    val hitCount: Int,
+    val projectId: Int,
+    val projectImageUrl: String,
+    val projectTitle: String,
+    val writtenTime: String
+)
+
 data class ScrapUserPool(
     val code: Int,
     val list: List<ScrapUserPoolItem>,

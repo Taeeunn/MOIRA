@@ -14,6 +14,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.retrofit.PositionCategory
+import com.high5ive.android.moira.data.retrofit.PositionCategoryResponse
 import com.high5ive.android.moira.data.retrofit.PositionItem
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
@@ -130,14 +131,14 @@ class SetPositionFragment : Fragment() {
     private fun getPositionCategory() {
         Runnable {
 
-            myAPI.getPositionCategories().enqueue(object : Callback<PositionCategory> {
-                override fun onFailure(call: Call<PositionCategory>, t: Throwable) {
+            myAPI.getPositionCategories().enqueue(object : Callback<PositionCategoryResponse> {
+                override fun onFailure(call: Call<PositionCategoryResponse>, t: Throwable) {
                     t.printStackTrace()
                 }
 
                 override fun onResponse(
-                    call: Call<PositionCategory>,
-                    response: Response<PositionCategory>
+                    call: Call<PositionCategoryResponse>,
+                    response: Response<PositionCategoryResponse>
                 ) {
                     val code: Int = response.body()?.code ?: 0
                     val msg: String = response.body()?.msg ?: "no msg"

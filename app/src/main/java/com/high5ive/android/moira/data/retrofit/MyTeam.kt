@@ -36,3 +36,7 @@ data class MyProjectTeammateResponseDTO(
     val position: String,
     val userId: Int
 )
+
+data class ProjectModifyStatusRequestDTO(
+    val status: String
+)

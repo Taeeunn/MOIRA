@@ -1,15 +1,12 @@
 package com.high5ive.android.moira.adapter
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.Team
 
 import com.high5ive.android.moira.databinding.TeamItemBinding
-import com.high5ive.android.moira.ui.teamfinding.recruit.RecruitDetailActivity
 import kotlinx.android.synthetic.main.team_item.view.*
 
 
