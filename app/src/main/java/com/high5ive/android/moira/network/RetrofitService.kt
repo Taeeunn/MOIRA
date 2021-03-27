@@ -62,6 +62,13 @@ interface RetrofitService {
     ): Call<ResponseData>
 
 
+    // 팀 목록 - 나의 태그 리스트
+    @GET("user/tag")
+    fun getUserTagList(
+        @Header("X-AUTH-TOKEN") token: String
+    ): Call<UserTag>
+
+
     // 팀원 모집 - 모집글 리스트
     @GET("project")
     fun getRecruitPostList(

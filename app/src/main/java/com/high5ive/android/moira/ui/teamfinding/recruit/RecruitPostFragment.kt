@@ -16,8 +16,7 @@ import com.google.android.material.chip.ChipDrawable
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.RecruitAdapter
 import com.high5ive.android.moira.data.Recruit
-import com.high5ive.android.moira.data.retrofit.RecruitPost
-import com.high5ive.android.moira.data.retrofit.RecruitPostItem
+import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import kotlinx.android.synthetic.main.recruit_post_fragment.*
@@ -86,6 +85,7 @@ class RecruitPostFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
+        getUserTag()
         getRecruitPostList()
     }
 
@@ -118,6 +118,37 @@ class RecruitPostFragment : Fragment() {
             }
             tag_group.addView(chip)
         }
+    }
+
+    private fun getUserTag() {
+        Runnable {
+
+            myAPI.getUserTagList(token).enqueue(object :
+                Callback<UserTag> {
+                override fun onFailure(call: Call<UserTag>, t: Throwable) {
+                    t.printStackTrace()
+                }
+
+                override fun onResponse(call: Call<UserTag>, response: Response<UserTag>) {
+                    val code: Int = response.body()?.code ?: 0
+
+                    val msg: String = response.body()?.msg ?: "no msg"
+                    val succeed: Boolean = response.body()?.succeed ?: false
+
+                    Log.v("code", code.toString())
+                    Log.v("success", succeed.toString())
+                    Log.v("msg", msg)
+
+                    if(succeed){
+
+                        val list: List<String> = response.body()?.list!!
+                        Log.v("data", list.toString())
+
+                    }
+
+                }
+            })
+        }.run()
     }
 
     private fun getRecruitPostList() {

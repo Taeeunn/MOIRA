@@ -95,3 +95,11 @@ data class PositionCategory(
     val count: Int,
     val positionCategoryName: String
 )
+
+
+data class UserTag(
+    val code: Int,
+    val list: List<String>,
+    val msg: String,
+    val succeed: Boolean
+)
