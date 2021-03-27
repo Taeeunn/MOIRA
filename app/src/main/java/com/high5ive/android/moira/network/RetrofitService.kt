@@ -32,10 +32,12 @@ interface RetrofitService {
 
 
     // 2. 회원가입
-    // 2-1. 닉네임 중복 검사
-    @GET("signup/nickname")
-    fun checkNickname(
-        @Query("nickname") nickname : String
+
+    // 2-1. 회원가입
+    @POST("signup")
+    fun signupUser(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Body body: SignUpInfo
     ): Call<ResponseData>
 
     // 2-2. 회원 가입 시 포지션 카테고리 목록
@@ -43,33 +45,29 @@ interface RetrofitService {
     fun getPositionCategories(
     ): Call<PositionCategoryResponse>
 
-    // 2-3. 선택한 포지션 카테고리의 상세 포지션 목록
+    // 2-3. 모든 관심 태그 목록
+    @GET("signup/hashtags")
+    fun getHashTags(
+    ): Call<Hashtags>
+
+    // 2-4. 닉네임 중복 검사
+    @GET("signup/nickname")
+    fun checkNickname(
+        @Query("nickname") nickname : String
+    ): Call<ResponseData>
+
+    // 2-5. 선택한 포지션 카테고리의 상세 포지션 목록
     @GET("signup/positions")
     fun getPositionDetail(
         @Query("positionCategoryId") positionCategoryId : Int
     ): Call<PositionDetail>
 
-    // 2-4. 모든 관심 태그 목록
-    @GET("signup/hashtags")
-    fun getHashTags(
-    ): Call<Hashtags>
-
-    // 2-5. 회원가입
-    @POST("signup")
-    fun signupUser(
-        @Header("X-AUTH-TOKEN") token: String,
-        @Body body: SignUpInfo
-    ): Call<ResponseData>
 
 
-    // 팀 목록 - 나의 태그 리스트
-    @GET("user/tag")
-    fun getUserTagList(
-        @Header("X-AUTH-TOKEN") token: String
-    ): Call<UserTag>
 
+    // 3-1. 프로젝트(팀)
 
-    // 팀원 모집 - 모집글 리스트
+    // 3-1-1. 팀원 모집 - 모집글 리스트
     @GET("project")
     fun getRecruitPostList(
         @Header("X-AUTH-TOKEN") token: String,
@@ -79,16 +77,21 @@ interface RetrofitService {
         @Query("tag") tag : String?
     ): Call<RecruitPost>
 
+    // 3-1-2. 팀원 모집 - 팀 만들기
+    @POST("project")
+    fun makeNewRecruitPost(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Body projectRequestDTO: NewRecruitPost
+    ): Call<NewRecruitPostResponse>
 
-    // 팀원 모집 - 모집글 리스트
+    // 3-1-3. 팀원 모집 - 팀 모집글 상세
     @GET("project/{projectId}")
     fun getRecruitPostDetail(
         @Header("X-AUTH-TOKEN") token: String,
         @Path("projectId") projectId : Int
     ): Call<RecruitPostDetail>
 
-
-    // 나의 팀 - 상세 페이지(팀장) - 팀 수정하기
+    // 3-1-4. 나의 팀 - 상세 페이지(팀장) - 팀 수정하기
     @PUT("project/{projectId}")
     fun editRecruitPostContent(
         @Header("X-AUTH-TOKEN") token: String,
@@ -96,94 +99,25 @@ interface RetrofitService {
         @Body projectModifyTitleRequestDTO : ProjectModifyTitleRequestDTO
     ): Call<ResponseData>
 
-    // 팀 모집 - 팀 모집글 상세 - 좋아요
+
+    // 3-1.5.
+
+
+    // 3-1-6. 팀 모집 - 팀 모집글 상세 - 좋아요
     @PUT("project/{projectId}/like")
     fun likeRecruitPost(
         @Header("X-AUTH-TOKEN") token: String,
         @Path("projectId") projectId : Int
     ): Call<ResponseData>
 
-
-    // 팀원 모집 - 팀 만들기
-    @POST("project")
-    fun makeNewRecruitPost(
-        @Header("X-AUTH-TOKEN") token: String,
-        @Body projectRequestDTO: NewRecruitPost
-    ): Call<NewRecruitPostResponse>
-
-
-
-    //팀원 찾기 - 인재풀
-    @GET("pool")
-    fun getUserPoolList(
-        @Header("X-AUTH-TOKEN") token: String,
-        @Query("page") page : Int,
-        @Query("positionCategory") positionCategory : String,
-        @Query("sortby") sortby : String
-    ): Call<UserPool>
-
-    // 팀원 찾기 - 인재풀 - ON/OFF
-    @POST("pool")
-    fun registerUserPool(
-        @Header("X-AUTH-TOKEN") token: String
-    ): Call<UserRegistration>
-
-    // 팀원 찾기 - 인재풀 - 게시글 좋아요 ON/OFF
-    @POST("pool/like/{userPoolId}")
-    fun signupUser(
-        @Header("X-AUTH-TOKEN") token: String,
-        @Path("userPoolId") userPoolId : Int
-    ): Call<UserLike>
-
-
-    // 팀원 찾기 - 인재풀 - 게시글 상세(사용자정보)
-    @GET("pool/profile/{userPoolId}")
-    fun getUserPoolDetailInfo(
-        @Header("X-AUTH-TOKEN") token: String,
-        @Path("userPoolId") userPoolId : Int
-    ): Call<UserPoolDetailInfo>
-
-    // 팀원 찾기 - 인재풀 - 게시글 상세(사용자평가)
-    @GET("pool/review/{userPoolId}")
-    fun getUserPoolDetailReview(
-        @Header("X-AUTH-TOKEN") token: String,
-        @Path("userPoolId") userPoolId : Int
-    ): Call<UserPoolDetailReview>
-
-    // 팀원 찾기 - 인재풀 - 게시글 상세(사용자평가) - 모든 리뷰 조회
-    @GET("pool/review/detail/{userPoolId}")
-    fun getUserPoolDetailReviewAll(
-        @Header("X-AUTH-TOKEN") token: String,
-        @Query("sort") sort : Int,
-        @Query("userPoolId") userPoolId : Int
-    ): Call<UserPoolDetailReviewAll>
-
-    // 팀원 찾기 - 인재풀 - 검색
-    @GET("pool/search")
-    fun searchUserPool(
-        @Header("X-AUTH-TOKEN") token: String,
-        @Query("keyword") keyword : String
-    ): Call<UserPoolSearch>
-
-
-    // 팀 목록 - 나의팀 리스트 조회
-    @GET("myProject")
-    fun getMyTeamList(
-        @Header("X-AUTH-TOKEN") token: String,
-        @Query("sort") sort : String,
-        @Query("status") status : String
-    ): Call<MyTeam>
-
-
-    //팀 목록 - 나의팀 리스트 조회
-    @GET("myProject/{projectId}")
-    fun getMyTeamDetail(
+    //3-1-7. 팀 목록 - 완료한 팀 - 팀원 평가하기 - 팀원 목록
+    @GET("project/{projectId}/member")
+    fun getTeamMemberList(
         @Header("X-AUTH-TOKEN") token: String,
         @Path("projectId") projectId : Int
-    ): Call<MyTeamDetail>
+    ): Call<TeamMember>
 
-
-    // 나의 팀 - 상세 페이지(팀장) - 프로젝트 완료하기(수정)
+    // 3-1-8. 나의 팀 - 상세 페이지(팀장) - 프로젝트 완료하기(수정)
     @PUT("project/{projectId}/status")
     fun editProjectStatus(
         @Header("X-AUTH-TOKEN") token: String,
@@ -192,58 +126,194 @@ interface RetrofitService {
     ): Call<ResponseData>
 
 
-    //팀 목록 - 완료한 팀 - 팀원 평가하기 - 팀원 목록
-    @GET("project/{projectId}/member")
-    fun getTeamMemberList(
+
+    // 3-2. 프로젝트(팀) 댓글
+
+    // 3-2-1. 댓글창 - 댓글 삭제
+    @DELETE("comment/{commentId}")
+    fun deleteComment(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Path("commentId") commentId : Int
+    ): Call<ResponseData>
+
+    // 3-2-2. 댓글창 - 댓글 조회
+    @GET ("comment/{projectId}")
+    fun getComment(
         @Header("X-AUTH-TOKEN") token: String,
         @Path("projectId") projectId : Int
-    ): Call<TeamMember>
+    ): Call<Comment>
 
-    //팀 목록 - 완료한 팀 - 팀원 평가하기 - 팀원 목록
+    // 3-2-3. 댓글창 - 댓글 쓰기
+    @POST ("comment/{projectId}")
+    fun addComment(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Query("parentId") parentId : Int?,
+        @Body projectCommentRequestDTO : CommentAdd,
+        @Path("projectId") projectId : Int
+    ): Call<CommentAddResponse>
+
+
+    // 3-3. 프로젝트(팀) 지원
+
+    // 3-3-1. 모집글 - 지원하기
+    @POST ("apply")
+    fun applyProject(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Body projectApplyRequestDTO : ProjectApply
+    ): Call<ResponseData>
+
+    // 3-3-2. 마이페이지 - 지원한 글 - 지원 목록 - 지원 내역
+    @GET("apply/{projectApplyId}")
+    fun getProjectApplyDetail(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Path("projectApplyId") projectApplyId: Int
+    ): Call<ProjectApplyDetail>
+
+    // 3-3-3. 지원서의 상태를 변경
+    @PUT("apply/{projectApplyId}")
+    fun modifyProjectApplyStatus(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Path("projectApplyId") projectApplyId: Int,
+        @Body projectApplyModifyStatusRequestDTO: ProjectApplyModifyStatus
+    ): Call<ResponseData>
+
+    // 3-3-4. 프로젝트(팀) 지원 취소
+    @DELETE("apply/{projectApplyId}")
+    fun deleteProjectApply(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Path("projectApplyId") projectApplyId: Int
+    ): Call<ResponseData>
+
+    // 3-3-5. 마이페이지 - 작성한 글 - 지원자 목록
+    @GET("apply/project/{projectId}")
+    fun getProjectApplyUserList(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Path("projectId") projectId: Int
+    ): Call<ProjectApplyUser>
+
+
+    // 3-4. 나의 프로젝트(팀)
+
+    // 3-4-1. 팀 목록 - 나의팀 리스트 조회
+    @GET("myProject")
+    fun getMyTeamList(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Query("sort") sort : String,
+        @Query("status") status : String
+    ): Call<MyTeam>
+
+    // 3-4-2. 팀 목록 - 나의팀 상세 조회
+    @GET("myProject/{projectId}")
+    fun getMyTeamDetail(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Path("projectId") projectId : Int
+    ): Call<MyTeamDetail>
+
+
+
+    // 4. 인재풀
+
+    // 4-1. 팀원 찾기 - 인재풀
+    @GET("pool")
+    fun getUserPoolList(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Query("page") page : Int,
+        @Query("positionCategory") positionCategory : String,
+        @Query("sortby") sortby : String
+    ): Call<UserPool>
+
+    // 4-2. 팀원 찾기 - 인재풀 - ON/OFF
+    @POST("pool")
+    fun registerUserPool(
+        @Header("X-AUTH-TOKEN") token: String
+    ): Call<UserRegistration>
+
+    // 4-3. 팀원 찾기 - 인재풀 - 게시글 좋아요 ON/OFF
+    @POST("pool/like/{userPoolId}")
+    fun signupUser(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Path("userPoolId") userPoolId : Int
+    ): Call<UserLike>
+
+    // 4-4. 팀원 찾기 - 인재풀 - 게시글 상세(사용자정보)
+    @GET("pool/profile/{userPoolId}")
+    fun getUserPoolDetailInfo(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Path("userPoolId") userPoolId : Int
+    ): Call<UserPoolDetailInfo>
+
+    // 4-5. 팀원 찾기 - 인재풀 - 게시글 상세(사용자평가)
+    @GET("pool/review/{userPoolId}")
+    fun getUserPoolDetailReview(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Path("userPoolId") userPoolId : Int
+    ): Call<UserPoolDetailReview>
+
+    // 4-6. 팀원 찾기 - 인재풀 - 게시글 상세(사용자평가) - 모든 리뷰 조회
+    @GET("pool/review/detail/{userPoolId}")
+    fun getUserPoolDetailReviewAll(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Query("sort") sort : Int,
+        @Query("userPoolId") userPoolId : Int
+    ): Call<UserPoolDetailReviewAll>
+
+    // 4-7. 팀원 찾기 - 인재풀 - 검색
+    @GET("pool/search")
+    fun searchUserPool(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Query("keyword") keyword : String
+    ): Call<UserPoolSearch>
+
+
+
+
+
+
+    // 5. 유저 리뷰
+
+    // 5-1. 칭찬 뱃지 정보 불러오기
     @GET("compliment")
     fun getComplimentList(
         @Header("X-AUTH-TOKEN") token: String
     ): Call<Compliment>
 
-
-
-    // 팀원 평가하기 - 특정 유저 평가하기
+    // 5-2. 팀원 평가하기 - 특정 유저 평가하기
     @POST("review")
     fun reviewTeamMember(
         @Header("X-AUTH-TOKEN") token: String,
         @Body userReviewAddRequestDto: UserReviewAddRequestDto
     ): Call<TeamMemberReview>
 
+    // 5-3. 유저의 "사용자 평가" 조회
+    @GET("review/{targetId}")
+    fun getApplyUserReview(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Path("targetId") targetId: Int
+    ): Call<ApplyUserReview>
+
+    // 5-4. 유저의 "모든 리뷰 내용" 조회
+    @GET("review/detail/{targetId}")
+    fun getApplyUserReviewAll(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Query("sort") sort: String,
+        @Path("targetId") targetId: Int
+    ): Call<ApplyUserReviewAll>
 
 
 
-    // 마이페이지
+    // 6-1. 마이페이지
+
+    // 6-1-1. 마이페이지
     @GET("mypage")
     fun getMyPage(
         @Header("X-AUTH-TOKEN") token: String): Call<MyPage>
 
-
-    // 마이페이지 - 내가 작성한 글
-    @GET("mypage/written")
-    fun getWrittenPostList(
-        @Header("X-AUTH-TOKEN") token: String): Call<WrittenPost>
-
-
-    // 마이페이지 - 내가 지원한 글
+    // 6-1-2. 마이페이지 - 내가 지원한 글
     @GET("mypage/applied")
     fun getApplyPostList(
         @Header("X-AUTH-TOKEN") token: String): Call<ApplyPost>
 
-
-    // 마이페이지 - 내가 스크랩한 글 - 모집글
-    @GET("mypage/like/project")
-    fun getScrapRecruitPostList(
-        @Header("X-AUTH-TOKEN") token: String,
-        @Query("positionCategory") positionCategory : String,
-        @Query("sortby") sortby : String
-    ): Call<ScrapRecruitPost>
-
-    // 마이페이지 - 내가 스크랩한 글 - 모집글
+    // 6-1-3. 마이페이지 - 내가 스크랩한 글 - 인재풀
     @GET("mypage/like/pool")
     fun getScrapUserPoolList(
         @Header("X-AUTH-TOKEN") token: String,
@@ -251,20 +321,101 @@ interface RetrofitService {
         @Query("sortby") sortby : String
     ): Call<ScrapUserPool>
 
+    // 6-1-4. 마이페이지 - 내가 스크랩한 글 - 모집글
+    @GET("mypage/like/project")
+    fun getScrapRecruitPostList(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Query("positionCategory") positionCategory : String,
+        @Query("sortby") sortby : String
+    ): Call<ScrapRecruitPost>
 
-    // 마이페이지 - 내 정보 수정하기 - 첫 화면
+    // 6-1-5. 마이페이지 - 내가 작성한 글
+    @GET("mypage/written")
+    fun getWrittenPostList(
+        @Header("X-AUTH-TOKEN") token: String): Call<WrittenPost>
+
+
+    // 6-2. 마이페이지 - 프로필 수정
+
+    // 6-2-1. 마이페이지 - 내 정보 수정하기 - 첫 화면
     @GET("mypage/edit")
     fun getMyProfileData(
         @Header("X-AUTH-TOKEN") token: String
     ): Call<MyProfile>
 
-
-    // 마이페이지 - 내 정보 수정하기 - 프로필 관련 정보 수정하기(프로필 사진 제외)
+    // 6-2-2. 마이페이지 - 내 정보 수정하기 - 프로필 관련 정보 수정하기(프로필 사진 제외)
     @PUT("mypage/edit/profile")
     fun editMyProfile(
         @Header("X-AUTH-TOKEN") token: String,
         @Body myPageEditProfileUpdateRequestDto: MyPageEditProfileUpdateRequestDto
     ): Call<EditProfile>
+
+
+    // 6-3. 마이페이지 - 프로필 수정 - 선택정보
+
+    // 6-3-1. 마이페이지 - 내 정보 수정하기 - 수상 추가 하기 팝업 - 등록하기
+    @POST("mypage/edit/award")
+    fun addMyProfileAward(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Body userAwardAddRequestDto: MyProfileAwardAdd
+    ): Call<MyProfileAwardAddResponse>
+
+
+    // 6-3-2. 마이페이지 - 내 정보 수정하기 - 경력 추가 하기 팝업 - 등록하기
+    @POST("mypage/edit/career")
+    fun addMyProfileCareer(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Body userCareerAddRequestDto: MyProfileCareerAdd
+    ): Call<MyProfileCareerAddResponse>
+
+
+    // 6-3-3. 마이페이지 - 내 정보 수정하기 - 자격증 추가 하기 팝업 - 등록하기
+    @POST("mypage/edit/license")
+    fun addMyProfileLicense(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Body userLicenseAddRequestDto: MyProfileLicenseAdd
+    ): Call<MyProfileLicenseAddResponse>
+
+
+    // 6-3-4. 마이페이지 - 내 정보 수정하기 - 링크 추가 하기 팝업 - 등록하기
+    @POST("mypage/edit/link")
+    fun addMyProfileLink(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Body userLinkAddRequestDto: MyProfileLinkAdd
+    ): Call<MyProfileLinkAddResponse>
+
+
+    // 6-3-5. 학과 검색
+    @GET("mypage/edit/major-info")
+    fun searchMajor(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Query("keyword") keyword: String
+    ): Call<MyProfileMajorSearchResponse>
+
+
+    // 6-3-6. 마이페이지 - 내 정보 수정하기 - 학력 추가 하기 팝업 - 등록하기
+    @POST("mypage/edit/school")
+    fun addMyProfileSchool(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Body userSchoolAddRequestDto: MyProfileSchoolAdd
+    ): Call<MyProfileSchoolAddResponse>
+
+
+    // 6-3-7. 학교 검색
+    @GET("mypage/edit/school-info")
+    fun searchSchool(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Query("keyword") keyword: String
+    ): Call<MyProfileSchoolSearchResponse>
+
+
+
+    // 7. 유저
+    // 7-1. 팀 목록 - 나의 태그 리스트
+    @GET("user/tag")
+    fun getUserTagList(
+        @Header("X-AUTH-TOKEN") token: String
+    ): Call<UserTag>
 
 
 

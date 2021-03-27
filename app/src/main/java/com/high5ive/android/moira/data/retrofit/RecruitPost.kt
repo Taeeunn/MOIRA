@@ -64,3 +64,35 @@ data class NewRecruitPostResponse(
     val succeed: Boolean
 )
 
+
+data class Comment(
+    val code: Int,
+    val list: List<CommentItem>,
+    val msg: String,
+    val succeed: Boolean
+)
+
+data class CommentItem(
+    val content: String,
+    val deletable: Boolean,
+    val id: Int,
+    val imageUrl: String,
+    val nickname: String,
+    val parentId: Int,
+    val time: String,
+    val userId: String
+)
+
+data class CommentAdd(
+    val content: String
+)
+
+data class CommentAddResponse(
+    val code: Int,
+    val data: Int,
+    val msg: String,
+    val succeed: Boolean
+)
+
+
+

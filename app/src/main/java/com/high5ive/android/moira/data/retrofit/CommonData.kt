@@ -103,3 +103,11 @@ data class UserTag(
     val msg: String,
     val succeed: Boolean
 )
+
+
+data class ComplimentMarkWithCountDto(
+    val complimentMarkContent: String,
+    val complimentMarkCount: Int,
+    val complimentMarkId: Int,
+    val complimentMarkName: String
+)

@@ -75,12 +75,7 @@ data class UserPoolDetailReviewData(
     val recentReviewContent: String
 )
 
-data class ComplimentMarkWithCountDto(
-    val complimentMarkContent: String,
-    val complimentMarkCount: Int,
-    val complimentMarkId: Int,
-    val complimentMarkName: String
-)
+
 
 
 data class UserPoolDetailReviewAll(
