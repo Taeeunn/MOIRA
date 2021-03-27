@@ -3,25 +3,32 @@ package com.high5ive.android.moira.ui.initial.login
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.high5ive.android.moira.MainActivity
 import com.high5ive.android.moira.R
+import com.high5ive.android.moira.common.Functions
 import com.high5ive.android.moira.data.retrofit.LoginInfo
 import com.high5ive.android.moira.data.retrofit.LoginUser
 import com.high5ive.android.moira.network.RetrofitClient
+import com.high5ive.android.moira.network.RetrofitClientRefresh
 import com.high5ive.android.moira.network.RetrofitService
+import com.high5ive.android.moira.network.RetrofitServiceRefresh
 import com.high5ive.android.moira.ui.initial.OnTransitionListener
-import com.kakao.sdk.auth.model.OAuthToken
+import com.kakao.sdk.auth.AuthApiClient
+import com.kakao.sdk.auth.TokenManager
 import com.kakao.sdk.user.UserApiClient
 import kotlinx.android.synthetic.main.login_fragment.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -36,8 +43,12 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
     lateinit var retrofit: Retrofit
     lateinit var myAPI: RetrofitService
-    lateinit var token: String
+
+    lateinit var retrofitRefresh: Retrofit
+    lateinit var refreshAPI: RetrofitServiceRefresh
+    lateinit var jwt_token: String
     lateinit var access_token: String
+    lateinit var refresh_token: String
 
 
     override fun onCreateView(
@@ -53,9 +64,11 @@ class LoginFragment : Fragment(), View.OnClickListener {
         navController = Navigation.findNavController(view)
         initRetrofit()
 
-        val preferences: SharedPreferences =requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
-        token = preferences.getString("jwt_token", null).toString()
+        val preferences: SharedPreferences =
+            requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
+        jwt_token = preferences.getString("jwt_token", null).toString()
         access_token = preferences.getString("kakao_access_token", null).toString()
+        refresh_token = preferences.getString("kakao_refresh_token", null).toString()
 
 
         kakao_login_btn.setOnClickListener(this)
@@ -80,9 +93,16 @@ class LoginFragment : Fragment(), View.OnClickListener {
                 showTokenInfo()
                 getUserInfo()
                 loginServer(access_token)
-//                Log.v("token", token)
-//                Log.v("access", access_token)
-//
+                Log.v("token", jwt_token)
+                Log.v("access", access_token)
+                Log.v("refresh", refresh_token)
+
+
+                val func=Functions()
+                func.BackgroundTask()
+
+
+
 //                val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
 //                    if (error != null) {
 //                        Log.e("login", "로그인 실패", error)
@@ -91,6 +111,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
 //
 //                        val preferences: SharedPreferences = requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
 //                        preferences.edit().putString("kakao_access_token", token.accessToken).apply()
+//                        preferences.edit().putString("kakao_refresh_token", token.refreshToken).apply()
 //
 //                        showTokenInfo()
 //                        getUserInfo()
@@ -99,10 +120,11 @@ class LoginFragment : Fragment(), View.OnClickListener {
 //
 //                    }
 //                }
-//
+////
 //                // 카카오톡이 설치되어 있으면 카카오톡으로 로그인, 아니면 카카오계정으로 로그인
 //                if (UserApiClient.instance.isKakaoTalkLoginAvailable(requireContext())) {
 //                    UserApiClient.instance.loginWithKakaoTalk(requireContext(), callback = callback)
+//                    UserApiClient.instance
 //                } else {
 //                    UserApiClient.instance.loginWithKakaoAccount(
 //                        requireContext(),
@@ -127,6 +149,8 @@ class LoginFragment : Fragment(), View.OnClickListener {
                 )
             }
         }
+
+
     }
 
     private fun getUserInfo() {
@@ -152,25 +176,17 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
         retrofit = RetrofitClient.getInstance() // 2에서 만든 Retrofit client의 instance를 불러옵니다.
         myAPI = retrofit.create(RetrofitService::class.java) // 여기서 retrofit이 우리의 interface를 구현해주고
+
+        retrofitRefresh =
+            RetrofitClientRefresh.getInstance() // 2에서 만든 Retrofit client의 instance를 불러옵니다
+        refreshAPI =
+            retrofitRefresh.create(RetrofitServiceRefresh::class.java) // 여기서 retrofit이 우리의 interf
     }
 
-    private fun loginServer(accessToken: String){
 
-//        Runnable {
-//            myAPI.getInfo().enqueue(object : Callback<DataClass> {
-//                override fun onFailure(call: Call<DataClass>, t: Throwable) {
-//                    t.printStackTrace()
-//                }
-//
-//                override fun onResponse(call: Call<DataClass>, response: Response<DataClass>) {
-//                    val name: Int = response.body()?.fileSizeBytes ?: 0
-//                    val address: String = response.body()?.url?: ""
-//
-//                    Log.v("name", name.toString())
-//                    Log.v("address", address)
-//                }
-//            })
-//        }.run()
+
+
+    private fun loginServer(accessToken: String) {
 
         Runnable {
 
@@ -196,14 +212,14 @@ class LoginFragment : Fragment(), View.OnClickListener {
                     Log.v("msg", msg)
 
 
-                    val preferences: SharedPreferences = requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
+                    val preferences: SharedPreferences =
+                        requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
                     preferences.edit().putString("jwt_token", jwtToken).apply()
 
 
-                    navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
-                    if (firstLogin){
+                    if (firstLogin) {
                         navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
-                    } else{
+                    } else {
                         startActivity(Intent(context, MainActivity::class.java))
                     }
 

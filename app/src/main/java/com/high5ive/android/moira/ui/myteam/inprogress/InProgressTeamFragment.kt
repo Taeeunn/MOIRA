@@ -53,39 +53,6 @@ class InProgressTeamFragment : Fragment() {
         return inflater.inflate(R.layout.in_progress_team_fragment, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
-        val teamList = arrayListOf<Team>()
-        for (i in 0..30) {
-            teamList.add(
-                Team(
-                    "팀 이름 $i"
-                )
-            )
-        }
-
-        recycler_view.apply {
-            layoutManager = GridLayoutManager(context, 2)
-            adapter =
-                TeamAdapter(teamList) { type, index ->
-
-                    Toast.makeText(context, "$index", Toast.LENGTH_SHORT).show()
-                    if (type == 0) {
-                        val intent = Intent(context, TeamDetailActivity::class.java)
-                        intent.putExtra("index", index)
-                        startActivity(intent)
-
-                    } else if (type == 1) {
-                        val intent = Intent(context, EvaluateMemberActivity::class.java)
-                        intent.putExtra("index", index)
-                        startActivity(intent)
-                    }
-                }
-
-        }
-    }
 
     override fun onResume() {
         super.onResume()
@@ -102,16 +69,16 @@ class InProgressTeamFragment : Fragment() {
                     "최신순" -> {
                         Log.v("itemselect", "최신순")
                         if(sort == "character") {
-                            getInProgressTeam()
                             sort = "date"
+                            getInProgressTeam()
                         }
 
                     }
                     "가나다순" -> {
                         Log.v("itemselect", "가나다순")
                         if(sort == "date") {
-                            getInProgressTeam()
                             sort = "character"
+                            getInProgressTeam()
                         }
                     }
                     else -> {
@@ -152,6 +119,27 @@ class InProgressTeamFragment : Fragment() {
 
                         val list: List<MyTeamItem> = response.body()?.list ?: emptyList()
                         Log.v("data", list.toString())
+
+
+                        recycler_view.apply {
+                            layoutManager = GridLayoutManager(context, 2)
+                            adapter =
+                                TeamAdapter(list) { type, index ->
+
+                                    Toast.makeText(context, "$index", Toast.LENGTH_SHORT).show()
+                                    if (type == 0) {
+                                        val intent = Intent(context, TeamDetailActivity::class.java)
+                                        intent.putExtra("index", index)
+                                        startActivity(intent)
+
+                                    } else if (type == 1) {
+                                        val intent = Intent(context, EvaluateMemberActivity::class.java)
+                                        intent.putExtra("index", index)
+                                        startActivity(intent)
+                                    }
+                                }
+
+                        }
 
                     }
 

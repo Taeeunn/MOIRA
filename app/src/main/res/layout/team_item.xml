@@ -7,7 +7,7 @@
 
         <variable
             name="team"
-            type="com.high5ive.android.moira.data.Team" />
+            type="com.high5ive.android.moira.data.retrofit.MyTeamItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,7 +45,7 @@
                 android:gravity="center_vertical|end"
                 android:paddingLeft="7dp"
                 android:paddingRight="7dp"
-                android:text="9+"
+                android:text="@{@string/to_str(team.memberCount)}"
                 android:textColor="#757575"
                 android:textSize="10sp" />
         </FrameLayout>
@@ -55,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{team.name}"
+            android:text="@{team.title}"
             android:textAppearance="@style/moira_description"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"

@@ -53,38 +53,6 @@ class CompleteTeamFragment : Fragment() {
     }
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val teamList = arrayListOf<Team>()
-        for (i in 0..30){
-            teamList.add(
-                Team(
-                    "팀 이름 $i"
-                )
-            )
-        }
-
-        recycler_view.apply{
-            layoutManager = GridLayoutManager(context, 2)
-            adapter =
-                TeamAdapter(teamList) { type, index ->
-                    Log.v("tagsss", type.toString())
-
-                    Toast.makeText(context, "$index", Toast.LENGTH_SHORT).show()
-                    if (type==0) {
-                        val intent = Intent(context, TeamDetailActivity::class.java)
-                        intent.putExtra("index", index)
-                        startActivity(intent)
-                    }
-                    else if(type==1){
-                        val intent = Intent(context, EvaluateMemberActivity::class.java)
-                        intent.putExtra("index", index)
-                        startActivity(intent)
-                    }
-                }
-        }
-    }
 
     override fun onResume() {
         super.onResume()
@@ -152,6 +120,26 @@ class CompleteTeamFragment : Fragment() {
 
                         val list: List<MyTeamItem> = response.body()?.list ?: emptyList()
                         Log.v("data", list.toString())
+
+                        recycler_view.apply {
+                            layoutManager = GridLayoutManager(context, 2)
+                            adapter =
+                                TeamAdapter(list) { type, index ->
+
+                                    Toast.makeText(context, "$index", Toast.LENGTH_SHORT).show()
+                                    if (type == 0) {
+                                        val intent = Intent(context, TeamDetailActivity::class.java)
+                                        intent.putExtra("index", index)
+                                        startActivity(intent)
+
+                                    } else if (type == 1) {
+                                        val intent = Intent(context, EvaluateMemberActivity::class.java)
+                                        intent.putExtra("index", index)
+                                        startActivity(intent)
+                                    }
+                                }
+
+                        }
 
                     }
 

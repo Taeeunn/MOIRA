@@ -36,6 +36,7 @@
     <string name="kakao_app_key">80833a0235285489b82981db2a4c698e</string>
     <string name="add">add</string>
     <string name="position_num">%d명</string>
+    <string name="to_str">%d</string>
     <string name="badge_count">%d개</string>
     <string name="project_duration">프로젝트 기간</string>
     <string name="region">지역</string>

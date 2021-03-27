@@ -41,6 +41,8 @@ class RecruitPostFragment : Fragment() {
         token = preferences.getString("jwt_token", null).toString()
 
         initRetrofit()
+
+        getUserTag()
     }
 
     override fun onCreateView(
@@ -53,11 +55,11 @@ class RecruitPostFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var tagList = mutableListOf<String>()
-        tagList.add("태그명1")
-        tagList.add("태그명2")
-        tagList.add("태그명3")
-        setTag(tagList);
+//        var tagList = mutableListOf<String>()
+//        tagList.add("태그명1")
+//        tagList.add("태그명2")
+//        tagList.add("태그명3")
+//        setTag(tagList);
 
         val recruit = arrayListOf<Recruit>()
         for (i in 0..30){
@@ -85,7 +87,7 @@ class RecruitPostFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        getUserTag()
+
         getRecruitPostList()
     }
 
@@ -142,6 +144,8 @@ class RecruitPostFragment : Fragment() {
                     if(succeed){
 
                         val list: List<String> = response.body()?.list!!
+
+                        setTag(list.toMutableList());
                         Log.v("data", list.toString())
 
                     }

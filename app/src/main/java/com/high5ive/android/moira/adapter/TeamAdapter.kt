@@ -5,12 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.Team
-
+import com.high5ive.android.moira.data.retrofit.MyTeamItem
 import com.high5ive.android.moira.databinding.TeamItemBinding
+
 import kotlinx.android.synthetic.main.team_item.view.*
 
 
-class TeamAdapter(val items: List<Team>,
+class TeamAdapter(val items: List<MyTeamItem>,
                   private val clickListener: (type: Int, index: Int) -> Unit) :
     RecyclerView.Adapter<TeamAdapter.TeamViewHolder>(){
     class TeamViewHolder(val binding: TeamItemBinding) : RecyclerView.ViewHolder(binding.root)
@@ -24,11 +25,11 @@ class TeamAdapter(val items: List<Team>,
             )
 
         view.setOnClickListener {
-            clickListener.invoke(0, viewHolder.adapterPosition + 1)
+            clickListener.invoke(0, viewHolder.binding.team!!.projectId)
         }
 
         view.evaluate_team_member_btn.setOnClickListener {
-            clickListener.invoke(1, viewHolder.adapterPosition + 1)
+            clickListener.invoke(1, viewHolder.binding.team!!.projectId)
         }
 
 
