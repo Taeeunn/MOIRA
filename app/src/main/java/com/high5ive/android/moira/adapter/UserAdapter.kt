@@ -5,9 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.User
+import com.high5ive.android.moira.data.retrofit.UserPoolItem
 import com.high5ive.android.moira.databinding.UserItemBinding
 
-class UserAdapter(val items: List<User>,
+class UserAdapter(val items: List<UserPoolItem>,
                   private val clickListener: (index: Int) -> Unit) :
     RecyclerView.Adapter<UserAdapter.UserViewHolder>(){
     class UserViewHolder(val binding: UserItemBinding) : RecyclerView.ViewHolder(binding.root)
@@ -21,7 +22,7 @@ class UserAdapter(val items: List<User>,
             )
 
         view.setOnClickListener {
-            clickListener.invoke(viewHolder.adapterPosition + 1)
+            clickListener.invoke(viewHolder.binding.user!!.userPoolId)
         }
         return viewHolder
     }

@@ -7,9 +7,10 @@ import androidx.core.view.marginLeft
 import androidx.recyclerview.widget.RecyclerView
 import com.high5ive.android.moira.data.Member
 import com.high5ive.android.moira.R
+import com.high5ive.android.moira.data.retrofit.MyProjectTeammateResponseDTO
 import com.high5ive.android.moira.databinding.MemberItemBinding
 
-class MemberAdapter(val items: List<Member>,
+class MemberAdapter(val items: List<MyProjectTeammateResponseDTO>,
                     private val clickListener: (index: Int) -> Unit) :
     RecyclerView.Adapter<MemberAdapter.MemberViewHolder>(){
     class MemberViewHolder(val binding: MemberItemBinding) : RecyclerView.ViewHolder(binding.root)
@@ -34,7 +35,7 @@ class MemberAdapter(val items: List<Member>,
     override fun onBindViewHolder(holder: MemberViewHolder, position: Int) {
         holder.binding.member = items[position]
 
-        if (items[position].project_role=="팀장"){
+        if (items[position].leader){
             holder.binding.leaderTag.visibility = View.VISIBLE
         }
     }

@@ -17,6 +17,7 @@ data class UserPoolItem(
     val userPoolId: Int
 )
 
+
 data class UserRegistration(
     val code: Int,
     val data: UserRegistrationData,
@@ -96,17 +97,8 @@ data class UserPoolDetailReviewItem(
 
 data class UserPoolSearch(
     val code: Int,
-    val list: List<UserPoolSearchItem>,
+    val list: List<UserPoolItem>,
     val msg: String,
     val succeed: Boolean
 )
 
-data class UserPoolSearchItem(
-    val hastagNameList: List<String>,
-    val likedByUser: Boolean,
-    val nickname: String,
-    val positionName: String,
-    val profileImage: String,
-    val shortIntroduction: String,
-    val userPoolId: Int
-)

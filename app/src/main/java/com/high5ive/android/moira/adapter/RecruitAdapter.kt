@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.Recruit
+import com.high5ive.android.moira.data.retrofit.RecruitPostItem
 import com.high5ive.android.moira.databinding.RecruitItemBinding
 
-class RecruitAdapter(val items: List<Recruit>,
+class RecruitAdapter(val items: List<RecruitPostItem>,
                      private val clickListener: (index: Int) -> Unit) :
     RecyclerView.Adapter<RecruitAdapter.RecruitViewHolder>(){
     class RecruitViewHolder(val binding: RecruitItemBinding): RecyclerView.ViewHolder(binding.root)

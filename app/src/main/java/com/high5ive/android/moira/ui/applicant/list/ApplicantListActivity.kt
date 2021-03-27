@@ -36,14 +36,14 @@ class ApplicantListActivity : AppCompatActivity() {
             )
         }
 
-        recycler_view.apply{
-            layoutManager = LinearLayoutManager(this@ApplicantListActivity)
-            adapter =
-                MemberAdapter(members) { member ->
-                    Toast.makeText(this@ApplicantListActivity, "$member", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this@ApplicantListActivity, ApplicantProfileActivity::class.java))
-                }
-        }
+//        recycler_view.apply{
+//            layoutManager = LinearLayoutManager(this@ApplicantListActivity)
+//            adapter =
+//                MemberAdapter(members) { member ->
+//                    Toast.makeText(this@ApplicantListActivity, "$member", Toast.LENGTH_SHORT).show()
+//                    startActivity(Intent(this@ApplicantListActivity, ApplicantProfileActivity::class.java))
+//                }
+//        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -17,7 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MOIRA">
-        <activity android:name=".ui.home.ProjectStartActivity"></activity>
+        <activity android:name=".ui.teamfinding.search.RecruitPostSearchActivity"></activity>
+        <activity android:name=".ui.mypage.cs.AccountSettingActivity" />
+        <activity android:name=".ui.home.ProjectStartActivity" />
         <activity android:name=".ui.mypage.cs.AskActivity" />
         <activity android:name=".ui.initial.InitialActivity">
             <intent-filter>
@@ -42,7 +44,7 @@
         <activity android:name=".ui.mypage.edit.addinfo.career.AddCompanyActivity" />
         <activity android:name=".ui.mypage.edit.addinfo.career.AddCareerActivity" />
         <activity android:name=".ui.mypage.edit.addinfo.education.AddMajorActivity" />
-        <activity android:name=".ui.teamfinding.search.SearchActivity" />
+        <activity android:name=".ui.teamfinding.search.UserPoolSearchActivity" />
         <activity android:name=".ui.applicant.profile.ApplicantProfileActivity" />
         <activity android:name=".ui.myteam.evaluate.EvaluateMemberDetailActivity" />
         <activity android:name=".ui.mypage.edit.addinfo.education.AddSchoolActivity" />

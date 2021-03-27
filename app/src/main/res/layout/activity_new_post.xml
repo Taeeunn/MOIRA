@@ -76,6 +76,7 @@
                 android:lineSpacingExtra="9sp"
                 android:textColor="@color/black"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 android:theme="@style/EditTextTheme"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

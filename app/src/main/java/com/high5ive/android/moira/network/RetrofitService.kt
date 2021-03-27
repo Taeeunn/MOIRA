@@ -71,6 +71,7 @@ interface RetrofitService {
     @GET("project")
     fun getRecruitPostList(
         @Header("X-AUTH-TOKEN") token: String,
+        @Query("keyword") keyword : String?,
         @Query("page") page : Int?,
         @Query("position") position : String?,
         @Query("sort") sort : String?,

@@ -17,6 +17,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.MemberAdapter
 import com.high5ive.android.moira.data.Member
+import com.high5ive.android.moira.data.retrofit.MyProjectTeammateResponseDTO
 import com.high5ive.android.moira.data.retrofit.MyTeamDetail
 import com.high5ive.android.moira.data.retrofit.MyTeamDetailData
 import com.high5ive.android.moira.databinding.ActivityTeamDetailBinding
@@ -72,14 +73,7 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
             )
         }
 
-        recycler_view.apply {
-            layoutManager = LinearLayoutManager(this@TeamDetailActivity)
-            adapter =
-                MemberAdapter(members) { member ->
-                    Toast.makeText(this@TeamDetailActivity, "$member", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this@TeamDetailActivity, UserProfileDetailActivity::class.java))
-                }
-        }
+
     }
 
     override fun onResume() {
@@ -126,7 +120,7 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun getTeamDetail(){
         Runnable {
-
+            Log.v("index", index.toString())
             myAPI.getMyTeamDetail(token, index).enqueue(object :
                 Callback<MyTeamDetail> {
                 override fun onFailure(call: Call<MyTeamDetail>, t: Throwable) {
@@ -146,7 +140,20 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
                     if(succeed){
 
                         val data: MyTeamDetailData = response.body()?.data!!
+                        val list: List<MyProjectTeammateResponseDTO> = data.myProjectTeammateResponseDTOList
+
                         Log.v("data", data.toString())
+
+                        binding.myteam = data
+
+                        recycler_view.apply {
+                            layoutManager = LinearLayoutManager(this@TeamDetailActivity)
+                            adapter =
+                                MemberAdapter(list) { member ->
+                                    Toast.makeText(this@TeamDetailActivity, "$member", Toast.LENGTH_SHORT).show()
+                                    startActivity(Intent(this@TeamDetailActivity, UserProfileDetailActivity::class.java))
+                                }
+                        }
 
                     }
 

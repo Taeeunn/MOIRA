@@ -10,15 +10,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import com.high5ive.android.moira.MainActivity
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.retrofit.LoginInfo
 import com.high5ive.android.moira.data.retrofit.LoginUser
 import com.high5ive.android.moira.data.retrofit.MyPage
 import com.high5ive.android.moira.data.retrofit.MyPageData
+import com.high5ive.android.moira.databinding.ActivityTeamDetailBinding
+import com.high5ive.android.moira.databinding.MyPageFragmentBinding
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.mypage.apply.ApplyListActivity
+import com.high5ive.android.moira.ui.mypage.cs.AccountSettingActivity
 import com.high5ive.android.moira.ui.mypage.cs.AskActivity
 import com.high5ive.android.moira.ui.mypage.edit.EditProfileActivity
 import com.high5ive.android.moira.ui.mypage.post.PostListActivity
@@ -31,7 +35,7 @@ import retrofit2.Retrofit
 
 class MyPageFragment : Fragment(), View.OnClickListener{
 
-
+    private lateinit var binding: MyPageFragmentBinding
     lateinit var retrofit: Retrofit
     lateinit var myAPI: RetrofitService
     lateinit var token: String
@@ -53,8 +57,9 @@ class MyPageFragment : Fragment(), View.OnClickListener{
         savedInstanceState: Bundle?
     ): View? {
 
+        binding = DataBindingUtil.inflate(inflater,R.layout.my_page_fragment, container, false)
 
-        return inflater.inflate(R.layout.my_page_fragment, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -111,12 +116,8 @@ class MyPageFragment : Fragment(), View.OnClickListener{
                     if(succeed){
                         val data: MyPageData = response.body()?.data!!
                         Log.v("data", data.toString())
-                        user_nickname.text = data.nickname
-                        user_position.text = data.positionName
-                        user_intro.text = data.shortIntroduction
-                        post_count.text = data.writtenPostCount.toString()
-                        apply_count.text = data.appliedPostCount.toString()
-                        scrap_count.text = data.likedPostCount.toString()
+
+                        binding.mypage = data
                     }
 
                 }
@@ -132,7 +133,7 @@ class MyPageFragment : Fragment(), View.OnClickListener{
             R.id.apply_container -> startActivity(Intent(context, ApplyListActivity::class.java))
             R.id.scrap_container -> startActivity(Intent(context, ScrapListActivity::class.java))
             R.id.edit_info_btn -> startActivity(Intent(context, EditProfileActivity::class.java))
-            R.id.account_setting -> startActivity(Intent(context, EditProfileActivity::class.java))
+            R.id.account_setting -> startActivity(Intent(context, AccountSettingActivity::class.java))
             R.id.noti_setting -> startActivity(Intent(context, EditProfileActivity::class.java))
             R.id.question -> startActivity(Intent(context, AskActivity::class.java))
         }

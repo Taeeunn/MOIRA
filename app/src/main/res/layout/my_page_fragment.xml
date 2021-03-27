@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="mypage"
+            type="com.high5ive.android.moira.data.retrofit.MyPageData" />
+    </data>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -63,6 +70,7 @@
                 android:layout_marginTop="29dp"
                 android:lineSpacingExtra="8sp"
                 android:textColor="#000000"
+                android:text="@{mypage.nickname}"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toRightOf="@+id/user_image"
@@ -75,6 +83,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="31dp"
                 android:lineSpacingExtra="6sp"
+                android:text="@{mypage.positionName}"
                 android:textColor="#afafaf"
                 android:textSize="14sp"
                 android:textStyle="normal"
@@ -87,6 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="10dp"
+                android:text="@{mypage.shortIntroduction}"
                 app:layout_constraintLeft_toRightOf="@+id/user_image"
                 app:layout_constraintTop_toBottomOf="@+id/user_nickname" />
 
@@ -114,6 +124,7 @@
                     android:fontFamily="@font/gmarket_sans_bold"
                     android:lineSpacingExtra="3sp"
                     android:textColor="#000000"
+                    android:text="@{@string/to_str(mypage.writtenPostCount)}"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -149,6 +160,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gmarket_sans_bold"
                     android:lineSpacingExtra="3sp"
+                    android:text="@{@string/to_str(mypage.appliedPostCount)}"
                     android:textColor="#000000"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -188,6 +200,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gmarket_sans_bold"
                     android:lineSpacingExtra="3sp"
+                    android:text="@{@string/to_str(mypage.likedPostCount)}"
                     android:textColor="#000000"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -335,3 +348,4 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

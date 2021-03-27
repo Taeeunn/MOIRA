@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <data>
+        <variable
+            name="myprofile"
+            type="com.high5ive.android.moira.data.retrofit.MyProfileData" />
+    </data>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -123,9 +132,10 @@
                 android:layout_marginTop="19.5dp"
                 android:lineSpacingExtra="6sp"
                 android:hint="닉네임을 입력해주세요."
+                android:text="@{myprofile.nickname}"
                 android:background="@null"
                 android:theme="@style/EditTextTheme"
-                android:textColor="@color/black"
+                android:textColor="#282828"
                 android:textSize="13sp"
                 android:textStyle="normal"
                 app:layout_constraintLeft_toRightOf="@+id/barrier"
@@ -159,10 +169,11 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="19.5dp"
                 android:lineSpacingExtra="6sp"
-                android:hint="포지션을 입력해주세요."
+                android:hint="포지션을 선택해주세요."
+                android:text="@{myprofile.positionName}"
                 android:background="@null"
                 android:theme="@style/EditTextTheme"
-                android:textColor="@color/black"
+                android:textColor="#282828"
                 android:textSize="13sp"
                 android:textStyle="normal"
                 app:layout_constraintLeft_toRightOf="@+id/barrier"
@@ -198,11 +209,12 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="19.5dp"
                 android:hint="한줄소개를 입력해주세요."
+                android:text="@{myprofile.shortIntroduction}"
                 android:textStyle="normal"
                 android:textSize="13sp"
                 android:background="@null"
                 android:theme="@style/EditTextTheme"
-                android:textColor="@color/black"
+                android:textColor="#282828"
                 android:lineSpacingExtra="6sp"
                 app:layout_constraintLeft_toRightOf="@+id/barrier"
                 app:layout_constraintTop_toBottomOf="@id/horizontal_line3" />
@@ -287,3 +299,4 @@
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -17,18 +17,10 @@ import com.high5ive.android.moira.common.Functions
 import com.high5ive.android.moira.data.retrofit.LoginInfo
 import com.high5ive.android.moira.data.retrofit.LoginUser
 import com.high5ive.android.moira.network.RetrofitClient
-import com.high5ive.android.moira.network.RetrofitClientRefresh
 import com.high5ive.android.moira.network.RetrofitService
-import com.high5ive.android.moira.network.RetrofitServiceRefresh
 import com.high5ive.android.moira.ui.initial.OnTransitionListener
-import com.kakao.sdk.auth.AuthApiClient
-import com.kakao.sdk.auth.TokenManager
 import com.kakao.sdk.user.UserApiClient
 import kotlinx.android.synthetic.main.login_fragment.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -44,8 +36,6 @@ class LoginFragment : Fragment(), View.OnClickListener {
     lateinit var retrofit: Retrofit
     lateinit var myAPI: RetrofitService
 
-    lateinit var retrofitRefresh: Retrofit
-    lateinit var refreshAPI: RetrofitServiceRefresh
     lateinit var jwt_token: String
     lateinit var access_token: String
     lateinit var refresh_token: String
@@ -177,10 +167,6 @@ class LoginFragment : Fragment(), View.OnClickListener {
         retrofit = RetrofitClient.getInstance() // 2에서 만든 Retrofit client의 instance를 불러옵니다.
         myAPI = retrofit.create(RetrofitService::class.java) // 여기서 retrofit이 우리의 interface를 구현해주고
 
-        retrofitRefresh =
-            RetrofitClientRefresh.getInstance() // 2에서 만든 Retrofit client의 instance를 불러옵니다
-        refreshAPI =
-            retrofitRefresh.create(RetrofitServiceRefresh::class.java) // 여기서 retrofit이 우리의 interf
     }
 
 

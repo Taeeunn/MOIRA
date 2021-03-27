@@ -4,7 +4,7 @@
     <data>
         <variable
             name="recruit"
-            type="com.high5ive.android.moira.data.Recruit" />
+            type="com.high5ive.android.moira.data.retrofit.RecruitPostItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -84,7 +84,7 @@
             android:layout_marginTop="5dp"
             android:letterSpacing="-0.03"
             android:lineSpacingExtra="5sp"
-            android:text="@{recruit.nickname}"
+            android:text="@{recruit.writer}"
             android:textColor="#292929"
             android:textSize="10sp"
             app:layout_constraintLeft_toRightOf="@+id/recruit_image"
@@ -109,7 +109,7 @@
             android:layout_marginTop="5dp"
             android:letterSpacing="-0.03"
             android:lineSpacingExtra="1sp"
-            android:text="2021.01.12"
+            android:text="@{recruit.time}"
             android:textColor="#bcbcbc"
             android:textSize="10sp"
             app:layout_constraintStart_toEndOf="@+id/vertical_line"
@@ -145,7 +145,7 @@
             android:layout_marginTop="5dp"
             android:letterSpacing="-0.03"
             android:lineSpacingExtra="1sp"
-            android:text="1,234"
+            android:text="@{@string/to_str(recruit.hitCount)}"
             android:textColor="#bcbcbc"
             android:textSize="10sp"
             app:layout_constraintStart_toEndOf="@+id/view_icon"

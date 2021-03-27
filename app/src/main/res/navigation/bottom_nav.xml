@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/myTeamFragment"
         android:name="com.high5ive.android.moira.ui.myteam.MyTeamFragment"
-        android:label="나의 팀"
+        android:label="팀 목록"
         tools:layout="@layout/my_team_fragment" />
     <fragment
         android:id="@+id/myPageFragment"

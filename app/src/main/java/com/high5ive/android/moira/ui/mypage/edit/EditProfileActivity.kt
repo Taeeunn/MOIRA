@@ -9,10 +9,13 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.Toolbar
+import androidx.databinding.DataBindingUtil
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.retrofit.*
+import com.high5ive.android.moira.databinding.ActivityEditProfileBinding
+import com.high5ive.android.moira.databinding.ActivityTeamDetailBinding
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.mypage.edit.addinfo.award.AddAwardHistoryActivity
@@ -32,6 +35,7 @@ import retrofit2.Retrofit
 
 class EditProfileActivity : AppCompatActivity(), View.OnClickListener{
 
+    private lateinit var binding: ActivityEditProfileBinding
     lateinit var retrofit: Retrofit
     lateinit var myAPI: RetrofitService
     lateinit var token: String
@@ -39,7 +43,10 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_profile)
+        binding = DataBindingUtil.setContentView(
+            this,
+            R.layout.activity_edit_profile
+        )
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -152,6 +159,8 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener{
 
                         val data: MyProfileData = response.body()?.data!!
                         Log.v("data", data.toString())
+
+                        binding.myprofile = data
 
                     }
 

@@ -19,8 +19,13 @@ import com.high5ive.android.moira.data.Recruit
 import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
+import com.high5ive.android.moira.ui.teamfinding.newpost.NewPostActivity
+import com.high5ive.android.moira.ui.teamfinding.search.RecruitPostSearchActivity
+import com.high5ive.android.moira.ui.teamfinding.search.UserPoolSearchActivity
 import kotlinx.android.synthetic.main.recruit_post_fragment.*
 import kotlinx.android.synthetic.main.recruit_post_fragment.recycler_view
+import kotlinx.android.synthetic.main.team_finding_fragment.*
+import kotlinx.android.synthetic.main.team_finding_fragment.search_button
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -61,6 +66,8 @@ class RecruitPostFragment : Fragment() {
 //        tagList.add("태그명3")
 //        setTag(tagList);
 
+
+
         val recruit = arrayListOf<Recruit>()
         for (i in 0..30){
             recruit.add(
@@ -72,20 +79,28 @@ class RecruitPostFragment : Fragment() {
             )
         }
 
-        recycler_view.apply{
-            layoutManager = LinearLayoutManager(context)
-            adapter =
-                RecruitAdapter(recruit) { index ->
-                    Toast.makeText(context, "$index", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(context, RecruitPostDetailActivity::class.java)
-                    intent.putExtra("index", index)
-                    startActivity(intent)
-                }
-        }
+//        recycler_view.apply{
+//            layoutManager = LinearLayoutManager(context)
+//            adapter =
+//                RecruitAdapter(recruit) { index ->
+//                    Toast.makeText(context, "$index", Toast.LENGTH_SHORT).show()
+//                    val intent = Intent(context, RecruitPostDetailActivity::class.java)
+//                    intent.putExtra("index", index)
+//                    startActivity(intent)
+//                }
+//        }
     }
 
     override fun onResume() {
         super.onResume()
+
+        requireActivity().new_post_btn.setOnClickListener{
+            startActivity(Intent(context, NewPostActivity::class.java))
+        }
+
+        requireActivity().search_button.setOnClickListener {
+            startActivity(Intent(context, RecruitPostSearchActivity::class.java))
+        }
 
 
         getRecruitPostList()
@@ -163,7 +178,7 @@ class RecruitPostFragment : Fragment() {
             val sort: String = "date"
             val tag: String = "해시태그1,해시태그2"
 
-            myAPI.getRecruitPostList(token, page, position, null, null).enqueue(object :
+            myAPI.getRecruitPostList(token, null, page, position, null, null).enqueue(object :
                 Callback<RecruitPost> {
                 override fun onFailure(call: Call<RecruitPost>, t: Throwable) {
                     t.printStackTrace()

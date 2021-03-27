@@ -70,18 +70,18 @@ class EvaluateMemberActivity : AppCompatActivity() {
             )
         }
 
-        recycler_view.apply{
-            layoutManager = LinearLayoutManager(this@EvaluateMemberActivity)
-            adapter =
-                MemberAdapter(members) { index ->
-                    Toast.makeText(this@EvaluateMemberActivity, "$index", Toast.LENGTH_SHORT)
-                        .show()
-
-                    val intent = Intent(context, EvaluateMemberDetailActivity::class.java)
-                    intent.putExtra("index", index)
-                    startActivity(intent)
-                }
-        }
+//        recycler_view.apply{
+//            layoutManager = LinearLayoutManager(this@EvaluateMemberActivity)
+//            adapter =
+//                MemberAdapter(members) { index ->
+//                    Toast.makeText(this@EvaluateMemberActivity, "$index", Toast.LENGTH_SHORT)
+//                        .show()
+//
+//                    val intent = Intent(context, EvaluateMemberDetailActivity::class.java)
+//                    intent.putExtra("index", index)
+//                    startActivity(intent)
+//                }
+//        }
     }
 
     override fun onResume() {

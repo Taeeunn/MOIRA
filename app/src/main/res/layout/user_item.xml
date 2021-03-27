@@ -6,7 +6,7 @@
     <data>
         <variable
             name="user"
-            type="com.high5ive.android.moira.data.User" />
+            type="com.high5ive.android.moira.data.retrofit.UserPoolItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,7 +37,7 @@
             android:layout_marginStart="9dp"
             android:layout_marginTop="18dp"
             android:lineSpacingExtra="6sp"
-            android:text="@string/user_nickname"
+            android:text="@{user.nickname}"
             android:textColor="#000000"
             android:textSize="14sp"
             android:textStyle="bold"
@@ -51,7 +51,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="23dp"
             android:lineSpacingExtra="5sp"
-            android:text="@string/position_name"
+            android:text="@{user.positionName}"
             android:textColor="#b2b2b2"
             android:textSize="10sp"
             android:textStyle="normal"
@@ -78,7 +78,7 @@
             android:layout_marginStart="9dp"
             android:layout_marginTop="6dp"
             android:lineSpacingExtra="6sp"
-            android:text="사용자 한줄소개입니다. 사용자 한줄소개입니다."
+            android:text="@{user.shortIntroduction}"
             android:textColor="#000000"
             android:textSize="12sp"
             android:textStyle="normal"

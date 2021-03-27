@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
+    <data>
+
+        <variable
+            name="myteam"
+            type="com.high5ive.android.moira.data.retrofit.MyTeamDetailData" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/teamdetail_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/teamdetail_layout"
         tools:context=".ui.myteam.detail.TeamDetailActivity">
 
         <androidx.appcompat.widget.Toolbar
@@ -30,9 +37,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/my_team_name"
+                    android:text="@{myteam.title}"
                     android:textAppearance="@style/toolbar_title"
-
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -72,19 +78,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="256dp"
                     android:layout_marginTop="12dp"
+                    android:background="@color/light_gray"
                     app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:background="@color/light_gray" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/team_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="32dp"
                     android:letterSpacing="-0.02"
                     android:lineSpacingExtra="8sp"
-                    android:text="팀 규칙이나 팀 설명 내용입니다. 팀 규칙이나 팀 설명 내용입니다. 팀 규칙이나 팀 설명 내용입니다."
+                    android:text="@{myteam.content}"
                     android:textColor="#969696"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -116,18 +122,47 @@
 
 
                 <TextView
-                    android:id="@+id/team_member_count"
+                    android:id="@+id/text1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="16dp"
                     android:lineSpacingExtra="8sp"
-                    android:text="이 프로젝트에 3명의 팀원이 있어요."
+                    android:text="이 프로젝트에 "
                     android:textColor="#4a4a4a"
                     android:textSize="12sp"
                     android:textStyle="normal"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/team_member" />
+
+                <TextView
+                    android:id="@+id/team_member_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="16dp"
+                    android:lineSpacingExtra="8sp"
+                    android:text="@{@string/to_str(myteam.memberCount)}"
+                    android:textColor="#2e36ff"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toRightOf="@id/text1"
+                    app:layout_constraintTop_toBottomOf="@+id/team_member" />
+
+
+                <TextView
+                    android:id="@+id/text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="16dp"
+                    android:lineSpacingExtra="8sp"
+                    android:text="명의 팀원이 있어요."
+                    android:textColor="#4a4a4a"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+                    app:layout_constraintLeft_toRightOf="@id/team_member_count"
                     app:layout_constraintTop_toBottomOf="@+id/team_member" />
 
 
@@ -135,12 +170,12 @@
                     android:id="@+id/recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:clipToPadding="false"
                     android:layout_marginTop="30dp"
+                    android:clipToPadding="false"
                     android:paddingBottom="90dp"
                     app:layoutManager="LinearLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@+id/team_member_count"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/team_member_count" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

@@ -10,12 +10,10 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.tabs.TabLayoutMediator
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.ui.teamfinding.newpost.NewPostActivity
-import com.high5ive.android.moira.ui.teamfinding.search.SearchActivity
+import com.high5ive.android.moira.ui.teamfinding.search.UserPoolSearchActivity
 import kotlinx.android.synthetic.main.my_team_fragment.search_button
 import kotlinx.android.synthetic.main.my_team_fragment.tabLayout
 import kotlinx.android.synthetic.main.my_team_fragment.viewPager
-import kotlinx.android.synthetic.main.team_finding_fragment.*
 
 class TeamFindingFragment : Fragment() {
 
@@ -48,12 +46,9 @@ class TeamFindingFragment : Fragment() {
         // TODO: Use the ViewModel
 
         search_button.setOnClickListener {
-            startActivity(Intent(context, SearchActivity::class.java))
+            startActivity(Intent(context, UserPoolSearchActivity::class.java))
         }
 
-        new_post_btn.setOnClickListener{
-            startActivity(Intent(context, NewPostActivity::class.java))
-        }
 
         viewPager.adapter = TeamFindingViewPagerAdapter(context as FragmentActivity)
         val tabLayoutTextArray = arrayOf("모집글","인재풀")

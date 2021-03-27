@@ -1,5 +1,6 @@
 package com.high5ive.android.moira.ui.teamfinding.user
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -18,9 +19,14 @@ import com.high5ive.android.moira.adapter.UserAdapter
 import com.high5ive.android.moira.data.User
 import com.high5ive.android.moira.data.retrofit.UserPool
 import com.high5ive.android.moira.data.retrofit.UserPoolItem
+import com.high5ive.android.moira.data.retrofit.UserRegistration
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
+import com.high5ive.android.moira.ui.teamfinding.search.UserPoolSearchActivity
+import kotlinx.android.synthetic.main.dialog_user_pool.*
+import kotlinx.android.synthetic.main.dialog_user_pool.view.*
 import kotlinx.android.synthetic.main.recruit_post_fragment.*
+import kotlinx.android.synthetic.main.team_finding_fragment.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -32,11 +38,14 @@ class UserPoolFragment : Fragment() {
     lateinit var myAPI: RetrofitService
     lateinit var token: String
 
+    var userpool_visible: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val preferences: SharedPreferences = requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
         token = preferences.getString("jwt_token", null).toString()
+
 
         initRetrofit()
     }
@@ -50,6 +59,10 @@ class UserPoolFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
+
 
         var tagList = mutableListOf<String>()
         tagList.add("태그명1")
@@ -69,21 +82,85 @@ class UserPoolFragment : Fragment() {
             )
         }
 
-        recycler_view.apply{
-            layoutManager = LinearLayoutManager(context)
-            adapter =
-                UserAdapter(userList) { index ->
-                    Toast.makeText(context, "$index", Toast.LENGTH_SHORT).show()
-
-                    val intent = Intent(context, UserProfileDetailActivity::class.java)
-                    intent.putExtra("index", index)
-                    startActivity(intent)
-                }
-        }
+//        recycler_view.apply{
+//            layoutManager = LinearLayoutManager(context)
+//            adapter =
+//                UserAdapter(userList) { index ->
+//                    Toast.makeText(context, "$index", Toast.LENGTH_SHORT).show()
+//
+//                    val intent = Intent(context, UserProfileDetailActivity::class.java)
+//                    intent.putExtra("index", index)
+//                    startActivity(intent)
+//                }
+//        }
     }
 
     override fun onResume() {
         super.onResume()
+
+        val preferences: SharedPreferences = requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
+        userpool_visible = preferences.getBoolean("userpool_visible", false)
+
+
+
+        requireActivity().new_post_btn.setOnClickListener{
+
+            // Dialog만들기
+            val mDialogView = LayoutInflater.from(context).inflate(R.layout.dialog_user_pool, null)
+            val mBuilder = AlertDialog.Builder(context)
+                .setView(mDialogView)
+
+            val  mAlertDialog = mBuilder.show()
+
+            mAlertDialog.onoff.isChecked = userpool_visible
+
+            mDialogView.positiveButton.setOnClickListener {
+                val onoff = mDialogView.onoff
+                if(!userpool_visible && onoff.isChecked){
+
+                    displayUserPool()
+
+                    Log.v("switch", "on")
+                } else if (userpool_visible && !onoff.isChecked){
+
+                    displayUserPool()
+                    Log.v("switch", "off")
+                }
+                mAlertDialog.dismiss()
+            }
+
+            mDialogView.negativeButton.setOnClickListener {
+                mAlertDialog.dismiss()
+            }
+
+//            val myView: View =
+//
+//
+//
+//            MaterialDialog(requireContext()).show {
+//                customView(R.layout.dialog_user_pool)
+//                positiveButton{
+//
+//                }
+//                negativeButton{
+//
+//                }
+////                title(R.string.register_userpool)
+////                message(R.layout.dialog_user_pool){
+////
+////                    val switchMaterial = SwitchMaterial(requireContext())
+////                }
+////                cornerRadius(4f)
+////                positiveButton(R.string.save) {
+////                }
+////
+////                negativeButton(R.string.cancle)
+//            }
+        }
+
+        requireActivity().search_button.setOnClickListener {
+            startActivity(Intent(context, UserPoolSearchActivity::class.java))
+        }
 
         getUserPoolList()
     }
@@ -111,6 +188,41 @@ class UserPoolFragment : Fragment() {
             }
             tag_group.addView(chip)
         }
+    }
+
+    private fun displayUserPool() {
+
+        myAPI.registerUserPool(token).enqueue(object :
+            Callback<UserRegistration> {
+            override fun onFailure(call: Call<UserRegistration>, t: Throwable) {
+                t.printStackTrace()
+            }
+
+            override fun onResponse(call: Call<UserRegistration>, response: Response<UserRegistration>) {
+                val code: Int = response.body()?.code ?: 0
+
+                val msg: String = response.body()?.msg ?: "no msg"
+                val succeed: Boolean = response.body()?.succeed ?: false
+
+                Log.v("code", code.toString())
+                Log.v("success", succeed.toString())
+                Log.v("msg", msg)
+
+                if(succeed){
+
+                    val visible: Boolean = response.body()?.data?.visible!!
+                    Log.v("data", visible.toString())
+
+                    val preferences: SharedPreferences =
+                        requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
+                    preferences.edit().putBoolean("userpool_visible", visible).apply()
+
+                    userpool_visible = visible
+
+                }
+
+            }
+        })
     }
 
     private fun initRetrofit() {

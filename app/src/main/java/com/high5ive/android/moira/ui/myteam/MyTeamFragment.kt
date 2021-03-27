@@ -1,6 +1,5 @@
 package com.high5ive.android.moira.ui.myteam
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,13 +12,6 @@ import kotlinx.android.synthetic.main.my_team_fragment.*
 
 class MyTeamFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = MyTeamFragment()
-    }
-
-    private lateinit var viewModel: MyTeamViewModel
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,10 +22,8 @@ class MyTeamFragment : Fragment() {
         return inflater.inflate(R.layout.my_team_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MyTeamViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         viewPager.adapter = MyTeamViewPagerAdapter(context as FragmentActivity)
         val tabLayoutTextArray = arrayOf("진행중인 팀","완료한 팀")
@@ -42,5 +32,6 @@ class MyTeamFragment : Fragment() {
 
         }.attach()
     }
+
 
 }
