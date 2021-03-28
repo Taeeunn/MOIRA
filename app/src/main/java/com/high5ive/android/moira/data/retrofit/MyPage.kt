@@ -66,6 +66,7 @@ data class ScrapRecruitPostItem(
     val writtenTime: String
 )
 
+
 data class ScrapUserPool(
     val code: Int,
     val list: List<ScrapUserPoolItem>,

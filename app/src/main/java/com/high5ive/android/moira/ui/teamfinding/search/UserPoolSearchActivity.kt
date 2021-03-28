@@ -93,7 +93,7 @@ class UserPoolSearchActivity : AppCompatActivity(), View.OnClickListener{
             recycler_view.apply {
                 layoutManager = LinearLayoutManager(this@UserPoolSearchActivity)
                 adapter =
-                    UserAdapter(list) { index ->
+                    UserAdapter(list) { index, type ->
                         Toast.makeText(this@UserPoolSearchActivity, "$index", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this@UserPoolSearchActivity, UserProfileDetailActivity::class.java))
                     }
@@ -133,7 +133,7 @@ class UserPoolSearchActivity : AppCompatActivity(), View.OnClickListener{
                     recycler_view.apply {
                         layoutManager = LinearLayoutManager(this@UserPoolSearchActivity)
                         adapter =
-                            UserAdapter(list) { index ->
+                            UserAdapter(list) { index, type ->
                                 Toast.makeText(this@UserPoolSearchActivity, "$index", Toast.LENGTH_SHORT).show()
                                 startActivity(Intent(this@UserPoolSearchActivity, UserProfileDetailActivity::class.java))
                             }

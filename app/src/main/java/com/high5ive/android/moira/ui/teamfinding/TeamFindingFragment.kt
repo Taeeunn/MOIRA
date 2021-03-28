@@ -17,12 +17,7 @@ import kotlinx.android.synthetic.main.team_finding_fragment.*
 
 class TeamFindingFragment : Fragment() {
 
-    companion object {
-        fun newInstance() =
-            TeamFindingFragment()
-    }
 
-    private lateinit var viewModel: TeamFindingViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,10 +35,8 @@ class TeamFindingFragment : Fragment() {
         return rootView
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(TeamFindingViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         search_button.setOnClickListener {
             startActivity(Intent(context, UserPoolSearchActivity::class.java))
@@ -57,5 +50,6 @@ class TeamFindingFragment : Fragment() {
 
         }.attach()
     }
+
 
 }

@@ -24,6 +24,21 @@ interface RetrofitService {
 //        @Part("nickname") nickname: RequestBody,
 //        @Part img : MultipartBody.Part): Call<DataClass>
 
+    // FCM
+    @POST("register")
+    fun registerUser(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Body body: FCMRegister
+    ): Call<ResponseData>
+
+    // FCM push test
+    @POST("push")
+    fun pushFCM(
+        @Header("X-AUTH-TOKEN") token: String
+    ): Call<ResponseData>
+
+
+
     // 1. 로그인
     @POST("login")
     fun loginUser(
@@ -43,22 +58,26 @@ interface RetrofitService {
     // 2-2. 회원 가입 시 포지션 카테고리 목록
     @GET("signup/categories")
     fun getPositionCategories(
+        @Header("X-AUTH-TOKEN") token: String
     ): Call<PositionCategoryResponse>
 
     // 2-3. 모든 관심 태그 목록
     @GET("signup/hashtags")
     fun getHashTags(
+        @Header("X-AUTH-TOKEN") token: String
     ): Call<Hashtags>
 
     // 2-4. 닉네임 중복 검사
     @GET("signup/nickname")
     fun checkNickname(
+        @Header("X-AUTH-TOKEN") token: String,
         @Query("nickname") nickname : String
     ): Call<ResponseData>
 
     // 2-5. 선택한 포지션 카테고리의 상세 포지션 목록
     @GET("signup/positions")
     fun getPositionDetail(
+        @Header("X-AUTH-TOKEN") token: String,
         @Query("positionCategoryId") positionCategoryId : Int
     ): Call<PositionDetail>
 
@@ -231,7 +250,7 @@ interface RetrofitService {
 
     // 4-3. 팀원 찾기 - 인재풀 - 게시글 좋아요 ON/OFF
     @POST("pool/like/{userPoolId}")
-    fun signupUser(
+    fun onoffLikeUser(
         @Header("X-AUTH-TOKEN") token: String,
         @Path("userPoolId") userPoolId : Int
     ): Call<UserLike>

@@ -43,6 +43,9 @@ class RecruitPostFragment : Fragment() {
     var position_filter: String = "개발자"
     var sort_filter: String = "date"
 
+    val hashtagList = mutableListOf<String>()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -51,7 +54,7 @@ class RecruitPostFragment : Fragment() {
 
         initRetrofit()
 
-        getUserTag()
+
     }
 
     override fun onCreateView(
@@ -61,36 +64,12 @@ class RecruitPostFragment : Fragment() {
         return inflater.inflate(R.layout.recruit_post_fragment, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-//        var tagList = mutableListOf<String>()
-//        tagList.add("태그명1")
-//        tagList.add("태그명2")
-//        tagList.add("태그명3")
-//        setTag(tagList);
-
-
-
-        val recruit = arrayListOf<Recruit>()
-        for (i in 0..30){
-            recruit.add(
-                Recruit(
-                    "팀원 모집글 제목 팀원 모집글 제목 팀원 모집글 제목  $i",
-                    "사용자 닉네임 $i",
-                    i+1
-                )
-            )
-        }
-
-
-    }
 
 
     override fun onResume() {
         super.onResume()
 
-        getRecruitPostList()
+        getUserTag()
 
         requireActivity().new_post_btn.setOnClickListener{
             startActivity(Intent(context, NewPostActivity::class.java))
@@ -193,6 +172,8 @@ class RecruitPostFragment : Fragment() {
     private fun setTag(tagList: MutableList<String>) {
         for (index in tagList.indices) {
             val tagName = tagList[index]
+
+            hashtagList.add(tagName)
             //val chip = Chip(ContextThemeWrapper(context, R.style.MaterialChipsAction))
             val chip = Chip(context)
             val drawable = context?.let { ChipDrawable.createFromAttributes(it, null, 0, R.style.MaterialChipsAction) }
@@ -209,10 +190,21 @@ class RecruitPostFragment : Fragment() {
             chip.setOnCloseIconClickListener {
                 tagList.remove(tagName)
                 tag_group.removeView(chip)
+                hashtagList.remove(tagName)
+                getRecruitPostList()
             }
             tag_group.addView(chip)
         }
     }
+
+
+
+    override fun onStop() {
+        super.onStop()
+
+        tag_group.removeAllViews()
+    }
+
 
     private fun getUserTag() {
         Runnable {
@@ -240,6 +232,8 @@ class RecruitPostFragment : Fragment() {
                         setTag(list.toMutableList());
                         Log.v("data", list.toString())
 
+                        getRecruitPostList()
+
                     }
 
                 }
@@ -251,10 +245,22 @@ class RecruitPostFragment : Fragment() {
         Runnable {
 
             val page: Int = 0
-            val sort: String = "date"
             val tag: String = "해시태그1,해시태그2"
+            var hashtagListString =""
 
-            myAPI.getRecruitPostList(token, null, page, position_filter, sort_filter, null).enqueue(object :
+            for (index in hashtagList.indices) {
+                val tagName = hashtagList[index]
+                hashtagListString+=tagName
+
+                if(index!=hashtagList.size-1){
+                    hashtagListString+=","
+                }
+
+            }
+
+            Log.v("hashtag", hashtagListString)
+
+            myAPI.getRecruitPostList(token, null, page, position_filter, sort_filter, hashtagListString).enqueue(object :
                 Callback<RecruitPost> {
                 override fun onFailure(call: Call<RecruitPost>, t: Throwable) {
                     t.printStackTrace()

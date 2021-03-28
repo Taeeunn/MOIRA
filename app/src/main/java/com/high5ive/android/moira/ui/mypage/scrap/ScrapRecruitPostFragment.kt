@@ -1,6 +1,7 @@
 package com.high5ive.android.moira.ui.mypage.scrap
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -8,10 +9,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.high5ive.android.moira.R
+import com.high5ive.android.moira.adapter.RecruitAdapter
+import com.high5ive.android.moira.adapter.ScrapRecruitAdapter
 import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
+import com.high5ive.android.moira.ui.teamfinding.recruit.RecruitPostDetailActivity
+import kotlinx.android.synthetic.main.fragment_scrap_recruit_post.*
+import kotlinx.android.synthetic.main.recruit_post_fragment.recycler_view
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,6 +31,9 @@ class ScrapRecruitPostFragment : Fragment() {
     lateinit var retrofit: Retrofit
     lateinit var myAPI: RetrofitService
     lateinit var token: String
+
+    var position_filter: String = "개발자"
+    var sort_filter: String = "date"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,13 +53,88 @@ class ScrapRecruitPostFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_scrap_recruit_post, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
 
     override fun onResume() {
         super.onResume()
         getScrapRecruitPost()
+
+        spinner1.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+                when (spinner1.getItemAtPosition(position)) {
+                    "개발" -> {
+                        Log.v("itemselect", "개발")
+                        if(position_filter != "개발자") {
+                            position_filter = "개발자"
+                            getScrapRecruitPost()
+                        }
+
+                    }
+                    "기획" -> {
+                        Log.v("itemselect", "기획")
+                        if(position_filter != "기획자") {
+                            position_filter = "기획자"
+                            getScrapRecruitPost()
+                        }
+                    }
+
+                    "디자인" -> {
+                        Log.v("itemselect", "디자인")
+                        if(position_filter != "디자이너") {
+                            position_filter = "디자이너"
+                            getScrapRecruitPost()
+                        }
+                    }
+                    else -> {
+
+                    }
+                }
+            }
+
+        }
+
+
+
+        spinner2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+                when (spinner2.getItemAtPosition(position)) {
+                    "최신순" -> {
+                        Log.v("itemselect", "최신순")
+                        if(sort_filter != "date") {
+                            sort_filter = "date"
+                            getScrapRecruitPost()
+                        }
+
+                    }
+                    "조회순" -> {
+                        Log.v("itemselect", "조회순")
+                        if(sort_filter != "hitCount") {
+                            sort_filter = "hitCount"
+                            getScrapRecruitPost()
+                        }
+                    }
+
+                    "좋아요순" -> {
+                        Log.v("itemselect", "좋아요순")
+                        if(sort_filter != "likeCount") {
+                            sort_filter = "likeCount"
+                            getScrapRecruitPost()
+                        }
+                    }
+                    else -> {
+
+                    }
+                }
+            }
+
+        }
     }
 
     private fun initRetrofit() {
@@ -78,6 +165,19 @@ class ScrapRecruitPostFragment : Fragment() {
 
                         val list: List<ScrapRecruitPostItem> = response.body()?.list ?: emptyList()
                         Log.v("data", list.toString())
+
+                        count.text = list.size.toString()
+
+                        recycler_view.apply{
+                            layoutManager = LinearLayoutManager(context)
+                            adapter =
+                                ScrapRecruitAdapter(list) { index ->
+                                    Toast.makeText(context, "$index", Toast.LENGTH_SHORT).show()
+                                    val intent = Intent(context, RecruitPostDetailActivity::class.java)
+                                    intent.putExtra("index", index)
+                                    startActivity(intent)
+                                }
+                        }
 
                     }
 

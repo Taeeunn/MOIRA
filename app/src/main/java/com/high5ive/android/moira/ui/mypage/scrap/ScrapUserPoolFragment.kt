@@ -1,6 +1,7 @@
 package com.high5ive.android.moira.ui.mypage.scrap
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -8,10 +9,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.high5ive.android.moira.R
+import com.high5ive.android.moira.adapter.ScrapRecruitAdapter
+import com.high5ive.android.moira.adapter.ScrapUserAdapter
 import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
+import com.high5ive.android.moira.ui.teamfinding.recruit.RecruitPostDetailActivity
+import com.high5ive.android.moira.ui.teamfinding.user.UserProfileDetailActivity
+import kotlinx.android.synthetic.main.fragment_scrap_recruit_post.*
+import kotlinx.android.synthetic.main.fragment_scrap_recruit_post.recycler_view
+import kotlinx.android.synthetic.main.recruit_post_fragment.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -74,8 +84,23 @@ class ScrapUserPoolFragment : Fragment() {
 
                     if(succeed){
 
+
+
                         val list: List<ScrapUserPoolItem> = response.body()?.list ?: emptyList()
                         Log.v("data", list.toString())
+
+                        count.text = list.size.toString()
+
+                        recycler_view.apply{
+                            layoutManager = LinearLayoutManager(context)
+                            adapter =
+                                ScrapUserAdapter(list) { index ->
+                                    Toast.makeText(context, "$index", Toast.LENGTH_SHORT).show()
+                                    val intent = Intent(context, UserProfileDetailActivity::class.java)
+                                    intent.putExtra("index", index)
+                                    startActivity(intent)
+                                }
+                        }
 
                     }
 

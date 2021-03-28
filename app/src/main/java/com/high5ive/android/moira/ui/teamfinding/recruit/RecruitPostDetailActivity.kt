@@ -18,15 +18,13 @@ import com.google.android.material.snackbar.Snackbar
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.PositionAdapter
 import com.high5ive.android.moira.data.Position
-import com.high5ive.android.moira.data.retrofit.RecruitPostDetail
-import com.high5ive.android.moira.data.retrofit.RecruitPostDetailData
-import com.high5ive.android.moira.data.retrofit.UserPoolDetailInfo
-import com.high5ive.android.moira.data.retrofit.UserPoolDetailInfoData
+import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.databinding.ActivityRecruitPostDetailBinding
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.teamfinding.apply.ApplyActivity
 import kotlinx.android.synthetic.main.activity_recruit_post_detail.*
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -40,6 +38,8 @@ class RecruitPostDetailActivity : AppCompatActivity(), View.OnClickListener{
     lateinit var retrofit: Retrofit
     lateinit var myAPI: RetrofitService
     lateinit var token: String
+
+    var isLiked: Boolean = false
 
     var index: Int = 1
 
@@ -71,6 +71,7 @@ class RecruitPostDetailActivity : AppCompatActivity(), View.OnClickListener{
         comment_img_btn.setOnClickListener(this)
         apply_btn.setOnClickListener(this)
         more_button.setOnClickListener(this)
+        favorite_img_btn.setOnClickListener(this)
 
 
         val positionList = arrayListOf(
@@ -126,6 +127,14 @@ class RecruitPostDetailActivity : AppCompatActivity(), View.OnClickListener{
                     }
                 }
             }
+
+            R.id.favorite_img_btn -> {
+                if (isLiked){
+                    modifyLikeRecruitPost()
+                }else{
+                    modifyLikeRecruitPost()
+                }
+            }
         }
     }
 
@@ -145,6 +154,20 @@ class RecruitPostDetailActivity : AppCompatActivity(), View.OnClickListener{
                 }
 
                 override fun onResponse(call: Call<RecruitPostDetail>, response: Response<RecruitPostDetail>) {
+
+                    if (response.code() == 500) {
+                        var errorBody = JSONObject(response.errorBody()!!.string());
+
+                        val code= errorBody.getInt("code")
+                        val msg = errorBody.getString("msg")
+                        val succeed = errorBody.getString("succeed")
+
+                        Log.v("code", code.toString())
+                        Log.v("success", succeed.toString())
+                        Log.v("msg", msg)
+
+                    }
+                    Log.v("tjtjtj", response.code().toString())
                     val code: Int = response.body()?.code ?: 0
 
                     val msg: String = response.body()?.msg ?: "no msg"
@@ -161,6 +184,14 @@ class RecruitPostDetailActivity : AppCompatActivity(), View.OnClickListener{
 
                         binding.recruitpost = data
 
+                        isLiked = data.isLike
+
+                        if (isLiked){
+                            favorite_img_btn.setBackgroundResource(R.drawable.ic_full_heart)
+                        }else{
+                            favorite_img_btn.setBackgroundResource(R.drawable.ic_empty_heart)
+                        }
+
 
 
                     }
@@ -168,6 +199,39 @@ class RecruitPostDetailActivity : AppCompatActivity(), View.OnClickListener{
                 }
             })
         }.run()
+    }
+
+    private fun modifyLikeRecruitPost() {
+        myAPI.likeRecruitPost(token, index).enqueue(object :
+            Callback<ResponseData> {
+            override fun onFailure(call: Call<ResponseData>, t: Throwable) {
+                t.printStackTrace()
+            }
+
+            override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
+                val code: Int = response.body()?.code ?: 0
+
+                val msg: String = response.body()?.msg ?: "no msg"
+                val succeed: Boolean = response.body()?.succeed ?: false
+
+                Log.v("code", code.toString())
+                Log.v("success", succeed.toString())
+                Log.v("msg", msg)
+
+                if(succeed){
+
+                    if (isLiked){
+                        favorite_img_btn.setBackgroundResource(R.drawable.ic_empty_heart)
+                        isLiked=false
+                    }else{
+                        favorite_img_btn.setBackgroundResource(R.drawable.ic_full_heart)
+                        isLiked=true
+                    }
+
+                }
+
+            }
+        })
     }
 
 }

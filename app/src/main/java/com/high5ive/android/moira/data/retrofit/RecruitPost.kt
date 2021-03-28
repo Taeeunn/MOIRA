@@ -29,7 +29,7 @@ data class RecruitPostDetailData(
     val duration: String,
     val hashtagList: List<String>,
     val hitCount: Int,
-    val imageUrl: String,
+    val imageUrlList: List<String>,
     val isLike: Boolean,
     val likeCount: Int,
     val location: String,
@@ -38,6 +38,8 @@ data class RecruitPostDetailData(
     val title: String,
     val writer: String
 )
+
+
 
 
 data class ProjectModifyTitleRequestDTO(

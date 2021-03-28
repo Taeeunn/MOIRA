@@ -38,8 +38,6 @@
         <item name="chipCornerRadius">2dp</item>
         <item name="chipMinHeight">32dp</item>
         <item name="rippleColor">@color/main_blue</item>
-        <item name="android:textColor">@color/text_chip_state</item>
-        <item name="android:paddingLeft">10dp</item>
         <item name="android:textAppearance">@style/tag_text</item>
     </style>
 

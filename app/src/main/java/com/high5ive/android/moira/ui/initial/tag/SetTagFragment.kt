@@ -14,14 +14,18 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipDrawable
 import com.high5ive.android.moira.MainActivity
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.initial.OnTransitionListener
+import kotlinx.android.synthetic.main.recruit_post_fragment.*
 import kotlinx.android.synthetic.main.set_nickname_fragment.*
 import kotlinx.android.synthetic.main.set_tag_fragment.*
+import kotlinx.android.synthetic.main.set_tag_fragment.tag_group
 import kotlinx.android.synthetic.main.set_tag_fragment.to_next_btn
 import kotlinx.android.synthetic.main.set_tag_fragment.toolbar
 import retrofit2.Call
@@ -31,19 +35,17 @@ import retrofit2.Retrofit
 
 class SetTagFragment : Fragment() {
 
-    companion object {
-        fun newInstance() =
-            SetTagFragment()
-    }
-
-    private lateinit var viewModel: SetTagViewModel
     lateinit var navController : NavController
-    private var onTransitionListener: OnTransitionListener? = null
+
 
     lateinit var retrofit: Retrofit
     lateinit var myAPI: RetrofitService
 
     lateinit var jwt_token: String
+
+    var nickname = ""
+    var positionId: Int = 1
+    val hashtagIdList = mutableListOf<Int>()
 
 
     override fun onCreateView(
@@ -56,6 +58,12 @@ class SetTagFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        nickname = arguments?.getString("nickname")?: ""
+        positionId = arguments?.getInt("positionId")?: 1
+
+        Log.v("nickname", nickname)
+        Log.v("positionId", positionId.toString())
+
         navController = Navigation.findNavController(view)
 
         val preferences: SharedPreferences =requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
@@ -66,6 +74,7 @@ class SetTagFragment : Fragment() {
 //            startActivity(Intent(activity, MainActivity::class.java))
 
             signupUser()
+            Log.v("tagIdList", hashtagIdList.toString())
 //            onTransitionListener?.OnTransitionListener()
         }
 
@@ -81,21 +90,6 @@ class SetTagFragment : Fragment() {
         ab.setDisplayHomeAsUpEnabled(true)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SetTagViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        onTransitionListener = context as OnTransitionListener
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        onTransitionListener = null
-    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -117,7 +111,7 @@ class SetTagFragment : Fragment() {
     private fun getPositionDetail() {
         Runnable {
 
-            myAPI.getPositionDetail(1).enqueue(object : Callback<PositionDetail> {
+            myAPI.getPositionDetail(jwt_token, 1).enqueue(object : Callback<PositionDetail> {
                 override fun onFailure(call: Call<PositionDetail>, t: Throwable) {
                     t.printStackTrace()
                 }
@@ -149,10 +143,46 @@ class SetTagFragment : Fragment() {
         }.run()
     }
 
+    private fun setTag(tagList: MutableList<Hashtag>) {
+        for (index in tagList.indices) {
+            val tagName = tagList[index].hashtagName
+            val tagId = tagList[index].hashtagId
+
+            //val chip = Chip(ContextThemeWrapper(context, R.style.MaterialChipsAction))
+            val chip = Chip(context)
+            Log.v("tggg", chip.textColors.toString())
+            chip.setOnClickListener {
+
+                if (chip.textColors == resources.getColorStateList(R.color.white)){
+                    hashtagIdList.remove(tagId)
+                    chip.setTextColor(resources.getColor(R.color.black))
+                } else{
+                    chip.setTextColor(resources.getColor(R.color.white))
+                    hashtagIdList.add(tagId)
+                }
+
+                Log.v("tggg", chip.textColors.toString())
+            }
+
+
+            val drawable = context?.let { ChipDrawable.createFromAttributes(it, null, 0, R.style.MaterialChips) }
+            if (drawable != null) {
+                chip.setChipDrawable(drawable)
+            }
+            chip.text = tagName
+
+
+
+            //Added click listener on close icon to remove tag from ChipGroup
+
+            tag_group.addView(chip)
+        }
+    }
+
     private fun getHashTags() {
         Runnable {
 
-            myAPI.getHashTags().enqueue(object : Callback<Hashtags> {
+            myAPI.getHashTags(jwt_token).enqueue(object : Callback<Hashtags> {
                 override fun onFailure(call: Call<Hashtags>, t: Throwable) {
                     t.printStackTrace()
                 }
@@ -170,6 +200,8 @@ class SetTagFragment : Fragment() {
                     Log.v("msg", msg)
                     Log.v("list", list.toString())
 
+                    setTag(list.toMutableList())
+
 //                    if (firstLogin){
 //                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
 //                    } else{
@@ -184,9 +216,6 @@ class SetTagFragment : Fragment() {
     private fun signupUser() {
         Runnable {
 
-            val hashtagIdList: List<Int> = listOf(1)
-            val nickname: String = "moira2"
-            val positionId: Int = 1
 
             val body_data = SignUpInfo(hashtagIdList, nickname, positionId)
             Log.v("body", body_data.toString() )

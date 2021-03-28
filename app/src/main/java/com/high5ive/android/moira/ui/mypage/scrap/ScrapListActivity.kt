@@ -1,5 +1,6 @@
 package com.high5ive.android.moira.ui.mypage.scrap
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem

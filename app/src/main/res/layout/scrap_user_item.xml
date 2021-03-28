@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="scrapuser"
+            type="com.high5ive.android.moira.data.retrofit.ScrapUserPoolItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="4dp"
+        android:background="@drawable/round_rectangle_with_border_6"
+        android:paddingHorizontal="13dp"
+        android:paddingBottom="14dp">
+
+
+        <ImageView
+            android:id="@+id/user_image"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="19dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/circle"
+            app:tint="@color/light_gray" />
+
+        <TextView
+            android:id="@+id/user_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="18dp"
+            android:lineSpacingExtra="6sp"
+            android:text="@{scrapuser.nickname}"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/user_image"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/user_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="23dp"
+            android:lineSpacingExtra="5sp"
+            android:text="@{scrapuser.positionName}"
+            android:textColor="#b2b2b2"
+            android:textSize="10sp"
+            android:textStyle="normal"
+            app:layout_constraintLeft_toRightOf="@+id/user_nickname"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/user_intro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="6dp"
+            android:lineSpacingExtra="6sp"
+            android:text="@{scrapuser.shortIntroduction}"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:textStyle="normal"
+            app:layout_constraintLeft_toRightOf="@+id/user_image"
+            app:layout_constraintTop_toBottomOf="@+id/user_nickname" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="user_image, user_intro" />
+
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/design_tag_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/barrier">
+
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/design_tag1"
+                style="@style/MaterialChipsAction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="관련태그" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/design_tag2"
+                style="@style/MaterialChipsAction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="관련태그" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/design_tag3"
+                style="@style/MaterialChipsAction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="관련태그" />
+
+
+        </com.google.android.material.chip.ChipGroup>
+
+        <ImageButton
+            android:id="@+id/interest_btn"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="3dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:text="@string/register"
+            app:tint="#757575"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_full_heart" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

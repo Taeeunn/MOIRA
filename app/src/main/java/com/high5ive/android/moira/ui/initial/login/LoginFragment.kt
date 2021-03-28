@@ -30,9 +30,7 @@ import retrofit2.Retrofit
 class LoginFragment : Fragment(), View.OnClickListener {
 
 
-    private lateinit var viewModel: LoginViewModel
     lateinit var navController: NavController
-    private var onTransitionListener: OnTransitionListener? = null
 
     lateinit var retrofit: Retrofit
     lateinit var myAPI: RetrofitService
@@ -40,6 +38,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
     lateinit var jwt_token: String
     lateinit var access_token: String
     lateinit var refresh_token: String
+    lateinit var fcm_token: String
 
 
     override fun onCreateView(
@@ -57,33 +56,22 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
         val preferences: SharedPreferences =
             requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
-        jwt_token = preferences.getString("jwt_token", null).toString()
-        access_token = preferences.getString("kakao_access_token", null).toString()
-        refresh_token = preferences.getString("kakao_refresh_token", null).toString()
+        jwt_token = preferences.getString("jwt_token", "").toString()
+        access_token = preferences.getString("kakao_access_token", "").toString()
+        refresh_token = preferences.getString("kakao_refresh_token", "").toString()
 
 
         kakao_login_btn.setOnClickListener(this)
     }
 
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        onTransitionListener = context as OnTransitionListener
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        onTransitionListener = null
-    }
 
     override fun onClick(v: View?) {
         when (v?.id) {
 
             R.id.kakao_login_btn -> {
 
-                showTokenInfo()
-                getUserInfo()
-                loginServer(access_token)
+
                 Log.v("token", jwt_token)
                 Log.v("access", access_token)
                 Log.v("refresh", refresh_token)
@@ -92,36 +80,49 @@ class LoginFragment : Fragment(), View.OnClickListener {
                 val func=Functions()
                 func.BackgroundTask()
 
+                if (refresh_token == "") {
+                    val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
+                        if (error != null) {
+                            Log.e("login", "로그인 실패", error)
+                        } else if (token != null) {
+                            Log.i("login", "로그인 성공 ${token.accessToken}")
+
+                            val preferences: SharedPreferences =
+                                requireActivity().getSharedPreferences(
+                                    "moira",
+                                    Context.MODE_PRIVATE
+                                )
+                            preferences.edit().putString("kakao_access_token", token.accessToken)
+                                .apply()
+                            preferences.edit().putString("kakao_refresh_token", token.refreshToken)
+                                .apply()
+
+                            showTokenInfo()
+                            getUserInfo()
+                            loginServer(token.accessToken)
 
 
-//                val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
-//                    if (error != null) {
-//                        Log.e("login", "로그인 실패", error)
-//                    } else if (token != null) {
-//                        Log.i("login", "로그인 성공 ${token.accessToken}")
+                        }
+                    }
 //
-//                        val preferences: SharedPreferences = requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
-//                        preferences.edit().putString("kakao_access_token", token.accessToken).apply()
-//                        preferences.edit().putString("kakao_refresh_token", token.refreshToken).apply()
-//
-//                        showTokenInfo()
-//                        getUserInfo()
-//                        loginServer(token.accessToken)
-//
-//
-//                    }
-//                }
-////
-//                // 카카오톡이 설치되어 있으면 카카오톡으로 로그인, 아니면 카카오계정으로 로그인
-//                if (UserApiClient.instance.isKakaoTalkLoginAvailable(requireContext())) {
-//                    UserApiClient.instance.loginWithKakaoTalk(requireContext(), callback = callback)
-//                    UserApiClient.instance
-//                } else {
-//                    UserApiClient.instance.loginWithKakaoAccount(
-//                        requireContext(),
-//                        callback = callback
-//                    )
-//                }
+                    // 카카오톡이 설치되어 있으면 카카오톡으로 로그인, 아니면 카카오계정으로 로그인
+                    if (UserApiClient.instance.isKakaoTalkLoginAvailable(requireContext())) {
+                        UserApiClient.instance.loginWithKakaoTalk(
+                            requireContext(),
+                            callback = callback
+                        )
+                        UserApiClient.instance
+                    } else {
+                        UserApiClient.instance.loginWithKakaoAccount(
+                            requireContext(),
+                            callback = callback
+                        )
+                    }
+                } else{
+                    showTokenInfo()
+                    getUserInfo()
+                    loginServer(access_token)
+                }
             }
 
         }
@@ -171,8 +172,6 @@ class LoginFragment : Fragment(), View.OnClickListener {
     }
 
 
-
-
     private fun loginServer(accessToken: String) {
 
         Runnable {
@@ -186,7 +185,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
                 override fun onResponse(call: Call<LoginUser>, response: Response<LoginUser>) {
                     Log.v("realcode", response.code().toString())
                     val code: Int = response.body()?.code ?: 0
-                    val firstLogin: Boolean = response.body()?.data?.firstLogin ?: false
+                    val needSignUp: Boolean = response.body()?.data?.needSignup ?: false
                     val jwtToken: String = response.body()?.data?.jwtToken ?: "no token"
                     val msg: String = response.body()?.msg ?: "no msg"
                     val succeed: Boolean = response.body()?.succeed ?: false
@@ -194,7 +193,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
 
                     Log.v("code", code.toString())
-                    Log.v("firstLogin", firstLogin.toString())
+                    Log.v("needSignUp", needSignUp.toString())
                     Log.v("jwtToken", jwtToken.toString())
                     Log.v("success", succeed.toString())
                     Log.v("msg", msg)
@@ -205,7 +204,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
                     preferences.edit().putString("jwt_token", jwtToken).apply()
 
 
-                    if (firstLogin) {
+                    if (needSignUp) {
                         navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
                     } else {
                         startActivity(Intent(context, MainActivity::class.java))

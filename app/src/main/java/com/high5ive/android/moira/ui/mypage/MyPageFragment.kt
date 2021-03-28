@@ -104,6 +104,7 @@ class MyPageFragment : Fragment(), View.OnClickListener{
                 }
 
                 override fun onResponse(call: Call<MyPage>, response: Response<MyPage>) {
+                    Log.v("tt", response.code().toString())
                     val code: Int = response.body()?.code ?: 0
 
                     val msg: String = response.body()?.msg ?: "no msg"

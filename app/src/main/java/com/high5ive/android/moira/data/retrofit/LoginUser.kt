@@ -16,8 +16,8 @@ data class LoginUser(
 
 
 data class LoginData(
-    val firstLogin: Boolean,
-    val jwtToken: String
+    val jwtToken: String,
+    val needSignup: Boolean
 )
 
 data class LoginInfo(

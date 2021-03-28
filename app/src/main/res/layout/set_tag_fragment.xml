@@ -34,16 +34,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="46dp"
-        android:text="@string/detail_position"
+        android:text="관심 태그"
         android:layout_marginStart="16dp"
         android:textAppearance="@style/tag_title_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/select_tag_text" />
 
     <com.google.android.material.chip.ChipGroup
-        android:id="@+id/use_purpose_tag_group"
-        style="@style/Widget.MaterialComponents.Chip.Filter"
-        android:layout_width="match_parent"
+        android:id="@+id/tag_group"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_marginHorizontal="16dp"
@@ -51,88 +50,50 @@
         app:layout_constraintTop_toBottomOf="@+id/use_purpose_tag_text">
 
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/user_purpose_tag1"
-            style="@style/MaterialChips"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/server_developer" />
+<!--        <com.google.android.material.chip.Chip-->
+<!--            android:id="@+id/user_purpose_tag1"-->
+<!--            style="@style/MaterialChips"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/server_developer" />-->
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/user_purpose_tag2"
-            style="@style/MaterialChips"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="웹 프론트 개발자" />
+<!--        <com.google.android.material.chip.Chip-->
+<!--            android:id="@+id/user_purpose_tag2"-->
+<!--            style="@style/MaterialChips"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="웹 프론트 개발자" />-->
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/user_purpose_tag3"
-            style="@style/MaterialChips"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="웹 백엔드 개발자" />
+<!--        <com.google.android.material.chip.Chip-->
+<!--            android:id="@+id/user_purpose_tag3"-->
+<!--            style="@style/MaterialChips"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="웹 백엔드 개발자" />-->
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/user_purpose_tag4"
-            style="@style/MaterialChips"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="웹 풀스택 개발자" />
+<!--        <com.google.android.material.chip.Chip-->
+<!--            android:id="@+id/user_purpose_tag4"-->
+<!--            style="@style/MaterialChips"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="웹 풀스택 개발자" />-->
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/user_purpose_tag5"
-            style="@style/MaterialChips"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="안드로이드 개발자" />
+<!--        <com.google.android.material.chip.Chip-->
+<!--            android:id="@+id/user_purpose_tag5"-->
+<!--            style="@style/MaterialChips"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="안드로이드 개발자" />-->
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/user_purpose_tag6"
-            style="@style/MaterialChips"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="iOS 개발자" />
-
-    </com.google.android.material.chip.ChipGroup>
-
-    <TextView
-        android:id="@+id/design_tag_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="관심 태그"
-        android:layout_marginStart="16dp"
-        android:textAppearance="@style/tag_title_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/use_purpose_tag_group" />
-
-
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/design_tag_group"
-        style="@style/Widget.MaterialComponents.Chip.Filter"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/design_tag_text">
-
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/design_tag1"
-            style="@style/MaterialChips"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="공모전" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/design_tag2"
-            style="@style/MaterialChips"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="단기 프로젝트" />
+<!--        <com.google.android.material.chip.Chip-->
+<!--            android:id="@+id/user_purpose_tag6"-->
+<!--            style="@style/MaterialChips"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="iOS 개발자" />-->
 
     </com.google.android.material.chip.ChipGroup>
+
 
 
     <LinearLayout

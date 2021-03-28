@@ -1,6 +1,8 @@
 package com.high5ive.android.moira.ui.initial.nickname
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -26,16 +28,11 @@ import retrofit2.Retrofit
 
 class SetNicknameFragment : Fragment() {
 
-    companion object {
-        fun newInstance() =
-            SetNicknameFragment()
-    }
-
-    private lateinit var viewModel: SetNicknameViewModel
-
     lateinit var navController : NavController
     lateinit var retrofit: Retrofit
     lateinit var myAPI: RetrofitService
+
+    lateinit var jwt_token: String
 
 
     override fun onCreateView(
@@ -54,6 +51,9 @@ class SetNicknameFragment : Fragment() {
 
         initRetrofit()
 
+        val preferences: SharedPreferences =
+            requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
+        jwt_token = preferences.getString("jwt_token", "").toString()
 
         to_next_btn.setOnClickListener {
 
@@ -72,17 +72,12 @@ class SetNicknameFragment : Fragment() {
 //        }
 
 
-
 //
 //        nickname_text_layout.isErrorEnabled = true;
 //        nickname_text_layout.error = "*이미 사용중인 닉네임입니다.";
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SetNicknameViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -104,12 +99,13 @@ class SetNicknameFragment : Fragment() {
     private fun checkNickName(nickname: String){
         Runnable {
 
-            myAPI.checkNickname(nickname).enqueue(object : Callback<ResponseData> {
+            myAPI.checkNickname(jwt_token, nickname).enqueue(object : Callback<ResponseData> {
                 override fun onFailure(call: Call<ResponseData>, t: Throwable) {
                     t.printStackTrace()
                 }
 
                 override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
+                    Log.v("realcode", response.code().toString())
                     val code: Int = response.body()?.code ?: 0
                     val msg: String = response.body()?.msg ?: "no msg"
                     val succeed: Boolean = response.body()?.succeed ?: false

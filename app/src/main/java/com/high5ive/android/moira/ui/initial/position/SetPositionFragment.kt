@@ -1,5 +1,7 @@
 package com.high5ive.android.moira.ui.initial.position
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -29,19 +32,15 @@ import retrofit2.Retrofit
 
 class SetPositionFragment : Fragment() {
 
-    companion object {
-        fun newInstance() =
-            SetPositionFragment()
-    }
-
-    private lateinit var viewModel: SetPositionViewModel
 
     lateinit var navController : NavController
-    lateinit var position: String
+    var positionId: Int = 1
 
     lateinit var retrofit: Retrofit
     lateinit var myAPI: RetrofitService
     var nickname = ""
+
+    lateinit var jwt_token: String
 
 
 
@@ -62,20 +61,27 @@ class SetPositionFragment : Fragment() {
 
         navController = Navigation.findNavController(view)
 
+        val preferences: SharedPreferences =
+            requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
+        jwt_token = preferences.getString("jwt_token", "").toString()
+
         nickname = arguments?.getString("nickname")?: ""
         Log.v("tnickname", nickname)
         initRetrofit()
         getPositionCategory()
 
         to_next_btn.setOnClickListener {
-            navController.navigate(R.id.action_setPositionFragment_to_setTagFragment)
+
+
+            val bundle = bundleOf("nickname" to nickname, "positionId" to positionId)
+            navController.navigate(R.id.action_setPositionFragment_to_setTagFragment, bundle)
         }
 
         develop_btn.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 design_btn.isChecked = false
                 plan_btn.isChecked = false
-                position = "develop"
+                positionId = 1
             }
         }
 
@@ -85,7 +91,7 @@ class SetPositionFragment : Fragment() {
             if (isChecked) {
                 develop_btn.isChecked = false
                 design_btn.isChecked = false
-                position = "plan"
+                positionId = 2
             }
         }
 
@@ -93,7 +99,7 @@ class SetPositionFragment : Fragment() {
             if (isChecked) {
                 develop_btn.isChecked = false
                 plan_btn.isChecked = false
-                position = "design"
+                positionId = 3
             }
         }
 
@@ -105,11 +111,7 @@ class SetPositionFragment : Fragment() {
 
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SetPositionViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -131,7 +133,7 @@ class SetPositionFragment : Fragment() {
     private fun getPositionCategory() {
         Runnable {
 
-            myAPI.getPositionCategories().enqueue(object : Callback<PositionCategoryResponse> {
+            myAPI.getPositionCategories(jwt_token).enqueue(object : Callback<PositionCategoryResponse> {
                 override fun onFailure(call: Call<PositionCategoryResponse>, t: Throwable) {
                     t.printStackTrace()
                 }

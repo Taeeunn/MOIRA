@@ -146,6 +146,9 @@ class ApplyActivity : AppCompatActivity(), View.OnClickListener{
                     if (code == 460) {
                         val message = "내가 작성한 모집글에는 지원할 수 없습니다!"
                         Snackbar.make(v, message, Snackbar.LENGTH_SHORT).show()
+                    } else if (code == 454){
+                        val message = "이미 지원한 모집글입니다!"
+                        Snackbar.make(v, message, Snackbar.LENGTH_SHORT).show()
                     }
                 }
 
