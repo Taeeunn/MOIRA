@@ -19,6 +19,7 @@ import com.high5ive.android.moira.data.retrofit.LoginUser
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.initial.OnTransitionListener
+import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.user.UserApiClient
 import kotlinx.android.synthetic.main.login_fragment.*
 import retrofit2.Call
@@ -183,6 +184,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
                 }
 
                 override fun onResponse(call: Call<LoginUser>, response: Response<LoginUser>) {
+                    Log.v("realcode", response.code().toString())
                     val code: Int = response.body()?.code ?: 0
                     val firstLogin: Boolean = response.body()?.data?.firstLogin ?: false
                     val jwtToken: String = response.body()?.data?.jwtToken ?: "no token"

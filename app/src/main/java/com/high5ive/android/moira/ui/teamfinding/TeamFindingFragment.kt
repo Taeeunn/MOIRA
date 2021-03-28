@@ -11,9 +11,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.tabs.TabLayoutMediator
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.ui.teamfinding.search.UserPoolSearchActivity
-import kotlinx.android.synthetic.main.my_team_fragment.search_button
 import kotlinx.android.synthetic.main.my_team_fragment.tabLayout
 import kotlinx.android.synthetic.main.my_team_fragment.viewPager
+import kotlinx.android.synthetic.main.team_finding_fragment.*
 
 class TeamFindingFragment : Fragment() {
 

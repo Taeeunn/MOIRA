@@ -7,7 +7,7 @@
 
         <variable
             name="apply"
-            type="com.high5ive.android.moira.data.Apply" />
+            type="com.high5ive.android.moira.data.retrofit.ApplyPostItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,7 +32,7 @@
             android:layout_width="196dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="11dp"
-            android:text="@{apply.title}"
+            android:text="@{apply.projectTitle}"
             android:textAppearance="@style/contest_name"
             app:layout_constraintLeft_toRightOf="@+id/recruit_image"
             app:layout_constraintTop_toTopOf="parent" />
@@ -42,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="9dp"
-            android:text="2021.01.12"
+            android:text="@{apply.writtenTime}"
             android:textStyle="normal"
             android:textSize="10sp"
             android:textColor="#bcbcbc"
@@ -71,7 +71,7 @@
             android:layout_marginTop="8dp"
             android:letterSpacing="-0.03"
             android:lineSpacingExtra="5sp"
-            android:text="1,234"
+            android:text="@{@string/to_str(apply.hitCount)}"
             android:textColor="#bcbcbc"
             android:textSize="10sp"
             app:layout_constraintLeft_toRightOf="@+id/view_icon"

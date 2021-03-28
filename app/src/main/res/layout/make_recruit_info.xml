@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="40dp"
-    android:paddingHorizontal="16dp">
+    android:paddingHorizontal="16dp"
+    android:paddingBottom="40dp">
 
 
     <TextView
@@ -20,45 +20,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/project_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:lineSpacingExtra="6sp"
-        android:text="@string/project_type"
-        android:textAppearance="@style/project_type"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/team_recruit" />
-
-
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/project_type_chip_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/project_type"
-        app:singleSelection="true">
-
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/project_type_chip1"
-            style="@style/MaterialChipsAction"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/contest" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/project_type_chip2"
-            style="@style/MaterialChipsAction"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/side_project" />
-
-    </com.google.android.material.chip.ChipGroup>
-
-
 
     <View
         android:id="@+id/horizontal_line"
@@ -66,7 +27,7 @@
         android:layout_height="1dp"
         android:layout_marginTop="16dp"
         android:background="#f0f0f0"
-        app:layout_constraintTop_toBottomOf="@+id/project_type_chip_group" />
+        app:layout_constraintTop_toBottomOf="@+id/team_recruit" />
 
     <TextView
         android:id="@+id/project_duration"
@@ -79,16 +40,49 @@
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
 
     <android.widget.Button
-        android:id="@+id/button"
+        android:id="@+id/project_duration_add"
         android:layout_width="65dp"
         android:layout_height="20dp"
         android:layout_marginTop="27dp"
         android:background="@android:color/transparent"
         android:lineSpacingExtra="8sp"
-        android:text="@string/plus_register"
+        android:text="@string/plus_add"
         android:textAppearance="@style/new_post_register_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/project_duration_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/project_duration">
+
+        <TextView
+            android:id="@+id/project_duration_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#262626"
+            android:textSize="13sp"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/project_duration_delete"
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_baseline_close_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <View
         android:id="@+id/horizontal_line2"
@@ -97,7 +91,7 @@
         android:layout_marginTop="24dp"
         android:background="#f0f0f0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/project_duration" />
+        app:layout_constraintTop_toBottomOf="@+id/project_duration_layout" />
 
     <TextView
         android:id="@+id/region"
@@ -109,17 +103,51 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line2" />
 
+
     <android.widget.Button
-        android:id="@+id/button2"
+        android:id="@+id/region_add"
         android:layout_width="65dp"
         android:layout_height="20dp"
         android:layout_marginTop="27dp"
         android:background="@android:color/transparent"
         android:lineSpacingExtra="8sp"
-        android:text="@string/plus_register"
+        android:text="@string/plus_add"
         android:textAppearance="@style/new_post_register_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line2" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/region_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/region">
+
+        <TextView
+            android:id="@+id/region_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#262626"
+            android:textSize="13sp"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/region_delete"
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_baseline_close_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <View
         android:id="@+id/horizontal_line3"
@@ -128,7 +156,7 @@
         android:layout_marginTop="24dp"
         android:background="#f0f0f0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/region" />
+        app:layout_constraintTop_toBottomOf="@+id/region_layout" />
 
     <TextView
         android:id="@+id/recruit_position"
@@ -141,16 +169,153 @@
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line3" />
 
     <android.widget.Button
-        android:id="@+id/button3"
+        android:id="@+id/recruit_position_add"
         android:layout_width="65dp"
         android:layout_height="20dp"
         android:layout_marginTop="27dp"
         android:background="@android:color/transparent"
         android:lineSpacingExtra="8sp"
-        android:text="@string/plus_register"
+        android:text="@string/plus_add"
         android:textAppearance="@style/new_post_register_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line3" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/recruit_position_developer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/recruit_position">
+
+        <TextView
+            android:id="@+id/recruit_position_developer_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#262626"
+            android:textSize="13sp"
+            android:text="@string/developer"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/recruit_position_developer_delete"
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_baseline_close_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/recruit_position_developer_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#262626"
+            android:textSize="13sp"
+            android:layout_marginRight="10dp"
+            android:textStyle="normal"
+            app:layout_constraintRight_toLeftOf="@+id/recruit_position_developer_delete"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/recruit_position_planner_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/recruit_position_developer_layout">
+
+        <TextView
+            android:id="@+id/recruit_position_planner_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#262626"
+            android:textSize="13sp"
+            android:text="@string/planner"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/recruit_position_planner_delete"
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_baseline_close_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/recruit_position_planner_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#262626"
+            android:textSize="13sp"
+            android:layout_marginRight="10dp"
+            android:textStyle="normal"
+            app:layout_constraintRight_toLeftOf="@+id/recruit_position_planner_delete"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/recruit_position_designer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/recruit_position_planner_layout">
+
+        <TextView
+            android:id="@+id/recruit_position_designer_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#262626"
+            android:textSize="13sp"
+            android:text="@string/designer"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/recruit_position_designer_delete"
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_baseline_close_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/recruit_position_designer_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#262626"
+            android:textSize="13sp"
+            android:layout_marginRight="10dp"
+            android:textStyle="normal"
+            app:layout_constraintRight_toLeftOf="@+id/recruit_position_designer_delete"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     <View
         android:id="@+id/horizontal_line4"
@@ -159,7 +324,7 @@
         android:layout_marginTop="24dp"
         android:background="#f0f0f0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recruit_position" />
+        app:layout_constraintTop_toBottomOf="@+id/recruit_position_designer_layout" />
 
     <TextView
         android:id="@+id/related_tag"
@@ -172,13 +337,13 @@
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line4" />
 
     <android.widget.Button
-        android:id="@+id/button4"
+        android:id="@+id/tag_add"
         android:layout_width="65dp"
         android:layout_height="20dp"
         android:layout_marginTop="24dp"
         android:background="@android:color/transparent"
         android:lineSpacingExtra="8sp"
-        android:text="@string/plus_register"
+        android:text="@string/plus_add"
         android:textAppearance="@style/new_post_register_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line4" />

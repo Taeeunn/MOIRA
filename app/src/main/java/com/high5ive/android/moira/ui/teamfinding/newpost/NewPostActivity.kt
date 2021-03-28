@@ -2,6 +2,7 @@ package com.high5ive.android.moira.ui.teamfinding.newpost
 
 import android.Manifest
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -9,6 +10,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
@@ -16,7 +18,9 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.list.listItemsSingleChoice
 import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.android.material.snackbar.Snackbar
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.common.PermissionCheck
 import com.high5ive.android.moira.data.Recruit
@@ -24,7 +28,13 @@ import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import gun0912.tedimagepicker.builder.TedImagePicker
+import gun0912.tedimagepicker.util.ToastUtil.context
 import kotlinx.android.synthetic.main.activity_new_post.*
+import kotlinx.android.synthetic.main.dialog_recruit_position.*
+import kotlinx.android.synthetic.main.dialog_user_pool.*
+import kotlinx.android.synthetic.main.dialog_user_pool.view.*
+import kotlinx.android.synthetic.main.make_recruit_info.*
+import kotlinx.android.synthetic.main.make_recruit_info.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -37,6 +47,9 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var retrofit: Retrofit
     lateinit var myAPI: RetrofitService
     lateinit var token: String
+    var developer_position_count : String =  "0"
+    var planner_position_count : String = "0"
+    var designer_position_count : String = "0"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,13 +61,27 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
         ab.setDisplayShowTitleEnabled(false)
         ab.setDisplayHomeAsUpEnabled(true)
 
-        val preferences: SharedPreferences = this.getSharedPreferences("moira", Context.MODE_PRIVATE)
+        val preferences: SharedPreferences =
+            this.getSharedPreferences("moira", Context.MODE_PRIVATE)
         token = preferences.getString("jwt_token", null).toString()
 
         initRetrofit()
 
         picture_btn.setOnClickListener(this)
         register_button.setOnClickListener(this)
+        project_duration_add.setOnClickListener(this)
+        project_duration_delete.setOnClickListener(this)
+
+        region_add.setOnClickListener(this)
+        region_delete.setOnClickListener(this)
+
+
+        recruit_position_add.setOnClickListener(this)
+
+        recruit_position_developer_delete.setOnClickListener(this)
+        recruit_position_planner_delete.setOnClickListener(this)
+        recruit_position_designer_delete.setOnClickListener(this)
+
 
 //            TedBottomPicker.with(this@NewPostActivity)
 //                .setPeekHeight(1600)
@@ -152,18 +179,25 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
 
                 Runnable {
 
-                    val content="팀 모집글 내용입니다."
-                    val duration="한달_미만"
+                    val content = "팀 모집글 내용입니다."
+                    val duration = "한달_미만"
                     val hashtagIdList: List<String> = listOf("서버", "IOS", "AOS")
                     val localType = "서울_인천_경기"
-                    val title="모집글 제목"
+                    val title = "모집글 제목"
 
                     val count = 1
-                    val positionCategoryName="개발자"
+                    val positionCategoryName = "개발자"
                     val positionCategoryList = arrayListOf<PositionCategory>()
                     positionCategoryList.add(PositionCategory(count, positionCategoryName))
 
-                    val body_data = NewRecruitPost(content, duration, hashtagIdList, localType, positionCategoryList, title)
+                    val body_data = NewRecruitPost(
+                        content,
+                        duration,
+                        hashtagIdList,
+                        localType,
+                        positionCategoryList,
+                        title
+                    )
 
                     myAPI.makeNewRecruitPost(token, body_data).enqueue(object :
                         Callback<NewRecruitPostResponse> {
@@ -171,7 +205,10 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
                             t.printStackTrace()
                         }
 
-                        override fun onResponse(call: Call<NewRecruitPostResponse>, response: Response<NewRecruitPostResponse>) {
+                        override fun onResponse(
+                            call: Call<NewRecruitPostResponse>,
+                            response: Response<NewRecruitPostResponse>
+                        ) {
                             val code: Int = response.body()?.code ?: 0
 
                             val msg: String = response.body()?.msg ?: "no msg"
@@ -184,7 +221,7 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
                             Log.v("url", call.request().url().toString())
                             Log.v("body", call.request().body().toString())
 
-                            if(succeed){
+                            if (succeed) {
 
                                 val data: Int = response.body()?.data!!
                                 Log.v("data", data.toString())
@@ -204,13 +241,6 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
                     cornerRadius(0f)
                     neutralButton(R.string.cancle)
 
-                    positiveButton(R.string.take_picture) {
-
-                        ImagePicker.with(this@NewPostActivity)
-                            .cameraOnly()    //User can only capture image using Camera
-                            .start()
-
-                    }
 
                     negativeButton(R.string.select_gallery) {
 
@@ -223,9 +253,181 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
                             .showCameraTile(false)
                             .startMultiImage { uriList -> showMultiImage(uriList) }
                     }
+
+                    positiveButton(R.string.take_picture) {
+
+                        ImagePicker.with(this@NewPostActivity)
+                            .cameraOnly()    //User can only capture image using Camera
+                            .start()
+
+                    }
                 }
             }
+
+            R.id.project_duration_add -> {
+                MaterialDialog(this).show {
+                    title(R.string.project_duration)
+
+                    negativeButton(R.string.cancle)
+                    positiveButton(R.string.do_add)
+
+                    listItemsSingleChoice(R.array.project_duration) { _, _, text ->
+
+                        addProjectDuration(text.toString())
+                    }
+                }
+            }
+
+            R.id.project_duration_delete -> {
+                deleteProjectDuration()
+            }
+
+            R.id.region_add -> {
+                MaterialDialog(this).show {
+                    title(R.string.region)
+                    negativeButton(R.string.cancle)
+                    positiveButton(R.string.do_add)
+
+                    listItemsSingleChoice(R.array.region) { _, _, text ->
+
+                        addRegion(text.toString())
+                    }
+                }
+            }
+
+            R.id.region_delete -> {
+                deleteRegion()
+            }
+
+            R.id.recruit_position_add -> {
+
+                addRecruitPosition()
+
+            }
+
+            R.id.recruit_position_developer_delete -> {
+                deleteDeveloperPosition()
+            }
+            R.id.recruit_position_planner_delete -> {
+                deletePlannerPosition()
+            }
+            R.id.recruit_position_designer_delete -> {
+                deleteDesignerPosition()
+            }
         }
+    }
+
+    private fun addProjectDuration(text: String) {
+
+        if (project_duration_layout.visibility == 8) {
+            project_duration_layout.visibility = View.VISIBLE
+        }
+
+        project_duration_info.text = text
+    }
+
+    private fun deleteProjectDuration() {
+
+        project_duration_layout.visibility = View.GONE
+    }
+
+
+    private fun addRegion(text: String) {
+        Log.v("visi", region_layout.visibility.toString())
+
+        if (region_layout.visibility == 8) {
+            region_layout.visibility = View.VISIBLE
+        }
+
+        region_info.text = text
+    }
+
+    private fun deleteRegion() {
+
+
+        region_layout.visibility = View.GONE
+    }
+
+
+    private fun addRecruitPosition() {
+
+        // Dialog만들기
+        val mDialogView =
+            LayoutInflater.from(this).inflate(R.layout.dialog_recruit_position, null)
+        val mBuilder = AlertDialog.Builder(this)
+            .setView(mDialogView)
+
+        val mAlertDialog = mBuilder.show()
+
+        mAlertDialog.developer_count.setText(developer_position_count)
+        mAlertDialog.planner_count.setText(planner_position_count)
+        mAlertDialog.designer_count.setText(designer_position_count)
+
+        mDialogView.positiveButton.setOnClickListener {
+
+            developer_position_count = ""+mAlertDialog.developer_count.text.toString()
+            planner_position_count = ""+mAlertDialog.planner_count.text.toString()
+            designer_position_count = ""+mAlertDialog.designer_count.text.toString()
+
+            mAlertDialog.dismiss()
+
+            if(developer_position_count != "0" ){
+
+                if (recruit_position_developer_layout.visibility == 8) {
+                    recruit_position_developer_layout.visibility = View.VISIBLE
+                }
+
+
+                recruit_position_developer_count.text = developer_position_count + "명"
+            }
+
+
+
+            if(planner_position_count != "0"){
+
+                if (recruit_position_planner_layout.visibility == 8) {
+                    recruit_position_planner_layout.visibility = View.VISIBLE
+                }
+
+
+                recruit_position_planner_count.text = planner_position_count + "명"
+            }
+
+
+
+            if(designer_position_count != "0"){
+
+                if (recruit_position_designer_layout.visibility == 8) {
+                    recruit_position_designer_layout.visibility = View.VISIBLE
+                }
+
+
+                recruit_position_designer_count.text = designer_position_count + "명"
+            }
+
+        }
+
+        mDialogView.negativeButton.setOnClickListener {
+            mAlertDialog.dismiss()
+        }
+
+
+    }
+
+    private fun deleteDeveloperPosition(){
+        developer_position_count = "0"
+
+        recruit_position_developer_layout.visibility = View.GONE
+    }
+    private fun deletePlannerPosition(){
+        planner_position_count = "0"
+
+        recruit_position_planner_layout.visibility = View.GONE
+    }
+    private fun deleteDesignerPosition(){
+        designer_position_count = "0"
+
+        recruit_position_designer_layout.visibility = View.GONE
     }
 }
 

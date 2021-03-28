@@ -1,297 +1,424 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/recruitdetail_layout"
-    tools:context=".ui.teamfinding.recruit.RecruitPostDetailActivity">
+<layout>
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <data>
+
+        <variable
+            name="recruitpost"
+            type="com.high5ive.android.moira.data.retrofit.RecruitPostDetailData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/recruitdetail_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:contentInsetLeft="0dp"
-        app:contentInsetStart="0dp"
-        app:contentInsetStartWithNavigation="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:theme="@style/toolbar_theme_back">
+        android:layout_height="match_parent"
+        tools:context=".ui.teamfinding.recruit.RecruitPostDetailActivity">
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-            <ImageButton
-                android:id="@+id/more_button"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginEnd="16dp"
-                android:background="@android:color/transparent"
-                android:text="@string/register"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="#000000"
-                app:srcCompat="@drawable/ic_baseline_more_horiz_24" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.appcompat.widget.Toolbar>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="70dp"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_marginTop="10dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            app:contentInsetStartWithNavigation="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:theme="@style/toolbar_theme_back">
 
 
-            <TextView
-                android:id="@+id/contest_title"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <ImageButton
+                    android:id="@+id/more_button"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@android:color/transparent"
+                    android:text="@string/register"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_more_horiz_24"
+                    app:tint="#000000" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:lineSpacingExtra="9sp"
-                android:text="모집글 제목 모집글 제목"
-                android:textAppearance="@style/contest_title"
+                android:paddingBottom="70dp"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <TextView
+                    android:id="@+id/contest_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:lineSpacingExtra="9sp"
+                    android:text="@{recruitpost.title}"
+                    android:textAppearance="@style/contest_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginTop="5dp"
+                    android:letterSpacing="-0.03"
+                    android:lineSpacingExtra="5sp"
+                    android:text="@{recruitpost.writer}"
+                    android:textColor="#292929"
+                    android:textSize="10sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/contest_title" />
+
+
+                <View
+                    android:id="@+id/vertical_line"
+                    android:layout_width="1dp"
+                    android:layout_height="13dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="4.5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#d6d5d5"
+                    app:layout_constraintStart_toEndOf="@+id/nickname"
+                    app:layout_constraintTop_toBottomOf="@+id/contest_title" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4.5dp"
+                    android:layout_marginTop="5dp"
+                    android:letterSpacing="-0.03"
+                    android:lineSpacingExtra="1sp"
+                    android:text="@{recruitpost.time}"
+                    android:textColor="#bcbcbc"
+                    android:textSize="10sp"
+                    app:layout_constraintStart_toEndOf="@+id/vertical_line"
+                    app:layout_constraintTop_toBottomOf="@+id/contest_title" />
+
+                <View
+                    android:id="@+id/vertical_line2"
+                    android:layout_width="1dp"
+                    android:layout_height="13dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="4.5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#d6d5d5"
+                    app:layout_constraintStart_toEndOf="@+id/date"
+                    app:layout_constraintTop_toBottomOf="@+id/contest_title" />
+
+                <ImageView
+                    android:id="@+id/view_icon"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="4.5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/ic_baseline_remove_red_eye_24"
+                    app:layout_constraintStart_toEndOf="@+id/vertical_line2"
+                    app:layout_constraintTop_toBottomOf="@+id/contest_title" />
+
+                <TextView
+                    android:id="@+id/views"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2.5dp"
+                    android:layout_marginTop="5dp"
+                    android:letterSpacing="-0.03"
+                    android:lineSpacingExtra="1sp"
+                    android:text="@{@string/to_str(recruitpost.hitCount)}"
+                    android:textColor="#bcbcbc"
+                    android:textSize="10sp"
+                    app:layout_constraintStart_toEndOf="@+id/view_icon"
+                    app:layout_constraintTop_toBottomOf="@+id/contest_title" />
+
+
+                <ImageView
+                    android:id="@+id/recruit_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="256dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nickname"
+                    app:srcCompat="@drawable/round_rectangle_2"
+                    app:tint="@color/light_gray" />
+
+                <TextView
+                    android:id="@+id/contest_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="16dp"
+                    android:letterSpacing="-0.02"
+                    android:lineSpacingExtra="8sp"
+                    android:text="@{recruitpost.content}"
+                    android:textColor="#969696"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/recruit_image" />
+
+                <TextView
+                    android:id="@+id/related_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="40dp"
+                    android:lineSpacingExtra="6sp"
+                    android:text="@string/related_tag"
+                    android:textAppearance="@style/related_tag"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/contest_description" />
+
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/tag_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/related_tag">
+
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/design_tag1"
+                        style="@style/MaterialChipsAction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="관련태그" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/design_tag2"
+                        style="@style/MaterialChipsAction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="관련태그" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/design_tag3"
+                        style="@style/MaterialChipsAction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="관련태그" />
+
+
+                </com.google.android.material.chip.ChipGroup>
+
+
+                <View
+                    android:id="@+id/horizontal_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="16dp"
+                    android:background="#ededed"
+                    app:layout_constraintTop_toBottomOf="@+id/tag_group" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="16dp"
+                    android:paddingBottom="40dp"
+                    app:layout_constraintTop_toBottomOf="@id/horizontal_line">
+
+
+                    <TextView
+                        android:id="@+id/team_recruit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:lineSpacingExtra="4sp"
+                        android:text="@string/recruit_info"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <View
+                        android:id="@+id/horizontal_line1"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="25dp"
+                        android:background="#f0f0f0"
+                        app:layout_constraintTop_toBottomOf="@+id/team_recruit" />
+
+                    <TextView
+                        android:id="@+id/project_duration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/project_duration"
+                        android:textAppearance="@style/project_info"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/horizontal_line1" />
+
+                    <TextView
+                        android:id="@+id/project_duration_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:lineSpacingExtra="6sp"
+                        android:text="@{recruitpost.duration}"
+                        android:textColor="#262626"
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/horizontal_line1" />
+
+                    <View
+                        android:id="@+id/horizontal_line2"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="16dp"
+                        android:background="#f0f0f0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/project_duration" />
+
+                    <TextView
+                        android:id="@+id/region"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/region"
+                        android:textAppearance="@style/project_info"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/horizontal_line2" />
+
+                    <TextView
+                        android:id="@+id/region_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:lineSpacingExtra="6sp"
+                        android:text="@{recruitpost.location}"
+                        android:textColor="#262626"
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/horizontal_line2" />
+
+                    <View
+                        android:id="@+id/horizontal_line3"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="16dp"
+                        android:background="#f0f0f0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/region" />
+
+                    <TextView
+                        android:id="@+id/recruit_position"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/recruit_position"
+                        android:textAppearance="@style/project_info"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/horizontal_line3" />
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/position_recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        app:layoutManager="LinearLayoutManager"
+                        app:layout_constraintTop_toBottomOf="@+id/recruit_position" />
+
+
+                    <View
+                        android:id="@+id/horizontal_line4"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="16dp"
+                        android:background="#f0f0f0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/position_recycler_view" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/main_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageButton
+                android:id="@+id/comment_img_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:background="@android:color/transparent"
+                android:padding="11dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_baseline_chat_bubble_outline_24"
+                android:tint="#ffffff"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-            <TextView
-                android:id="@+id/nickname"
+            <ImageButton
+                android:id="@+id/favorite_img_btn"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="17dp"
-                android:layout_marginTop="5dp"
-                android:letterSpacing="-0.03"
-                android:lineSpacingExtra="5sp"
-                android:text="사용자 닉네임"
-                android:textColor="#292929"
-                android:textSize="10sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/contest_title" />
+                android:layout_height="match_parent"
+                android:layout_marginStart="2dp"
+                android:background="@android:color/transparent"
+                android:padding="11dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_baseline_favorite_border_24"
+                android:tint="#ffffff"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/comment_img_btn"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-            <View
-                android:id="@+id/vertical_line"
-                android:layout_width="1dp"
-                android:layout_height="13dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="4.5dp"
-                android:layout_marginTop="5dp"
-                android:background="#d6d5d5"
-                app:layout_constraintStart_toEndOf="@+id/nickname"
-                app:layout_constraintTop_toBottomOf="@+id/contest_title" />
-
-            <TextView
-                android:id="@+id/date"
+            <android.widget.Button
+                android:id="@+id/apply_btn"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4.5dp"
-                android:layout_marginTop="5dp"
-                android:letterSpacing="-0.03"
-                android:lineSpacingExtra="1sp"
-                android:text="2021.01.12"
-                android:textColor="#bcbcbc"
-                android:textSize="10sp"
-                app:layout_constraintStart_toEndOf="@+id/vertical_line"
-                app:layout_constraintTop_toBottomOf="@+id/contest_title" />
-
-            <View
-                android:id="@+id/vertical_line2"
-                android:layout_width="1dp"
-                android:layout_height="13dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="4.5dp"
-                android:layout_marginTop="5dp"
-                android:background="#d6d5d5"
-                app:layout_constraintStart_toEndOf="@+id/date"
-                app:layout_constraintTop_toBottomOf="@+id/contest_title" />
-
-            <ImageView
-                android:id="@+id/view_icon"
-                android:layout_width="13dp"
-                android:layout_height="13dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="4.5dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/ic_baseline_remove_red_eye_24"
-                app:layout_constraintStart_toEndOf="@+id/vertical_line2"
-                app:layout_constraintTop_toBottomOf="@+id/contest_title" />
-
-            <TextView
-                android:id="@+id/views"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2.5dp"
-                android:layout_marginTop="5dp"
-                android:letterSpacing="-0.03"
-                android:lineSpacingExtra="1sp"
-                android:text="1,234"
-                android:textColor="#bcbcbc"
-                android:textSize="10sp"
-                app:layout_constraintStart_toEndOf="@+id/view_icon"
-                app:layout_constraintTop_toBottomOf="@+id/contest_title" />
-
-
-            <ImageView
-                android:id="@+id/recruit_image"
-                android:layout_width="match_parent"
-                android:layout_height="256dp"
-                android:layout_marginTop="16dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="45dp"
+                android:background="@android:color/transparent"
+                android:text="@string/apply"
+                android:textAppearance="@style/send_message"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nickname"
-                app:srcCompat="@drawable/round_rectangle_2"
-                app:tint="@color/light_gray"/>
-
-            <TextView
-                android:id="@+id/contest_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                android:letterSpacing="-0.02"
-                android:lineSpacingExtra="8sp"
-                android:text="모집글 내용입니다. 모집글 내용입니다. 모집글 내용입니다. 모집글 내용입니다."
-                android:textColor="#969696"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recruit_image" />
-
-            <TextView
-                android:id="@+id/related_tag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="40dp"
-                android:lineSpacingExtra="6sp"
-                android:text="@string/related_tag"
-                android:textAppearance="@style/related_tag"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/contest_description" />
-
-
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/tag_group"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/related_tag">
-
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/design_tag1"
-                    style="@style/MaterialChipsAction"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="관련태그" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/design_tag2"
-                    style="@style/MaterialChipsAction"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="관련태그" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/design_tag3"
-                    style="@style/MaterialChipsAction"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="관련태그" />
-
-
-            </com.google.android.material.chip.ChipGroup>
-
-
-            <View
-                android:id="@+id/horizontal_line"
-                android:layout_width="match_parent"
-                android:layout_height="8dp"
-                android:layout_marginTop="16dp"
-                android:background="#ededed"
-                app:layout_constraintTop_toBottomOf="@+id/tag_group" />
-
-            <include
-                android:id="@+id/recruit_info"
-                layout="@layout/recruit_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
-
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/main_blue"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageButton
-            android:id="@+id/comment_img_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="20dp"
-            android:background="@android:color/transparent"
-            android:padding="11dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_baseline_chat_bubble_outline_24"
-            android:tint="#ffffff"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-
-        <ImageButton
-            android:id="@+id/favorite_img_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="2dp"
-            android:background="@android:color/transparent"
-            android:padding="11dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_baseline_favorite_border_24"
-            android:tint="#ffffff"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/comment_img_btn"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <android.widget.Button
-            android:id="@+id/apply_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="45dp"
-            android:background="@android:color/transparent"
-            android:text="@string/apply"
-            android:textColor="@color/white"
-            android:textAppearance="@style/send_message"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-
-
+</layout>

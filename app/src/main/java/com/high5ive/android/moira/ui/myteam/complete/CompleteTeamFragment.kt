@@ -61,7 +61,6 @@ class CompleteTeamFragment : Fragment() {
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(p0: AdapterView<*>?) {
-                getCompleteTeamList()
             }
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {

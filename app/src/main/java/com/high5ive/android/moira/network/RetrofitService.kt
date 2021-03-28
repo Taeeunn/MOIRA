@@ -180,7 +180,7 @@ interface RetrofitService {
 
     // 3-3-4. 프로젝트(팀) 지원 취소
     @DELETE("apply/{projectApplyId}")
-    fun deleteProjectApply(
+    fun cancelProjectApply(
         @Header("X-AUTH-TOKEN") token: String,
         @Path("projectApplyId") projectApplyId: Int
     ): Call<ResponseData>

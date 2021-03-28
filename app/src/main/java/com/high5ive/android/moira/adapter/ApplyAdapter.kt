@@ -5,11 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.high5ive.android.moira.data.Apply
 import com.high5ive.android.moira.R
+import com.high5ive.android.moira.data.retrofit.ApplyPostItem
 import com.high5ive.android.moira.databinding.ApplyItemBinding
 import kotlinx.android.synthetic.main.apply_item.view.*
 
-class ApplyAdapter(val items: List<Apply>,
-                   private val clickListener: (apply: Apply, type: Int) -> Unit) :
+class ApplyAdapter(val items: List<ApplyPostItem>,
+                   private val clickListener: (index: Int, type: Int) -> Unit) :
     RecyclerView.Adapter<ApplyAdapter.ApplyViewHolder>(){
     class ApplyViewHolder(val binding: ApplyItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -22,11 +23,11 @@ class ApplyAdapter(val items: List<Apply>,
             )
 
         view.apply_list_btn.setOnClickListener {
-            clickListener.invoke(items[viewHolder.adapterPosition], 0)
+            clickListener.invoke(viewHolder.binding.apply!!.projectApplyId, 0)
         }
 
         view.apply_cancle_btn.setOnClickListener {
-            clickListener.invoke(items[viewHolder.adapterPosition], 1)
+            clickListener.invoke(viewHolder.binding.apply!!.projectApplyId, 1)
         }
 
         return viewHolder

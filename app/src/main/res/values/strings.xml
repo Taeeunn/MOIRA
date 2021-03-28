@@ -39,6 +39,7 @@
     <string name="to_str">%d</string>
     <string name="badge_count">%d개</string>
     <string name="project_duration">프로젝트 기간</string>
+    <string name="ask_apply_cancel">지원을 취소할까요?</string>
     <string name="region">지역</string>
     <string name="enter_project_name">프로젝트 제목을 입력해주세요.</string>
     <string name="enter_project_content">프로젝트 소개를 입력해주세요.</string>
@@ -116,7 +117,6 @@
     <string name="registration">등록</string>
     <string name="evaluate_team_member">팀원 평가하기</string>
     <string name="apply">지원하기</string>
-    <string name="plus_register">+ 등록하기</string>
     <string name="show_total">전체보기</string>
     <string name="nickname">닉네임</string>
     <string name="position">포지션</string>
@@ -126,6 +126,7 @@
     <string name="go_with">함께하기</string>
     <string name="upload_picture">사진 업로드</string>
     <string name="cancle">취소</string>
+    <string name="close">닫기</string>
     <string name="take_picture">사진 촬영</string>
     <string name="select_gallery">갤러리 선택</string>
     <string name="select_picture">사진 선택하기</string>
@@ -136,10 +137,14 @@
     <string name="report_reason">신고 사유</string>
     <string name="report">신고하기</string>
     <string name="report_completed">신고가 완료되었습니다:</string>
+    <string name="apply_completed">지원이 완료되었습니다</string>
     <string name="server_developer">서버 개발자</string>
     <string name="develop">개발</string>
+    <string name="developer">개발자</string>
     <string name="plan">기획</string>
+    <string name="planner">기획자</string>
     <string name="design">디자인</string>
+    <string name="designer">디자이너</string>
     <string name="enter_ask_content">문의하실 내용을 입력해주세요.</string>
     <string name="enter_title">제목을 입력해주세요.</string>
     <string name="ask">문의하기</string>
@@ -149,4 +154,5 @@
     <string name="register_userpool">인재풀 등록하기</string>
     <string name="save">저장하기</string>
     <string name="display_my_profile">내 프로필 공개</string>
+    <string name="do_add">추가하기</string>
 </resources>

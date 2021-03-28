@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="24dp"
+    android:paddingHorizontal="16dp"
+    android:paddingTop="21dp"
+    android:paddingBottom="16dp">
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:letterSpacing="0.03"
+        android:lineSpacingExtra="18sp"
+        android:text="@string/recruit_position"
+        android:textColor="#de000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/developer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/title">
+
+        <TextView
+            android:id="@+id/developer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="0.03"
+            android:lineSpacingExtra="8sp"
+            android:text="@string/developer"
+            android:textColor="#282828"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <EditText
+            android:id="@+id/developer_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="0"
+            android:gravity="right"
+            android:paddingHorizontal="15dp"
+            android:textColor="#282828"
+            android:theme="@style/EnterNicknameEditText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/planner_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/developer_layout">
+
+        <TextView
+            android:id="@+id/planner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="0.03"
+            android:lineSpacingExtra="8sp"
+            android:text="@string/planner"
+            android:textColor="#282828"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <EditText
+            android:id="@+id/planner_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="0"
+            android:paddingHorizontal="15dp"
+            android:gravity="right"
+            android:textColor="#282828"
+            android:theme="@style/EnterNicknameEditText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/designer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/planner_layout">
+
+        <TextView
+            android:id="@+id/designer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="0.03"
+            android:lineSpacingExtra="8sp"
+            android:text="@string/designer"
+            android:textColor="#282828"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <EditText
+            android:id="@+id/designer_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="0"
+            android:gravity="right"
+            android:paddingHorizontal="15dp"
+            android:textColor="#282828"
+            android:theme="@style/EnterNicknameEditText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/positiveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="@string/do_add"
+        android:textColor="#156fff"
+        android:textSize="13sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/designer_layout" />
+
+    <TextView
+        android:id="@+id/negativeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/cancle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/positiveButton"
+        app:layout_constraintTop_toBottomOf="@id/designer_layout" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

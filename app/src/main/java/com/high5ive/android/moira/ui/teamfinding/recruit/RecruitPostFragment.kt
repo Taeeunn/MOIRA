@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,6 +23,7 @@ import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.teamfinding.newpost.NewPostActivity
 import com.high5ive.android.moira.ui.teamfinding.search.RecruitPostSearchActivity
 import com.high5ive.android.moira.ui.teamfinding.search.UserPoolSearchActivity
+import kotlinx.android.synthetic.main.in_progress_team_fragment.*
 import kotlinx.android.synthetic.main.recruit_post_fragment.*
 import kotlinx.android.synthetic.main.recruit_post_fragment.recycler_view
 import kotlinx.android.synthetic.main.team_finding_fragment.*
@@ -38,6 +40,8 @@ class RecruitPostFragment : Fragment() {
     lateinit var retrofit: Retrofit
     lateinit var myAPI: RetrofitService
     lateinit var token: String
+    var position_filter: String = "개발자"
+    var sort_filter: String = "date"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,20 +83,14 @@ class RecruitPostFragment : Fragment() {
             )
         }
 
-//        recycler_view.apply{
-//            layoutManager = LinearLayoutManager(context)
-//            adapter =
-//                RecruitAdapter(recruit) { index ->
-//                    Toast.makeText(context, "$index", Toast.LENGTH_SHORT).show()
-//                    val intent = Intent(context, RecruitPostDetailActivity::class.java)
-//                    intent.putExtra("index", index)
-//                    startActivity(intent)
-//                }
-//        }
+
     }
+
 
     override fun onResume() {
         super.onResume()
+
+        getRecruitPostList()
 
         requireActivity().new_post_btn.setOnClickListener{
             startActivity(Intent(context, NewPostActivity::class.java))
@@ -103,7 +101,86 @@ class RecruitPostFragment : Fragment() {
         }
 
 
-        getRecruitPostList()
+        spinner1.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+                when (spinner1.getItemAtPosition(position)) {
+                    "개발" -> {
+                        Log.v("itemselect", "개발")
+                        if(position_filter != "개발자") {
+                            position_filter = "개발자"
+                            getRecruitPostList()
+                        }
+
+                    }
+                    "기획" -> {
+                        Log.v("itemselect", "기획")
+                        if(position_filter != "기획자") {
+                            position_filter = "기획자"
+                            getRecruitPostList()
+                        }
+                    }
+
+                    "디자인" -> {
+                        Log.v("itemselect", "디자인")
+                        if(position_filter != "디자이너") {
+                            position_filter = "디자이너"
+                            getRecruitPostList()
+                        }
+                    }
+                    else -> {
+
+                    }
+                }
+            }
+
+        }
+
+
+
+        spinner2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+                when (spinner2.getItemAtPosition(position)) {
+                    "최신순" -> {
+                        Log.v("itemselect", "최신순")
+                        if(sort_filter != "date") {
+                            sort_filter = "date"
+                            getRecruitPostList()
+                        }
+
+                    }
+                    "조회순" -> {
+                        Log.v("itemselect", "조회순")
+                        if(sort_filter != "hitCount") {
+                            sort_filter = "hitCount"
+                            getRecruitPostList()
+                        }
+                    }
+
+                    "좋아요순" -> {
+                        Log.v("itemselect", "좋아요순")
+                        if(sort_filter != "likeCount") {
+                            sort_filter = "likeCount"
+                            getRecruitPostList()
+                        }
+                    }
+                    else -> {
+
+                    }
+                }
+            }
+
+        }
+
+
+
     }
 
     private fun initRetrofit() {
@@ -174,11 +251,10 @@ class RecruitPostFragment : Fragment() {
         Runnable {
 
             val page: Int = 0
-            val position: String = "개발자"
             val sort: String = "date"
             val tag: String = "해시태그1,해시태그2"
 
-            myAPI.getRecruitPostList(token, null, page, position, null, null).enqueue(object :
+            myAPI.getRecruitPostList(token, null, page, position_filter, sort_filter, null).enqueue(object :
                 Callback<RecruitPost> {
                 override fun onFailure(call: Call<RecruitPost>, t: Throwable) {
                     t.printStackTrace()
@@ -199,6 +275,17 @@ class RecruitPostFragment : Fragment() {
 
                         val list: List<RecruitPostItem> = response.body()?.list!!
                         Log.v("data", list.toString())
+
+                        recycler_view.apply{
+                            layoutManager = LinearLayoutManager(context)
+                            adapter =
+                                RecruitAdapter(list) { index ->
+                                    Toast.makeText(context, "$index", Toast.LENGTH_SHORT).show()
+                                    val intent = Intent(context, RecruitPostDetailActivity::class.java)
+                                    intent.putExtra("index", index)
+                                    startActivity(intent)
+                                }
+                        }
 
                     }
 
