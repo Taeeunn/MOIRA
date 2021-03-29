@@ -97,4 +97,11 @@ data class CommentAddResponse(
 )
 
 
+data class Report(
+    val reportType: String,
+    val targetId: Int,
+    val targetType: String
+)
+
+
 

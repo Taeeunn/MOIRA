@@ -15,9 +15,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.MemberAdapter
 import com.high5ive.android.moira.adapter.UserAdapter
-import com.high5ive.android.moira.data.retrofit.UserPool
-import com.high5ive.android.moira.data.retrofit.UserPoolItem
-import com.high5ive.android.moira.data.retrofit.UserPoolSearch
+import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.teamfinding.user.UserProfileDetailActivity
@@ -94,8 +92,16 @@ class UserPoolSearchActivity : AppCompatActivity(), View.OnClickListener{
                 layoutManager = LinearLayoutManager(this@UserPoolSearchActivity)
                 adapter =
                     UserAdapter(list) { index, type ->
-                        Toast.makeText(this@UserPoolSearchActivity, "$index", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this@UserPoolSearchActivity, UserProfileDetailActivity::class.java))
+                        Toast.makeText(context, "$index", Toast.LENGTH_SHORT).show()
+
+                        if (type == 0) {
+                            val intent = Intent(context, UserProfileDetailActivity::class.java)
+                            intent.putExtra("index", index)
+                            startActivity(intent)
+
+                        } else if (type == 1) {
+                            likeUser(index)
+                        }
                     }
             }
             return
@@ -138,6 +144,36 @@ class UserPoolSearchActivity : AppCompatActivity(), View.OnClickListener{
                                 startActivity(Intent(this@UserPoolSearchActivity, UserProfileDetailActivity::class.java))
                             }
                     }
+
+                }
+
+            }
+        })
+    }
+
+    private fun likeUser(index: Int) {
+        myAPI.onoffLikeUser(token, index).enqueue(object :
+            Callback<UserLike> {
+            override fun onFailure(call: Call<UserLike>, t: Throwable) {
+                t.printStackTrace()
+            }
+
+            override fun onResponse(call: Call<UserLike>, response: Response<UserLike>) {
+                val code: Int = response.body()?.code ?: 0
+
+                val msg: String = response.body()?.msg ?: "no msg"
+                val succeed: Boolean = response.body()?.succeed ?: false
+
+                Log.v("code", code.toString())
+                Log.v("success", succeed.toString())
+                Log.v("msg", msg)
+
+                if(succeed){
+
+                    val data: UserLikeData = response.body()?.data!!
+                    Log.v("data", data.toString())
+
+
 
                 }
 

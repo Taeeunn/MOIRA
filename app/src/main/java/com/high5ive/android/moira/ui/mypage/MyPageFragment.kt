@@ -17,8 +17,8 @@ import com.high5ive.android.moira.data.retrofit.LoginInfo
 import com.high5ive.android.moira.data.retrofit.LoginUser
 import com.high5ive.android.moira.data.retrofit.MyPage
 import com.high5ive.android.moira.data.retrofit.MyPageData
-import com.high5ive.android.moira.databinding.ActivityTeamDetailBinding
 import com.high5ive.android.moira.databinding.MyPageFragmentBinding
+
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.mypage.apply.ApplyListActivity
@@ -87,6 +87,8 @@ class MyPageFragment : Fragment(), View.OnClickListener{
         super.onResume()
 
         setMyPage()
+
+        Log.v("resume", "mypage")
     }
 
     private fun initRetrofit() {

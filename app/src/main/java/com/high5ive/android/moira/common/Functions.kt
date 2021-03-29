@@ -1,10 +1,12 @@
 package com.high5ive.android.moira.common
 
+import android.util.Log
 import com.kakao.sdk.auth.AuthApiClient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.security.AuthProvider
 
 /**
  * @author Taeeun Kim
@@ -13,20 +15,5 @@ import kotlinx.coroutines.withContext
  */
 class Functions {
 
-    fun BackgroundTask () {
-//onPreExcute
 
-
-        CoroutineScope(Dispatchers.Main).launch {
-//doInBackground
-            withContext(Dispatchers.Default) {
-                //                Log.v("tag", to.getToken().toString())
-                AuthApiClient.instance.refreshAccessToken()
-
-            }
-//onPostExecute
-
-        }
-
-    }
 }

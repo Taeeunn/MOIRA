@@ -67,17 +67,17 @@ class CompleteTeamFragment : Fragment() {
                 when (spinner.getItemAtPosition(position)) {
                     "최신순" -> {
                         Log.v("itemselect", "최신순")
-                        if(sort == "character") {
-                            getCompleteTeamList()
+                        if(sort != "date") {
                             sort = "date"
+                            getCompleteTeamList()
                         }
 
                     }
                     "가나다순" -> {
                         Log.v("itemselect", "가나다순")
-                        if(sort == "date") {
-                            getCompleteTeamList()
+                        if(sort != "character") {
                             sort = "character"
+                            getCompleteTeamList()
                         }
                     }
                     else -> {

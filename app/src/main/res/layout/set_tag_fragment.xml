@@ -47,7 +47,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginHorizontal="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/use_purpose_tag_text">
+        app:layout_constraintTop_toBottomOf="@+id/use_purpose_tag_text"/>
 
 
 <!--        <com.google.android.material.chip.Chip-->
@@ -92,7 +92,6 @@
 <!--            android:layout_height="wrap_content"-->
 <!--            android:text="iOS 개발자" />-->
 
-    </com.google.android.material.chip.ChipGroup>
 
 
 

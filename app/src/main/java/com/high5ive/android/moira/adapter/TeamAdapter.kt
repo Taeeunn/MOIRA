@@ -1,6 +1,7 @@
 package com.high5ive.android.moira.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.high5ive.android.moira.R
@@ -41,5 +42,9 @@ class TeamAdapter(val items: List<MyTeamItem>,
 
     override fun onBindViewHolder(holder: TeamViewHolder, position: Int) {
         holder.binding.team = items[position]
+        
+        if(!items[position].membersReviewed){
+            holder.binding.evaluateTeamMemberBtn.visibility = View.VISIBLE
+        }
     }
 }

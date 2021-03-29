@@ -23,6 +23,7 @@ import com.high5ive.android.moira.ui.myteam.detail.TeamDetailActivity
 import com.high5ive.android.moira.ui.myteam.evaluate.EvaluateMemberActivity
 import kotlinx.android.synthetic.main.in_progress_team_fragment.*
 import kotlinx.android.synthetic.main.in_progress_team_fragment.recycler_view
+import kotlinx.android.synthetic.main.recruit_post_fragment.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -61,13 +62,14 @@ class InProgressTeamFragment : Fragment() {
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(p0: AdapterView<*>?) {
+
             }
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
                 when (spinner.getItemAtPosition(position)) {
                     "최신순" -> {
                         Log.v("itemselect", "최신순")
-                        if(sort == "character") {
+                        if(sort != "date") {
                             sort = "date"
                             getInProgressTeam()
                         }
@@ -75,11 +77,12 @@ class InProgressTeamFragment : Fragment() {
                     }
                     "가나다순" -> {
                         Log.v("itemselect", "가나다순")
-                        if(sort == "date") {
+                        if(sort != "character") {
                             sort = "character"
                             getInProgressTeam()
                         }
                     }
+
                     else -> {
 
                     }

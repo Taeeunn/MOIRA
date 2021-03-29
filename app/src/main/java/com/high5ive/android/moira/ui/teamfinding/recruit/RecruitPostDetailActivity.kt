@@ -14,16 +14,20 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.list.listItemsSingleChoice
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipDrawable
 import com.google.android.material.snackbar.Snackbar
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.PositionAdapter
-import com.high5ive.android.moira.data.Position
 import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.databinding.ActivityRecruitPostDetailBinding
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.teamfinding.apply.ApplyActivity
+import com.high5ive.android.moira.ui.teamfinding.apply.ApplyCompleteActivity
 import kotlinx.android.synthetic.main.activity_recruit_post_detail.*
+import kotlinx.android.synthetic.main.activity_recruit_post_detail.tag_group
+import kotlinx.android.synthetic.main.recruit_post_fragment.*
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -42,6 +46,8 @@ class RecruitPostDetailActivity : AppCompatActivity(), View.OnClickListener{
     var isLiked: Boolean = false
 
     var index: Int = 1
+
+    val reportType = listOf("불건전한_내용", "상업적인_내용", "허위_내용", "욕설_및_비난")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,18 +80,8 @@ class RecruitPostDetailActivity : AppCompatActivity(), View.OnClickListener{
         favorite_img_btn.setOnClickListener(this)
 
 
-        val positionList = arrayListOf(
-            Position("개발자", 1), Position("디자이너", 1), Position("PM", 1)
-        )
 
 
-        position_recycler_view.apply{
-            layoutManager = LinearLayoutManager(this@RecruitPostDetailActivity)
-            adapter =
-                PositionAdapter(positionList) { position ->
-                    Toast.makeText(this@RecruitPostDetailActivity, "$position", Toast.LENGTH_SHORT).show()
-                }
-        }
     }
 
     override fun onResume() {
@@ -121,9 +117,10 @@ class RecruitPostDetailActivity : AppCompatActivity(), View.OnClickListener{
                     negativeButton(R.string.cancle)
                     positiveButton(R.string.report)
 
-                    listItemsSingleChoice(R.array.report_reason) { _, _, text ->
-                        val msg = resources.getString(R.string.report_completed) + " " + text
-                        Snackbar.make(v, msg, Snackbar.LENGTH_SHORT).show()
+                    listItemsSingleChoice(R.array.report_reason) { _, index, text ->
+
+                        reportRecruitPost(v, reportType[index], text.toString())
+
                     }
                 }
             }
@@ -142,6 +139,55 @@ class RecruitPostDetailActivity : AppCompatActivity(), View.OnClickListener{
 
         retrofit = RetrofitClient.getInstance() // 2에서 만든 Retrofit client의 instance를 불러옵니다.
         myAPI = retrofit.create(RetrofitService::class.java) // 여기서 retrofit이 우리의 interface를 구현해주고
+    }
+
+    private fun reportRecruitPost(view: View, reportType: String, reportReason: String){
+
+        val body_data = Report(reportType, index, "PROJECT")
+        myAPI.report(token, body_data).enqueue(object :
+            Callback<ResponseData> {
+            override fun onFailure(call: Call<ResponseData>, t: Throwable) {
+                t.printStackTrace()
+            }
+
+            override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
+
+                if (response.code() == 400) {
+                    val errorBody = JSONObject(response.errorBody()!!.string());
+
+                    val code= errorBody.getInt("code")
+                    val msg = errorBody.getString("msg")
+                    val succeed = errorBody.getString("succeed")
+
+                    Log.v("code", code.toString())
+                    Log.v("success", succeed.toString())
+                    Log.v("msg", msg)
+
+                    if (code == 462) {
+                        val message = "내가 작성한 모집글은 신고할 수 없습니다!"
+                        Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
+                    }
+                }
+
+
+                else if (response.code() == 200){
+
+                    val code: Int = response.body()?.code ?: 0
+                    val msg: String = response.body()?.msg ?: "no msg"
+                    val succeed: Boolean = response.body()?.succeed ?: false
+
+                    Log.v("code", code.toString())
+                    Log.v("success", succeed.toString())
+                    Log.v("msg", msg)
+
+                    val message = resources.getString(R.string.report_completed) + " " + reportReason
+                    Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
+
+
+                }
+
+            }
+        })
     }
 
     private fun getRecruitPostDetail() {
@@ -188,9 +234,20 @@ class RecruitPostDetailActivity : AppCompatActivity(), View.OnClickListener{
 
                         if (isLiked){
                             favorite_img_btn.setBackgroundResource(R.drawable.ic_full_heart)
+
                         }else{
                             favorite_img_btn.setBackgroundResource(R.drawable.ic_empty_heart)
                         }
+
+                        position_recycler_view.apply{
+                            layoutManager = LinearLayoutManager(this@RecruitPostDetailActivity)
+                            adapter =
+                                PositionAdapter(data.positionCategoryList) { position ->
+                                    Toast.makeText(this@RecruitPostDetailActivity, "$position", Toast.LENGTH_SHORT).show()
+                                }
+                        }
+
+                        setTag(data.hashtagList.toMutableList())
 
 
 
@@ -199,6 +256,20 @@ class RecruitPostDetailActivity : AppCompatActivity(), View.OnClickListener{
                 }
             })
         }.run()
+    }
+
+    private fun setTag(tagList: MutableList<String>) {
+        for (index in tagList.indices) {
+            val tagName = tagList[index]
+
+            val chip = Chip(this)
+            val drawable = ChipDrawable.createFromAttributes(this, null, 0, R.style.MaterialChipsAction)
+            chip.setChipDrawable(drawable)
+
+            chip.text = tagName
+//
+            tag_group.addView(chip)
+        }
     }
 
     private fun modifyLikeRecruitPost() {

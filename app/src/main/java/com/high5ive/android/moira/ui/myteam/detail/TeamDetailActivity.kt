@@ -3,12 +3,14 @@ package com.high5ive.android.moira.ui.myteam.detail
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,7 +26,7 @@ import com.high5ive.android.moira.databinding.ActivityTeamDetailBinding
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.teamfinding.user.UserProfileDetailActivity
-import kotlinx.android.synthetic.main.activity_team_detail.recycler_view
+import kotlinx.android.synthetic.main.activity_team_detail.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -82,15 +84,38 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
         getTeamDetail()
     }
 
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.team_option, menu)
+        return true
+    }
+
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
         when (item.itemId) {
             android.R.id.home -> {
                 finish()
                 return true
             }
+
+            R.id.name_modify -> {
+                Log.v("modifyyj", "modididi")
+            }
+
+            R.id.image_modify -> {
+                Log.v("modifyyj", "modididi")
+            }
+
+            R.id.complete_project -> {
+                Log.v("modifyyj", "modididi")
+            }
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 
 
     override fun onClick(v: View?) {

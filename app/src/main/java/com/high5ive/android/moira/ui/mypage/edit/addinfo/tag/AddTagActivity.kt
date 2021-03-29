@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_add_education.*
 class AddTagActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_tag)
+        setContentView(R.layout.dialog_add_tag)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)

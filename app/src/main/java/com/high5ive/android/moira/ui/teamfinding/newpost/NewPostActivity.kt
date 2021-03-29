@@ -20,6 +20,8 @@ import androidx.appcompat.widget.Toolbar
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.list.listItemsSingleChoice
 import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipDrawable
 import com.google.android.material.snackbar.Snackbar
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.common.PermissionCheck
@@ -35,6 +37,7 @@ import kotlinx.android.synthetic.main.dialog_user_pool.*
 import kotlinx.android.synthetic.main.dialog_user_pool.view.*
 import kotlinx.android.synthetic.main.make_recruit_info.*
 import kotlinx.android.synthetic.main.make_recruit_info.view.*
+import kotlinx.android.synthetic.main.recruit_post_fragment.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -50,6 +53,15 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
     var developer_position_count : String =  "0"
     var planner_position_count : String = "0"
     var designer_position_count : String = "0"
+    var duration: String =""
+    var localType: String = ""
+    var title: String = ""
+    var content: String = ""
+    var hashtagList: ArrayList<String>? = null
+
+    val durationList = listOf("한달_미만", "세달_미만", "여섯달_미만", "여섯달_이상")
+    val regionList = listOf("서울_인천_경기", "대전_충북_충남_세종", "광주_전남_전북", "부산_울산_경남", "대구_경북", "강원", "제주", "온라인")
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,6 +93,10 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
         recruit_position_developer_delete.setOnClickListener(this)
         recruit_position_planner_delete.setOnClickListener(this)
         recruit_position_designer_delete.setOnClickListener(this)
+
+        tag_add.setOnClickListener(this)
+
+
 
 
 //            TedBottomPicker.with(this@NewPostActivity)
@@ -117,26 +133,71 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         when (resultCode) {
+
             Activity.RESULT_OK -> {
 
-                val fileUri = data?.data
-                val file: File = ImagePicker.getFile(data)!!
-                val filePath: String = ImagePicker.getFilePath(data)!!
+                if (requestCode == 1){
+                    hashtagList = data?.getStringArrayListExtra("list")
 
-                val newImage = ImageView(this)
-                newImage.setImageURI(fileUri)
+                    if(hashtagList != null) {
+                        setTag(hashtagList!!.toMutableList())
+                    }
+
+                } else {
 
 
-                val lp = LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    205.toPx(this)
-                )
-                lp.setMargins(0, 0, 0, 20.toPx(this))
-                newImage.layoutParams = lp
-                picture_layout.addView(newImage)
+                    val fileUri = data?.data
+                    val file: File = ImagePicker.getFile(data)!!
+                    val filePath: String = ImagePicker.getFilePath(data)!!
+
+                    val newImage = ImageView(this)
+                    newImage.setImageURI(fileUri)
+
+
+                    val lp = LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        205.toPx(this)
+                    )
+                    lp.setMargins(0, 0, 0, 20.toPx(this))
+                    newImage.layoutParams = lp
+                    picture_layout.addView(newImage)
+                }
             }
         }
     }
+
+    private fun setTag(tagList: MutableList<String>) {
+        for (index in tagList.indices) {
+            val tagName = tagList[index]
+
+            //val chip = Chip(ContextThemeWrapper(context, R.style.MaterialChipsAction))
+            val chip = Chip(this)
+            val drawable = ChipDrawable.createFromAttributes(this, null, 0, R.style.MaterialChipsAction)
+            chip.setChipDrawable(drawable)
+
+            chip.text = tagName
+//            chip.setTextAppearance(R.style.tag_text)
+//            chip.setCloseIconResource(R.drawable.ic_baseline_highlight_off_24)
+            chip.setCloseIconSizeResource(R.dimen.tag_close_icon)
+            chip.isCloseIconEnabled = true
+            //Added click listener on close icon to remove tag from ChipGroup
+            chip.setOnCloseIconClickListener {
+                tagList.remove(tagName)
+                tag_chip_group.removeView(chip)
+                hashtagList!!.remove(tagName)
+
+            }
+            tag_chip_group.addView(chip)
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        tag_chip_group.removeAllViews()
+    }
+
+
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -177,27 +238,61 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
         when (v?.id) {
             R.id.register_button -> {
 
+                title = project_name_et.text.toString()
+                content = project_content_et.text.toString()
+
+                Log.v("ttt", designer_position_count.toString())
+                Log.v("ttt", developer_position_count.toString())
+                Log.v("ttt", planner_position_count.toString())
+
+                if (title ==""){
+                    val msg = "프로젝트 제목을 입력해주세요!"
+                    Snackbar.make(v, msg, Snackbar.LENGTH_SHORT).show()
+                    return
+                }
+
+                if (content ==""){
+                    val msg = "프로젝트 소개를 입력해주세요!"
+                    Snackbar.make(v, msg, Snackbar.LENGTH_SHORT).show()
+                    return
+                }
+
+                if (duration==""){
+                    val msg = "프로젝트 기간을 선택해주세요!"
+                    Snackbar.make(v, msg, Snackbar.LENGTH_SHORT).show()
+                    return
+                }
+
+                if (localType ==""){
+                    val msg = "지역을 선택해주세요!"
+                    Snackbar.make(v, msg, Snackbar.LENGTH_SHORT).show()
+                    return
+                }
+
+
+
                 Runnable {
 
-                    val content = "팀 모집글 내용입니다."
-                    val duration = "한달_미만"
-                    val hashtagIdList: List<String> = listOf("서버", "IOS", "AOS")
-                    val localType = "서울_인천_경기"
-                    val title = "모집글 제목"
 
-                    val count = 1
-                    val positionCategoryName = "개발자"
+                    duration?.let { Log.v("duration", it) }
+
                     val positionCategoryList = arrayListOf<PositionCategory>()
-                    positionCategoryList.add(PositionCategory(count, positionCategoryName))
+                    positionCategoryList.add(PositionCategory(developer_position_count.toInt(), "개발자"))
+                    positionCategoryList.add(PositionCategory(designer_position_count.toInt(), "디자이너"))
+                    positionCategoryList.add(PositionCategory(planner_position_count.toInt(), "기획자"))
 
                     val body_data = NewRecruitPost(
                         content,
                         duration,
-                        hashtagIdList,
+                        hashtagList?.toList()?: emptyList(),
                         localType,
                         positionCategoryList,
                         title
                     )
+
+
+
+                    Log.v("body", body_data.toString())
 
                     myAPI.makeNewRecruitPost(token, body_data).enqueue(object :
                         Callback<NewRecruitPostResponse> {
@@ -209,6 +304,7 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
                             call: Call<NewRecruitPostResponse>,
                             response: Response<NewRecruitPostResponse>
                         ) {
+                            Log.v("realcode", response.code().toString())
                             val code: Int = response.body()?.code ?: 0
 
                             val msg: String = response.body()?.msg ?: "no msg"
@@ -271,9 +367,11 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
                     negativeButton(R.string.cancle)
                     positiveButton(R.string.do_add)
 
-                    listItemsSingleChoice(R.array.project_duration) { _, _, text ->
+                    listItemsSingleChoice(R.array.project_duration) { _, index, text ->
 
                         addProjectDuration(text.toString())
+
+                        duration = durationList[index]
                     }
                 }
             }
@@ -288,9 +386,11 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
                     negativeButton(R.string.cancle)
                     positiveButton(R.string.do_add)
 
-                    listItemsSingleChoice(R.array.region) { _, _, text ->
+                    listItemsSingleChoice(R.array.region) { _, index, text ->
 
                         addRegion(text.toString())
+
+                        localType = regionList[index]
                     }
                 }
             }
@@ -314,6 +414,36 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
             R.id.recruit_position_designer_delete -> {
                 deleteDesignerPosition()
             }
+
+            R.id.tag_add -> {
+                    startActivityForResult(Intent(this, AddTagActivity::class.java), 1)
+            }
+
+//            R.id.tag_add -> {
+//                // Dialog만들기
+//                val mDialogView = LayoutInflater.from(context).inflate(R.layout.dialog_user_pool, null)
+//                val mBuilder = AlertDialog.Builder(context)
+//                    .setView(mDialogView)
+//
+//                val  mAlertDialog = mBuilder.show()
+//
+//                //mAlertDialog.onoff.isChecked = userpool_visible
+//
+//                mDialogView.positiveButton.setOnClickListener {
+////                    val onoff = mDialogView.onoff
+////                    if(!userpool_visible && onoff.isChecked){
+////
+////                        displayUserPool()
+////
+////                        Log.v("switch", "on")
+////                    } else if (userpool_visible && !onoff.isChecked){
+////
+////                        displayUserPool()
+////                        Log.v("switch", "off")
+////                    }
+//                    mAlertDialog.dismiss()
+//                }
+
         }
     }
 
@@ -324,11 +454,14 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         project_duration_info.text = text
+
     }
 
     private fun deleteProjectDuration() {
 
         project_duration_layout.visibility = View.GONE
+
+        duration = ""
     }
 
 
@@ -340,12 +473,14 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         region_info.text = text
+
     }
 
     private fun deleteRegion() {
 
 
         region_layout.visibility = View.GONE
+        localType = ""
     }
 
 

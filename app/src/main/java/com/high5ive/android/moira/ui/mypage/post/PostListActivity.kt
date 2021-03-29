@@ -10,6 +10,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.high5ive.android.moira.MainActivity
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.PostAdapter
 import com.high5ive.android.moira.data.Post
@@ -17,6 +18,7 @@ import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.applicant.list.ApplicantListActivity
+import com.high5ive.android.moira.ui.mypage.MyPageFragment
 import com.high5ive.android.moira.ui.teamfinding.recruit.RecruitPostDetailActivity
 import kotlinx.android.synthetic.main.activity_post_list.*
 import retrofit2.Call
@@ -78,6 +80,7 @@ class PostListActivity : AppCompatActivity() {
         when (item.itemId) {
             android.R.id.home -> {
                 finish()
+//                startActivity(Intent(this, MainActivity::class.java), 0)
                 return true
             }
         }

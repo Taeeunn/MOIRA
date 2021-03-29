@@ -355,19 +355,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/related_tag"
-        app:singleSelection="true">
+        app:layout_constraintTop_toBottomOf="@+id/related_tag" />
 
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/tag_chip1"
-            style="@style/MaterialChipsAction"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+ 태그" />
-
-
-    </com.google.android.material.chip.ChipGroup>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

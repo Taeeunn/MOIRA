@@ -25,7 +25,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MOIRA"
         android:usesCleartextTraffic="true">
-
+        <activity android:name=".ui.teamfinding.newpost.AddTagActivity"></activity>
 
         <service android:name=".noti.MyFirebaseMessagingService">
             <intent-filter>

@@ -10,6 +10,7 @@ data class MyTeam(
 data class MyTeamItem(
     val imageUrl: String,
     val memberCount: Int,
+    val membersReviewed: Boolean,
     val projectId: Int,
     val title: String
 )

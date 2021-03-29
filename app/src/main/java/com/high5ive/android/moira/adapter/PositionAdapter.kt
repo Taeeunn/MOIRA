@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.data.Position
+import com.high5ive.android.moira.data.retrofit.PositionCategory
 import com.high5ive.android.moira.databinding.PositionItemBinding
 
-class PositionAdapter(val items: List<Position>,
-                      private val clickListener: (position: Position) -> Unit) :
+class PositionAdapter(val items: List<PositionCategory>,
+                      private val clickListener: (position: PositionCategory) -> Unit) :
     RecyclerView.Adapter<PositionAdapter.PositionViewHolder>(){
     class PositionViewHolder(val binding: PositionItemBinding) : RecyclerView.ViewHolder(binding.root)
 

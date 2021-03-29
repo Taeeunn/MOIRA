@@ -79,7 +79,7 @@ class SetTagFragment : Fragment() {
         }
 
         initRetrofit()
-        getPositionDetail()
+        //getPositionDetail()
         getHashTags()
 
 

@@ -43,7 +43,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_baseline_more_horiz_24"
+                    app:srcCompat="@drawable/ic_baseline_more_vert_24"
                     app:tint="#000000" />
 
 
@@ -181,61 +181,14 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/recruit_image" />
 
-                <TextView
-                    android:id="@+id/related_tag"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="40dp"
-                    android:lineSpacingExtra="6sp"
-                    android:text="@string/related_tag"
-                    android:textAppearance="@style/related_tag"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/contest_description" />
-
-
-                <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/tag_group"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="10dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/related_tag">
-
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/design_tag1"
-                        style="@style/MaterialChipsAction"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="관련태그" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/design_tag2"
-                        style="@style/MaterialChipsAction"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="관련태그" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/design_tag3"
-                        style="@style/MaterialChipsAction"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="관련태그" />
-
-
-                </com.google.android.material.chip.ChipGroup>
-
 
                 <View
                     android:id="@+id/horizontal_line"
                     android:layout_width="match_parent"
                     android:layout_height="8dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="40dp"
                     android:background="#ededed"
-                    app:layout_constraintTop_toBottomOf="@+id/tag_group" />
+                    app:layout_constraintTop_toBottomOf="@+id/contest_description" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -263,7 +216,7 @@
                         android:id="@+id/horizontal_line1"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginTop="25dp"
+                        android:layout_marginTop="35dp"
                         android:background="#f0f0f0"
                         app:layout_constraintTop_toBottomOf="@+id/team_recruit" />
 
@@ -361,6 +314,26 @@
                         app:layout_constraintTop_toBottomOf="@+id/position_recycler_view" />
 
 
+                    <TextView
+                        android:id="@+id/related_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:lineSpacingExtra="6sp"
+                        android:text="@string/related_tag"
+                        android:textAppearance="@style/related_tag"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/horizontal_line4" />
+
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/tag_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/related_tag"/>
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -377,7 +350,7 @@
             <ImageButton
                 android:id="@+id/comment_img_btn"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:background="@android:color/transparent"
                 android:padding="11dp"
@@ -392,7 +365,7 @@
             <ImageButton
                 android:id="@+id/favorite_img_btn"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
                 android:background="@android:color/transparent"
                 android:padding="11dp"

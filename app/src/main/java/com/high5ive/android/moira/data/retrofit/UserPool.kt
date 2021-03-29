@@ -8,8 +8,8 @@ data class UserPool(
 )
 
 data class UserPoolItem(
-    val hastagNameList: List<String>,
-    val likedByUser: Boolean,
+    val hashtagList: List<String>,
+    var likedByUser: Boolean,
     val nickname: String,
     val positionName: String,
     val profileImage: String,

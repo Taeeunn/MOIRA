@@ -46,6 +46,22 @@ interface RetrofitService {
     ): Call<LoginUser>
 
 
+    // 1. 홈화면
+
+    // 1-1. 홈
+    @GET("home")
+    fun getHome(
+        @Header("X-AUTH-TOKEN") token: String
+    ): Call<HomeResponse>
+
+    // 1-2. 홈화면 - 알람 목록
+    @GET("home/alarm")
+    fun getAlarm(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Query("page") page: Int
+    ): Call<Alarm>
+
+
     // 2. 회원가입
 
     // 2-1. 회원가입
@@ -437,6 +453,13 @@ interface RetrofitService {
         @Header("X-AUTH-TOKEN") token: String
     ): Call<UserTag>
 
+
+    // 9. 신고 (댓글, 게시글, 채팅 신고하기)
+    @POST("report")
+    fun report(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Body reportRequestDTO: Report
+    ): Call<ResponseData>
 
 
 //    @GET("/woof.json?ref=apilist.fun")

@@ -19,13 +19,21 @@ import com.high5ive.android.moira.data.retrofit.LoginUser
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.initial.OnTransitionListener
+import com.kakao.sdk.auth.AuthApi
+import com.kakao.sdk.auth.AuthApiClient
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.user.UserApiClient
 import kotlinx.android.synthetic.main.login_fragment.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
+import java.time.LocalDateTime
+import java.util.*
 
 class LoginFragment : Fragment(), View.OnClickListener {
 
@@ -36,9 +44,9 @@ class LoginFragment : Fragment(), View.OnClickListener {
     lateinit var myAPI: RetrofitService
 
     lateinit var jwt_token: String
-    lateinit var access_token: String
+    var access_token=""
     lateinit var refresh_token: String
-    lateinit var fcm_token: String
+    var refresh_token_expire: String = ""
 
 
     override fun onCreateView(
@@ -57,7 +65,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
         val preferences: SharedPreferences =
             requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
         jwt_token = preferences.getString("jwt_token", "").toString()
-        access_token = preferences.getString("kakao_access_token", "").toString()
+
         refresh_token = preferences.getString("kakao_refresh_token", "").toString()
 
 
@@ -72,15 +80,21 @@ class LoginFragment : Fragment(), View.OnClickListener {
             R.id.kakao_login_btn -> {
 
 
+//                val func=Functions()
+
+
                 Log.v("token", jwt_token)
                 Log.v("access", access_token)
                 Log.v("refresh", refresh_token)
 
+                Log.v("refresh", refresh_token_expire)
+                val expire = AuthApiClient.instance.tokenManagerProvider.manager.getToken()?.refreshTokenExpiresAt?.before(Date())?: true
 
-                val func=Functions()
-                func.BackgroundTask()
-
-                if (refresh_token == "") {
+                Log.v("expiress", expire.toString())
+                if (expire) {
+                    Log.v("sssss", "ssss")
+                    Log.v("sssss", refresh_token)
+                    Log.v("sssss", expire.toString())
                     val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
                         if (error != null) {
                             Log.e("login", "로그인 실패", error)
@@ -119,13 +133,38 @@ class LoginFragment : Fragment(), View.OnClickListener {
                         )
                     }
                 } else{
-                    showTokenInfo()
-                    getUserInfo()
-                    loginServer(access_token)
+                    BackgroundTask()
+
                 }
             }
 
         }
+    }
+
+    fun BackgroundTask () {
+//onPreExcute
+
+
+        CoroutineScope(Dispatchers.Main).launch {
+//doInBackground
+            withContext(Dispatchers.Default) {
+                //                Log.v("tag", to.getToken().toString())
+                AuthApiClient.instance.refreshAccessToken()
+
+                access_token = AuthApiClient.instance.tokenManagerProvider.manager.getToken()?.accessToken?: ""
+//                refresh_token_expire = AuthApiClient.instance.tokenManagerProvider.manager.getToken()!!.refreshTokenExpiresAt.toString()
+                Log.v("token", AuthApiClient.instance.tokenManagerProvider.manager.getToken()?.accessToken.toString())
+                Log.v("expire", AuthApiClient.instance.tokenManagerProvider.manager.getToken()!!.refreshTokenExpiresAt?.after(Date()).toString())
+
+
+                showTokenInfo()
+                getUserInfo()
+                loginServer(access_token)
+            }
+//onPostExecute
+
+        }
+
     }
 
     private fun showTokenInfo() {
@@ -173,7 +212,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
 
     private fun loginServer(accessToken: String) {
-
+            Log.v("ttacc", accessToken)
         Runnable {
 
             val body_data = LoginInfo(accessToken, "kakao")

@@ -69,6 +69,8 @@ class RecruitPostFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
+        tag_group.removeAllViews()
+
         getUserTag()
 
         requireActivity().new_post_btn.setOnClickListener{
@@ -198,12 +200,6 @@ class RecruitPostFragment : Fragment() {
     }
 
 
-
-    override fun onStop() {
-        super.onStop()
-
-        tag_group.removeAllViews()
-    }
 
 
     private fun getUserTag() {

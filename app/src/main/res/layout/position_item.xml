@@ -6,7 +6,7 @@
     <data>
         <variable
             name="position"
-            type="com.high5ive.android.moira.data.Position" />
+            type="com.high5ive.android.moira.data.retrofit.PositionCategory" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,7 +19,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{position.position}"
+            android:text="@{position.positionCategoryName}"
             android:textAppearance="@style/member_info_text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -28,7 +28,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{@string/position_num(position.number)}"
+            android:text="@{@string/position_num(position.count)}"
             android:textAppearance="@style/member_info_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>

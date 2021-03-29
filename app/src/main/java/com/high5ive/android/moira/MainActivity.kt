@@ -29,24 +29,24 @@ import retrofit2.Retrofit
 
 class MainActivity : AppCompatActivity() {
 
-    private var receiver: BroadcastReceiver? = null
-    private var mIsReceiverRegistered: Boolean = false
-    lateinit var retrofit: Retrofit
-    lateinit var myAPI: RetrofitService
+//    private var receiver: BroadcastReceiver? = null
+//    private var mIsReceiverRegistered: Boolean = false
+//    lateinit var retrofit: Retrofit
+//    lateinit var myAPI: RetrofitService
+//
+//    lateinit var jwt_token: String
 
-    lateinit var jwt_token: String
-
-    var fcm_token= ""
+//    var fcm_token= ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val preferences: SharedPreferences =
-            this.getSharedPreferences("moira", Context.MODE_PRIVATE)
-        jwt_token = preferences.getString("jwt_token", "").toString()
-
-        initRetrofit()
+//        val preferences: SharedPreferences =
+//            this.getSharedPreferences("moira", Context.MODE_PRIVATE)
+//        jwt_token = preferences.getString("jwt_token", "").toString()
+//
+//        initRetrofit()
         bottomNavigationView.setupWithNavController(fragment.findNavController())
 
         var keyHash = Utility.getKeyHash(this)
@@ -62,134 +62,134 @@ class MainActivity : AppCompatActivity() {
 //            }
 //        }
 
-        FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener(
-            this@MainActivity,
-            OnSuccessListener<InstanceIdResult> { instanceIdResult ->
-                val token = instanceIdResult.token
-
-                fcm_token = token
-                Log.i("FCM Token", token)
-
-                registerFCM(fcm_token)
-
-
-            })
-
+//        FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener(
+//            this@MainActivity,
+//            OnSuccessListener<InstanceIdResult> { instanceIdResult ->
+//                val token = instanceIdResult.token
+//
+//                fcm_token = token
+//                Log.i("FCM Token", token)
+//
+//                registerFCM(fcm_token)
+//
+//
+//            })
+//
         Log.v("hash", keyHash)
     }
 
-    private fun initRetrofit() {
-
-        retrofit = RetrofitClient.getInstance() // 2에서 만든 Retrofit client의 instance를 불러옵니다.
-        myAPI = retrofit.create(RetrofitService::class.java) // 여기서 retrofit이 우리의 interface를 구현해주고
-
-    }
-
-    private fun registerFCM(fcm_token: String){
-        val body_data = FCMRegister(fcm_token)
-        myAPI.registerUser(jwt_token, body_data).enqueue(object : Callback<ResponseData> {
-            override fun onFailure(call: Call<ResponseData>, t: Throwable) {
-                t.printStackTrace()
-            }
-
-            override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
-                Log.v("realcode", response.code().toString())
-                val code: Int = response.body()?.code ?: 0
-                val msg: String = response.body()?.msg ?: "no msg"
-                val succeed: Boolean = response.body()?.succeed ?: false
-
-                if(succeed) {
-                    pushNotification()
-                }
-                Log.v("code", code.toString())
-                Log.v("success", succeed.toString())
-                Log.v("msg", msg)
-
-
-            }
-        })
-    }
-
-    private fun pushNotification() {
-        myAPI.pushFCM(jwt_token).enqueue(object : Callback<ResponseData> {
-            override fun onFailure(call: Call<ResponseData>, t: Throwable) {
-                t.printStackTrace()
-            }
-
-            override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
-                Log.v("realcode", response.code().toString())
-                val code: Int = response.body()?.code ?: 0
-                val msg: String = response.body()?.msg ?: "no msg"
-                val succeed: Boolean = response.body()?.succeed ?: false
-
-
-
-                Log.v("code", code.toString())
-                Log.v("success", succeed.toString())
-                Log.v("msg", msg)
-
-
-            }
-        })
-    }
-
-
-    private fun startRegisterReceiver() {
-        if (!mIsReceiverRegistered) {
-            if (receiver == null) {
-                receiver = object : BroadcastReceiver() {
-                    override fun onReceive(context: Context?, intent: Intent?) {
-//                        notify_icon.setVisibility(View.VISIBLE)
-                        Log.v("received", "ss")
-
-//                        val mf: HomeFragment = supportFragmentManager.findFragmentById(R.id.homeFragment) as HomeFragment
-//                        mf.newNoti()
-
-//                        ((HomeFragment) Suppor.findFragmentByTag("fragmentHome")).testFunction();
-
-
-                    }
-                }
-            }
-            registerReceiver(receiver, IntentFilter("com.package.notification"))
-            mIsReceiverRegistered = true
-        }
-    }
-
-    private fun finishRegisterReceiver() {
-        if (mIsReceiverRegistered) {
-            unregisterReceiver(receiver)
-            receiver = null
-            mIsReceiverRegistered = false
-        }
-    }
-
-    private fun pauseRegisterReceiver() {
-        if (mIsReceiverRegistered) {
-            mIsReceiverRegistered = false
-        }
-    }
-
-
-    override fun onResume() {
-        super.onResume()
-        startRegisterReceiver()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        pauseRegisterReceiver()
-    }
-
-
-
-//    override fun onDestroy() {
-//        super.onDestory()
-//        finishRegisterReceiver()
+//    private fun initRetrofit() {
+//
+//        retrofit = RetrofitClient.getInstance() // 2에서 만든 Retrofit client의 instance를 불러옵니다.
+//        myAPI = retrofit.create(RetrofitService::class.java) // 여기서 retrofit이 우리의 interface를 구현해주고
+//
+//    }
+//
+//    private fun registerFCM(fcm_token: String){
+//        val body_data = FCMRegister(fcm_token)
+//        myAPI.registerUser(jwt_token, body_data).enqueue(object : Callback<ResponseData> {
+//            override fun onFailure(call: Call<ResponseData>, t: Throwable) {
+//                t.printStackTrace()
+//            }
+//
+//            override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
+//                Log.v("realcode", response.code().toString())
+//                val code: Int = response.body()?.code ?: 0
+//                val msg: String = response.body()?.msg ?: "no msg"
+//                val succeed: Boolean = response.body()?.succeed ?: false
+//
+//                if(succeed) {
+//                    pushNotification()
+//                }
+//                Log.v("code", code.toString())
+//                Log.v("success", succeed.toString())
+//                Log.v("msg", msg)
+//
+//
+//            }
+//        })
 //    }
 
-    override fun onStart() {
-        super.onStart()
-        startRegisterReceiver()
-    }
+//    private fun pushNotification() {
+//        myAPI.pushFCM(jwt_token).enqueue(object : Callback<ResponseData> {
+//            override fun onFailure(call: Call<ResponseData>, t: Throwable) {
+//                t.printStackTrace()
+//            }
+//
+//            override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
+//                Log.v("realcode", response.code().toString())
+//                val code: Int = response.body()?.code ?: 0
+//                val msg: String = response.body()?.msg ?: "no msg"
+//                val succeed: Boolean = response.body()?.succeed ?: false
+//
+//
+//
+//                Log.v("code", code.toString())
+//                Log.v("success", succeed.toString())
+//                Log.v("msg", msg)
+//
+//
+//            }
+//        })
+//    }
+//
+//
+//    private fun startRegisterReceiver() {
+//        if (!mIsReceiverRegistered) {
+//            if (receiver == null) {
+//                receiver = object : BroadcastReceiver() {
+//                    override fun onReceive(context: Context?, intent: Intent?) {
+////                        notify_icon.setVisibility(View.VISIBLE)
+//                        Log.v("received", "ss")
+//
+////                        val mf: HomeFragment = supportFragmentManager.findFragmentById(R.id.homeFragment) as HomeFragment
+////                        mf.newNoti()
+//
+////                        ((HomeFragment) Suppor.findFragmentByTag("fragmentHome")).testFunction();
+//
+//
+//                    }
+//                }
+//            }
+//            registerReceiver(receiver, IntentFilter("com.package.notification"))
+//            mIsReceiverRegistered = true
+//        }
+//    }
+//
+//    private fun finishRegisterReceiver() {
+//        if (mIsReceiverRegistered) {
+//            unregisterReceiver(receiver)
+//            receiver = null
+//            mIsReceiverRegistered = false
+//        }
+//    }
+//
+//    private fun pauseRegisterReceiver() {
+//        if (mIsReceiverRegistered) {
+//            mIsReceiverRegistered = false
+//        }
+//    }
+//
+//
+//    override fun onResume() {
+//        super.onResume()
+//        startRegisterReceiver()
+//    }
+//
+//    override fun onPause() {
+//        super.onPause()
+//        pauseRegisterReceiver()
+//    }
+//
+//
+//
+////    override fun onDestroy() {
+////        super.onDestory()
+////        finishRegisterReceiver()
+////    }
+//
+//    override fun onStart() {
+//        super.onStart()
+//        startRegisterReceiver()
+//    }
 }

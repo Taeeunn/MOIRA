@@ -127,11 +127,14 @@ class RecruitPostSearchActivity : AppCompatActivity(), View.OnClickListener{
                     search_text.text = "'" + keyword + "' 검색 내역"
                     recycler_view.apply {
                         layoutManager = LinearLayoutManager(this@RecruitPostSearchActivity)
-                        adapter =
-                            RecruitAdapter(list) { index ->
-                                Toast.makeText(this@RecruitPostSearchActivity, "$index", Toast.LENGTH_SHORT).show()
-                                startActivity(Intent(this@RecruitPostSearchActivity, RecruitPostDetailActivity::class.java))
-                            }
+                        adapter = RecruitAdapter(list) { index ->
+                            Toast.makeText(this@RecruitPostSearchActivity, "$index", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this@RecruitPostSearchActivity, RecruitPostDetailActivity::class.java)
+                            intent.putExtra("index", index)
+                            startActivity(intent)
+                        }
+
+
                     }
 
                 }
