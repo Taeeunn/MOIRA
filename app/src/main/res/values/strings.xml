@@ -223,5 +223,7 @@
 
 
     <string name="moira_description5">이제부터 나에게 맞는 팀원을 찾으러 떠나볼까요?</string>
+    <string name="apply_info">지원 정보</string>
+    <string name="modify">변경하기</string>
 
 </resources>

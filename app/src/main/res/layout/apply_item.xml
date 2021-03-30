@@ -96,7 +96,7 @@
             android:backgroundTint="#f2f2f2"
             android:background="@drawable/round_rectangle_2"
             android:textAppearance="@style/btn_text"
-            android:text="@string/apply_history"
+            android:text="@string/apply_info"
             app:layout_constraintRight_toLeftOf="@+id/apply_cancle_btn"
             app:layout_constraintTop_toBottomOf="@id/barrier" />
 

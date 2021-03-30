@@ -30,29 +30,6 @@
     </com.google.android.material.appbar.MaterialToolbar>
 
 
-    <TextView
-        android:id="@+id/user_account_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:ems="10"
-        android:layout_marginTop="18dp"
-        android:lineSpacingExtra="9sp"
-        android:text="usermail@gmail.com"
-        android:textColor="#282828"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
-
-    <View
-        android:id="@+id/horizontal_line"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="23dp"
-        android:background="#e6e6e6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_account_info" />
-
 
     <TextView
         android:id="@+id/logout"
@@ -66,7 +43,7 @@
         android:textColor="#282828"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/horizontal_line" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
 
     <View

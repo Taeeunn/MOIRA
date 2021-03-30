@@ -27,9 +27,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:theme="@style/toolbar_theme_back">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -40,20 +37,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <android.widget.Button
-                android:id="@+id/register_button"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:background="@android:color/transparent"
-                android:lineSpacingExtra="8sp"
-                android:text="@string/register"
-                android:textAppearance="@style/register_button"
-                android:textColor="#156fff"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </com.google.android.material.appbar.MaterialToolbar>
 
     <ScrollView
@@ -141,6 +125,21 @@
                 app:layout_constraintLeft_toRightOf="@+id/barrier"
                 app:layout_constraintTop_toBottomOf="@id/horizontal_line" />
 
+
+            <TextView
+                android:id="@+id/nickname_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="6sp"
+                android:text="@string/modify"
+                android:textColor="#aaaaaa"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="19.5dp"
+                android:textSize="13sp"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
+
             <View
                 android:id="@+id/horizontal_line2"
                 android:layout_width="match_parent"
@@ -162,22 +161,29 @@
                 app:layout_constraintTop_toBottomOf="@id/horizontal_line2" />
 
 
-            <EditText
-                android:id="@+id/position_et"
-                android:layout_width="wrap_content"
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/position_group"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="19.5dp"
-                android:lineSpacingExtra="6sp"
-                android:hint="포지션을 선택해주세요."
-                android:text="@{myprofile.positionName}"
-                android:background="@null"
-                android:theme="@style/EditTextTheme"
-                android:textColor="#282828"
-                android:textSize="13sp"
-                android:textStyle="normal"
+                android:layout_marginTop="8dp"
                 app:layout_constraintLeft_toRightOf="@+id/barrier"
                 app:layout_constraintTop_toBottomOf="@id/horizontal_line2" />
+
+
+            <TextView
+                android:id="@+id/position_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="6sp"
+                android:text="@string/modify"
+                android:textColor="#aaaaaa"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="19.5dp"
+                android:textSize="13sp"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/horizontal_line2" />
 
 
             <View
@@ -220,6 +226,21 @@
                 app:layout_constraintTop_toBottomOf="@id/horizontal_line3" />
 
 
+            <TextView
+                android:id="@+id/intro_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="6sp"
+                android:text="@string/modify"
+                android:textColor="#aaaaaa"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="19.5dp"
+                android:textSize="13sp"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/horizontal_line3" />
+
+
             <View
                 android:id="@+id/horizontal_line4"
                 android:layout_width="match_parent"
@@ -244,24 +265,29 @@
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/interest_tag_group"
-                android:layout_width="280dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="60dp"
                 android:layout_marginTop="8dp"
-                app:layout_constraintLeft_toRightOf="@+id/barrier"
-                app:layout_constraintTop_toBottomOf="@+id/horizontal_line4">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/interest_tag"/>
 
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/interest_tag1"
-                    style="@style/MaterialChipsAction"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="+ 추가하기" />
-
-
-
-            </com.google.android.material.chip.ChipGroup>
+            <TextView
+                android:id="@+id/tag_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="6sp"
+                android:text="@string/modify"
+                android:textColor="#aaaaaa"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="19.5dp"
+                android:textSize="13sp"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/horizontal_line4" />
 
 
             <androidx.constraintlayout.widget.Barrier

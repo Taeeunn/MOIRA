@@ -14,6 +14,7 @@ data class MyPageData(
     val positionName: String,
     val profileImageUrl: String,
     val shortIntroduction: String,
+    val userId: Int,
     val writtenPostCount: Int
 )
 

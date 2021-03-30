@@ -46,6 +46,7 @@ class SetTagFragment : Fragment() {
     var nickname = ""
     var positionId: Int = 1
     val hashtagIdList = mutableListOf<Int>()
+    var index: Int = 1
 
 
     override fun onCreateView(
@@ -59,7 +60,6 @@ class SetTagFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         nickname = arguments?.getString("nickname")?: ""
-        positionId = arguments?.getInt("positionId")?: 1
 
         Log.v("nickname", nickname)
         Log.v("positionId", positionId.toString())
@@ -69,6 +69,7 @@ class SetTagFragment : Fragment() {
         val preferences: SharedPreferences =requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
         jwt_token = preferences.getString("jwt_token", null).toString()
 
+        index = arguments?.getInt("index")?: 1
         Log.v("Jwt", jwt_token)
         to_next_btn.setOnClickListener {
 //            startActivity(Intent(activity, MainActivity::class.java))
@@ -79,7 +80,7 @@ class SetTagFragment : Fragment() {
         }
 
         initRetrofit()
-        //getPositionDetail()
+        getPositionDetail()
         getHashTags()
 
 
@@ -111,7 +112,8 @@ class SetTagFragment : Fragment() {
     private fun getPositionDetail() {
         Runnable {
 
-            myAPI.getPositionDetail(jwt_token, 1).enqueue(object : Callback<PositionDetail> {
+            Log.v("index", index.toString())
+            myAPI.getPositionDetail(jwt_token, index).enqueue(object : Callback<PositionDetail> {
                 override fun onFailure(call: Call<PositionDetail>, t: Throwable) {
                     t.printStackTrace()
                 }
@@ -132,6 +134,7 @@ class SetTagFragment : Fragment() {
                     Log.v("msg", msg)
                     Log.v("list", list.toString())
 
+                    setTag2(list.toMutableList())
 //                    if (firstLogin){
 //                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
 //                    } else{
@@ -157,6 +160,7 @@ class SetTagFragment : Fragment() {
                     hashtagIdList.remove(tagId)
                     chip.setTextColor(resources.getColor(R.color.black))
                 } else{
+
                     chip.setTextColor(resources.getColor(R.color.white))
                     hashtagIdList.add(tagId)
                 }
@@ -176,6 +180,41 @@ class SetTagFragment : Fragment() {
             //Added click listener on close icon to remove tag from ChipGroup
 
             tag_group.addView(chip)
+        }
+    }
+
+    private fun setTag2(tagList: MutableList<PositionDetailItem>) {
+        for (index in tagList.indices) {
+            val tagName = tagList[index].positionName
+            val tagId = tagList[index].positionId
+
+            //val chip = Chip(ContextThemeWrapper(context, R.style.MaterialChipsAction))
+            val chip = Chip(context)
+            Log.v("tggg", chip.textColors.toString())
+            chip.setOnClickListener {
+
+                if (chip.textColors == resources.getColorStateList(R.color.white)){
+                    chip.setTextColor(resources.getColor(R.color.black))
+                } else{
+                    positionId = tagId
+                    chip.setTextColor(resources.getColor(R.color.white))
+                }
+
+                Log.v("tggg", chip.textColors.toString())
+            }
+
+
+            val drawable = context?.let { ChipDrawable.createFromAttributes(it, null, 0, R.style.MaterialChips) }
+            if (drawable != null) {
+                chip.setChipDrawable(drawable)
+            }
+            chip.text = tagName
+
+
+
+            //Added click listener on close icon to remove tag from ChipGroup
+
+            position_tag_group.addView(chip)
         }
     }
 
@@ -217,6 +256,9 @@ class SetTagFragment : Fragment() {
         Runnable {
 
 
+            Log.v("nickname", nickname)
+            Log.v("nickname", hashtagIdList.toString())
+            Log.v("nickname", positionId.toString())
             val body_data = SignUpInfo(hashtagIdList, nickname, positionId)
             Log.v("body", body_data.toString() )
             myAPI.signupUser(jwt_token, body_data).enqueue(object : Callback<ResponseData> {

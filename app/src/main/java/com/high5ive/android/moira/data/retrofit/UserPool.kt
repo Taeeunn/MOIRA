@@ -74,6 +74,7 @@ data class UserPoolDetailReviewData(
     val avgMannerPoint: Float,
     val complimentMarkWithCountDtoList: List<ComplimentMarkWithCountDto>,
     val maxComplimentMarkId: Int,
+    val nickname: String,
     val recentReviewContent: String
 )
 

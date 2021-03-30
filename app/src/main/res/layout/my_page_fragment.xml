@@ -314,20 +314,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/customer_service" />
 
 
-            <TextView
-                android:id="@+id/noti_setting"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:lineSpacingExtra="6sp"
-                android:text="알림 설정"
-                android:textColor="#262626"
-                android:textSize="14sp"
-                android:textStyle="normal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/account_setting" />
-
 
             <TextView
                 android:id="@+id/question"
@@ -341,7 +327,7 @@
                 android:textSize="14sp"
                 android:textStyle="normal"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/noti_setting" />
+                app:layout_constraintTop_toBottomOf="@+id/account_setting" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

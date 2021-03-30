@@ -15,12 +15,89 @@ data class EditProfileData(
     val shortIntroduction: String
 )
 
-data class MyPageEditProfileUpdateRequestDto(
-    val hashtagIdList: List<Int>,
-    val nickname: String,
-    val positionId: Int,
+data class HashtagEdit(
+    val hashtagIdList: List<Int>
+)
+
+data class HashtagEditResponse(
+    val code: Int,
+    val data: HashtagData,
+    val msg: String,
+    val succeed: Boolean
+)
+
+data class HashtagData(
+    val hashtagList: List<Hashtag>,
+    val userId: Int
+)
+
+data class ProfileImageEditResponse(
+    val code: Int,
+    val data: String,
+    val msg: String,
+    val succeed: Boolean
+)
+
+data class IntroEdit(
     val shortIntroduction: String
 )
+
+data class IntroEditResponse(
+    val code: Int,
+    val data: IntroEditResponseData,
+    val msg: String,
+    val succeed: Boolean
+)
+
+data class IntroEditResponseData(
+    val shortIntroduction: String,
+    val userId: Int
+)
+
+data class NicknameEdit(
+    val nickname: String
+)
+
+data class NicknameEditResponse(
+    val code: Int,
+    val data: NicknameEditResponseData,
+    val msg: String,
+    val succeed: Boolean
+)
+
+data class NicknameEditResponseData(
+    val nickname: String,
+    val userId: Int
+)
+
+
+data class PositionResponse(
+    val code: Int,
+    val list: List<PositionResponseItem>,
+    val msg: String,
+    val succeed: Boolean
+)
+
+data class PositionResponseItem(
+    val positionCategoryId: Int,
+    val positionCategoryName: String,
+    val positionId: Int,
+    val positionName: String
+)
+
+data class PositionEditResponse(
+    val code: Int,
+    val data: PositionEditResponseData,
+    val msg: String,
+    val succeed: Boolean
+)
+
+data class PositionEditResponseData(
+    val positionId: Int,
+    val positionName: String,
+    val userId: Int
+)
+
 
 
 data class MyProfile(

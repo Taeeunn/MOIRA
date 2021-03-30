@@ -1,6 +1,7 @@
 package com.high5ive.android.moira.ui.mypage.apply
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -109,12 +110,12 @@ class ApplyListActivity : AppCompatActivity() {
                                 ).show()
 
                                 if (type == 0) {
-//                                            startActivity(
-//                                                Intent(
-//                                                    this@ApplyListActivity,
-//                                                    RecruitDetailActivity::class.java
-//                                                )
-//                                            )
+                                    val intent = Intent(
+                                        this@ApplyListActivity,
+                                        ApplyInfoActivity::class.java
+                                    )
+                                    intent.putExtra("index", index)
+                                    startActivity(intent)
 
                                     // 지원 취소
                                 } else if (type == 1) {
@@ -141,7 +142,7 @@ class ApplyListActivity : AppCompatActivity() {
         })
     }
 
-    private fun applyCancle(index: Int){
+    private fun applyCancle(index: Int) {
         myAPI.cancelProjectApply(token, index).enqueue(object :
             Callback<ResponseData> {
             override fun onFailure(call: Call<ResponseData>, t: Throwable) {
@@ -159,9 +160,13 @@ class ApplyListActivity : AppCompatActivity() {
                 Log.v("success", succeed.toString())
                 Log.v("msg", msg)
 
-                if(succeed){
+                if (succeed) {
                     val message = "지원을 취소했습니다. "
-                    Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(
+                        findViewById(android.R.id.content),
+                        message,
+                        Snackbar.LENGTH_SHORT
+                    ).show()
                     getWrittenPostList()
 
                 }

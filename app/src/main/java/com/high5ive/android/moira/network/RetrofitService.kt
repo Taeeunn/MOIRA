@@ -2,6 +2,7 @@ package com.high5ive.android.moira.network
 
 import com.google.gson.annotations.SerializedName
 import com.high5ive.android.moira.data.retrofit.*
+import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
@@ -379,12 +380,20 @@ interface RetrofitService {
         @Header("X-AUTH-TOKEN") token: String
     ): Call<MyProfile>
 
-    // 6-2-2. 마이페이지 - 내 정보 수정하기 - 프로필 관련 정보 수정하기(프로필 사진 제외)
-    @PUT("mypage/edit/profile")
-    fun editMyProfile(
+    // 6-2-3. 마이페이지 - 내 정보 수정하기 - 프로필 - 이미지 수정
+    @Multipart
+    @PUT("mypage/edit/image")
+    fun editProfileImage(
         @Header("X-AUTH-TOKEN") token: String,
-        @Body myPageEditProfileUpdateRequestDto: MyPageEditProfileUpdateRequestDto
-    ): Call<EditProfile>
+        @Part image : MultipartBody.Part
+    ): Call<ProfileImageEditResponse>
+
+    // 6-2-2. 마이페이지 - 내 정보 수정하기 - 프로필 - 닉네임 수정
+    @PUT("mypage/edit/nickname")
+    fun editNickname(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Body mypageEditNicknameRequestDto: NicknameEdit
+    ): Call<NicknameEditResponse>
 
 
     // 6-3. 마이페이지 - 프로필 수정 - 선택정보

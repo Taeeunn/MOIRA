@@ -137,7 +137,7 @@
             android:id="@+id/text"
             android:layout_width="wrap_content"
             android:layout_height="15dp"
-            android:text="사용자 닉네임"
+            android:text="@{userreview.nickname}"
             android:gravity="center"
             android:textStyle="normal"
             android:textSize="12sp"

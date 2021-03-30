@@ -78,7 +78,6 @@ class MyPageFragment : Fragment(), View.OnClickListener{
 
         account_setting.setOnClickListener(this)
 
-        noti_setting.setOnClickListener(this)
 
         question.setOnClickListener(this)
 
@@ -127,7 +126,7 @@ class MyPageFragment : Fragment(), View.OnClickListener{
 
                         binding.mypage = data
 
-//                        index = data.
+                        index = data.userId
                         Glide.with(this@MyPageFragment)
                             .load(data.profileImageUrl)
                             .override(20, 20)
@@ -149,7 +148,6 @@ class MyPageFragment : Fragment(), View.OnClickListener{
             R.id.scrap_container -> startActivity(Intent(context, ScrapListActivity::class.java))
             R.id.edit_info_btn -> startActivity(Intent(context, EditProfileActivity::class.java))
             R.id.account_setting -> startActivity(Intent(context, AccountSettingActivity::class.java))
-            R.id.noti_setting -> startActivity(Intent(context, EditProfileActivity::class.java))
             R.id.question -> startActivity(Intent(context, AskActivity::class.java))
             R.id.received_evaluation ->{
                 val intent = Intent(context, MyReviewActivity::class.java)

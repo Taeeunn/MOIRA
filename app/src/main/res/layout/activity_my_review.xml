@@ -169,16 +169,28 @@
                     app:layout_constraintTop_toBottomOf="@+id/best_badge_image">
 
                     <TextView
+                        android:id="@+id/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="15dp"
+                        android:text="@{userreview.nickname}"
+                        android:gravity="center"
+                        android:textStyle="normal"
+                        android:textSize="12sp"
+                        android:textColor="#262626"
+                        android:lineSpacingExtra="6sp"
+                        android:layout_marginTop="16dp" />
+
+                    <TextView
                         android:id="@+id/text1"
                         android:layout_width="wrap_content"
                         android:layout_height="15dp"
-                        android:layout_marginTop="16dp"
+                        android:text=" 님은 ‘"
                         android:gravity="center"
-                        android:lineSpacingExtra="6sp"
-                        android:text="사용자 닉네임 님은 ‘"
-                        android:textColor="#262626"
+                        android:textStyle="normal"
                         android:textSize="12sp"
-                        android:textStyle="normal" />
+                        android:textColor="#262626"
+                        android:lineSpacingExtra="6sp"
+                        android:layout_marginTop="16dp" />
 
                     <TextView
                         android:id="@+id/text2"

@@ -25,15 +25,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MOIRA"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.mypage.MyReviewActivity"></activity>
+        <activity android:name=".ui.mypage.edit.editinfo.EditNicknameActivity"></activity>
+        <activity android:name=".ui.mypage.apply.ApplyInfoActivity" />
+        <activity android:name=".ui.mypage.MyReviewActivity" />
         <activity android:name=".ui.teamfinding.newpost.AddTagActivity" />
-
-        <service android:name=".noti.MyFirebaseMessagingService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
-
         <activity android:name=".ui.teamfinding.search.RecruitPostSearchActivity" />
         <activity android:name=".ui.mypage.cs.AccountSettingActivity" />
         <activity android:name=".ui.home.ProjectStartActivity" />

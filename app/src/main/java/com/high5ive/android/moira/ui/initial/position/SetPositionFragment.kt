@@ -72,8 +72,10 @@ class SetPositionFragment : Fragment() {
 
         to_next_btn.setOnClickListener {
 
+            val bundle = Bundle()
+            bundle.putString("nickname", nickname)
+            bundle.putInt("index", positionId)
 
-            val bundle = bundleOf("nickname" to nickname, "positionId" to positionId)
             navController.navigate(R.id.action_setPositionFragment_to_setTagFragment, bundle)
         }
 

@@ -63,6 +63,7 @@ data class ApplyUserReview(
 data class ApplyUserReviewData(
     val avgMannerPoint: Int,
     val complimentMarkWithCountDtoList: List<ComplimentMarkWithCountDto>,
+    val nickname: String,
     val recentReviewContent: String
 )
 

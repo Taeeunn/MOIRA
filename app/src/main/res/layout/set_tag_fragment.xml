@@ -30,6 +30,31 @@
 
 
     <TextView
+        android:id="@+id/position_tag_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="46dp"
+        android:text="상세 포지션"
+        android:layout_marginStart="16dp"
+        android:textAppearance="@style/tag_title_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/select_tag_text" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/position_tag_group"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginHorizontal="16dp"
+        app:singleSelection="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/position_tag_text"/>
+
+
+    <TextView
         android:id="@+id/use_purpose_tag_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,15 +63,18 @@
         android:layout_marginStart="16dp"
         android:textAppearance="@style/tag_title_text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/select_tag_text" />
+        app:layout_constraintTop_toBottomOf="@+id/position_tag_group" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/tag_group"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="50dp"
         android:layout_marginHorizontal="16dp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/use_purpose_tag_text"/>
 
 

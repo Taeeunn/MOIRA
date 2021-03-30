@@ -91,7 +91,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
                 val expire = AuthApiClient.instance.tokenManagerProvider.manager.getToken()?.refreshTokenExpiresAt?.before(Date())?: true
 
                 Log.v("expiress", expire.toString())
-                if (expire) {
+                if (jwt_token=="" || expire) {
                     Log.v("sssss", "ssss")
                     Log.v("sssss", refresh_token)
                     Log.v("sssss", expire.toString())
@@ -242,7 +242,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
                         requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
                     preferences.edit().putString("jwt_token", jwtToken).apply()
 
-
+                    navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
                     if (needSignUp) {
                         navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
                     } else {
