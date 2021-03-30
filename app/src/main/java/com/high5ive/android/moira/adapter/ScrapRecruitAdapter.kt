@@ -3,6 +3,7 @@ package com.high5ive.android.moira.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.retrofit.RecruitPostItem
 import com.high5ive.android.moira.data.retrofit.ScrapRecruitPostItem
@@ -41,6 +42,11 @@ class ScrapRecruitAdapter(val items: List<ScrapRecruitPostItem>,
     override fun onBindViewHolder(holder: ScrapRecruitViewHolder, position: Int) {
         holder.binding.scraprecruit = items[position]
 
+        Glide.with(holder.binding.root.context)
+            .load(items[position].projectImageUrl)
+            .override(20, 20)
+            .error(R.drawable.ic_baseline_public_24) // ex) error(R.drawable.error)
+            .into(holder.binding.recruitImage)
 
     }
 

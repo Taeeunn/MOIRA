@@ -38,7 +38,7 @@
         android:layout_marginTop="25dp"
         android:fontFamily="@font/gmarket_sans_medium"
         android:lineSpacingExtra="6sp"
-        android:text="3.5"
+
         android:textAppearance="@style/rating"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,10 +49,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15.8dp"
-        android:isIndicator="false"
+        android:isIndicator="true"
         android:numStars="5"
         android:rating="0"
         android:stepSize="0.5"
+        android:theme="@style/RatingBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rating" />
@@ -72,9 +73,22 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="17dp"
         android:lineSpacingExtra="6sp"
-        android:text="2명의 팀원이 리뷰를 남겼습니다."
+        android:textStyle="bold"
+        android:textColor="@color/main_blue"
+        android:text="2"
         android:textAppearance="@style/recruit_count"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:lineSpacingExtra="6sp"
+        android:text="명의 팀원이 리뷰를 남겼습니다."
+        android:textAppearance="@style/recruit_count"
+        app:layout_constraintLeft_toRightOf="@id/review_count"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
 
 
@@ -95,7 +109,7 @@
             style="@style/Widget.AppCompat.DropDownItem.Spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:entries="@array/position_array" />
+            android:entries="@array/sort_array3" />
     </RelativeLayout>
 
 

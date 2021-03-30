@@ -40,8 +40,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/circle"
-                app:tint="@color/light_gray" />
+                app:srcCompat="@drawable/circle" />
 
             <TextView
                 android:id="@+id/member_nickname"
@@ -103,12 +102,12 @@
         android:textColor="#343434"
         android:lineSpacingExtra="6sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/applyBtn"
+        app:layout_constraintEnd_toStartOf="@+id/accept_button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <android.widget.Button
-        android:id="@+id/applyBtn"
+        android:id="@+id/accept_button"
         android:layout_width="0dp"
         android:layout_height="56dp"
         android:background="@color/main_blue"

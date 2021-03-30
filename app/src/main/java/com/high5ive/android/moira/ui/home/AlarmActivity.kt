@@ -1,29 +1,22 @@
-package com.high5ive.android.moira.ui.notify
+package com.high5ive.android.moira.ui.home
 
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import com.google.android.material.tabs.TabLayoutMediator
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.common.MemberViewPagerAdapter
 import com.high5ive.android.moira.data.retrofit.Alarm
 import com.high5ive.android.moira.data.retrofit.AlarmItem
-import com.high5ive.android.moira.data.retrofit.HomeResponse
-import com.high5ive.android.moira.data.retrofit.HomeResponseData
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
-import kotlinx.android.synthetic.main.activity_notify.*
-import kotlinx.android.synthetic.main.home_fragment.*
-import kotlinx.android.synthetic.main.my_team_fragment.*
+import kotlinx.android.synthetic.main.activity_alarm.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 
-class NotifyActivity : AppCompatActivity() {
+class AlarmActivity : AppCompatActivity() {
 
     lateinit var retrofit: Retrofit
     lateinit var myAPI: RetrofitService
@@ -32,7 +25,7 @@ class NotifyActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_notify)
+        setContentView(R.layout.activity_alarm)
 
         val preferences: SharedPreferences = this.getSharedPreferences("moira", Context.MODE_PRIVATE)
         token = preferences.getString("jwt_token", null).toString()

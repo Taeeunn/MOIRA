@@ -41,7 +41,7 @@ class MemberInfoFragment : Fragment() {
         token = preferences.getString("jwt_token", null).toString()
 
         index = arguments?.getInt("index")?: 1
-        Log.v("index", index.toString())
+        Log.v("applyId", index.toString())
         initRetrofit()
     }
 

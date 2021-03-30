@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="member"
+            type="com.high5ive.android.moira.data.retrofit.ProjectApplyUserItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#260068ff"
+        android:layout_marginTop="12dp"
+        android:layout_marginHorizontal="16dp">
+
+        <ImageView
+            android:id="@+id/member_image"
+            android:layout_width="43dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/circle" />
+
+        <TextView
+            android:id="@+id/leader_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="5dp"
+            android:paddingHorizontal="7dp"
+            android:lineSpacingExtra="6sp"
+            android:text="모임장"
+            android:visibility="gone"
+            android:background="#330068ff"
+            android:textAppearance="@style/leader_tag"
+            android:gravity="center"
+            app:layout_constraintLeft_toRightOf="@+id/member_image"
+            app:layout_constraintRight_toLeftOf="@+id/member_nickname"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/member_nickname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="55dp"
+            android:lineSpacingExtra="6sp"
+            android:text="@{member.nickname}"
+            android:textAppearance="@style/member_name"
+            app:layout_constraintLeft_toRightOf="@+id/leader_tag"
+            app:layout_constraintRight_toLeftOf="@+id/move_to_member"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/member_role"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="55dp"
+            android:lineSpacingExtra="6sp"
+            android:text="@{member.position}"
+            android:textColor="#8f8f8f"
+            android:textSize="11sp"
+            app:layout_constraintLeft_toRightOf="@+id/member_image"
+            app:layout_constraintRight_toLeftOf="@+id/move_to_member"
+            app:layout_constraintTop_toBottomOf="@+id/member_nickname" />
+
+        <ImageButton
+            android:id="@+id/move_to_member"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginEnd="16dp"
+            android:background="@android:color/transparent"
+            android:tint="#8f8f8f"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="@+id/member_image"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/member_image"
+            app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_20" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

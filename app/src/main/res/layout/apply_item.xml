@@ -23,8 +23,7 @@
             android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/round_rectangle_2"
-            app:tint="@color/light_gray"/>
+            app:srcCompat="@drawable/round_rectangle_2" />
 
 
         <TextView

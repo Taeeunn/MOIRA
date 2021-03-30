@@ -1,24 +1,21 @@
-package com.high5ive.android.moira.ui.common
+package com.high5ive.android.moira.ui.mypage
 
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
+import android.view.MenuItem
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.BadgeAdapter
-import com.high5ive.android.moira.data.Badge
 import com.high5ive.android.moira.data.retrofit.UserPoolDetailReview
 import com.high5ive.android.moira.data.retrofit.UserPoolDetailReviewData
+import com.high5ive.android.moira.databinding.ActivityMyReviewBinding
 import com.high5ive.android.moira.databinding.MemberReviewFragmentBinding
-import com.high5ive.android.moira.databinding.MyPageFragmentBinding
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.applicant.review.ApplicantReviewActivity
@@ -28,56 +25,58 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 
+class MyReviewActivity : AppCompatActivity() {
 
-class MemberReviewFragment : Fragment() {
-
-    private lateinit var binding: MemberReviewFragmentBinding
+    private lateinit var binding: ActivityMyReviewBinding
     lateinit var retrofit: Retrofit
     lateinit var myAPI: RetrofitService
     lateinit var token: String
     var index: Int = 1
     var point: Float = 0.0F
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = DataBindingUtil.setContentView(
+            this,
+            R.layout.activity_my_review
+        )
 
-        val preferences: SharedPreferences = requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        val ab = supportActionBar!!
+        ab.setDisplayShowTitleEnabled(false)
+        ab.setDisplayHomeAsUpEnabled(true)
+
+
+        val preferences: SharedPreferences = this.getSharedPreferences("moira", Context.MODE_PRIVATE)
         token = preferences.getString("jwt_token", null).toString()
 
-        index = arguments?.getInt("index")?: 1
-        Log.v("index", index.toString())
+        index = intent.getIntExtra("index", 1)
+
         initRetrofit()
-    }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-        binding = DataBindingUtil.inflate(inflater,R.layout.member_review_fragment, container, false)
-
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        getUserProfileReview()
 
         show_total_btn.setOnClickListener{
-            
-            val intent = Intent(context, ApplicantReviewActivity::class.java)
+
+            val intent = Intent(this, ApplicantReviewActivity::class.java)
             intent.putExtra("index", index)
             intent.putExtra("point", point)
             startActivity(intent)
         }
-
-
     }
 
-    override fun onResume() {
-        super.onResume()
-
-        getUserProfileReview()
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
+
 
     private fun initRetrofit() {
 
@@ -136,5 +135,4 @@ class MemberReviewFragment : Fragment() {
             })
         }.run()
     }
-
 }

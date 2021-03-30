@@ -44,7 +44,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/menu_button"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_baseline_refresh_24"
+                app:srcCompat="@drawable/ic_refresh"
                 app:tint="#000000" />
 
 
@@ -66,117 +66,118 @@
     </androidx.appcompat.widget.Toolbar>
 
 
-    <ImageView
-        android:id="@+id/contest_image"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="17dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        android:background="@color/light_gray" />
+<!--    <ImageView-->
+<!--        android:id="@+id/contest_image"-->
+<!--        android:layout_width="56dp"-->
+<!--        android:layout_height="56dp"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginTop="17dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/toolbar"-->
+<!--        android:background="@color/light_gray" />-->
 
 
-    <TextView
-        android:id="@+id/recruit_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="21dp"
-        android:text="모집글제목 모집글제목 모집글제목 모집글제목 모집글제목 모집글제목"
-        android:textAppearance="@style/contest_name"
-        app:layout_constraintLeft_toRightOf="@+id/contest_image"
-        app:layout_constraintRight_toLeftOf="@+id/move_to_contest"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+<!--    <TextView-->
+<!--        android:id="@+id/recruit_title"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:layout_marginTop="17dp"-->
+<!--        android:layout_marginEnd="21dp"-->
+<!--        android:text="모집글제목 모집글제목 모집글제목 모집글제목 모집글제목 모집글제목"-->
+<!--        android:textAppearance="@style/contest_name"-->
+<!--        app:layout_constraintLeft_toRightOf="@+id/contest_image"-->
+<!--        app:layout_constraintRight_toLeftOf="@+id/move_to_contest"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/toolbar" />-->
 
 
-    <TextView
-        android:id="@+id/date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="5dp"
-        android:letterSpacing="-0.03"
-        android:lineSpacingExtra="1sp"
-        android:text="2021.01.12"
-        android:textColor="#bcbcbc"
-        android:textSize="10sp"
-        app:layout_constraintLeft_toRightOf="@+id/contest_image"
-        app:layout_constraintTop_toBottomOf="@+id/recruit_title" />
+<!--    <TextView-->
+<!--        android:id="@+id/date"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        android:letterSpacing="-0.03"-->
+<!--        android:lineSpacingExtra="1sp"-->
+<!--        android:text="2021.01.12"-->
+<!--        android:textColor="#bcbcbc"-->
+<!--        android:textSize="10sp"-->
+<!--        app:layout_constraintLeft_toRightOf="@+id/contest_image"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/recruit_title" />-->
 
-    <View
-        android:id="@+id/vertical_line"
-        android:layout_width="1dp"
-        android:layout_height="13dp"
-        android:layout_gravity="center"
-        android:layout_marginStart="4.5dp"
-        android:layout_marginTop="5dp"
-        android:background="#d6d5d5"
-        app:layout_constraintLeft_toRightOf="@+id/date"
-        app:layout_constraintTop_toBottomOf="@+id/recruit_title" />
+<!--    <View-->
+<!--        android:id="@+id/vertical_line"-->
+<!--        android:layout_width="1dp"-->
+<!--        android:layout_height="13dp"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_marginStart="4.5dp"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        android:background="#d6d5d5"-->
+<!--        app:layout_constraintLeft_toRightOf="@+id/date"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/recruit_title" />-->
 
-    <ImageView
-        android:id="@+id/view_icon"
-        android:layout_width="13dp"
-        android:layout_height="13dp"
-        android:layout_gravity="center"
-        android:layout_marginStart="4.5dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/ic_baseline_remove_red_eye_24"
-        android:scaleType="fitCenter"
-        app:layout_constraintLeft_toRightOf="@+id/vertical_line"
-        app:layout_constraintTop_toBottomOf="@+id/recruit_title" />
+<!--    <ImageView-->
+<!--        android:id="@+id/view_icon"-->
+<!--        android:layout_width="13dp"-->
+<!--        android:layout_height="13dp"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_marginStart="4.5dp"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        android:background="@drawable/ic_baseline_remove_red_eye_24"-->
+<!--        android:scaleType="fitCenter"-->
+<!--        app:layout_constraintLeft_toRightOf="@+id/vertical_line"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/recruit_title" />-->
 
-    <TextView
-        android:id="@+id/views"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="2.5dp"
-        android:layout_marginTop="5dp"
-        android:letterSpacing="-0.03"
-        android:lineSpacingExtra="1sp"
-        android:text="1,234"
-        android:textColor="#bcbcbc"
-        android:textSize="10sp"
-        app:layout_constraintLeft_toRightOf="@+id/view_icon"
-        app:layout_constraintTop_toBottomOf="@+id/recruit_title" />
+<!--    <TextView-->
+<!--        android:id="@+id/views"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="2.5dp"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        android:letterSpacing="-0.03"-->
+<!--        android:lineSpacingExtra="1sp"-->
+<!--        android:text="1,234"-->
+<!--        android:textColor="#bcbcbc"-->
+<!--        android:textSize="10sp"-->
+<!--        app:layout_constraintLeft_toRightOf="@+id/view_icon"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/recruit_title" />-->
 
-    <ImageButton
-        android:id="@+id/move_to_contest"
-        android:layout_width="8dp"
-        android:layout_height="8dp"
-        android:layout_marginEnd="25dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:tint="#b9b9b9"
-        app:layout_constraintBottom_toBottomOf="@+id/contest_image"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/contest_image"
-        app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_20" />
-
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="contest_image, date, views" />
+<!--    <ImageButton-->
+<!--        android:id="@+id/move_to_contest"-->
+<!--        android:layout_width="8dp"-->
+<!--        android:layout_height="8dp"-->
+<!--        android:layout_marginEnd="25dp"-->
+<!--        android:background="@android:color/transparent"-->
+<!--        android:scaleType="fitCenter"-->
+<!--        android:tint="#b9b9b9"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/contest_image"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/contest_image"-->
+<!--        app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_20" />-->
 
 
-    <View
-        android:id="@+id/horizontal_line"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_marginTop="20dp"
-        android:background="#e6e6e6"
-        app:layout_constraintTop_toBottomOf="@+id/barrier" />
+<!--    <androidx.constraintlayout.widget.Barrier-->
+<!--        android:id="@+id/barrier"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:barrierDirection="bottom"-->
+<!--        app:constraint_referenced_ids="contest_image, date, views" />-->
+
+
+<!--    <View-->
+<!--        android:id="@+id/horizontal_line"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="3dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:background="#e6e6e6"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/barrier" />-->
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="#989898"
+        android:background="@color/white"
+        android:elevation="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -186,14 +187,14 @@
             android:layout_height="36dp"
             android:layout_marginStart="16dp"
             android:background="@drawable/round_rectangle_4"
-            android:backgroundTint="#f0f0f0"
+            android:backgroundTint="#deecff"
             android:lineSpacingExtra="6sp"
             android:text="@string/registration"
             android:textColor="#393939"
             android:textSize="14sp"
             android:textStyle="normal"
             app:srcCompat="@drawable/ic_baseline_add_24"
-            app:tint="#000000"
+            app:tint="@color/main_blue"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/new_comment_et"
@@ -207,7 +208,7 @@
             android:layout_marginStart="60dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/round_rectangle_4"
-            android:backgroundTint="#f0f0f0"
+            android:backgroundTint="#deecff"
             android:ems="10"
             android:hint="메세지를 입력하세요"
             android:inputType="textPersonName"

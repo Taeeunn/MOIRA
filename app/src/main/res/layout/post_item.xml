@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="post"
-            type="com.high5ive.android.moira.data.Post" />
+            name="writtenpost"
+            type="com.high5ive.android.moira.data.retrofit.WrittenPostItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,8 +23,7 @@
             android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/round_rectangle_2"
-            app:tint="@color/light_gray"/>
+            app:srcCompat="@drawable/round_rectangle_2" />
 
 
         <TextView
@@ -32,7 +31,7 @@
             android:layout_width="196dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="11dp"
-            android:text="@{post.title}"
+            android:text="@{writtenpost.projectTitle}"
             android:textAppearance="@style/contest_name"
             app:layout_constraintLeft_toRightOf="@+id/recruit_image"
             app:layout_constraintTop_toTopOf="parent" />
@@ -42,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="9dp"
-            android:text="2021.01.12"
+            android:text="@{writtenpost.writtenTime}"
             android:textStyle="normal"
             android:textSize="10sp"
             android:textColor="#bcbcbc"
@@ -71,7 +70,7 @@
             android:layout_marginTop="8dp"
             android:letterSpacing="-0.03"
             android:lineSpacingExtra="5sp"
-            android:text="1,234"
+            android:text="@{@string/to_str(writtenpost.hitCount)}"
             android:textColor="#bcbcbc"
             android:textSize="10sp"
             app:layout_constraintLeft_toRightOf="@+id/view_icon"
@@ -133,7 +132,7 @@
                 android:layout_gravity="end|center_vertical"
                 android:background="@drawable/small_circle"
                 android:backgroundTint="@color/main_blue"
-                android:text="9+"
+                android:text="@{@string/to_str(writtenpost.applicantCount)}"
                 android:textStyle="normal"
                 android:textColor="@color/white"
                 android:letterSpacing="-0.03"

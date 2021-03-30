@@ -46,7 +46,9 @@ data class ProjectApplyUserItem(
     val imageUrl: String,
     val nickname: String,
     val position: String,
-    val projectApplyId: Int
+    val projectApplyId: Int,
+    val shortIntroduction: String,
+    val userId: Int
 )
 
 
@@ -73,7 +75,7 @@ data class ApplyUserReviewAll(
 )
 
 data class ApplyUserReviewAllItem(
-    val mannerPoint: Int,
+    val mannerPoint: Float,
     val nickname: String,
     val reviewContent: String,
     val userProfileUrl: String,

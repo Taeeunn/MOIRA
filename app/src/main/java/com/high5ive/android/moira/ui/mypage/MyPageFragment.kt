@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import com.bumptech.glide.Glide
 import com.high5ive.android.moira.MainActivity
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.retrofit.LoginInfo
@@ -39,6 +40,8 @@ class MyPageFragment : Fragment(), View.OnClickListener{
     lateinit var retrofit: Retrofit
     lateinit var myAPI: RetrofitService
     lateinit var token: String
+
+    var index: Int = 1
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,6 +81,8 @@ class MyPageFragment : Fragment(), View.OnClickListener{
         noti_setting.setOnClickListener(this)
 
         question.setOnClickListener(this)
+
+        received_evaluation.setOnClickListener(this)
 
         Log.v("hihi", "hihi")
     }
@@ -121,6 +126,13 @@ class MyPageFragment : Fragment(), View.OnClickListener{
                         Log.v("data", data.toString())
 
                         binding.mypage = data
+
+//                        index = data.
+                        Glide.with(this@MyPageFragment)
+                            .load(data.profileImageUrl)
+                            .override(20, 20)
+                            .error(R.drawable.ic_baseline_person_24) // ex) error(R.drawable.error)
+                            .into(binding.userImage)
                     }
 
                 }
@@ -139,6 +151,11 @@ class MyPageFragment : Fragment(), View.OnClickListener{
             R.id.account_setting -> startActivity(Intent(context, AccountSettingActivity::class.java))
             R.id.noti_setting -> startActivity(Intent(context, EditProfileActivity::class.java))
             R.id.question -> startActivity(Intent(context, AskActivity::class.java))
+            R.id.received_evaluation ->{
+                val intent = Intent(context, MyReviewActivity::class.java)
+                intent.putExtra("index", index)
+                startActivity(intent)
+            }
         }
     }
 

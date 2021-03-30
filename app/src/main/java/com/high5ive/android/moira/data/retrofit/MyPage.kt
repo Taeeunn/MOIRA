@@ -25,8 +25,8 @@ data class WrittenPost(
 )
 
 data class WrittenPostItem(
+    val applicantCount: Int,
     val hitCount: Int,
-    val projectApplyId: Int,
     val projectId: Int,
     val projectImageUrl: String,
     val projectTitle: String,

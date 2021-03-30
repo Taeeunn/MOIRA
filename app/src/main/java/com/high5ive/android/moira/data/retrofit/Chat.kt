@@ -22,3 +22,42 @@ data class ChatItem(
     val unReadCount: Int,
     val writtenDate: String
 )
+
+
+data class ChatDetail(
+    val code: Int,
+    val list: List<ChatDetailItem>,
+    val msg: String,
+    val succeed: Boolean
+)
+
+data class ChatDetailItem(
+    val chatId: Int,
+    val messageContent: String,
+    val messageType: String,
+    val senderId: Int,
+    val writtenTime: String
+)
+
+
+data class ChatMessage(
+    val messageContent: String,
+    val messageType: String,
+    val opponentId: Int
+)
+
+
+
+data class ChatMessageResponse(
+    val code: Int,
+    val data: ChatMessageResponseData,
+    val msg: String,
+    val succeed: Boolean
+)
+
+data class ChatMessageResponseData(
+    val messageContent: String,
+    val messageType: String,
+    val opponentId: Int,
+    val senderId: Int
+)

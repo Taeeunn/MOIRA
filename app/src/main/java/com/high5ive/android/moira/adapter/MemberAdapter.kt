@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.marginLeft
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.high5ive.android.moira.data.Member
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.retrofit.MyProjectTeammateResponseDTO
@@ -38,5 +39,11 @@ class MemberAdapter(val items: List<MyProjectTeammateResponseDTO>,
         if (items[position].leader){
             holder.binding.leaderTag.visibility = View.VISIBLE
         }
+
+        Glide.with(holder.binding.root.context)
+            .load(items[position].imageUrl)
+            .override(20, 20)
+            .error(R.drawable.ic_baseline_person_24) // ex) error(R.drawable.error)
+            .into(holder.binding.contestImage)
     }
 }

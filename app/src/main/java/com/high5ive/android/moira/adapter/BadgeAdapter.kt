@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.Badge
+import com.high5ive.android.moira.data.retrofit.ComplimentMarkWithCountDto
 import com.high5ive.android.moira.databinding.BadgeItemBinding
 
 /**
@@ -14,8 +15,7 @@ import com.high5ive.android.moira.databinding.BadgeItemBinding
  */
 
 
-class BadgeAdapter(val items: List<Badge>,
-                   private val clickListener: (badge: Badge) -> Unit) :
+class BadgeAdapter(val items: List<ComplimentMarkWithCountDto>) :
     RecyclerView.Adapter<BadgeAdapter.BadgeViewHolder>(){
     class BadgeViewHolder(val binding: BadgeItemBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -26,11 +26,6 @@ class BadgeAdapter(val items: List<Badge>,
             BadgeViewHolder(
                 BadgeItemBinding.bind(view)
             )
-
-        view.setOnClickListener {
-            clickListener.invoke(items[viewHolder.adapterPosition])
-
-        }
 
         return viewHolder
     }

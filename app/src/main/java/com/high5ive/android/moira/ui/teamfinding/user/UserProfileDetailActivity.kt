@@ -25,7 +25,7 @@ class UserProfileDetailActivity : AppCompatActivity() {
 
 
         viewPager.adapter =
-            MemberViewPagerAdapter(this, index)
+            MemberViewPagerAdapter(this, index, index)
         val tabLayoutTextArray = arrayOf("사용자 정보","사용자 평가")
         TabLayoutMediator(tabLayout,viewPager){tab,position->
             tab.text = tabLayoutTextArray[position]

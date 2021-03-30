@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout >
+
+    <data>
+
+        <variable
+            name="applicantlist"
+            type="com.high5ive.android.moira.data.retrofit.RecruitPostDetailData" />
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -36,8 +44,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="17dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        android:background="@color/light_gray" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
 
     <TextView
@@ -47,7 +54,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="17dp"
         android:layout_marginEnd="21dp"
-        android:text="모집글제목 모집글제목 모집글제목 모집글제목 모집글제목 모집글제목"
+        android:text="@{applicantlist.title}"
         android:textAppearance="@style/contest_name"
         app:layout_constraintLeft_toRightOf="@+id/contest_image"
         app:layout_constraintRight_toLeftOf="@+id/move_to_contest"
@@ -59,10 +66,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
         android:letterSpacing="-0.03"
         android:lineSpacingExtra="1sp"
-        android:text="2021.01.12"
+        android:text="@{applicantlist.time}"
         android:textColor="#bcbcbc"
         android:textSize="10sp"
         app:layout_constraintLeft_toRightOf="@+id/contest_image"
@@ -74,7 +81,7 @@
         android:layout_height="13dp"
         android:layout_gravity="center"
         android:layout_marginStart="4.5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
         android:background="#d6d5d5"
         app:layout_constraintLeft_toRightOf="@+id/date"
         app:layout_constraintTop_toBottomOf="@+id/recruit_title"/>
@@ -84,7 +91,7 @@
         android:layout_width="13dp"
         android:layout_height="13dp"
         android:scaleType="fitCenter"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
         android:layout_marginStart="4.5dp"
         app:layout_constraintLeft_toRightOf="@+id/vertical_line"
         app:layout_constraintTop_toBottomOf="@+id/recruit_title"
@@ -96,10 +103,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="2.5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
         android:letterSpacing="-0.03"
         android:lineSpacingExtra="1sp"
-        android:text="1,234"
+        android:text="@{@string/to_str(applicantlist.hitCount)}"
         android:textColor="#bcbcbc"
         android:textSize="10sp"
         app:layout_constraintLeft_toRightOf="@+id/view_icon"
@@ -107,8 +114,8 @@
 
     <ImageButton
         android:id="@+id/move_to_contest"
-        android:layout_width="8dp"
-        android:layout_height="8dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:scaleType="fitCenter"
         android:layout_marginEnd="25dp"
         android:background="@android:color/transparent"
@@ -137,15 +144,39 @@
 
 
     <TextView
-        android:id="@+id/recruit_count"
+        android:id="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginVertical="16dp"
         android:lineSpacingExtra="8sp"
-        android:text="이 프로젝트에 2명이 지원했습니다."
+        android:text="이 프로젝트에 "
         android:textAppearance="@style/recruit_count"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
+
+    <TextView
+        android:id="@+id/recruit_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="16dp"
+        android:lineSpacingExtra="8sp"
+        android:textColor="@color/main_blue"
+        android:textStyle="bold"
+        android:text="0"
+        android:textAppearance="@style/recruit_count"
+        app:layout_constraintStart_toEndOf="@id/text1"
+        app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="16dp"
+        android:lineSpacingExtra="8sp"
+        android:text="명이 지원했습니다."
+        android:textAppearance="@style/recruit_count"
+        app:layout_constraintStart_toEndOf="@id/recruit_count"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
 
 
@@ -170,6 +201,7 @@
 
 
     <android.widget.Button
+        android:id="@+id/complete_button"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="@color/main_blue"
@@ -184,3 +216,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

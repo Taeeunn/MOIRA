@@ -115,16 +115,16 @@ class ScrapRecruitPostFragment : Fragment() {
                     }
                     "조회순" -> {
                         Log.v("itemselect", "조회순")
-                        if(sort_filter != "hitCount") {
-                            sort_filter = "hitCount"
+                        if(sort_filter != "hit") {
+                            sort_filter = "hit"
                             getScrapRecruitPost()
                         }
                     }
 
                     "좋아요순" -> {
                         Log.v("itemselect", "좋아요순")
-                        if(sort_filter != "likeCount") {
-                            sort_filter = "likeCount"
+                        if(sort_filter != "like") {
+                            sort_filter = "like"
                             getScrapRecruitPost()
                         }
                     }
@@ -146,7 +146,7 @@ class ScrapRecruitPostFragment : Fragment() {
     private fun getScrapRecruitPost() {
         Runnable {
 
-            myAPI.getScrapRecruitPostList(token, "develop", "date").enqueue(object : Callback<ScrapRecruitPost> {
+            myAPI.getScrapRecruitPostList(token, position_filter, sort_filter).enqueue(object : Callback<ScrapRecruitPost> {
                 override fun onFailure(call: Call<ScrapRecruitPost>, t: Throwable) {
                     t.printStackTrace()
                 }

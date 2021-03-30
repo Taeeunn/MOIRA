@@ -1,15 +1,18 @@
 package com.high5ive.android.moira.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.high5ive.android.moira.data.Post
 import com.high5ive.android.moira.R
+import com.high5ive.android.moira.data.retrofit.WrittenPostItem
 import com.high5ive.android.moira.databinding.PostItemBinding
 import kotlinx.android.synthetic.main.post_item.view.*
 
-class PostAdapter(val items: List<Post>,
-                  private val clickListener: (post: Post, type: Int) -> Unit) :
+class PostAdapter(val items: List<WrittenPostItem>,
+                  private val clickListener: (post: WrittenPostItem, type: Int) -> Unit) :
     RecyclerView.Adapter<PostAdapter.PostViewHolder>(){
     class PostViewHolder(val binding: PostItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -38,6 +41,16 @@ class PostAdapter(val items: List<Post>,
 
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
-        holder.binding.post = items[position]
+        holder.binding.writtenpost = items[position]
+
+        if (items[position].applicantCount>=9){
+            holder.binding.applicantCount.text = "9+"
+        }
+
+        Glide.with(holder.binding.root.context)
+            .load(items[position].projectImageUrl)
+            .override(20, 20)
+            .error(R.drawable.ic_baseline_public_24) // ex) error(R.drawable.error)
+            .into(holder.binding.recruitImage)
     }
 }

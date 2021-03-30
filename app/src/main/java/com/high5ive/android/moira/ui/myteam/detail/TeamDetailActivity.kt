@@ -63,17 +63,6 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
 
         //binding = DataBindingUtil.setContentView(this, R.layout.leader_item)
 
-        val members = arrayListOf<Member>()
-        members.add(Member("팀장 닉네임", "안드로이드 개발자", "팀장"))
-        for (i in 0..5) {
-            members.add(
-                Member(
-                    "사용자 닉네임 $i",
-                    "개발자 $i",
-                    "팀원"
-                )
-            )
-        }
 
 
     }

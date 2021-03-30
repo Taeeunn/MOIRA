@@ -25,7 +25,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MOIRA"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.teamfinding.newpost.AddTagActivity"></activity>
+        <activity android:name=".ui.mypage.MyReviewActivity"></activity>
+        <activity android:name=".ui.teamfinding.newpost.AddTagActivity" />
 
         <service android:name=".noti.MyFirebaseMessagingService">
             <intent-filter>
@@ -52,7 +53,7 @@
         <activity android:name=".ui.teamfinding.recruit.CommentActivity" />
         <activity android:name=".ui.mypage.scrap.ScrapListActivity" />
         <activity android:name=".ui.message.MessageBoxActivity" />
-        <activity android:name=".ui.notify.NotifyActivity" />
+        <activity android:name=".ui.home.AlarmActivity" />
         <activity android:name=".ui.mypage.edit.addinfo.certificate.AddCertificateActivity" />
         <activity android:name=".ui.mypage.edit.addinfo.award.AddAwardHistoryActivity" />
         <activity android:name=".ui.mypage.edit.addinfo.tag.AddTagActivity" />

@@ -65,7 +65,6 @@ class RecruitPostDetailActivity : AppCompatActivity(), View.OnClickListener{
         ab.setDisplayShowTitleEnabled(false)
         ab.setDisplayHomeAsUpEnabled(true)
 
-        index = intent.getIntExtra("index", 1)
 
         val preferences: SharedPreferences = this.getSharedPreferences("moira", Context.MODE_PRIVATE)
         token = preferences.getString("jwt_token", null).toString()

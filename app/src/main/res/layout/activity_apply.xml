@@ -12,7 +12,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.teamfinding.apply.ApplyListActivity">
+    tools:context=".ui.teamfinding.apply.ApplyActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
@@ -58,8 +58,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/circle"
-                app:tint="@color/light_gray" />
+                app:srcCompat="@drawable/circle" />
 
             <View
                 android:id="@+id/horizontal_line"
@@ -198,46 +197,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintLeft_toRightOf="@+id/barrier"
-                app:layout_constraintTop_toBottomOf="@+id/horizontal_line4">
-
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/interest_tag1"
-                    style="@style/MaterialChipsAction"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="관련태그" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/interest_tag2"
-                    style="@style/MaterialChipsAction"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="관련태그" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/interest_tag3"
-                    style="@style/MaterialChipsAction"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="관련태그" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/interest_tag4"
-                    style="@style/MaterialChipsAction"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="관련태그" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/interest_tag5"
-                    style="@style/MaterialChipsAction"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="관련태그" />
-
-
-            </com.google.android.material.chip.ChipGroup>
+                app:layout_constraintTop_toBottomOf="@+id/horizontal_line4"/>
 
 
             <androidx.constraintlayout.widget.Barrier

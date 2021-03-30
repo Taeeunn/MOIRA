@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.high5ive.android.moira.R
@@ -19,9 +20,11 @@ import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.teamfinding.recruit.RecruitPostDetailActivity
 import com.high5ive.android.moira.ui.teamfinding.user.UserProfileDetailActivity
-import kotlinx.android.synthetic.main.fragment_scrap_recruit_post.*
-import kotlinx.android.synthetic.main.fragment_scrap_recruit_post.recycler_view
+import kotlinx.android.synthetic.main.fragment_scrap_user_pool.*
 import kotlinx.android.synthetic.main.recruit_post_fragment.*
+import kotlinx.android.synthetic.main.recruit_post_fragment.recycler_view
+import kotlinx.android.synthetic.main.recruit_post_fragment.spinner1
+import kotlinx.android.synthetic.main.recruit_post_fragment.spinner2
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,6 +36,9 @@ class ScrapUserPoolFragment : Fragment() {
     lateinit var retrofit: Retrofit
     lateinit var myAPI: RetrofitService
     lateinit var token: String
+
+    var position_filter: String = "개발자"
+    var sort_filter: String = "date"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +53,84 @@ class ScrapUserPoolFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         getScrapUserPool()
+
+        spinner1.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+                when (spinner1.getItemAtPosition(position)) {
+                    "개발" -> {
+                        Log.v("itemselect", "개발")
+                        if(position_filter != "개발자") {
+                            position_filter = "개발자"
+                            getScrapUserPool()
+                        }
+
+                    }
+                    "기획" -> {
+                        Log.v("itemselect", "기획")
+                        if(position_filter != "기획자") {
+                            position_filter = "기획자"
+                            getScrapUserPool()
+                        }
+                    }
+
+                    "디자인" -> {
+                        Log.v("itemselect", "디자인")
+                        if(position_filter != "디자이너") {
+                            position_filter = "디자이너"
+                            getScrapUserPool()
+                        }
+                    }
+                    else -> {
+
+                    }
+                }
+            }
+
+        }
+
+
+
+        spinner2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+                when (spinner2.getItemAtPosition(position)) {
+                    "최신순" -> {
+                        Log.v("itemselect", "최신순")
+                        if(sort_filter != "date") {
+                            sort_filter = "date"
+                            getScrapUserPool()
+                        }
+
+                    }
+                    "조회순" -> {
+                        Log.v("itemselect", "조회순")
+                        if(sort_filter != "hit") {
+                            sort_filter = "hit"
+                            getScrapUserPool()
+                        }
+                    }
+
+                    "좋아요순" -> {
+                        Log.v("itemselect", "좋아요순")
+                        if(sort_filter != "like") {
+                            sort_filter = "like"
+                            getScrapUserPool()
+                        }
+                    }
+                    else -> {
+
+                    }
+                }
+            }
+
+        }
     }
 
     override fun onCreateView(
@@ -66,7 +150,7 @@ class ScrapUserPoolFragment : Fragment() {
     private fun getScrapUserPool() {
         Runnable {
 
-            myAPI.getScrapUserPoolList(token, "develop", "date").enqueue(object :
+            myAPI.getScrapUserPoolList(token, position_filter, sort_filter).enqueue(object :
                 Callback<ScrapUserPool> {
                 override fun onFailure(call: Call<ScrapUserPool>, t: Throwable) {
                     t.printStackTrace()

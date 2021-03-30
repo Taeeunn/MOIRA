@@ -3,6 +3,7 @@ package com.high5ive.android.moira.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.high5ive.android.moira.data.Apply
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.retrofit.ApplyPostItem
@@ -38,5 +39,11 @@ class ApplyAdapter(val items: List<ApplyPostItem>,
 
     override fun onBindViewHolder(holder: ApplyViewHolder, position: Int) {
         holder.binding.apply = items[position]
+
+        Glide.with(holder.binding.root.context)
+            .load(items[position].projectImageUrl)
+            .override(20, 20)
+            .error(R.drawable.ic_baseline_person_24) // ex) error(R.drawable.error)
+            .into(holder.binding.recruitImage)
     }
 }

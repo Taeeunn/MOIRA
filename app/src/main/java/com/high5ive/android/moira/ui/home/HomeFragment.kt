@@ -12,11 +12,9 @@ import android.view.ViewGroup
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.retrofit.HomeResponse
 import com.high5ive.android.moira.data.retrofit.HomeResponseData
-import com.high5ive.android.moira.data.retrofit.UserTag
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.message.MessageBoxActivity
-import com.high5ive.android.moira.ui.notify.NotifyActivity
 import kotlinx.android.synthetic.main.home_fragment.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -47,7 +45,7 @@ class HomeFragment : Fragment() {
 
 
         noti_frame.setOnClickListener {
-            startActivity(Intent(context, NotifyActivity::class.java))
+            startActivity(Intent(context, AlarmActivity::class.java))
         }
 
         chat_frame.setOnClickListener {

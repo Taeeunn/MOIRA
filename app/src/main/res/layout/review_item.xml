@@ -7,7 +7,7 @@
 
         <variable
             name="review"
-            type="com.high5ive.android.moira.data.Review" />
+            type="com.high5ive.android.moira.data.retrofit.ApplyUserReviewAllItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,11 +21,9 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginStart="16dp"
-
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/circle"
-            app:tint="#d9d9d9" />
+            app:srcCompat="@drawable/circle" />
 
 
         <TextView
@@ -33,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="9dp"
-            android:text="@{review.user_nickname}"
+            android:text="@{review.nickname}"
             android:textAppearance="@style/member_name"
             app:layout_constraintLeft_toRightOf="@+id/user_image"
             app:layout_constraintTop_toTopOf="parent" />
@@ -45,7 +43,7 @@
             android:layout_marginEnd="16dp"
             android:letterSpacing="-0.03"
             android:lineSpacingExtra="5sp"
-            android:text="2021.01.12"
+            android:text="@{review.writtenDate}"
             android:textColor="#bcbcbc"
             android:textSize="10sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -58,9 +56,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="7dp"
             android:layout_marginTop="3dp"
-            android:isIndicator="false"
+            android:isIndicator="true"
+            android:theme="@style/RatingBar"
             android:numStars="5"
-            android:rating="0"
+            android:rating="@{review.mannerPoint}"
             android:stepSize="0.5"
             app:layout_constraintLeft_toRightOf="@+id/user_image"
             app:layout_constraintTop_toBottomOf="@+id/user_nickname" />
@@ -73,7 +72,7 @@
             android:layout_marginEnd="9dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="3dp"
-            android:text="@{Double.toString(review.rating)}"
+            android:text="@{@string/double_to_str(review.mannerPoint)}"
             android:textColor="#000000"
             android:textSize="12sp"
             app:layout_constraintLeft_toRightOf="@+id/ratingBar"
@@ -91,7 +90,7 @@
             android:id="@+id/reviewComment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{review.content}"
+            android:text="@{review.reviewContent}"
             android:layout_marginTop="13dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="85dp"

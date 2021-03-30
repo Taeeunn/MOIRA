@@ -37,6 +37,7 @@
     <string name="add">add</string>
     <string name="position_num">%d명</string>
     <string name="to_str">%d</string>
+    <string name="double_to_str">%.1f</string>
     <string name="badge_count">%d개</string>
     <string name="project_duration">프로젝트 기간</string>
     <string name="ask_apply_cancel">지원을 취소할까요?</string>

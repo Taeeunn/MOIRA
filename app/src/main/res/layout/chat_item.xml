@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="chat"
+            type="com.high5ive.android.moira.data.retrofit.ChatItem" />
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -30,7 +38,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginEnd="40dp"
             android:lineSpacingExtra="6sp"
-            android:text="@string/user_nickname"
+            android:text="@{chat.opponentNickname}"
             android:textColor="#000000"
             android:textSize="14sp"
             android:textStyle="bold"
@@ -44,7 +52,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="9dp"
             android:lineSpacingExtra="6sp"
-            android:text="채팅 내용입니다. 채팅 내용입니다."
+            android:text="@{chat.lastMessageContent}"
             android:textColor="#000000"
             android:textSize="12sp"
             android:textStyle="normal"
@@ -56,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:lineSpacingExtra="1sp"
-            android:text="2021.01.12"
+            android:text="@{chat.writtenDate}"
             android:textColor="#bcbcbc"
             android:textSize="10sp"
             android:textStyle="normal"
@@ -72,8 +80,9 @@
             android:background="@drawable/small_circle"
             android:letterSpacing="-0.03"
             android:lineSpacingExtra="1sp"
-            android:text="6"
-            android:textColor="#bcbcbc"
+            android:backgroundTint="@color/main_blue"
+            android:text="@{@string/to_str(chat.unReadCount)}"
+            android:textColor="@color/white"
             android:textSize="12sp"
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -91,3 +100,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -158,7 +158,7 @@ interface RetrofitService {
     fun editProjectStatus(
         @Header("X-AUTH-TOKEN") token: String,
         @Path("projectId") projectId : Int,
-        @Query("projectModifyStatusRequestDTO") projectStatus : ProjectModifyStatusRequestDTO
+        @Body projectModifyStatusRequestDTO : ProjectModifyStatusRequestDTO
     ): Call<ResponseData>
 
 
@@ -328,11 +328,11 @@ interface RetrofitService {
     ): Call<ApplyUserReview>
 
     // 5-4. 유저의 "모든 리뷰 내용" 조회
-    @GET("review/detail/{targetId}")
+    @GET("review/detail/{userId}")
     fun getApplyUserReviewAll(
         @Header("X-AUTH-TOKEN") token: String,
-        @Query("sort") sort: String,
-        @Path("targetId") targetId: Int
+        @Path("userId") userId: Int,
+        @Query("sort") sort: String
     ): Call<ApplyUserReviewAll>
 
 
@@ -452,6 +452,31 @@ interface RetrofitService {
     fun getUserTagList(
         @Header("X-AUTH-TOKEN") token: String
     ): Call<UserTag>
+
+
+    // 8. 채팅
+    // 8-1. 채팅 방 목록 불러오기
+    @GET("chatroom")
+    fun getChatRoom(
+        @Header("X-AUTH-TOKEN") token: String
+    ): Call<Chat>
+
+    // 8-2. 유저와 채팅 내용 불러오기
+    @GET("chatroom/{chatRoomId}")
+    fun getChatDetail(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Path("chatRoomId") chatRoomId: Int,
+        @Query("page") page: Int
+    ): Call<ChatDetail>
+
+    // 8-3. 유저에게 메시지 보내기
+    @POST("message")
+    fun sendMessage(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Body chatMessageSendRequestDto: ChatMessage
+    ): Call<ChatMessageResponse>
+
+
 
 
     // 9. 신고 (댓글, 게시글, 채팅 신고하기)

@@ -7,25 +7,26 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.high5ive.android.moira.ui.common.MemberReviewFragment
 import com.high5ive.android.moira.ui.common.MemberInfoFragment
 
-class MemberViewPagerAdapter(fa: FragmentActivity, val index: Int): FragmentStateAdapter(fa){
+class MemberViewPagerAdapter(fa: FragmentActivity, val applyId: Int, val userId: Int): FragmentStateAdapter(fa){
     override fun createFragment(position: Int): Fragment {
-        val bundle = bundleOf("index" to index)
+        val bundle1 = bundleOf("index" to applyId)
+        val bundle2 = bundleOf("index" to userId)
 
         return when(position){
 
             0 -> {
                 val memberInfoFragment = MemberInfoFragment()
-                memberInfoFragment.arguments = bundle
+                memberInfoFragment.arguments = bundle1
                 return memberInfoFragment
             }
             1 -> {
                 val memberEvaluateFragment = MemberReviewFragment()
-                memberEvaluateFragment.arguments = bundle
+                memberEvaluateFragment.arguments = bundle2
                 return memberEvaluateFragment
             }
             else -> {
                 val memberInfoFragment = MemberInfoFragment()
-                memberInfoFragment.arguments = bundle
+                memberInfoFragment.arguments = bundle1
                 return memberInfoFragment
             }
         }

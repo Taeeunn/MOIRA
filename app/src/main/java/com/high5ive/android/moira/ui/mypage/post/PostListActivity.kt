@@ -49,25 +49,7 @@ class PostListActivity : AppCompatActivity() {
         initRetrofit()
         getWrittenPostList()
 
-        val postList = arrayListOf<Post>()
-        for (i in 0..20){
-            postList.add(Post("모집글 제목 모집글 제목 모집글 제목 모집글 제목 $i"))
-        }
 
-        recycler_view.apply{
-            layoutManager = LinearLayoutManager(this@PostListActivity)
-            adapter =
-                PostAdapter(postList) { post, type ->
-                    Toast.makeText(this@PostListActivity, "$post", Toast.LENGTH_SHORT).show()
-                    if (type==0) {
-                        startActivity(Intent(this@PostListActivity, RecruitPostDetailActivity::class.java))
-                    }
-                    else if(type==1){
-                        startActivity(Intent(this@PostListActivity, ApplicantListActivity::class.java))
-                    }
-
-                }
-        }
     }
 
     private fun initRetrofit() {
@@ -109,6 +91,31 @@ class PostListActivity : AppCompatActivity() {
 
                         val list: List<WrittenPostItem> = response.body()?.list ?: emptyList()
                         Log.v("data", list.toString())
+
+                        recycler_view.apply{
+                            layoutManager = LinearLayoutManager(this@PostListActivity)
+                            adapter =
+                                PostAdapter(list) { post, type ->
+                                    if (type==0) {
+                                        val intent =Intent(this@PostListActivity, RecruitPostDetailActivity::class.java)
+                                        intent.putExtra("index", post.projectId)
+                                        startActivity(intent)
+                                    }
+                                    else if(type==1){
+
+                                        val intent =Intent(this@PostListActivity, ApplicantListActivity::class.java)
+                                        intent.putExtra("index", post.projectId)
+                                        intent.putExtra("time", post.writtenTime)
+                                        intent.putExtra("imageurl", post.projectImageUrl)
+                                        intent.putExtra("hit", post.hitCount)
+                                        intent.putExtra("title", post.projectTitle)
+
+                                        startActivity(intent)
+
+                                    }
+
+                                }
+                        }
 
                     }
 

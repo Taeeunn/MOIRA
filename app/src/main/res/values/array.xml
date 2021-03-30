@@ -19,6 +19,12 @@
         <item>가나다순</item>
     </string-array>
 
+
+    <string-array name="sort_array3">
+        <item>최신순</item>
+        <item>평점순</item>
+    </string-array>
+
     <string-array name="position_array">
         <item>개발</item>
         <item>기획</item>
@@ -30,6 +36,13 @@
         <item>상업적인 게시글</item>
         <item>허위 게시글</item>
         <item>욕설 및 비난 게시글</item>
+    </string-array>
+
+    <string-array name="chat_report_reason">
+        <item>불건전한 내용</item>
+        <item>상업적인 내용</item>
+        <item>허위 내용</item>
+        <item>욕설 및 </item>
     </string-array>
 
 
