@@ -380,6 +380,13 @@ interface RetrofitService {
         @Header("X-AUTH-TOKEN") token: String
     ): Call<MyProfile>
 
+    // 6-2-2.마이페이지 - 내 정보 수정하기 - 프로필 - 관심 태그 수정
+    @PUT("mypage/edit/hashtag")
+    fun editTag(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Body myPageEditHashtagRequestDtoo: HashtagEdit
+    ): Call<HashtagEditResponse>
+
     // 6-2-3. 마이페이지 - 내 정보 수정하기 - 프로필 - 이미지 수정
     @Multipart
     @PUT("mypage/edit/image")
@@ -388,12 +395,35 @@ interface RetrofitService {
         @Part image : MultipartBody.Part
     ): Call<ProfileImageEditResponse>
 
-    // 6-2-2. 마이페이지 - 내 정보 수정하기 - 프로필 - 닉네임 수정
+    // 6-2-4. 마이페이지 - 내 정보 수정하기 - 프로필 - 한 줄 소개 수정
+    @PUT("mypage/edit/introduction")
+    fun editIntroduction(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Body myPageEditIntroductionRequestDto: IntroEdit
+    ): Call<IntroEditResponse>
+
+    // 6-2-5. 마이페이지 - 내 정보 수정하기 - 프로필 - 닉네임 수정
     @PUT("mypage/edit/nickname")
     fun editNickname(
         @Header("X-AUTH-TOKEN") token: String,
         @Body mypageEditNicknameRequestDto: NicknameEdit
     ): Call<NicknameEditResponse>
+
+    // 6-2-6. 마이페이지 - 내 정보 수정하기 - 프로필 - 포지션 목록
+    @GET("mypage/edit/position")
+    fun getPosition(
+        @Header("X-AUTH-TOKEN") token: String
+    ): Call<PositionResponse>
+
+    // 6-2-7. 마이페이지 - 내 정보 수정하기 - 프로필 - 포지션 수정
+    @PUT("mypage/edit/position")
+    fun editPosition(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Body myPageEditPositionRequestDto: PositionEdit
+    ): Call<PositionEditResponse>
+
+
+
 
 
     // 6-3. 마이페이지 - 프로필 수정 - 선택정보

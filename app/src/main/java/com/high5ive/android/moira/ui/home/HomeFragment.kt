@@ -48,10 +48,6 @@ class HomeFragment : Fragment() {
             startActivity(Intent(context, AlarmActivity::class.java))
         }
 
-        chat_frame.setOnClickListener {
-            startActivity(Intent(context, MessageBoxActivity::class.java))
-        }
-
         card1.setOnClickListener {
             startActivity(Intent(context, ProjectStartActivity::class.java))
         }
@@ -102,11 +98,6 @@ class HomeFragment : Fragment() {
                         new_noti.visibility = View.GONE
                     }
 
-                    if(data.hasUnreadMessage){
-                        new_chat.visibility = View.VISIBLE
-                    } else{
-                        new_chat.visibility = View.GONE
-                    }
                 }
 
             }

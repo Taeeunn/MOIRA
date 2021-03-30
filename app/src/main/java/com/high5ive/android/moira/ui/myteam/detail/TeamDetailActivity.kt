@@ -18,6 +18,7 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.snackbar.Snackbar
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.MemberAdapter
+import com.high5ive.android.moira.adapter.ProjectTeammateAdapter
 import com.high5ive.android.moira.data.Member
 import com.high5ive.android.moira.data.retrofit.MyProjectTeammateResponseDTO
 import com.high5ive.android.moira.data.retrofit.MyTeamDetail
@@ -163,7 +164,7 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
                         recycler_view.apply {
                             layoutManager = LinearLayoutManager(this@TeamDetailActivity)
                             adapter =
-                                MemberAdapter(list) { member ->
+                                ProjectTeammateAdapter(list) { member ->
                                     Toast.makeText(this@TeamDetailActivity, "$member", Toast.LENGTH_SHORT).show()
                                     startActivity(Intent(this@TeamDetailActivity, UserProfileDetailActivity::class.java))
                                 }

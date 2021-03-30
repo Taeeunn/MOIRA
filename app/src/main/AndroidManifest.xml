@@ -25,7 +25,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MOIRA"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.mypage.edit.editinfo.EditNicknameActivity"></activity>
+        <activity android:name=".ui.mypage.edit.editinfo.EditTagActivity"></activity>
+        <activity android:name=".ui.mypage.edit.editinfo.EditIntroActivity" />
+        <activity android:name=".ui.mypage.edit.editinfo.EditPositionActivity" />
+        <activity android:name=".ui.mypage.edit.editinfo.EditNicknameActivity" />
         <activity android:name=".ui.mypage.apply.ApplyInfoActivity" />
         <activity android:name=".ui.mypage.MyReviewActivity" />
         <activity android:name=".ui.teamfinding.newpost.AddTagActivity" />

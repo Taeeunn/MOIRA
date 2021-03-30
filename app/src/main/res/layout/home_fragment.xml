@@ -30,46 +30,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <FrameLayout
-                android:id="@+id/chat_frame"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-
-                <ImageView
-                    android:id="@+id/chat_button"
-                    android:layout_width="27dp"
-                    android:layout_height="27dp"
-                    android:background="@android:color/transparent"
-                    android:paddingVertical="3dp"
-                    android:text="@string/register"
-                    app:srcCompat="@drawable/ic_chat"
-                    app:tint="@color/black" />
-
-
-                <ImageView
-                    android:id="@+id/new_chat"
-                    android:layout_width="5dp"
-                    android:layout_height="5dp"
-                    android:layout_gravity="end|top"
-                    android:src="@drawable/circle"
-                    app:tint="@color/main_blue"
-                    android:visibility="gone"/>
-
-            </FrameLayout>
 
 
             <FrameLayout
                 android:id="@+id/noti_frame"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="7dp"
+                android:layout_marginEnd="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/chat_frame"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
 

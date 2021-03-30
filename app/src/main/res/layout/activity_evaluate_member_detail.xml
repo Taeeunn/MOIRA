@@ -66,8 +66,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/circle"
-                app:tint="@color/light_gray" />
+                app:srcCompat="@drawable/circle" />
 
             <TextView
                 android:id="@+id/member_nickname"
@@ -106,29 +105,14 @@
                 android:id="@+id/ratingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="54dp"
                 android:layout_marginTop="25dp"
                 android:isIndicator="false"
                 android:numStars="5"
                 android:rating="0"
                 android:stepSize="0.5"
-                app:layout_constraintRight_toLeftOf="@+id/rating"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/give_star_rating" />
-
-            <TextView
-                android:id="@+id/rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="53dp"
-                android:lineSpacingExtra="5sp"
-                android:text="3.0"
-                android:textColor="#aaaaaa"
-                android:textSize="35sp"
-                android:textStyle="bold"
+                android:theme="@style/RatingBar"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintLeft_toRightOf="@+id/ratingBar"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/give_star_rating" />
 
             <View

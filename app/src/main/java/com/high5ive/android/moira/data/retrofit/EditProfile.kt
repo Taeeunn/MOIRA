@@ -85,6 +85,10 @@ data class PositionResponseItem(
     val positionName: String
 )
 
+data class PositionEdit(
+    val positionId: Int
+)
+
 data class PositionEditResponse(
     val code: Int,
     val data: PositionEditResponseData,

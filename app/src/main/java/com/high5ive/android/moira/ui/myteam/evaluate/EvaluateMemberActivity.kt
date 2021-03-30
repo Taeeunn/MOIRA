@@ -56,32 +56,9 @@ class EvaluateMemberActivity : AppCompatActivity() {
         initRetrofit()
 
 
-        val members = arrayListOf<Member>()
 
-        members.add(Member("팀장 닉네임", "안드로이드개발자", "팀장"))
 
-        for (i in 0..5){
-            members.add(
-                Member(
-                    "사용자 닉네임 $i",
-                    "개발자 $i",
-                    "팀원"
-                )
-            )
-        }
 
-//        recycler_view.apply{
-//            layoutManager = LinearLayoutManager(this@EvaluateMemberActivity)
-//            adapter =
-//                MemberAdapter(members) { index ->
-//                    Toast.makeText(this@EvaluateMemberActivity, "$index", Toast.LENGTH_SHORT)
-//                        .show()
-//
-//                    val intent = Intent(context, EvaluateMemberDetailActivity::class.java)
-//                    intent.putExtra("index", index)
-//                    startActivity(intent)
-//                }
-//        }
     }
 
     override fun onResume() {
@@ -129,6 +106,21 @@ class EvaluateMemberActivity : AppCompatActivity() {
 
                         val list: List<TeamMemberItem> = response.body()?.list ?: emptyList()
                         Log.v("data", list.toString())
+
+                        recycler_view.apply{
+                            layoutManager = LinearLayoutManager(this@EvaluateMemberActivity)
+                            adapter =
+                                MemberAdapter(list) { member ->
+                                    Toast.makeText(this@EvaluateMemberActivity, "$index", Toast.LENGTH_SHORT)
+                                        .show()
+
+                                    val intent = Intent(context, EvaluateMemberDetailActivity::class.java)
+                                    intent.putExtra("index", member.userProjectId)
+                                    intent.putExtra("nickname", member.nickname)
+                                    intent.putExtra("image", member.userProfileImage)
+                                    startActivity(intent)
+                                }
+                        }
 
                     }
 

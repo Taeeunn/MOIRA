@@ -3,16 +3,20 @@ package com.high5ive.android.moira.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.marginLeft
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.high5ive.android.moira.data.Member
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.retrofit.MyProjectTeammateResponseDTO
+import com.high5ive.android.moira.data.retrofit.TeamMemberItem
 import com.high5ive.android.moira.databinding.MemberItemBinding
 
-class MemberAdapter(val items: List<MyProjectTeammateResponseDTO>,
-                    private val clickListener: (index: Int) -> Unit) :
+/**
+ * @author Taeeun Kim
+ * @email xodms8713@gmail.com
+ * @created 2021-03-30
+ */
+class MemberAdapter(val items: List<TeamMemberItem>,
+                    private val clickListener: (member: TeamMemberItem) -> Unit) :
     RecyclerView.Adapter<MemberAdapter.MemberViewHolder>(){
     class MemberViewHolder(val binding: MemberItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -25,7 +29,7 @@ class MemberAdapter(val items: List<MyProjectTeammateResponseDTO>,
             )
 
         view.setOnClickListener {
-            clickListener.invoke(viewHolder.adapterPosition+1)
+            clickListener.invoke(items[viewHolder.adapterPosition])
         }
         return viewHolder
     }
@@ -36,12 +40,12 @@ class MemberAdapter(val items: List<MyProjectTeammateResponseDTO>,
     override fun onBindViewHolder(holder: MemberViewHolder, position: Int) {
         holder.binding.member = items[position]
 
-        if (items[position].leader){
+        if (items[position].userProjectRole=="LEADER"){
             holder.binding.leaderTag.visibility = View.VISIBLE
         }
 
         Glide.with(holder.binding.root.context)
-            .load(items[position].imageUrl)
+            .load(items[position].userProfileImage)
             .override(20, 20)
             .error(R.drawable.ic_baseline_person_24) // ex) error(R.drawable.error)
             .into(holder.binding.contestImage)

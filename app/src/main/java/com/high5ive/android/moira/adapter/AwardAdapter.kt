@@ -30,7 +30,7 @@ class AwardAdapter(val items: List<Award>,
 
     override fun getItemCount() = items.size
     override fun onBindViewHolder(holder: AwardViewHolder, position: Int) {
-        holder.binding.award = items[position]
+//        holder.binding.award = items[position]
     }
 
 }

@@ -9,6 +9,8 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.Toolbar
+import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.network.RetrofitClient
@@ -19,12 +21,15 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 
-class EvaluateMemberDetailActivity : AppCompatActivity(), View.OnClickListener{
+class EvaluateMemberDetailActivity : AppCompatActivity(), View.OnClickListener {
 
     lateinit var retrofit: Retrofit
     lateinit var myAPI: RetrofitService
     lateinit var token: String
     var index: Int = 1
+    var image: String = ""
+    var nickname: String = ""
+    var complimentMarkIdList = arrayListOf<Int>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,16 +42,30 @@ class EvaluateMemberDetailActivity : AppCompatActivity(), View.OnClickListener{
         ab.setDisplayShowTitleEnabled(false)
         ab.setDisplayHomeAsUpEnabled(true)
 
-        val preferences: SharedPreferences = this.getSharedPreferences("moira", Context.MODE_PRIVATE)
+        val preferences: SharedPreferences =
+            this.getSharedPreferences("moira", Context.MODE_PRIVATE)
         token = preferences.getString("jwt_token", null).toString()
 
         index = intent.getIntExtra("index", 1)
+        nickname = intent.getStringExtra("nickname") ?: ""
+        image = intent.getStringExtra("image") ?: ""
 
         initRetrofit()
+
+        Glide.with(this)
+            .load(image)
+            .override(20, 20)
+            .error(R.drawable.ic_baseline_person_24) // ex) error(R.drawable.error)
+            .into(member_image)
+
+        member_nickname.text = nickname
 
 
 
         complete_button.setOnClickListener(this)
+        badge_image1.setOnClickListener(this)
+        badge_image2.setOnClickListener(this)
+        badge_image3.setOnClickListener(this)
 
     }
 
@@ -62,17 +81,42 @@ class EvaluateMemberDetailActivity : AppCompatActivity(), View.OnClickListener{
                 finish()
                 return true
             }
+
         }
         return super.onOptionsItemSelected(item)
     }
 
     override fun onClick(v: View?) {
-        when(v?.id){
+        when (v?.id) {
             R.id.complete_button -> {
 
-                completeTeamMemberReview(index)
+                completeTeamMemberReview(v, index)
 
             }
+            R.id.badge_image1 -> {
+                if (badge_image1.isChecked) {
+                    complimentMarkIdList.add(1)
+                }else{
+                    complimentMarkIdList.remove(1)
+                }
+            }
+
+            R.id.badge_image2 -> {
+                if (badge_image2.isChecked) {
+                    complimentMarkIdList.add(2)
+                }else{
+                    complimentMarkIdList.remove(2)
+                }
+            }
+
+            R.id.badge_image3 -> {
+                if (badge_image3.isChecked) {
+                    complimentMarkIdList.add(3)
+                }else{
+                    complimentMarkIdList.remove(3)
+                }
+            }
+
         }
     }
 
@@ -83,21 +127,27 @@ class EvaluateMemberDetailActivity : AppCompatActivity(), View.OnClickListener{
     }
 
 
-    private fun completeTeamMemberReview(index: Int){
+    private fun completeTeamMemberReview(v: View, index: Int) {
         Runnable {
+            val mannerPoint = ratingBar.rating.toInt()
+            val reviewContent = review_et.text.toString()
 
-            val complimentMarkIdList: List<Int> = listOf(1, 2)
-            val mannerPoint: Int = 3
-            val reviewContent: String = "good"
+            var body_data =
+                UserReviewAddRequestDto(complimentMarkIdList, mannerPoint, reviewContent, index)
 
-            val body_data = UserReviewAddRequestDto(complimentMarkIdList, mannerPoint, reviewContent, index)
+            Log.v("hhh", complimentMarkIdList.toString())
+
+
             myAPI.reviewTeamMember(token, body_data).enqueue(object :
                 Callback<TeamMemberReview> {
                 override fun onFailure(call: Call<TeamMemberReview>, t: Throwable) {
                     t.printStackTrace()
                 }
 
-                override fun onResponse(call: Call<TeamMemberReview>, response: Response<TeamMemberReview>) {
+                override fun onResponse(
+                    call: Call<TeamMemberReview>,
+                    response: Response<TeamMemberReview>
+                ) {
                     val code: Int = response.body()?.code ?: 0
 
                     val msg: String = response.body()?.msg ?: "no msg"
@@ -107,12 +157,13 @@ class EvaluateMemberDetailActivity : AppCompatActivity(), View.OnClickListener{
                     Log.v("success", succeed.toString())
                     Log.v("msg", msg)
 
-                    if(succeed){
+                    if (succeed) {
 
                         val data: TeamMemberReviewData = response.body()?.data!!
                         Log.v("data", data.toString())
 
-
+                        val message = "팀원 평가를 완료했습니다!"
+                        Snackbar.make(v, message, Snackbar.LENGTH_SHORT).show()
                         finish()
 
                     }
@@ -141,7 +192,7 @@ class EvaluateMemberDetailActivity : AppCompatActivity(), View.OnClickListener{
                     Log.v("success", succeed.toString())
                     Log.v("msg", msg)
 
-                    if(succeed){
+                    if (succeed) {
 
                         val list: List<ComplimentItem> = response.body()?.list ?: emptyList()
                         Log.v("data", list.toString())

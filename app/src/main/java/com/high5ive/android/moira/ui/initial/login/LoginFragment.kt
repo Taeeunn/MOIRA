@@ -242,7 +242,6 @@ class LoginFragment : Fragment(), View.OnClickListener {
                         requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
                     preferences.edit().putString("jwt_token", jwtToken).apply()
 
-                    navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
                     if (needSignUp) {
                         navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
                     } else {

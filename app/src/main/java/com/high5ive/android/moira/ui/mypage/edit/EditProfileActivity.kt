@@ -32,12 +32,14 @@ import com.high5ive.android.moira.ui.mypage.edit.addinfo.certificate.AddCertific
 import com.high5ive.android.moira.ui.mypage.edit.addinfo.education.AddEducationActivity
 import com.high5ive.android.moira.ui.mypage.edit.addinfo.link.AddLinkActivity
 import com.high5ive.android.moira.ui.mypage.edit.addinfo.tag.AddTagActivity
+import com.high5ive.android.moira.ui.mypage.edit.editinfo.EditIntroActivity
 import com.high5ive.android.moira.ui.mypage.edit.editinfo.EditNicknameActivity
+import com.high5ive.android.moira.ui.mypage.edit.editinfo.EditPositionActivity
+import com.high5ive.android.moira.ui.mypage.edit.editinfo.EditTagActivity
 import gun0912.tedimagepicker.builder.TedImagePicker
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.activity_new_post.*
 import kotlinx.android.synthetic.main.edit_info.*
-import kotlinx.android.synthetic.main.edit_info.interest_tag_group
 import kotlinx.android.synthetic.main.edit_info.view.*
 import kotlinx.android.synthetic.main.make_recruit_info.*
 import okhttp3.MediaType
@@ -92,9 +94,11 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
         add_certificate_btn.setOnClickListener(this)
         add_award_btn.setOnClickListener(this)
         add_link_btn.setOnClickListener(this)
-        add_tag_btn.setOnClickListener(this)
         set_image_btn.setOnClickListener(this)
         nickname_btn.setOnClickListener(this)
+        position_btn.setOnClickListener(this)
+        intro_btn.setOnClickListener(this)
+        tag_btn.setOnClickListener(this)
     }
 
 
@@ -108,15 +112,6 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
         return super.onOptionsItemSelected(item)
     }
 
-//    override fun onResume() {
-//        super.onResume()
-//
-//        interest_tag_group.removeAllViews()
-//        position_group.removeAllViews()
-//
-//
-//
-//    }
 
     override fun onClick(v: View?) {
         when (v?.id) {
@@ -135,39 +130,53 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
 
             R.id.add_link_btn -> startActivity(Intent(this, AddLinkActivity::class.java))
 
-            R.id.add_tag_btn -> startActivity(Intent(this, AddTagActivity::class.java))
+//            R.id.add_tag_btn -> startActivity(Intent(this, AddTagActivity::class.java))
 
             R.id.set_image_btn -> {
-                MaterialDialog(this).show {
-                    title(R.string.upload_picture)
-                    cornerRadius(0f)
-                    neutralButton(R.string.cancle)
+                TedImagePicker.with(this@EditProfileActivity)
+                    .title(R.string.select_picture)
+                    .backButton(R.drawable.ic_baseline_arrow_back_24)
+                    .buttonText(R.string.complete)
+                    .buttonBackground(R.drawable.md_transparent)
+                    .buttonTextColor(R.color.black)
+                    .showCameraTile(false)
+                    .start { uri -> showSingleImage(uri) }
 
-
-                    negativeButton(R.string.select_gallery) {
-
-                        TedImagePicker.with(this@EditProfileActivity)
-                            .title(R.string.select_picture)
-                            .backButton(R.drawable.ic_baseline_arrow_back_24)
-                            .buttonText(R.string.complete)
-                            .buttonBackground(R.drawable.md_transparent)
-                            .buttonTextColor(R.color.black)
-                            .showCameraTile(false)
-                            .start { uri -> showSingleImage(uri) }
-                    }
-
-                    positiveButton(R.string.take_picture) {
-
-                        ImagePicker.with(this@EditProfileActivity)
-                            .cameraOnly()    //User can only capture image using Camera
-                            .start()
-
-                    }
-                }
+//                MaterialDialog(this).show {
+//                    title(R.string.upload_picture)
+//                    cornerRadius(0f)
+//                    neutralButton(R.string.cancle)
+//
+//
+//                    negativeButton(R.string.select_gallery) {
+//
+//
+//                    }
+//
+//                    positiveButton(R.string.take_picture) {
+//
+//                        ImagePicker.with(this@EditProfileActivity)
+//                            .cameraOnly()    //User can only capture image using Camera
+//                            .start()
+//
+//                    }
+//                }
             }
 
             R.id.nickname_btn -> {
                 startActivityForResult(Intent(this, EditNicknameActivity::class.java), 0)
+            }
+
+            R.id.position_btn -> {
+                startActivityForResult(Intent(this, EditPositionActivity::class.java), 1)
+            }
+
+            R.id.intro_btn -> {
+                startActivityForResult(Intent(this, EditIntroActivity::class.java), 1)
+            }
+
+            R.id.tag_btn -> {
+                startActivityForResult(Intent(this, EditTagActivity::class.java), 2)
             }
 
 
@@ -187,20 +196,21 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
 
             Activity.RESULT_OK -> {
 
-                if (requestCode == 0){
-                    getMyProfileData()
+                getMyProfileData()
 
-                } else {
 
-                    val fileUri = data?.data
+//                } else {
+//
+//                    val fileUri = data?.data
+//
+//                    member_image.setImageURI(fileUri)
+////                    Log.v("uri", fileUri.toString())
+//                    if (fileUri != null) {
+//                        editProfileImage(fileUri)
+//                    }
+//                }
 
-                    Log.v("uri", fileUri.toString())
-                    if (fileUri != null) {
-                        editProfileImage(fileUri)
-                    }
-                }
 
-//                member_image.setImageURI(fileUri)
 
 
             }
@@ -258,6 +268,10 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setTag(tagList: MutableList<HashtagResponseDto>) {
+
+        interest_tag_group.removeAllViews()
+
+
         for (index in tagList.indices) {
             val tagName = tagList[index].hashtagName
 
@@ -274,6 +288,8 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
 
 
     private fun setTag2(tag: String) {
+        position_group.removeAllViews()
+
         val chip = Chip(this)
         val drawable = ChipDrawable.createFromAttributes(this, null, 0, R.style.MaterialChipsAction)
         chip.setChipDrawable(drawable)

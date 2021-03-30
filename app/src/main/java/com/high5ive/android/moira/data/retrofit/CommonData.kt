@@ -111,3 +111,25 @@ data class ComplimentMarkWithCountDto(
     val complimentMarkId: Int,
     val complimentMarkName: String
 )
+
+
+data class LinkItem(
+    val linkUrl: String
+)
+
+data class AwardItem(
+    val awardContent: String,
+    val awardName: String
+)
+
+data class CertificateItem(
+    val acquiredAt: String,
+    val licenseName: String
+)
+
+data class CareerItem(
+    val companyName: String,
+    val endAt: String,
+    val startAt: String,
+    val task: String
+)

@@ -73,7 +73,6 @@ class RecruitPostDetailActivity : AppCompatActivity(), View.OnClickListener{
         Log.v("index", index.toString())
         initRetrofit()
 
-        comment_img_btn.setOnClickListener(this)
         apply_btn.setOnClickListener(this)
         more_button.setOnClickListener(this)
         favorite_img_btn.setOnClickListener(this)
@@ -101,7 +100,6 @@ class RecruitPostDetailActivity : AppCompatActivity(), View.OnClickListener{
 
     override fun onClick(v: View?) {
         when(v?.id){
-            R.id.comment_img_btn -> startActivity(Intent(this@RecruitPostDetailActivity, CommentActivity::class.java))
 
             R.id.apply_btn -> {
 

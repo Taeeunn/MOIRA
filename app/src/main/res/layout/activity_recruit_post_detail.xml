@@ -347,32 +347,18 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-            <ImageButton
-                android:id="@+id/comment_img_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:background="@android:color/transparent"
-                android:padding="11dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_comment"
-                android:tint="#ffffff"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
 
             <ImageButton
                 android:id="@+id/favorite_img_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
+                android:layout_marginStart="25dp"
                 android:background="@android:color/transparent"
                 android:padding="11dp"
                 android:scaleType="fitCenter"
                 android:tint="#ffffff"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toRightOf="@+id/comment_img_btn"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
 

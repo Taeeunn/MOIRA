@@ -6,6 +6,8 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
+import androidx.appcompat.widget.Toolbar
 import androidx.core.os.bundleOf
 import com.bumptech.glide.Glide
 import com.high5ive.android.moira.R
@@ -33,6 +35,14 @@ class EditNicknameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_nickname)
 
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        val ab = supportActionBar!!
+        ab.setDisplayShowTitleEnabled(false)
+        ab.setDisplayHomeAsUpEnabled(true)
+
+
         initRetrofit()
 
         val preferences: SharedPreferences =
@@ -50,6 +60,16 @@ class EditNicknameActivity : AppCompatActivity() {
 
         retrofit = RetrofitClient.getInstance() // 2에서 만든 Retrofit client의 instance를 불러옵니다.
         myAPI = retrofit.create(RetrofitService::class.java) // 여기서 retrofit이 우리의 interface를 구현해주고
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun checkNickName(nickname: String){
@@ -118,7 +138,6 @@ class EditNicknameActivity : AppCompatActivity() {
                     Log.v("data", data.toString())
 
                     val intent = Intent()
-                    intent.putExtra("nickname", nickname)
                     setResult(RESULT_OK, intent);
                     finish()
 
