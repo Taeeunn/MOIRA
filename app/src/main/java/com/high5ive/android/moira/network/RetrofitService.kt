@@ -137,7 +137,14 @@ interface RetrofitService {
     ): Call<ResponseData>
 
 
-    // 3-1.5.
+    // 3-1.5. 팀 만들기 - 이미지 리스트 추가
+    @Multipart
+    @POST("project/{projectId}/image")
+    fun addTeamImageList(
+        @Header("X-AUTH-TOKEN") token: String,
+        @Part files : List<MultipartBody.Part>,
+        @Path("projectId") projectId: Int
+    ): Call<ResponseData>
 
 
     // 3-1-6. 팀 모집 - 팀 모집글 상세 - 좋아요

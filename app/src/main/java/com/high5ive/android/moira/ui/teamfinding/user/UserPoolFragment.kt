@@ -152,7 +152,7 @@ class UserPoolFragment : Fragment() {
 
 
 
-        requireActivity().new_post_btn.setOnClickListener{
+        new_post_btn.setOnClickListener{
 
             // Dialog만들기
             val mDialogView = LayoutInflater.from(context).inflate(R.layout.dialog_user_pool, null)
@@ -184,7 +184,7 @@ class UserPoolFragment : Fragment() {
 
         }
 
-        requireActivity().search_button.setOnClickListener {
+        search_button.setOnClickListener {
             startActivity(Intent(context, UserPoolSearchActivity::class.java))
         }
 
@@ -290,16 +290,20 @@ class UserPoolFragment : Fragment() {
                         recycler_view.apply{
                             layoutManager = LinearLayoutManager(context)
                             adapter =
-                                UserAdapter(list) { index, type ->
-                                    Toast.makeText(context, "$index", Toast.LENGTH_SHORT).show()
+                                UserAdapter(list) { user, type ->
+                                    Toast.makeText(context, "$user", Toast.LENGTH_SHORT).show()
 
                                     if (type == 0) {
                                         val intent = Intent(context, UserProfileDetailActivity::class.java)
-                                        intent.putExtra("index", index)
+                                        intent.putExtra("index1", user.userPoolId)
+                                        intent.putExtra("index2", user.userPoolId)
+                                        intent.putExtra("image", user.profileImage)
+                                        intent.putExtra("nickname", user.nickname)
+                                        intent.putExtra("position", user.positionName)
                                         startActivity(intent)
 
                                     } else if (type == 1) {
-                                        likeUser(index)
+                                        likeUser(user.userPoolId)
                                     }
                                 }
                         }

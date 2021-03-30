@@ -14,6 +14,9 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.AwardAdapter
+import com.high5ive.android.moira.adapter.CareerAdapter
+import com.high5ive.android.moira.adapter.CertificateAdapter
+import com.high5ive.android.moira.adapter.LinkAdapter
 import com.high5ive.android.moira.data.Award
 import com.high5ive.android.moira.data.retrofit.MyTeamDetail
 import com.high5ive.android.moira.data.retrofit.MyTeamDetailData
@@ -52,32 +55,15 @@ class MemberInfoFragment : Fragment() {
         return inflater.inflate(R.layout.member_info_fragment, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
-        val awardList = arrayListOf<Award>()
-        for (i in 0..5){
-            awardList.add(
-                Award(
-                    "가나다 공모전 $i",
-                    "최우수상 $i"
-                )
-            )
-        }
-
-        award_recycler_view.apply{
-            layoutManager = LinearLayoutManager(context)
-            adapter =
-                AwardAdapter(awardList) { award ->
-                    Toast.makeText(context, "$award", Toast.LENGTH_SHORT).show()
-                }
-        }
-    }
 
     override fun onResume() {
         super.onResume()
 
         getUserProfileInfo()
+
+
+
     }
 
     private fun initRetrofit() {
@@ -111,6 +97,30 @@ class MemberInfoFragment : Fragment() {
 
                         val data: UserPoolDetailInfoData = response.body()?.data!!
                         Log.v("data", data.toString())
+
+                        career_recycler_view.apply {
+                            layoutManager = LinearLayoutManager(context)
+                            adapter =
+                                CareerAdapter(data.userCareerResponseDtoList)
+                        }
+
+                        link_recycler_view.apply {
+                            layoutManager = LinearLayoutManager(context)
+                            adapter =
+                                LinkAdapter(data.userLinkResponseDtoList)
+                        }
+
+                        certificate_recycler_view.apply {
+                            layoutManager = LinearLayoutManager(context)
+                            adapter =
+                                CertificateAdapter(data.userLicenseResponseDtoList)
+                        }
+
+                        award_recycler_view.apply {
+                            layoutManager = LinearLayoutManager(context)
+                            adapter =
+                                AwardAdapter(data.userAwardResponseDtoList)
+                        }
 
                     }
 

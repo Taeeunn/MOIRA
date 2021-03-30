@@ -4,6 +4,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipDrawable
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.Recruit
 import com.high5ive.android.moira.data.retrofit.RecruitPostItem
@@ -35,6 +38,31 @@ class RecruitAdapter(val items: List<RecruitPostItem>,
     override fun getItemCount() = items.size
     override fun onBindViewHolder(holder: RecruitViewHolder, position: Int) {
         holder.binding.recruit = items[position]
+
+        Glide.with(holder.binding.root.context)
+            .load(items[position].imageUrl)
+            .override(20, 20)
+            .error(R.drawable.ic_baseline_public_24) // ex) error(R.drawable.error)
+            .into(holder.binding.recruitImage)
+
+
+        var hashtagNameList: List<String>? = items[position].hashtagList
+
+        if (hashtagNameList!=null) {
+            for (index in hashtagNameList.indices) {
+                val tagName = hashtagNameList[index]
+
+                val chip = Chip(holder.binding.root.context)
+                val drawable =
+                    ChipDrawable.createFromAttributes(holder.binding.root.context, null, 0, R.style.MaterialChipsAction)
+                chip.setChipDrawable(drawable)
+
+                chip.text = tagName
+                holder.binding.tagGroup.addView(chip)
+            }
+
+        }
+
 
 
     }

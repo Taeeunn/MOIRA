@@ -61,6 +61,7 @@ data class ScrapRecruitPost(
 data class ScrapRecruitPostItem(
     val hashtagList: List<Hashtag>,
     val hitCount: Int,
+    val nickname: String,
     val projectId: Int,
     val projectImageUrl: String,
     val projectTitle: String,

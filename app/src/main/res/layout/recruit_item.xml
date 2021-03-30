@@ -20,8 +20,7 @@
             android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/round_rectangle_2"
-            app:tint="@color/light_gray"/>
+            app:srcCompat="@drawable/round_rectangle_2" />
 
 
         <TextView
@@ -33,47 +32,18 @@
             android:textAppearance="@style/contest_name"
             app:layout_constraintLeft_toRightOf="@+id/recruit_image"
             app:layout_constraintTop_toTopOf="parent" />
-        
-        
-        <TextView
-            android:id="@+id/tag1"
-            android:layout_width="40dp"
-            android:layout_height="18dp"
-            android:text="태그"
-            android:gravity="center"
-            android:layout_marginTop="4dp"
-            android:background="#f2f2f2"
-            android:textAppearance="@style/recruit_tag"
-            android:layout_marginStart="17dp"
+
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/tag_group"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="16dp"
+            app:chipSpacingVertical="4dp"
+            app:chipSpacingHorizontal="4dp"
             app:layout_constraintLeft_toRightOf="@+id/recruit_image"
-            app:layout_constraintTop_toBottomOf="@+id/recruit_name"/>
-
-        <TextView
-            android:id="@+id/tag2"
-            android:layout_width="40dp"
-            android:layout_height="18dp"
-            android:text="태그"
-            android:gravity="center"
-            android:layout_marginTop="4dp"
-            android:background="#f2f2f2"
-            android:textAppearance="@style/recruit_tag"
-            android:layout_marginStart="4dp"
-            app:layout_constraintLeft_toRightOf="@+id/tag1"
-            app:layout_constraintTop_toBottomOf="@+id/recruit_name"/>
-
-
-        <TextView
-            android:id="@+id/tag3"
-            android:layout_width="40dp"
-            android:layout_height="18dp"
-            android:text="태그"
-            android:gravity="center"
-            android:layout_marginTop="4dp"
-            android:background="#f2f2f2"
-            android:textAppearance="@style/recruit_tag"
-            android:layout_marginStart="4dp"
-            app:layout_constraintLeft_toRightOf="@+id/tag2"
-            app:layout_constraintTop_toBottomOf="@+id/recruit_name"/>
+            app:layout_constraintTop_toBottomOf="@+id/recruit_name" />
 
 
         <TextView
@@ -81,14 +51,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="17dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:letterSpacing="-0.03"
             android:lineSpacingExtra="5sp"
             android:text="@{recruit.writer}"
             android:textColor="#292929"
             android:textSize="10sp"
             app:layout_constraintLeft_toRightOf="@+id/recruit_image"
-            app:layout_constraintTop_toBottomOf="@+id/tag1" />
+            app:layout_constraintTop_toBottomOf="@+id/tag_group" />
 
         <View
             android:id="@+id/vertical_line"
@@ -96,24 +66,24 @@
             android:layout_height="13dp"
             android:layout_gravity="center"
             android:layout_marginStart="4.5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:background="#d6d5d5"
             app:layout_constraintStart_toEndOf="@+id/nickname"
-            app:layout_constraintTop_toBottomOf="@+id/tag1"/>
+            app:layout_constraintTop_toBottomOf="@+id/tag_group"/>
 
         <TextView
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4.5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:letterSpacing="-0.03"
             android:lineSpacingExtra="1sp"
             android:text="@{recruit.time}"
             android:textColor="#bcbcbc"
             android:textSize="10sp"
             app:layout_constraintStart_toEndOf="@+id/vertical_line"
-            app:layout_constraintTop_toBottomOf="@+id/tag1" />
+            app:layout_constraintTop_toBottomOf="@+id/tag_group" />
 
         <View
             android:id="@+id/vertical_line2"
@@ -121,19 +91,19 @@
             android:layout_height="13dp"
             android:layout_gravity="center"
             android:layout_marginStart="4.5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:background="#d6d5d5"
             app:layout_constraintStart_toEndOf="@+id/date"
-            app:layout_constraintTop_toBottomOf="@+id/tag1"/>
+            app:layout_constraintTop_toBottomOf="@+id/tag_group"/>
         
         <ImageView
             android:id="@+id/view_icon"
             android:layout_width="13dp"
             android:layout_height="13dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="4.5dp"
             app:layout_constraintStart_toEndOf="@+id/vertical_line2"
-            app:layout_constraintTop_toBottomOf="@+id/tag1"
+            app:layout_constraintTop_toBottomOf="@+id/tag_group"
             android:layout_gravity="center"
             android:background="@drawable/ic_baseline_remove_red_eye_24"/>
 
@@ -142,14 +112,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2.5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:letterSpacing="-0.03"
             android:lineSpacingExtra="1sp"
             android:text="@{@string/to_str(recruit.hitCount)}"
             android:textColor="#bcbcbc"
             android:textSize="10sp"
             app:layout_constraintStart_toEndOf="@+id/view_icon"
-            app:layout_constraintTop_toBottomOf="@+id/tag1" />
+            app:layout_constraintTop_toBottomOf="@+id/tag_group" />
 
 
 

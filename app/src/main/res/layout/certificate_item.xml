@@ -4,7 +4,7 @@
     <data>
         <variable
             name="certificate"
-            type="com.high5ive.android.moira.data.retrofit.CertificateItem" />
+            type="com.high5ive.android.moira.data.retrofit.UserLicenseResponseDto" />
     </data>
 
 
@@ -14,7 +14,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp">
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
 
         <TextView
@@ -25,18 +26,19 @@
             android:textStyle="normal"
             android:textSize="13sp"
             android:textColor="#000000"
+            android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="17dp"
-            android:layout_height="17dp"
-            android:tint="@color/black"
-            app:srcCompat="@drawable/ic_baseline_close_24"
-            android:background="@android:color/transparent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+<!--        <ImageButton-->
+<!--            android:id="@+id/imageButton"-->
+<!--            android:layout_width="17dp"-->
+<!--            android:layout_height="17dp"-->
+<!--            android:tint="@color/black"-->
+<!--            app:srcCompat="@drawable/ic_baseline_close_24"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"/>-->
 
 
         <TextView
@@ -49,8 +51,11 @@
             android:textColor="#9b9b9b"
             android:layout_marginTop="5dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView16"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/textView16" />
+
+
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

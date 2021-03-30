@@ -5,10 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.Award
+import com.high5ive.android.moira.data.retrofit.AwardItem
+import com.high5ive.android.moira.data.retrofit.UserAwardResponseDto
 import com.high5ive.android.moira.databinding.AwardItemBinding
 
-class AwardAdapter(val items: List<Award>,
-                     private val clickListener: (award: Award) -> Unit) :
+class AwardAdapter(val items: List<UserAwardResponseDto>):
     RecyclerView.Adapter<AwardAdapter.AwardViewHolder>(){
     class AwardViewHolder(val binding: AwardItemBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -20,17 +21,13 @@ class AwardAdapter(val items: List<Award>,
                 AwardItemBinding.bind(view)
             )
 
-        view.setOnClickListener {
-            clickListener.invoke(items[viewHolder.adapterPosition])
-
-        }
 
         return viewHolder
     }
 
     override fun getItemCount() = items.size
     override fun onBindViewHolder(holder: AwardViewHolder, position: Int) {
-//        holder.binding.award = items[position]
+        holder.binding.award = items[position]
     }
 
 }

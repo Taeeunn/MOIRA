@@ -103,7 +103,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:ems="10"
-        android:hint="취득연월"
+        android:hint="취득일 (yyyy-mm-dd)"
         android:inputType="text"
         android:layout_marginTop="12dp"
         android:paddingBottom="15dp"

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
+import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.common.MemberViewPagerAdapter
@@ -15,17 +16,34 @@ import kotlinx.android.synthetic.main.my_team_fragment.viewPager
 
 class UserProfileDetailActivity : AppCompatActivity() {
 
-    var index: Int = 1
+    var userId: Int = 1
+    var imageUrl: String = ""
+    var nickname: String = ""
+    var positionName: String = ""
+    var projectApplyId: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile_detail)
 
-        index = intent.getIntExtra("index", 1)
+        userId = intent.getIntExtra("index1", 1)
+        projectApplyId = intent.getIntExtra("index2", 1)
+        imageUrl = intent.getStringExtra("image")?: ""
+        nickname = intent.getStringExtra("nickname")?: ""
+        positionName = intent.getStringExtra("position")?: ""
+
+        Glide.with(this)
+            .load(imageUrl)
+            .override(20, 20)
+            .error(R.drawable.ic_baseline_person_24) // ex) error(R.drawable.error)
+            .into(member_image)
+
+        member_position.text = positionName
+        member_nickname.text = nickname
 
 
         viewPager.adapter =
-            MemberViewPagerAdapter(this, index, index)
+            MemberViewPagerAdapter(this, projectApplyId, userId)
         val tabLayoutTextArray = arrayOf("사용자 정보","사용자 평가")
         TabLayoutMediator(tabLayout,viewPager){tab,position->
             tab.text = tabLayoutTextArray[position]
@@ -39,9 +57,6 @@ class UserProfileDetailActivity : AppCompatActivity() {
         ab.setDisplayHomeAsUpEnabled(true)
 
 
-        send_msg_btn.setOnClickListener {
-            startActivity(Intent(this, MessageHistoryActivity::class.java))
-        }
     }
 
 

@@ -34,7 +34,7 @@
 
             <android.widget.Button
                 android:id="@+id/applicant_count"
-                android:layout_width="40dp"
+                android:layout_width="50dp"
                 android:layout_height="24dp"
                 android:layout_gravity="start"
                 android:layout_marginStart="12dp"

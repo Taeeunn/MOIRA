@@ -32,38 +32,6 @@
 
 
 
-            <FrameLayout
-                android:id="@+id/noti_frame"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-
-                <ImageView
-                    android:id="@+id/noti_button"
-                    android:layout_width="27dp"
-                    android:layout_height="27dp"
-                    android:background="@android:color/transparent"
-                    android:paddingVertical="3dp"
-                    android:text="@string/register"
-                    app:srcCompat="@drawable/ic_notification"
-                    app:tint="@color/black" />
-
-
-                <ImageView
-                    android:id="@+id/new_noti"
-                    android:layout_width="5dp"
-                    android:layout_height="5dp"
-                    android:layout_gravity="end|top"
-                    android:src="@drawable/circle"
-                    android:visibility="gone"
-                    app:tint="@color/main_blue" />
-
-            </FrameLayout>
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>

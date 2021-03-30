@@ -15,12 +15,17 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
 import com.bumptech.glide.Glide
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import com.high5ive.android.moira.R
+import com.high5ive.android.moira.adapter.AwardAdapter
+import com.high5ive.android.moira.adapter.CareerAdapter
+import com.high5ive.android.moira.adapter.CertificateAdapter
+import com.high5ive.android.moira.adapter.LinkAdapter
 import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.databinding.ActivityEditProfileBinding
 import com.high5ive.android.moira.databinding.ActivityTeamDetailBinding
@@ -89,7 +94,6 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
 //        setTag(tagList);
 
 
-        add_education_btn.setOnClickListener(this)
         add_career_btn.setOnClickListener(this)
         add_certificate_btn.setOnClickListener(this)
         add_award_btn.setOnClickListener(this)
@@ -115,20 +119,22 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.add_education_btn -> startActivity(Intent(this, AddEducationActivity::class.java))
 
-            R.id.add_career_btn -> startActivity(Intent(this, AddCareerActivity::class.java))
+            R.id.add_career_btn -> startActivityForResult(Intent(this, AddCareerActivity::class.java), 4)
 
-            R.id.add_certificate_btn -> startActivity(
+            R.id.add_certificate_btn -> startActivityForResult(
                 Intent(
                     this,
                     AddCertificateActivity::class.java
-                )
+                ), 5
             )
 
-            R.id.add_award_btn -> startActivity(Intent(this, AddAwardHistoryActivity::class.java))
+            R.id.add_award_btn -> startActivityForResult(Intent(this, AddAwardHistoryActivity::class.java), 6)
 
-            R.id.add_link_btn -> startActivity(Intent(this, AddLinkActivity::class.java))
+            R.id.add_link_btn -> startActivityForResult(
+                Intent(this, AddLinkActivity::class.java),
+                3
+            )
 
 //            R.id.add_tag_btn -> startActivity(Intent(this, AddTagActivity::class.java))
 
@@ -211,8 +217,6 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
 //                }
 
 
-
-
             }
         }
     }
@@ -260,6 +264,30 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
                             .error(R.drawable.ic_baseline_person_24) // ex) error(R.drawable.error)
                             .into(binding.memberImage)
 
+                        career_recycler_view.apply {
+                            layoutManager = LinearLayoutManager(context)
+                            adapter =
+                                CareerAdapter(data.userCareerResponseDtoList)
+                        }
+
+                        link_recycler_view.apply {
+                            layoutManager = LinearLayoutManager(context)
+                            adapter =
+                                LinkAdapter(data.userLinkResponseDtoList)
+                        }
+
+                        certificate_recycler_view.apply {
+                            layoutManager = LinearLayoutManager(context)
+                            adapter =
+                                CertificateAdapter(data.userLicenseResponseDtoList)
+                        }
+
+                        award_recycler_view.apply {
+                            layoutManager = LinearLayoutManager(context)
+                            adapter =
+                                AwardAdapter(data.userAwardResponseDtoList)
+                        }
+
                     }
 
                 }
@@ -299,7 +327,7 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
         position_group.addView(chip)
     }
 
-    private fun editProfileImage(uri: Uri){
+    private fun editProfileImage(uri: Uri) {
 
 //        Log.v("uri", uri.toString())
         val filePath = getRealPathFromURI(uri)
@@ -319,7 +347,10 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
                 t.printStackTrace()
             }
 
-            override fun onResponse(call: Call<ProfileImageEditResponse>, response: Response<ProfileImageEditResponse>) {
+            override fun onResponse(
+                call: Call<ProfileImageEditResponse>,
+                response: Response<ProfileImageEditResponse>
+            ) {
                 val code: Int = response.body()?.code ?: 0
 
                 val msg: String = response.body()?.msg ?: "no msg"

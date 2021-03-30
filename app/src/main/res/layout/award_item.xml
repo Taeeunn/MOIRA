@@ -4,7 +4,7 @@
     <data>
         <variable
             name="award"
-            type="com.high5ive.android.moira.data.retrofit.AwardItem" />
+            type="com.high5ive.android.moira.data.retrofit.UserAwardResponseDto" />
     </data>
 
 
@@ -14,36 +14,28 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp">
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
 
         <TextView
             android:id="@+id/textView16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{award.awardName}"
+            android:text="@{award.userAwardName}"
             android:textStyle="normal"
             android:textSize="13sp"
             android:textColor="#000000"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="17dp"
-            android:layout_height="17dp"
-            android:tint="@color/black"
-            app:srcCompat="@drawable/ic_baseline_close_24"
-            android:background="@android:color/transparent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
 
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{award.awardContent}"
+            android:text="@{award.userAwardContent}"
             android:textStyle="normal"
             android:textSize="13sp"
             android:textColor="#9b9b9b"
@@ -51,6 +43,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView16"
             app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

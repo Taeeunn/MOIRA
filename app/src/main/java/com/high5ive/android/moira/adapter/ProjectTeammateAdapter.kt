@@ -13,7 +13,7 @@ import com.high5ive.android.moira.databinding.MemberItemBinding
 import com.high5ive.android.moira.databinding.TeammateItemBinding
 
 class ProjectTeammateAdapter(val items: List<MyProjectTeammateResponseDTO>,
-                    private val clickListener: (index: Int) -> Unit) :
+                    private val clickListener: (member: MyProjectTeammateResponseDTO, type: Int) -> Unit) :
     RecyclerView.Adapter<ProjectTeammateAdapter.ProjectTeammateViewHolder>(){
     class ProjectTeammateViewHolder(val binding: TeammateItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -26,7 +26,12 @@ class ProjectTeammateAdapter(val items: List<MyProjectTeammateResponseDTO>,
             )
 
         view.setOnClickListener {
-            clickListener.invoke(viewHolder.binding.member!!.userId)
+            if(viewHolder.binding.member!!.leader) {
+                clickListener.invoke(items[viewHolder.adapterPosition], 0)
+            } else{
+                clickListener.invoke(items[viewHolder.adapterPosition], 1)
+            }
+
         }
         return viewHolder
     }

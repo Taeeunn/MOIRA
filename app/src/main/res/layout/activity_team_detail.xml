@@ -16,6 +16,7 @@
         android:layout_height="match_parent"
         tools:context=".ui.myteam.detail.TeamDetailActivity">
 
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -30,15 +31,36 @@
             app:theme="@style/toolbar_theme_back"
             app:titleMarginStart="0dp">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{myteam.title}"
-                android:textAppearance="@style/toolbar_title"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{myteam.title}"
+                    android:textAppearance="@style/toolbar_title"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/more_button"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@android:color/transparent"
+                    android:text="@string/register"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_more_vert_24"
+                    app:tint="#000000" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </androidx.appcompat.widget.Toolbar>
@@ -61,7 +83,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="256dp"
                     android:layout_marginTop="12dp"
-                    android:background="@color/light_gray"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintTop_toTopOf="parent" />
 

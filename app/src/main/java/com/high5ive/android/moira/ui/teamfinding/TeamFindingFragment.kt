@@ -11,8 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.tabs.TabLayoutMediator
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.ui.teamfinding.search.UserPoolSearchActivity
-import kotlinx.android.synthetic.main.my_team_fragment.tabLayout
-import kotlinx.android.synthetic.main.my_team_fragment.viewPager
 import kotlinx.android.synthetic.main.team_finding_fragment.*
 
 class TeamFindingFragment : Fragment() {
@@ -38,9 +36,6 @@ class TeamFindingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        search_button.setOnClickListener {
-            startActivity(Intent(context, UserPoolSearchActivity::class.java))
-        }
 
 
         viewPager.adapter = TeamFindingViewPagerAdapter(context as FragmentActivity)

@@ -15,19 +15,19 @@ import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.list.listItemsSingleChoice
+import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.adapter.MemberAdapter
 import com.high5ive.android.moira.adapter.ProjectTeammateAdapter
-import com.high5ive.android.moira.data.Member
-import com.high5ive.android.moira.data.retrofit.MyProjectTeammateResponseDTO
-import com.high5ive.android.moira.data.retrofit.MyTeamDetail
-import com.high5ive.android.moira.data.retrofit.MyTeamDetailData
+import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.databinding.ActivityTeamDetailBinding
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.teamfinding.user.UserProfileDetailActivity
+import kotlinx.android.synthetic.main.activity_recruit_post_detail.*
 import kotlinx.android.synthetic.main.activity_team_detail.*
+import kotlinx.android.synthetic.main.activity_team_detail.more_button
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -62,6 +62,8 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
         ab.setDisplayShowTitleEnabled(false)
         ab.setDisplayHomeAsUpEnabled(true)
 
+        more_button.setOnClickListener(this)
+
         //binding = DataBindingUtil.setContentView(this, R.layout.leader_item)
 
 
@@ -75,12 +77,6 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
     }
 
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val inflater: MenuInflater = menuInflater
-        inflater.inflate(R.menu.team_option, menu)
-        return true
-    }
-
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
@@ -90,17 +86,6 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
                 return true
             }
 
-            R.id.name_modify -> {
-                Log.v("modifyyj", "modididi")
-            }
-
-            R.id.image_modify -> {
-                Log.v("modifyyj", "modididi")
-            }
-
-            R.id.complete_project -> {
-                Log.v("modifyyj", "modididi")
-            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -117,7 +102,8 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
                     message(R.string.complete_project_message)
 
                     positiveButton(R.string.complete) {
-                        Snackbar.make(v, R.string.project_completed, Snackbar.LENGTH_SHORT).show()
+                        completeProject(v)
+
                     }
 
                     negativeButton(R.string.cancle)
@@ -161,12 +147,48 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
 
                         binding.myteam = data
 
+                        if(data.leader){
+                            more_button.visibility=View.VISIBLE
+                        } else{
+                            more_button.visibility=View.GONE
+                        }
+
+                        if(data.imageUrl==null){
+                            team_image.setImageResource(R.drawable.ic_baseline_public_24)
+                        } else {
+                            Glide.with(this@TeamDetailActivity)
+                                .load(data.imageUrl[0])
+                                .error(R.drawable.ic_baseline_public_24)
+                                .override(100, 100)
+                                .into(team_image)
+                        }
+
+
                         recycler_view.apply {
                             layoutManager = LinearLayoutManager(this@TeamDetailActivity)
                             adapter =
-                                ProjectTeammateAdapter(list) { member ->
-                                    Toast.makeText(this@TeamDetailActivity, "$member", Toast.LENGTH_SHORT).show()
-                                    startActivity(Intent(this@TeamDetailActivity, UserProfileDetailActivity::class.java))
+                                ProjectTeammateAdapter(list) { member, type ->
+
+
+                                    if(type==0){
+                                        Toast.makeText(this@TeamDetailActivity, "리더는 클릭하실 수 없습니다!", Toast.LENGTH_SHORT).show()
+                                    }
+                                    if(type==1) {
+                                        val intent = Intent(
+                                            this@TeamDetailActivity,
+                                            UserProfileDetailActivity::class.java
+                                        )
+                                        intent.putExtra("nickname", member.nickname)
+                                        intent.putExtra("position", member.position)
+                                        intent.putExtra("image", member.imageUrl)
+                                        intent.putExtra("index1", member.userId)
+                                        intent.putExtra("index2", member.projectApplyId)
+
+                                        if (member.imageUrl != null) {
+                                            intent.putExtra("image", member.imageUrl)
+                                        }
+                                        startActivity(intent)
+                                    }
                                 }
                         }
 
@@ -176,5 +198,37 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
             })
         }.run()
     }
+
+    private fun completeProject(v: View){
+
+        var body_data = ProjectModifyStatusRequestDTO("COMPLETED")
+        myAPI.editProjectStatus(token, index, body_data).enqueue(object :
+            Callback<ResponseData> {
+            override fun onFailure(call: Call<ResponseData>, t: Throwable) {
+                t.printStackTrace()
+            }
+
+            override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
+                val code: Int = response.body()?.code ?: 0
+
+                val msg: String = response.body()?.msg ?: "no msg"
+                val succeed: Boolean = response.body()?.succeed ?: false
+
+                Log.v("code", code.toString())
+                Log.v("success", succeed.toString())
+                Log.v("msg", msg)
+
+                if(succeed){
+
+                    val message = "프로젝트를 완료했습니다!"
+                    Snackbar.make(v, message, Snackbar.LENGTH_SHORT).show()
+
+                }
+
+            }
+        })
+    }
+
+
 }
 

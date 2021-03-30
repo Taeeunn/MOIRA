@@ -43,6 +43,19 @@
             android:entries="@array/sort_array" />
     </RelativeLayout>
 
+    <ImageButton
+        android:id="@+id/search_button"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
+        android:text="@string/register"
+        android:tint="@color/black"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_search" />
+
 
 
 
@@ -66,6 +79,28 @@
         android:paddingBottom="180dp"
         app:layout_constraintTop_toBottomOf="@id/tag_group"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/new_post_btn"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="50dp"
+        android:contentDescription="@string/add"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_new_post"
+        app:backgroundTint="@color/main_blue"
+        app:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:layout_constraintTop_toBottomOf="@id/recycler_view"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

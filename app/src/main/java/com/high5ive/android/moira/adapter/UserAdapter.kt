@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_recruit_post_detail.*
 import kotlinx.android.synthetic.main.user_item.view.*
 
 class UserAdapter(val items: List<UserPoolItem>,
-                  private val clickListener: (index: Int, type: Int) -> Unit) :
+                  private val clickListener: (user: UserPoolItem, type: Int) -> Unit) :
     RecyclerView.Adapter<UserAdapter.UserViewHolder>(){
 
     class UserViewHolder(val binding: UserItemBinding) : RecyclerView.ViewHolder(binding.root)
@@ -31,11 +31,13 @@ class UserAdapter(val items: List<UserPoolItem>,
             )
 
         view.setOnClickListener {
-            clickListener.invoke(viewHolder.binding.user!!.userPoolId, 0)
+
+
+            clickListener.invoke(items[viewHolder.adapterPosition], 0)
         }
 
         view.interest_btn.setOnClickListener {
-            clickListener.invoke(viewHolder.binding.user!!.userPoolId, 1)
+            clickListener.invoke(items[viewHolder.adapterPosition], 1)
 
 
             if (!viewHolder.binding.user!!.likedByUser) {

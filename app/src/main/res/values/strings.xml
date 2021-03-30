@@ -89,8 +89,8 @@
     <string name="job_department">직무 / 부서명</string>
     <string name="enter_job_department">직무 및 부서명을 입력해주세요.</string>
     <string name="join_company">입사</string>
-    <string name="join_company_year_month">입사 연월</string>
-    <string name="resignation_year_month">퇴사 연월</string>
+    <string name="join_company_year_month">입사일 (yyyy-mm-dd)</string>
+    <string name="resignation_year_month">퇴사일 (yyyy-mm-dd)</string>
     <string name="add_company">기업 추가하기</string>
     <string name="add_job_department">직무 / 부서명 추가하기</string>
     <string name="add_link">링크 추가하기</string>

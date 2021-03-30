@@ -24,17 +24,19 @@ data class MyTeamDetail(
 
 data class MyTeamDetailData(
     val content: String,
-    val imageUrl: String,
+    val imageUrl: List<String>?,
+    val leader: Boolean,
     val memberCount: Int,
     val myProjectTeammateResponseDTOList: List<MyProjectTeammateResponseDTO>,
     val title: String
 )
 
 data class MyProjectTeammateResponseDTO(
-    val imageUrl: String,
+    val imageUrl: String?,
     val leader: Boolean,
     val nickname: String,
     val position: String,
+    val projectApplyId: Int,
     val userId: Int
 )
 

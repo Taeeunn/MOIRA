@@ -4,16 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/image_modify"
-        android:title="대표 이미지 수정하기"
-        android:orderInCategory = "10"
-         />
-    <item
-        android:id="@+id/name_modify"
-        android:title="팀 이름 수정하기"
-        android:orderInCategory = "20"
-         />
-    <item
         android:id="@+id/complete_project"
         android:title="프로젝트 완료하기"
         android:orderInCategory = "30"

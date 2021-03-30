@@ -16,7 +16,7 @@ import com.high5ive.android.moira.databinding.UserItemBinding
  * @created 2021-03-28
  */
 class ScrapUserAdapter(val items: List<ScrapUserPoolItem>,
-                       private val clickListener: (index: Int) -> Unit) :
+                       private val clickListener: (user: ScrapUserPoolItem) -> Unit) :
     RecyclerView.Adapter<ScrapUserAdapter.ScrapUserViewHolder>(){
     class ScrapUserViewHolder(val binding: ScrapUserItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -29,7 +29,7 @@ class ScrapUserAdapter(val items: List<ScrapUserPoolItem>,
             )
 
         view.setOnClickListener {
-            clickListener.invoke(viewHolder.binding.scrapuser!!.userPoolId)
+            clickListener.invoke(items[viewHolder.adapterPosition])
         }
         return viewHolder
     }

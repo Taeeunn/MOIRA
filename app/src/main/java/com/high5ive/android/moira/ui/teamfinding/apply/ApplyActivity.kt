@@ -66,7 +66,6 @@ class ApplyActivity : AppCompatActivity(), View.OnClickListener{
 
 
         apply_button.setOnClickListener(this)
-        education_checkBox.setOnClickListener(this)
         career_checkBox.setOnClickListener(this)
         link_checkBox.setOnClickListener(this)
         certificate_checkBox.setOnClickListener(this)
@@ -212,13 +211,6 @@ class ApplyActivity : AppCompatActivity(), View.OnClickListener{
 
             }
 
-            R.id.education_checkBox -> {
-                if(education_checkBox.isChecked){
-                    userPortfolioTypeList.add("SCHOOL")
-                } else{
-                    userPortfolioTypeList.add("SCHOOL")
-                }
-            }
 
             R.id.career_checkBox -> {
                 if(career_checkBox.isChecked){

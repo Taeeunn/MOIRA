@@ -178,10 +178,14 @@ class ScrapUserPoolFragment : Fragment() {
                         recycler_view.apply{
                             layoutManager = LinearLayoutManager(context)
                             adapter =
-                                ScrapUserAdapter(list) { index ->
-                                    Toast.makeText(context, "$index", Toast.LENGTH_SHORT).show()
+                                ScrapUserAdapter(list) { user ->
+//                                    Toast.makeText(context, "$user", Toast.LENGTH_SHORT).show()
                                     val intent = Intent(context, UserProfileDetailActivity::class.java)
-                                    intent.putExtra("index", index)
+                                    intent.putExtra("index1", user.userPoolId)
+                                    intent.putExtra("index2", user.userPoolId)
+                                    intent.putExtra("image", user.profileImage)
+                                    intent.putExtra("nickname", user.nickname)
+                                    intent.putExtra("position", user.positionName)
                                     startActivity(intent)
                                 }
                         }

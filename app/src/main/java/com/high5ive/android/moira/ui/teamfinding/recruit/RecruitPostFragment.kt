@@ -12,6 +12,7 @@ import android.widget.AdapterView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import com.high5ive.android.moira.R
@@ -27,7 +28,6 @@ import kotlinx.android.synthetic.main.in_progress_team_fragment.*
 import kotlinx.android.synthetic.main.recruit_post_fragment.*
 import kotlinx.android.synthetic.main.recruit_post_fragment.recycler_view
 import kotlinx.android.synthetic.main.team_finding_fragment.*
-import kotlinx.android.synthetic.main.team_finding_fragment.search_button
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -73,11 +73,21 @@ class RecruitPostFragment : Fragment() {
 
         getUserTag()
 
-        requireActivity().new_post_btn.setOnClickListener{
+        recycler_view.addOnScrollListener(object: RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+//                if (dy > 0){
+//                    val visibleItemCount = layoutManager
+//                }
+            }
+        })
+
+        new_post_btn.setOnClickListener{
             startActivity(Intent(context, NewPostActivity::class.java))
         }
 
-        requireActivity().search_button.setOnClickListener {
+        search_button.setOnClickListener {
             startActivity(Intent(context, RecruitPostSearchActivity::class.java))
         }
 
@@ -160,9 +170,9 @@ class RecruitPostFragment : Fragment() {
 
         }
 
-
-
     }
+
+
 
     private fun initRetrofit() {
 

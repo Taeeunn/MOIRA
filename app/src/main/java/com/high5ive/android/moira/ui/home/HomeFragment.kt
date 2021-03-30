@@ -23,9 +23,9 @@ import retrofit2.Retrofit
 
 class HomeFragment : Fragment() {
 
-    lateinit var retrofit: Retrofit
-    lateinit var myAPI: RetrofitService
-    lateinit var token: String
+//    lateinit var retrofit: Retrofit
+//    lateinit var myAPI: RetrofitService
+//    lateinit var token: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,16 +37,13 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val preferences: SharedPreferences = requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
-        token = preferences.getString("jwt_token", null).toString()
-        Log.v("token", token)
-        initRetrofit()
+//        val preferences: SharedPreferences = requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
+//        token = preferences.getString("jwt_token", null).toString()
+//        Log.v("token", token)
+//        initRetrofit()
 
 
 
-        noti_frame.setOnClickListener {
-            startActivity(Intent(context, AlarmActivity::class.java))
-        }
 
         card1.setOnClickListener {
             startActivity(Intent(context, ProjectStartActivity::class.java))
@@ -57,52 +54,41 @@ class HomeFragment : Fragment() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
+//    private fun initRetrofit() {
+//
+//        retrofit = RetrofitClient.getInstance() // 2에서 만든 Retrofit client의 instance를 불러옵니다.
+//        myAPI = retrofit.create(RetrofitService::class.java) // 여기서 retrofit이 우리의 interface를 구현해주고
+//    }
 
-        getHome()
-    }
-
-    private fun initRetrofit() {
-
-        retrofit = RetrofitClient.getInstance() // 2에서 만든 Retrofit client의 instance를 불러옵니다.
-        myAPI = retrofit.create(RetrofitService::class.java) // 여기서 retrofit이 우리의 interface를 구현해주고
-    }
-
-    private fun getHome() {
-        myAPI.getHome(token).enqueue(object :
-            Callback<HomeResponse> {
-            override fun onFailure(call: Call<HomeResponse>, t: Throwable) {
-                t.printStackTrace()
-            }
-
-            override fun onResponse(call: Call<HomeResponse>, response: Response<HomeResponse>) {
-                val code: Int = response.body()?.code ?: 0
-
-                val msg: String = response.body()?.msg ?: "no msg"
-                val succeed: Boolean = response.body()?.succeed ?: false
-
-                Log.v("code", code.toString())
-                Log.v("success", succeed.toString())
-                Log.v("msg", msg)
-
-                if(succeed){
-
-                    val data: HomeResponseData = response.body()?.data!!
-
-                    Log.v("data", data.toString())
-
-                    if(data.hasUnreadAlarm){
-                        new_noti.visibility = View.VISIBLE
-                    } else{
-                        new_noti.visibility = View.GONE
-                    }
-
-                }
-
-            }
-        })
-    }
+//    private fun getHome() {
+//        myAPI.getHome(token).enqueue(object :
+//            Callback<HomeResponse> {
+//            override fun onFailure(call: Call<HomeResponse>, t: Throwable) {
+//                t.printStackTrace()
+//            }
+//
+//            override fun onResponse(call: Call<HomeResponse>, response: Response<HomeResponse>) {
+//                val code: Int = response.body()?.code ?: 0
+//
+//                val msg: String = response.body()?.msg ?: "no msg"
+//                val succeed: Boolean = response.body()?.succeed ?: false
+//
+//                Log.v("code", code.toString())
+//                Log.v("success", succeed.toString())
+//                Log.v("msg", msg)
+//
+//                if(succeed){
+//
+//                    val data: HomeResponseData = response.body()?.data!!
+//
+//                    Log.v("data", data.toString())
+//
+//
+//                }
+//
+//            }
+//        })
+//    }
     
     
     

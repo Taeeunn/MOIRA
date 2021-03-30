@@ -8,6 +8,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.LayoutInflater
@@ -31,6 +32,7 @@ import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import gun0912.tedimagepicker.builder.TedImagePicker
 import gun0912.tedimagepicker.util.ToastUtil.context
+import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.activity_new_post.*
 import kotlinx.android.synthetic.main.dialog_recruit_position.*
 import kotlinx.android.synthetic.main.dialog_user_pool.*
@@ -38,6 +40,9 @@ import kotlinx.android.synthetic.main.dialog_user_pool.view.*
 import kotlinx.android.synthetic.main.make_recruit_info.*
 import kotlinx.android.synthetic.main.make_recruit_info.view.*
 import kotlinx.android.synthetic.main.recruit_post_fragment.*
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -50,17 +55,19 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var retrofit: Retrofit
     lateinit var myAPI: RetrofitService
     lateinit var token: String
-    var developer_position_count : String =  "0"
-    var planner_position_count : String = "0"
-    var designer_position_count : String = "0"
-    var duration: String =""
+    var developer_position_count: String = "0"
+    var planner_position_count: String = "0"
+    var designer_position_count: String = "0"
+    var duration: String = ""
     var localType: String = ""
     var title: String = ""
     var content: String = ""
     var hashtagList: ArrayList<String>? = null
+    var imageUriList = ArrayList<Uri>()
 
     val durationList = listOf("한달_미만", "세달_미만", "여섯달_미만", "여섯달_이상")
-    val regionList = listOf("서울_인천_경기", "대전_충북_충남_세종", "광주_전남_전북", "부산_울산_경남", "대구_경북", "강원", "제주", "온라인")
+    val regionList =
+        listOf("서울_인천_경기", "대전_충북_충남_세종", "광주_전남_전북", "부산_울산_경남", "대구_경북", "강원", "제주", "온라인")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -95,8 +102,6 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
         recruit_position_designer_delete.setOnClickListener(this)
 
         tag_add.setOnClickListener(this)
-
-
 
 
 //            TedBottomPicker.with(this@NewPostActivity)
@@ -136,31 +141,14 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
 
             Activity.RESULT_OK -> {
 
-                if (requestCode == 1){
+                if (requestCode == 1) {
                     hashtagList = data?.getStringArrayListExtra("list")
 
-                    if(hashtagList != null) {
+                    if (hashtagList != null) {
                         setTag(hashtagList!!.toMutableList())
                     }
 
-                } else {
 
-
-                    val fileUri = data?.data
-                    val file: File = ImagePicker.getFile(data)!!
-                    val filePath: String = ImagePicker.getFilePath(data)!!
-
-                    val newImage = ImageView(this)
-                    newImage.setImageURI(fileUri)
-
-
-                    val lp = LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        205.toPx(this)
-                    )
-                    lp.setMargins(0, 0, 0, 20.toPx(this))
-                    newImage.layoutParams = lp
-                    picture_layout.addView(newImage)
                 }
             }
         }
@@ -172,7 +160,8 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
 
             //val chip = Chip(ContextThemeWrapper(context, R.style.MaterialChipsAction))
             val chip = Chip(this)
-            val drawable = ChipDrawable.createFromAttributes(this, null, 0, R.style.MaterialChipsAction)
+            val drawable =
+                ChipDrawable.createFromAttributes(this, null, 0, R.style.MaterialChipsAction)
             chip.setChipDrawable(drawable)
 
             chip.text = tagName
@@ -198,8 +187,6 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
     }
 
 
-
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
@@ -219,8 +206,9 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun showMultiImage(uriList: List<Uri>) {
 
+        imageUriList.clear()
         for (uri in uriList) {
-
+            imageUriList.add(uri)
             val newImage = ImageView(this)
             newImage.setImageURI(uri)
 
@@ -245,25 +233,25 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
                 Log.v("ttt", developer_position_count.toString())
                 Log.v("ttt", planner_position_count.toString())
 
-                if (title ==""){
+                if (title == "") {
                     val msg = "프로젝트 제목을 입력해주세요!"
                     Snackbar.make(v, msg, Snackbar.LENGTH_SHORT).show()
                     return
                 }
 
-                if (content ==""){
+                if (content == "") {
                     val msg = "프로젝트 소개를 입력해주세요!"
                     Snackbar.make(v, msg, Snackbar.LENGTH_SHORT).show()
                     return
                 }
 
-                if (duration==""){
+                if (duration == "") {
                     val msg = "프로젝트 기간을 선택해주세요!"
                     Snackbar.make(v, msg, Snackbar.LENGTH_SHORT).show()
                     return
                 }
 
-                if (localType ==""){
+                if (localType == "") {
                     val msg = "지역을 선택해주세요!"
                     Snackbar.make(v, msg, Snackbar.LENGTH_SHORT).show()
                     return
@@ -277,14 +265,29 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
                     duration?.let { Log.v("duration", it) }
 
                     val positionCategoryList = arrayListOf<PositionCategory>()
-                    positionCategoryList.add(PositionCategory(developer_position_count.toInt(), "개발자"))
-                    positionCategoryList.add(PositionCategory(designer_position_count.toInt(), "디자이너"))
-                    positionCategoryList.add(PositionCategory(planner_position_count.toInt(), "기획자"))
+                    positionCategoryList.add(
+                        PositionCategory(
+                            developer_position_count.toInt(),
+                            "개발자"
+                        )
+                    )
+                    positionCategoryList.add(
+                        PositionCategory(
+                            designer_position_count.toInt(),
+                            "디자이너"
+                        )
+                    )
+                    positionCategoryList.add(
+                        PositionCategory(
+                            planner_position_count.toInt(),
+                            "기획자"
+                        )
+                    )
 
                     val body_data = NewRecruitPost(
                         content,
                         duration,
-                        hashtagList?.toList()?: emptyList(),
+                        hashtagList?.toList() ?: emptyList(),
                         localType,
                         positionCategoryList,
                         title
@@ -322,11 +325,14 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
                                 val data: Int = response.body()?.data!!
                                 Log.v("data", data.toString())
 
+                                addTeamImage(data)
+
                             }
 
                         }
                     })
                 }.run()
+
                 finish()
             }
 
@@ -348,14 +354,6 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
                             .buttonTextColor(R.color.black)
                             .showCameraTile(false)
                             .startMultiImage { uriList -> showMultiImage(uriList) }
-                    }
-
-                    positiveButton(R.string.take_picture) {
-
-                        ImagePicker.with(this@NewPostActivity)
-                            .cameraOnly()    //User can only capture image using Camera
-                            .start()
-
                     }
                 }
             }
@@ -416,7 +414,7 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             R.id.tag_add -> {
-                    startActivityForResult(Intent(this, AddTagActivity::class.java), 1)
+                startActivityForResult(Intent(this, AddTagActivity::class.java), 1)
             }
 
 //            R.id.tag_add -> {
@@ -500,13 +498,13 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
 
         mDialogView.positiveButton.setOnClickListener {
 
-            developer_position_count = ""+mAlertDialog.developer_count.text.toString()
-            planner_position_count = ""+mAlertDialog.planner_count.text.toString()
-            designer_position_count = ""+mAlertDialog.designer_count.text.toString()
+            developer_position_count = "" + mAlertDialog.developer_count.text.toString()
+            planner_position_count = "" + mAlertDialog.planner_count.text.toString()
+            designer_position_count = "" + mAlertDialog.designer_count.text.toString()
 
             mAlertDialog.dismiss()
 
-            if(developer_position_count != "0" ){
+            if (developer_position_count != "0") {
 
                 if (recruit_position_developer_layout.visibility == 8) {
                     recruit_position_developer_layout.visibility = View.VISIBLE
@@ -518,7 +516,7 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
 
 
 
-            if(planner_position_count != "0"){
+            if (planner_position_count != "0") {
 
                 if (recruit_position_planner_layout.visibility == 8) {
                     recruit_position_planner_layout.visibility = View.VISIBLE
@@ -530,7 +528,7 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
 
 
 
-            if(designer_position_count != "0"){
+            if (designer_position_count != "0") {
 
                 if (recruit_position_designer_layout.visibility == 8) {
                     recruit_position_designer_layout.visibility = View.VISIBLE
@@ -549,20 +547,84 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-    private fun deleteDeveloperPosition(){
+    private fun deleteDeveloperPosition() {
         developer_position_count = "0"
 
         recruit_position_developer_layout.visibility = View.GONE
     }
-    private fun deletePlannerPosition(){
+
+    private fun deletePlannerPosition() {
         planner_position_count = "0"
 
         recruit_position_planner_layout.visibility = View.GONE
     }
-    private fun deleteDesignerPosition(){
+
+    private fun deleteDesignerPosition() {
         designer_position_count = "0"
 
         recruit_position_designer_layout.visibility = View.GONE
+    }
+
+    private fun addTeamImage(projectId: Int) {
+
+        val imageList = ArrayList<MultipartBody.Part>()
+
+        for (uri in imageUriList) {
+            val filePath = getRealPathFromURI(uri)
+            val file = File(filePath)
+            var fileName = filePath
+            fileName = "$fileName.png"
+
+            val requestBody: RequestBody = RequestBody.create(MediaType.parse("image/*"), file)
+            val image: MultipartBody.Part =
+                MultipartBody.Part.createFormData("image", fileName, requestBody)
+
+            imageList.add(image)
+        }
+
+
+
+
+        myAPI.addTeamImageList(token, imageList, projectId).enqueue(object :
+            Callback<ResponseData> {
+            override fun onFailure(call: Call<ResponseData>, t: Throwable) {
+                t.printStackTrace()
+            }
+
+            override fun onResponse(
+                call: Call<ResponseData>,
+                response: Response<ResponseData>
+            ) {
+                Log.v("realcode", response.code().toString())
+                val code: Int = response.body()?.code ?: 0
+
+                val msg: String = response.body()?.msg ?: "no msg"
+                val succeed: Boolean = response.body()?.succeed ?: false
+
+                Log.v("code", code.toString())
+                Log.v("success", succeed.toString())
+                Log.v("msg", msg)
+
+                Log.v("url", call.request().url().toString())
+                Log.v("body", call.request().body().toString())
+
+                if (succeed) {
+
+
+                }
+
+            }
+        })
+    }
+
+    fun getRealPathFromURI(contentUri: Uri?): String {
+        val proj = arrayOf(MediaStore.Images.Media.DATA)
+        val cursor = contentResolver.query(contentUri!!, proj, null, null, null)
+        cursor!!.moveToNext()
+        val path = cursor.getString(cursor.getColumnIndex(MediaStore.MediaColumns.DATA))
+        val uri = Uri.fromFile(File(path))
+        cursor.close()
+        return path
     }
 }
 

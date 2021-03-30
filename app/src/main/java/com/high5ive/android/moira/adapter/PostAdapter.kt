@@ -12,7 +12,7 @@ import com.high5ive.android.moira.databinding.PostItemBinding
 import kotlinx.android.synthetic.main.post_item.view.*
 
 class PostAdapter(val items: List<WrittenPostItem>,
-                  private val clickListener: (post: WrittenPostItem, type: Int) -> Unit) :
+                  private val clickListener: (post: WrittenPostItem) -> Unit) :
     RecyclerView.Adapter<PostAdapter.PostViewHolder>(){
     class PostViewHolder(val binding: PostItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -24,12 +24,8 @@ class PostAdapter(val items: List<WrittenPostItem>,
                 PostItemBinding.bind(view)
             )
 
-        view.edit_post_btn.setOnClickListener {
-            clickListener.invoke(items[viewHolder.adapterPosition], 0)
-        }
-
         view.applicant_list_btn.setOnClickListener {
-            clickListener.invoke(items[viewHolder.adapterPosition], 1)
+            clickListener.invoke(items[viewHolder.adapterPosition])
         }
 
 

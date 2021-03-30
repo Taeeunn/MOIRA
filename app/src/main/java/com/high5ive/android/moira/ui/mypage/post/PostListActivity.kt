@@ -95,24 +95,15 @@ class PostListActivity : AppCompatActivity() {
                         recycler_view.apply{
                             layoutManager = LinearLayoutManager(this@PostListActivity)
                             adapter =
-                                PostAdapter(list) { post, type ->
-                                    if (type==0) {
-                                        val intent =Intent(this@PostListActivity, RecruitPostDetailActivity::class.java)
-                                        intent.putExtra("index", post.projectId)
-                                        startActivity(intent)
-                                    }
-                                    else if(type==1){
+                                PostAdapter(list) { post ->
+                                    val intent =Intent(this@PostListActivity, ApplicantListActivity::class.java)
+                                    intent.putExtra("index", post.projectId)
+                                    intent.putExtra("time", post.writtenTime)
+                                    intent.putExtra("imageurl", post.projectImageUrl)
+                                    intent.putExtra("hit", post.hitCount)
+                                    intent.putExtra("title", post.projectTitle)
 
-                                        val intent =Intent(this@PostListActivity, ApplicantListActivity::class.java)
-                                        intent.putExtra("index", post.projectId)
-                                        intent.putExtra("time", post.writtenTime)
-                                        intent.putExtra("imageurl", post.projectImageUrl)
-                                        intent.putExtra("hit", post.hitCount)
-                                        intent.putExtra("title", post.projectTitle)
-
-                                        startActivity(intent)
-
-                                    }
+                                    startActivity(intent)
 
                                 }
                         }

@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
 import com.bumptech.glide.Glide
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.adapter.ApplyAdapter
+import com.high5ive.android.moira.adapter.*
 import com.high5ive.android.moira.data.retrofit.ApplyPost
 import com.high5ive.android.moira.data.retrofit.ApplyPostItem
 import com.high5ive.android.moira.data.retrofit.ProjectApplyDetail
@@ -24,6 +24,7 @@ import com.high5ive.android.moira.databinding.ActivityRecruitPostDetailBinding
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import kotlinx.android.synthetic.main.activity_apply_list.*
+import kotlinx.android.synthetic.main.edit_info.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -111,6 +112,30 @@ class ApplyInfoActivity : AppCompatActivity() {
                         .override(20, 20)
                         .error(R.drawable.ic_baseline_person_24) // ex) error(R.drawable.error)
                         .into(binding.memberImage)
+
+                    career_recycler_view.apply {
+                        layoutManager = LinearLayoutManager(context)
+                        adapter =
+                            CareerAdapter(data.userCareerResponseDtoList)
+                    }
+
+                    link_recycler_view.apply {
+                        layoutManager = LinearLayoutManager(context)
+                        adapter =
+                            LinkAdapter(data.userLinkResponseDtoList)
+                    }
+
+                    certificate_recycler_view.apply {
+                        layoutManager = LinearLayoutManager(context)
+                        adapter =
+                            CertificateAdapter(data.userLicenseResponseDtoList)
+                    }
+
+                    award_recycler_view.apply {
+                        layoutManager = LinearLayoutManager(context)
+                        adapter =
+                            AwardAdapter(data.userAwardResponseDtoList)
+                    }
 
 
 //                    recycler_view.apply {
