@@ -108,7 +108,7 @@ class RecruitPostSearchActivity : AppCompatActivity(), View.OnClickListener{
                     recycler_view.apply {
                         layoutManager = LinearLayoutManager(this@RecruitPostSearchActivity)
                         adapter = RecruitAdapter(list) { index ->
-                            Toast.makeText(this@RecruitPostSearchActivity, "$index", Toast.LENGTH_SHORT).show()
+//                            Toast.makeText(this@RecruitPostSearchActivity, "$index", Toast.LENGTH_SHORT).show()
                             val intent = Intent(this@RecruitPostSearchActivity, RecruitPostDetailActivity::class.java)
                             intent.putExtra("index", index)
                             startActivity(intent)

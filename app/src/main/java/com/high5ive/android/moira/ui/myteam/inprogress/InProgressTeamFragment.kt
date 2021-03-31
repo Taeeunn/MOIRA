@@ -124,7 +124,7 @@ class InProgressTeamFragment : Fragment() {
                             adapter =
                                 TeamAdapter(list) { type, index ->
 
-                                    Toast.makeText(context, "$index", Toast.LENGTH_SHORT).show()
+//                                    Toast.makeText(context, "$index", Toast.LENGTH_SHORT).show()
                                     if (type == 0) {
                                         val intent = Intent(context, TeamDetailActivity::class.java)
                                         intent.putExtra("index", index)

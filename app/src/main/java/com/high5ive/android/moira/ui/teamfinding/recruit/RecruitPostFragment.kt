@@ -223,7 +223,7 @@ class RecruitPostFragment : Fragment() {
     private fun getRecruitPostList() {
         Runnable {
 
-            var hashtagListString = ""
+            var hashtagListString: String?= ""
 
             for (index in hashtagList.indices) {
                 val tagName = hashtagList[index]
@@ -235,6 +235,9 @@ class RecruitPostFragment : Fragment() {
 
             }
 
+            if(hashtagList.size==0){
+                hashtagListString=null
+            }
 
             myAPI.getRecruitPostList(token, null, 0, position_filter, sort_filter, hashtagListString).enqueue(object :
                 Callback<RecruitPost> {
@@ -262,7 +265,7 @@ class RecruitPostFragment : Fragment() {
                             layoutManager = LinearLayoutManager(context)
                             adapter =
                                 RecruitAdapter(list) { index ->
-                                    Toast.makeText(context, "$index", Toast.LENGTH_SHORT).show()
+//                                    Toast.makeText(context, "$index", Toast.LENGTH_SHORT).show()
                                     val intent =
                                         Intent(context, RecruitPostDetailActivity::class.java)
                                     intent.putExtra("index", index)

@@ -25,7 +25,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 
-class UserPoolSearchActivity : AppCompatActivity(), View.OnClickListener{
+class UserPoolSearchActivity : AppCompatActivity(), View.OnClickListener {
 
     lateinit var retrofit: Retrofit
     lateinit var myAPI: RetrofitService
@@ -36,7 +36,8 @@ class UserPoolSearchActivity : AppCompatActivity(), View.OnClickListener{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_pool_search)
 
-        val preferences: SharedPreferences = this.getSharedPreferences("moira", Context.MODE_PRIVATE)
+        val preferences: SharedPreferences =
+            this.getSharedPreferences("moira", Context.MODE_PRIVATE)
         token = preferences.getString("jwt_token", null).toString()
 
         initRetrofit()
@@ -68,7 +69,7 @@ class UserPoolSearchActivity : AppCompatActivity(), View.OnClickListener{
     }
 
     override fun onClick(v: View?) {
-        when(v?.id){
+        when (v?.id) {
             R.id.search_button -> {
                 searchUser(v)
             }
@@ -78,7 +79,7 @@ class UserPoolSearchActivity : AppCompatActivity(), View.OnClickListener{
     private fun searchUser(v: View) {
         val nickname = searchView.query.toString()
 
-        if(nickname.length<3){
+        if (nickname.length < 3) {
             val msg = "세 글자 이상 입력해주세요."
             search_text.text = ""
 
@@ -89,11 +90,17 @@ class UserPoolSearchActivity : AppCompatActivity(), View.OnClickListener{
                 layoutManager = LinearLayoutManager(this@UserPoolSearchActivity)
                 adapter =
                     UserAdapter(list) { user, type ->
-                        Toast.makeText(context, "$user", Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(context, "$user", Toast.LENGTH_SHORT).show()
 
                         if (type == 0) {
-                            val intent = Intent(context, UserProfileDetailActivity::class.java)
+                            val intent = Intent(
+                                context,
+                                UserProfileDetailActivity::class.java
+                            )
                             intent.putExtra("index", user.userPoolId)
+                            intent.putExtra("image", user.profileImage)
+                            intent.putExtra("nickname", user.nickname)
+                            intent.putExtra("position", user.positionName)
                             startActivity(intent)
 
                         } else if (type == 1) {
@@ -110,7 +117,10 @@ class UserPoolSearchActivity : AppCompatActivity(), View.OnClickListener{
                 t.printStackTrace()
             }
 
-            override fun onResponse(call: Call<UserPoolSearch>, response: Response<UserPoolSearch>) {
+            override fun onResponse(
+                call: Call<UserPoolSearch>,
+                response: Response<UserPoolSearch>
+            ) {
                 val code: Int = response.body()?.code ?: 0
 
                 val msg: String = response.body()?.msg ?: "no msg"
@@ -120,12 +130,12 @@ class UserPoolSearchActivity : AppCompatActivity(), View.OnClickListener{
                 Log.v("success", succeed.toString())
                 Log.v("msg", msg)
 
-                if(succeed){
+                if (succeed) {
 
                     val list: List<UserPoolItem> = response.body()?.list!!
                     Log.v("data", list.toString())
 
-                    if(list.isEmpty()){
+                    if (list.isEmpty()) {
                         val msg = "해당 닉네임을 가진 사용자가 없습니다."
                         Snackbar.make(v, msg, Snackbar.LENGTH_SHORT).show()
                     }
@@ -136,9 +146,23 @@ class UserPoolSearchActivity : AppCompatActivity(), View.OnClickListener{
                     recycler_view.apply {
                         layoutManager = LinearLayoutManager(this@UserPoolSearchActivity)
                         adapter =
-                            UserAdapter(list) { index, type ->
-                                Toast.makeText(this@UserPoolSearchActivity, "$index", Toast.LENGTH_SHORT).show()
-                                startActivity(Intent(this@UserPoolSearchActivity, UserProfileDetailActivity::class.java))
+                            UserAdapter(list) { user, type ->
+//                                Toast.makeText(context, "$user", Toast.LENGTH_SHORT).show()
+
+                                if (type == 0) {
+                                    val intent = Intent(
+                                        context,
+                                        UserProfileDetailActivity::class.java
+                                    )
+                                    intent.putExtra("index", user.userPoolId)
+                                    intent.putExtra("image", user.profileImage)
+                                    intent.putExtra("nickname", user.nickname)
+                                    intent.putExtra("position", user.positionName)
+                                    startActivity(intent)
+
+                                } else if (type == 1) {
+                                    likeUser(user.userPoolId)
+                                }
                             }
                     }
 
@@ -165,7 +189,7 @@ class UserPoolSearchActivity : AppCompatActivity(), View.OnClickListener{
                 Log.v("success", succeed.toString())
                 Log.v("msg", msg)
 
-                if(succeed){
+                if (succeed) {
 
                     val data: UserLikeData = response.body()?.data!!
                     Log.v("data", data.toString())

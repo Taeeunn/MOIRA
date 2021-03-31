@@ -52,6 +52,8 @@ class ScrapRecruitAdapter(val items: List<ScrapRecruitPostItem>,
 
         var hashtagNameList: List<Hashtag>? = items[position].hashtagList
 
+        holder.binding.tagGroup.removeAllViews()
+
         if (hashtagNameList!=null) {
             for (index in hashtagNameList.indices) {
                 val tagName = hashtagNameList[index].hashtagName
@@ -62,6 +64,7 @@ class ScrapRecruitAdapter(val items: List<ScrapRecruitPostItem>,
                 chip.setChipDrawable(drawable)
 
                 chip.text = tagName
+                holder.binding.tagGroup.addView(chip)
             }
 
         }

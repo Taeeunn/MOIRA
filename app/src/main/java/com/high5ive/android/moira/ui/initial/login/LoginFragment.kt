@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -63,7 +64,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
         jwt_token = preferences.getString("jwt_token", "").toString()
 
         refresh_token = preferences.getString("kakao_refresh_token", "").toString()
-
+        Log.v("jwt", jwt_token)
 
         kakao_login_btn.setOnClickListener(this)
     }
@@ -229,10 +230,15 @@ class LoginFragment : Fragment(), View.OnClickListener {
                         requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
                     preferences.edit().putString("jwt_token", jwtToken).apply()
 
-                    if (needSignUp) {
-                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
-                    } else {
-                        startActivity(Intent(context, MainActivity::class.java))
+                    if(code!=200){
+                        Toast.makeText(context, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show()
+
+                    }else {
+                        if (needSignUp) {
+                            navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
+                        } else {
+                            startActivity(Intent(context, MainActivity::class.java))
+                        }
                     }
                 }
             })

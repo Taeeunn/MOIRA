@@ -78,9 +78,10 @@ class AddCareerActivity : AppCompatActivity(), View.OnClickListener{
 
     private fun addCareer(v: View) {
 
-        val body_data = MyProfileCareerAdd(company_name_et.text.toString(), join_company_et.text.toString(),
-            resignation_et.text.toString(),job_department_et.text.toString())
+        val body_data = MyProfileCareerAdd(company_name_et.text.toString(), resignation_et.text.toString(),
+            join_company_et.text.toString(),job_department_et.text.toString())
 
+        Log.v("job", job_department_et.text.toString())
         myAPI.addMyProfileCareer(token, body_data).enqueue(object :
             Callback<MyProfileCareerAddResponse> {
             override fun onFailure(call: Call<MyProfileCareerAddResponse>, t: Throwable) {

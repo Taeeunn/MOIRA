@@ -67,7 +67,6 @@
                     android:layout_height="90dp"
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="8dp"
-                    android:src="@color/light_gray"
                     app:civ_border_color="@color/light_gray"
                     app:civ_border_width="0dp" />
 

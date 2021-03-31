@@ -101,8 +101,8 @@ class EvaluateMemberActivity : AppCompatActivity() {
                             layoutManager = LinearLayoutManager(this@EvaluateMemberActivity)
                             adapter =
                                 MemberAdapter(list) { member ->
-                                    Toast.makeText(this@EvaluateMemberActivity, "$index", Toast.LENGTH_SHORT)
-                                        .show()
+////                                    Toast.makeText(this@EvaluateMemberActivity, "$index", Toast.LENGTH_SHORT)
+//                                        .show()
 
                                     val intent = Intent(context, EvaluateMemberDetailActivity::class.java)
                                     intent.putExtra("index", member.userProjectId)

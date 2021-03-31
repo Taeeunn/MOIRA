@@ -6,6 +6,8 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
+import androidx.appcompat.widget.Toolbar
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import com.high5ive.android.moira.R
@@ -37,6 +39,14 @@ class AddTagActivity : AppCompatActivity() {
         val preferences: SharedPreferences =this.getSharedPreferences("moira", Context.MODE_PRIVATE)
         jwt_token = preferences.getString("jwt_token", null).toString()
 
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        val ab = supportActionBar!!
+        ab.setDisplayShowTitleEnabled(false)
+        ab.setDisplayHomeAsUpEnabled(true)
+
+
         initRetrofit()
 
         getHashTags()
@@ -48,6 +58,17 @@ class AddTagActivity : AppCompatActivity() {
             setResult(RESULT_OK, intent);
             finish()
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     private fun initRetrofit() {

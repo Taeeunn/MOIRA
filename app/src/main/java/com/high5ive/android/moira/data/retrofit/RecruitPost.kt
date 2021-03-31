@@ -29,7 +29,7 @@ data class RecruitPostDetailData(
     val duration: String,
     val hashtagList: List<String>,
     val hitCount: Int,
-    val imageUrlList: List<String>,
+    val imageUrlList: List<String>?,
     val isLike: Boolean,
     val likeCount: Int,
     val location: String,

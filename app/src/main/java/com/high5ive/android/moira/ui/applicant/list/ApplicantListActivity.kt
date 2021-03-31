@@ -122,7 +122,7 @@ class ApplicantListActivity : AppCompatActivity(), View.OnClickListener{
                         layoutManager = LinearLayoutManager(this@ApplicantListActivity)
                         adapter =
                             ApplyMemberAdapter(list) { applyuser ->
-                                Toast.makeText(this@ApplicantListActivity, "$applyuser", Toast.LENGTH_SHORT).show()
+//                                Toast.makeText(this@ApplicantListActivity, "$applyuser", Toast.LENGTH_SHORT).show()
 
                                 val intent =Intent(this@ApplicantListActivity, ApplicantProfileActivity::class.java)
                                 intent.putExtra("applyId", applyuser.projectApplyId)

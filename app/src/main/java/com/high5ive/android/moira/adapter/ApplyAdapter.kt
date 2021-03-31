@@ -42,7 +42,7 @@ class ApplyAdapter(val items: List<ApplyPostItem>,
         Glide.with(holder.binding.root.context)
             .load(items[position].projectImageUrl)
             .override(20, 20)
-            .error(R.drawable.ic_baseline_person_24) // ex) error(R.drawable.error)
+            .error(R.drawable.ic_baseline_public_24) // ex) error(R.drawable.error)
             .into(holder.binding.recruitImage)
     }
 }

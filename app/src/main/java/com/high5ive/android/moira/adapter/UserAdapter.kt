@@ -26,8 +26,6 @@ class UserAdapter(val items: List<UserPoolItem>,
             )
 
         view.setOnClickListener {
-
-
             clickListener.invoke(items[viewHolder.adapterPosition], 0)
         }
 

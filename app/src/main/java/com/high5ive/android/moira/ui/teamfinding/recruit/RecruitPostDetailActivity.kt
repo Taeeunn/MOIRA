@@ -14,6 +14,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.list.listItemsSingleChoice
+import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import com.google.android.material.snackbar.Snackbar
@@ -25,6 +26,7 @@ import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.teamfinding.apply.ApplyActivity
 import kotlinx.android.synthetic.main.activity_recruit_post_detail.*
+import kotlinx.android.synthetic.main.activity_recruit_post_detail.more_button
 import kotlinx.android.synthetic.main.activity_recruit_post_detail.tag_group
 import org.json.JSONObject
 import retrofit2.Call
@@ -227,6 +229,16 @@ class RecruitPostDetailActivity : AppCompatActivity(), View.OnClickListener{
 
                         }else{
                             favorite_img_btn.setBackgroundResource(R.drawable.ic_empty_heart)
+                        }
+
+                        if(data.imageUrlList==null || data.imageUrlList.size==0){
+                            recruit_image.setImageResource(R.drawable.ic_baseline_public_24)
+                        } else {
+                            Glide.with(this@RecruitPostDetailActivity)
+                                .load(data.imageUrlList[0])
+                                .error(R.drawable.ic_baseline_public_24)
+                                .override(100, 100)
+                                .into(recruit_image)
                         }
 
                         position_recycler_view.apply{

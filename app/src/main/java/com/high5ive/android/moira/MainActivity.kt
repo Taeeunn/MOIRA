@@ -18,9 +18,9 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavigationView.setupWithNavController(fragment.findNavController())
 
-//        var keyHash = Utility.getKeyHash(this)
+        var keyHash = Utility.getKeyHash(this)
+
 //
-////
-//        Log.v("hash", keyHash)
+        Log.v("hash", keyHash)
     }
 }

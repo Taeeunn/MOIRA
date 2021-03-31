@@ -20,7 +20,6 @@ import com.high5ive.android.moira.databinding.ActivityApplyBinding
 import com.high5ive.android.moira.databinding.ActivityRecruitPostDetailBinding
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
-import gun0912.tedimagepicker.util.ToastUtil.context
 import kotlinx.android.synthetic.main.activity_apply.*
 import kotlinx.android.synthetic.main.activity_apply.interest_tag_group
 import kotlinx.android.synthetic.main.select_recruit_info.*

@@ -163,8 +163,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/nickname"
-                    app:srcCompat="@drawable/round_rectangle_2"
-                    app:tint="@color/light_gray" />
+                    app:srcCompat="@drawable/round_rectangle_2" />
 
                 <TextView
                     android:id="@+id/contest_description"

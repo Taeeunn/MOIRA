@@ -285,7 +285,12 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
                                 val data: Int = response.body()?.data!!
                                 Log.v("data", data.toString())
 
-                                addTeamImage(data)
+
+                                if (imageUriList.size==0){
+                                    finish()
+                                }else {
+                                    addTeamImage(data)
+                                }
 
                             }
 
@@ -293,7 +298,7 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
                     })
                 }.run()
 
-                finish()
+
             }
 
             R.id.picture_btn -> {
@@ -545,7 +550,9 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
 
 
             }
+
         })
+        finish()
     }
 
     fun getRealPathFromURI(contentUri: Uri?): String {

@@ -24,7 +24,7 @@ data class MyTeamDetail(
 
 data class MyTeamDetailData(
     val content: String,
-    val imageUrl: List<String>?,
+    val imageUrlList: List<String>?,
     val leader: Boolean,
     val memberCount: Int,
     val myProjectTeammateResponseDTOList: List<MyProjectTeammateResponseDTO>,

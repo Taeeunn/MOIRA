@@ -149,11 +149,11 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
                             more_button.visibility=View.GONE
                         }
 
-                        if(data.imageUrl==null){
+                        if(data.imageUrlList==null || data.imageUrlList.size==0){
                             team_image.setImageResource(R.drawable.ic_baseline_public_24)
                         } else {
                             Glide.with(this@TeamDetailActivity)
-                                .load(data.imageUrl[0])
+                                .load(data.imageUrlList[0])
                                 .error(R.drawable.ic_baseline_public_24)
                                 .override(100, 100)
                                 .into(team_image)

@@ -253,7 +253,7 @@ class UserPoolFragment : Fragment() {
                                 layoutManager = LinearLayoutManager(context)
                                 adapter =
                                     UserAdapter(list) { user, type ->
-                                        Toast.makeText(context, "$user", Toast.LENGTH_SHORT).show()
+//                                        Toast.makeText(context, "$user", Toast.LENGTH_SHORT).show()
 
                                         if (type == 0) {
                                             val intent = Intent(
