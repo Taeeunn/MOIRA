@@ -10,18 +10,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.adapter.ScrapRecruitAdapter
 import com.high5ive.android.moira.adapter.ScrapUserAdapter
 import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
-import com.high5ive.android.moira.ui.teamfinding.recruit.RecruitPostDetailActivity
 import com.high5ive.android.moira.ui.teamfinding.user.UserProfileDetailActivity
 import kotlinx.android.synthetic.main.fragment_scrap_user_pool.*
-import kotlinx.android.synthetic.main.recruit_post_fragment.*
 import kotlinx.android.synthetic.main.recruit_post_fragment.recycler_view
 import kotlinx.android.synthetic.main.recruit_post_fragment.spinner1
 import kotlinx.android.synthetic.main.recruit_post_fragment.spinner2
@@ -62,7 +58,6 @@ class ScrapUserPoolFragment : Fragment() {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
                 when (spinner1.getItemAtPosition(position)) {
                     "개발" -> {
-                        Log.v("itemselect", "개발")
                         if(position_filter != "개발자") {
                             position_filter = "개발자"
                             getScrapUserPool()
@@ -70,7 +65,6 @@ class ScrapUserPoolFragment : Fragment() {
 
                     }
                     "기획" -> {
-                        Log.v("itemselect", "기획")
                         if(position_filter != "기획자") {
                             position_filter = "기획자"
                             getScrapUserPool()
@@ -78,7 +72,6 @@ class ScrapUserPoolFragment : Fragment() {
                     }
 
                     "디자인" -> {
-                        Log.v("itemselect", "디자인")
                         if(position_filter != "디자이너") {
                             position_filter = "디자이너"
                             getScrapUserPool()
@@ -102,7 +95,6 @@ class ScrapUserPoolFragment : Fragment() {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
                 when (spinner2.getItemAtPosition(position)) {
                     "최신순" -> {
-                        Log.v("itemselect", "최신순")
                         if(sort_filter != "date") {
                             sort_filter = "date"
                             getScrapUserPool()
@@ -110,7 +102,6 @@ class ScrapUserPoolFragment : Fragment() {
 
                     }
                     "조회순" -> {
-                        Log.v("itemselect", "조회순")
                         if(sort_filter != "hit") {
                             sort_filter = "hit"
                             getScrapUserPool()
@@ -118,7 +109,6 @@ class ScrapUserPoolFragment : Fragment() {
                     }
 
                     "좋아요순" -> {
-                        Log.v("itemselect", "좋아요순")
                         if(sort_filter != "like") {
                             sort_filter = "like"
                             getScrapUserPool()
@@ -167,8 +157,6 @@ class ScrapUserPoolFragment : Fragment() {
                     Log.v("msg", msg)
 
                     if(succeed){
-
-
 
                         val list: List<ScrapUserPoolItem> = response.body()?.list ?: emptyList()
                         Log.v("data", list.toString())

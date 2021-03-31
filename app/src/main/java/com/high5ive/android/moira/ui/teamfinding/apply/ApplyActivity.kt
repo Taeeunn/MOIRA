@@ -142,8 +142,7 @@ class ApplyActivity : AppCompatActivity(), View.OnClickListener{
             chip.setChipDrawable(drawable)
 
             chip.text = tagName
-//
-//            interest_tag_group.addView(chip)
+
             interest_tag_group.addView(chip)
         }
     }
@@ -162,7 +161,7 @@ class ApplyActivity : AppCompatActivity(), View.OnClickListener{
 
 
                 if (response.code() == 400) {
-                    var errorBody = JSONObject(response.errorBody()!!.string());
+                    val errorBody = JSONObject(response.errorBody()!!.string());
 
                     val code= errorBody.getInt("code")
                     val msg = errorBody.getString("msg")
@@ -243,9 +242,6 @@ class ApplyActivity : AppCompatActivity(), View.OnClickListener{
                     userPortfolioTypeList.add("LINK")
                 }
             }
-
-
-
         }
     }
 }

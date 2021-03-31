@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.RecruitAdapter
-import com.high5ive.android.moira.adapter.UserAdapter
 import com.high5ive.android.moira.data.retrofit.RecruitPost
 import com.high5ive.android.moira.data.retrofit.RecruitPostItem
 import com.high5ive.android.moira.network.RetrofitClient
@@ -78,23 +77,6 @@ class RecruitPostSearchActivity : AppCompatActivity(), View.OnClickListener{
     private fun searchRecruitPost(v: View) {
         val keyword = searchView.query.toString()
 
-//        if(nickname.length<3){
-//            val msg = "세 글자 이상 입력해주세요."
-//            search_text.text = ""
-//
-//            Snackbar.make(v, msg, Snackbar.LENGTH_SHORT).show()
-//
-//            val list: List<RecruitPostItem> = emptyList()
-//            recycler_view.apply {
-//                layoutManager = LinearLayoutManager(this@RecruitPostSearchActivity)
-//                adapter =
-//                    UserAdapter(list) { index ->
-//                        Toast.makeText(this@RecruitPostSearchActivity, "$index", Toast.LENGTH_SHORT).show()
-//                        startActivity(Intent(this@RecruitPostSearchActivity, RecruitPostDetailActivity::class.java))
-//                    }
-//            }
-//            return
-//        }
 
         myAPI.getRecruitPostList(token, keyword, null, null, null, null).enqueue(object :
             Callback<RecruitPost> {
@@ -121,8 +103,6 @@ class RecruitPostSearchActivity : AppCompatActivity(), View.OnClickListener{
                         val msg = "해당 키워드를 가진 모집글이 없습니다."
                         Snackbar.make(v, msg, Snackbar.LENGTH_SHORT).show()
                     }
-
-
 
                     search_text.text = "'" + keyword + "' 검색 내역"
                     recycler_view.apply {

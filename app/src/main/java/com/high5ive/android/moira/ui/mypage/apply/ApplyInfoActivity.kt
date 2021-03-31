@@ -1,29 +1,22 @@
 package com.high5ive.android.moira.ui.mypage.apply
 
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.afollestad.materialdialogs.MaterialDialog
 import com.bumptech.glide.Glide
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.*
-import com.high5ive.android.moira.data.retrofit.ApplyPost
-import com.high5ive.android.moira.data.retrofit.ApplyPostItem
 import com.high5ive.android.moira.data.retrofit.ProjectApplyDetail
 import com.high5ive.android.moira.data.retrofit.ProjectApplyDetailData
 import com.high5ive.android.moira.databinding.ActivityApplyInfoBinding
-import com.high5ive.android.moira.databinding.ActivityRecruitPostDetailBinding
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
-import kotlinx.android.synthetic.main.activity_apply_list.*
 import kotlinx.android.synthetic.main.edit_info.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -83,7 +76,6 @@ class ApplyInfoActivity : AppCompatActivity() {
 
     private fun getApplyInfo(){
 
-        Log.v("index", index.toString())
         myAPI.getProjectApplyDetail(token, index).enqueue(object : Callback<ProjectApplyDetail> {
             override fun onFailure(call: Call<ProjectApplyDetail>, t: Throwable) {
                 t.printStackTrace()
@@ -137,45 +129,7 @@ class ApplyInfoActivity : AppCompatActivity() {
                             AwardAdapter(data.userAwardResponseDtoList)
                     }
 
-
-//                    recycler_view.apply {
-//                        layoutManager = LinearLayoutManager(this@ApplyListActivity)
-//                        adapter =
-//                            ApplyAdapter(list) { index, type ->
-//                                Toast.makeText(
-//                                    this@ApplyListActivity,
-//                                    "$index",
-//                                    Toast.LENGTH_SHORT
-//                                ).show()
-//
-//                                if (type == 0) {
-//                                    val intent = Intent(
-//                                        this@ApplyListActivity,
-//                                        ApplyInfoActivity::class.java
-//                                    )
-//                                    intent.putExtra("index", index)
-//                                    startActivity(intent)
-//
-//                                    // 지원 취소
-//                                } else if (type == 1) {
-//                                    Log.v("index", index.toString())
-//                                    MaterialDialog(this@ApplyListActivity).show {
-//                                        title(R.string.project_duration)
-//                                        message(R.string.ask_apply_cancel)
-//                                        negativeButton(R.string.close)
-//                                        positiveButton(R.string.apply_cancel) {
-//                                            applyCancle(index)
-//
-//
-//                                        }
-//
-//
-//                                    }
-//                                }
-//                            }
-//                    }
                 }
-
             }
 
         })

@@ -14,11 +14,7 @@
         <!-- Customize your theme here. -->
 
         <item name="android:fontFamily">@font/font_noto_sans</item>
-<!--        <item name="android:textViewStyle">@style/customTextViewFontStyle</item>-->
-<!--        <item name="android:buttonStyle">@style/customButtonFontStyle</item>-->
-<!--        <item name="android:editTextStyle">@style/customEditTextFontStyle</item>-->
-<!--        <item name="android:radioButtonStyle">@style/customRadioButtonFontStyle</item>-->
-<!--        <item name="android:checkboxStyle">@style/customCheckboxFontStyle</item>-->
+
         <item name="md_color_title">#4a4a4a</item>
         <item name="md_color_button_text">@color/main_blue</item>
         <item name="md_font_title">@font/noto_sans_bold</item>

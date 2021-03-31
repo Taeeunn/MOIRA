@@ -4,11 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.data.retrofit.CareerItem
-import com.high5ive.android.moira.data.retrofit.ComplimentMarkWithCountDto
-import com.high5ive.android.moira.data.retrofit.MyProfileCareerAddResponseItem
 import com.high5ive.android.moira.data.retrofit.UserCareerResponseDto
-import com.high5ive.android.moira.databinding.BadgeItemBinding
 import com.high5ive.android.moira.databinding.CareerItemBinding
 
 /**

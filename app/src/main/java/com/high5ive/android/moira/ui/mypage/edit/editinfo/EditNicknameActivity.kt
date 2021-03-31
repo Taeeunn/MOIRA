@@ -8,14 +8,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
-import androidx.core.os.bundleOf
-import com.bumptech.glide.Glide
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import kotlinx.android.synthetic.main.activity_edit_nickname.*
-import kotlinx.android.synthetic.main.set_nickname_fragment.*
 import kotlinx.android.synthetic.main.set_nickname_fragment.enter_nickname_et
 import kotlinx.android.synthetic.main.set_nickname_fragment.nickname_text_layout
 import retrofit2.Call
@@ -102,11 +99,6 @@ class EditNicknameActivity : AppCompatActivity() {
                         nickname_text_layout.helperText = "*이미 사용중인 닉네임입니다."
                         nickname_text_layout.setHelperTextColor(resources.getColorStateList(R.color.red))
                     }
-//                    if (firstLogin){
-//                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
-//                    } else{
-//                        startActivity(Intent(context, MainActivity::class.java))
-//                    }
 
                 }
             })

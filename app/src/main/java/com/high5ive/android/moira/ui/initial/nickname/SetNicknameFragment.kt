@@ -12,7 +12,6 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.high5ive.android.moira.R
@@ -66,15 +65,6 @@ class SetNicknameFragment : Fragment() {
         val ab = (activity as AppCompatActivity?)!!.supportActionBar!!
         ab.setDisplayShowTitleEnabled(false)
         ab.setDisplayHomeAsUpEnabled(true)
-//        enter_nickname_et.setOnClickListener{
-//            nickname_text_layout.isErrorEnabled = true;
-//            nickname_text_layout.error = "*이미 사용중인 닉네임입니다.";
-//        }
-
-
-//
-//        nickname_text_layout.isErrorEnabled = true;
-//        nickname_text_layout.error = "*이미 사용중인 닉네임입니다.";
     }
 
 
@@ -126,11 +116,6 @@ class SetNicknameFragment : Fragment() {
                         nickname_text_layout.helperText = "*이미 사용중인 닉네임입니다."
                         nickname_text_layout.setHelperTextColor(resources.getColorStateList(R.color.red))
                     }
-//                    if (firstLogin){
-//                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
-//                    } else{
-//                        startActivity(Intent(context, MainActivity::class.java))
-//                    }
 
                 }
             })

@@ -10,22 +10,19 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:name=".login.KakaoLoginApplication"
         android:allowBackup="true"
         android:fullBackupContent="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_moira"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_moira_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MOIRA"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.mypage.edit.editinfo.EditTagActivity"></activity>
+        <activity android:name=".ui.mypage.edit.editinfo.EditTagActivity" />
         <activity android:name=".ui.mypage.edit.editinfo.EditIntroActivity" />
         <activity android:name=".ui.mypage.edit.editinfo.EditPositionActivity" />
         <activity android:name=".ui.mypage.edit.editinfo.EditNicknameActivity" />
@@ -45,26 +42,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.teamfinding.user.UserProfileDetailActivity" />
-        <activity android:name=".ui.message.MessageHistoryActivity" />
         <activity android:name=".ui.mypage.edit.EditProfileActivity" />
         <activity android:name=".ui.teamfinding.apply.ApplyActivity" />
-        <activity android:name=".ui.teamfinding.recruit.CommentActivity" />
         <activity android:name=".ui.mypage.scrap.ScrapListActivity" />
-        <activity android:name=".ui.message.MessageBoxActivity" />
-        <activity android:name=".ui.home.AlarmActivity" />
         <activity android:name=".ui.mypage.edit.addinfo.certificate.AddCertificateActivity" />
         <activity android:name=".ui.mypage.edit.addinfo.award.AddAwardHistoryActivity" />
-        <activity android:name=".ui.mypage.edit.addinfo.tag.AddTagActivity" />
         <activity android:name=".ui.mypage.edit.addinfo.link.AddLinkActivity" />
-        <activity android:name=".ui.mypage.edit.addinfo.career.AddJobDepartmentActivity" />
-        <activity android:name=".ui.mypage.edit.addinfo.career.AddCompanyActivity" />
         <activity android:name=".ui.mypage.edit.addinfo.career.AddCareerActivity" />
-        <activity android:name=".ui.mypage.edit.addinfo.education.AddMajorActivity" />
         <activity android:name=".ui.teamfinding.search.UserPoolSearchActivity" />
         <activity android:name=".ui.applicant.profile.ApplicantProfileActivity" />
         <activity android:name=".ui.myteam.evaluate.EvaluateMemberDetailActivity" />
-        <activity android:name=".ui.mypage.edit.addinfo.education.AddSchoolActivity" />
-        <activity android:name=".ui.mypage.edit.addinfo.education.AddEducationActivity" />
         <activity android:name=".ui.applicant.review.ApplicantReviewActivity" />
         <activity android:name=".ui.mypage.post.PostListActivity" />
         <activity android:name=".ui.mypage.apply.ApplyListActivity" />

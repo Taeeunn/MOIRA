@@ -9,16 +9,11 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.Toolbar
-import com.bumptech.glide.Glide
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.data.retrofit.MyProfile
-import com.high5ive.android.moira.data.retrofit.MyProfileData
 import com.high5ive.android.moira.data.retrofit.MyProfileLinkAdd
 import com.high5ive.android.moira.data.retrofit.MyProfileLinkAddResponse
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
-import kotlinx.android.synthetic.main.activity_add_education.*
-import kotlinx.android.synthetic.main.activity_add_education.register_button
 import kotlinx.android.synthetic.main.activity_add_link.*
 import retrofit2.Call
 import retrofit2.Callback

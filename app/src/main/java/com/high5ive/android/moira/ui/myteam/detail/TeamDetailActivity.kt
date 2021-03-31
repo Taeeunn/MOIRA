@@ -64,10 +64,6 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
 
         more_button.setOnClickListener(this)
 
-        //binding = DataBindingUtil.setContentView(this, R.layout.leader_item)
-
-
-
     }
 
     override fun onResume() {
@@ -181,8 +177,8 @@ class TeamDetailActivity : AppCompatActivity(), View.OnClickListener {
                                         intent.putExtra("nickname", member.nickname)
                                         intent.putExtra("position", member.position)
                                         intent.putExtra("image", member.imageUrl)
-                                        intent.putExtra("index1", member.userId)
-                                        intent.putExtra("index2", member.projectApplyId)
+                                        intent.putExtra("userId", member.userId)
+                                        intent.putExtra("applyId", member.projectApplyId)
 
                                         if (member.imageUrl != null) {
                                             intent.putExtra("image", member.imageUrl)

@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp">
 
-        <ImageView
+
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/recruit_image"
             android:layout_width="80dp"
             android:layout_height="80dp"

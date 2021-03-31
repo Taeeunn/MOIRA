@@ -13,13 +13,10 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.high5ive.android.moira.MainActivity
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.common.Functions
 import com.high5ive.android.moira.data.retrofit.LoginInfo
 import com.high5ive.android.moira.data.retrofit.LoginUser
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
-import com.high5ive.android.moira.ui.initial.OnTransitionListener
-import com.kakao.sdk.auth.AuthApi
 import com.kakao.sdk.auth.AuthApiClient
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.user.UserApiClient
@@ -32,7 +29,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
-import java.time.LocalDateTime
 import java.util.*
 
 class LoginFragment : Fragment(), View.OnClickListener {
@@ -79,22 +75,15 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
             R.id.kakao_login_btn -> {
 
-
-//                val func=Functions()
-
-
                 Log.v("token", jwt_token)
                 Log.v("access", access_token)
                 Log.v("refresh", refresh_token)
-
                 Log.v("refresh", refresh_token_expire)
+
                 val expire = AuthApiClient.instance.tokenManagerProvider.manager.getToken()?.refreshTokenExpiresAt?.before(Date())?: true
 
-                Log.v("expiress", expire.toString())
                 if (jwt_token=="" || expire) {
-                    Log.v("sssss", "ssss")
-                    Log.v("sssss", refresh_token)
-                    Log.v("sssss", expire.toString())
+
                     val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
                         if (error != null) {
                             Log.e("login", "로그인 실패", error)
@@ -111,14 +100,14 @@ class LoginFragment : Fragment(), View.OnClickListener {
                             preferences.edit().putString("kakao_refresh_token", token.refreshToken)
                                 .apply()
 
-                            showTokenInfo()
-                            getUserInfo()
+//                            showTokenInfo()
+//                            getUserInfo()
                             loginServer(token.accessToken)
 
 
                         }
                     }
-//
+
                     // 카카오톡이 설치되어 있으면 카카오톡으로 로그인, 아니면 카카오계정으로 로그인
                     if (UserApiClient.instance.isKakaoTalkLoginAvailable(requireContext())) {
                         UserApiClient.instance.loginWithKakaoTalk(
@@ -148,11 +137,9 @@ class LoginFragment : Fragment(), View.OnClickListener {
         CoroutineScope(Dispatchers.Main).launch {
 //doInBackground
             withContext(Dispatchers.Default) {
-                //                Log.v("tag", to.getToken().toString())
                 AuthApiClient.instance.refreshAccessToken()
 
                 access_token = AuthApiClient.instance.tokenManagerProvider.manager.getToken()?.accessToken?: ""
-//                refresh_token_expire = AuthApiClient.instance.tokenManagerProvider.manager.getToken()!!.refreshTokenExpiresAt.toString()
                 Log.v("token", AuthApiClient.instance.tokenManagerProvider.manager.getToken()?.accessToken.toString())
                 Log.v("expire", AuthApiClient.instance.tokenManagerProvider.manager.getToken()!!.refreshTokenExpiresAt?.after(Date()).toString())
 
@@ -231,11 +218,11 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
 
 
-                    Log.v("code", code.toString())
-                    Log.v("needSignUp", needSignUp.toString())
-                    Log.v("jwtToken", jwtToken.toString())
-                    Log.v("success", succeed.toString())
-                    Log.v("msg", msg)
+//                    Log.v("code", code.toString())
+//                    Log.v("needSignUp", needSignUp.toString())
+//                    Log.v("jwtToken", jwtToken.toString())
+//                    Log.v("success", succeed.toString())
+//                    Log.v("msg", msg)
 
 
                     val preferences: SharedPreferences =
@@ -247,7 +234,6 @@ class LoginFragment : Fragment(), View.OnClickListener {
                     } else {
                         startActivity(Intent(context, MainActivity::class.java))
                     }
-
                 }
             })
         }.run()

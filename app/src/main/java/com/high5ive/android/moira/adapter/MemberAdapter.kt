@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.data.retrofit.MyProjectTeammateResponseDTO
 import com.high5ive.android.moira.data.retrofit.TeamMemberItem
 import com.high5ive.android.moira.databinding.MemberItemBinding
 

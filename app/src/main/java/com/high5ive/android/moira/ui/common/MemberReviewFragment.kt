@@ -9,16 +9,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.BadgeAdapter
-import com.high5ive.android.moira.data.Badge
 import com.high5ive.android.moira.data.retrofit.UserPoolDetailReview
 import com.high5ive.android.moira.data.retrofit.UserPoolDetailReviewData
 import com.high5ive.android.moira.databinding.MemberReviewFragmentBinding
-import com.high5ive.android.moira.databinding.MyPageFragmentBinding
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.applicant.review.ApplicantReviewActivity
@@ -45,7 +42,6 @@ class MemberReviewFragment : Fragment() {
         token = preferences.getString("jwt_token", null).toString()
 
         index = arguments?.getInt("index")?: 1
-        Log.v("index", index.toString())
         initRetrofit()
     }
 

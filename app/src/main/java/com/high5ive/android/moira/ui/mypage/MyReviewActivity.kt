@@ -15,7 +15,6 @@ import com.high5ive.android.moira.adapter.BadgeAdapter
 import com.high5ive.android.moira.data.retrofit.UserPoolDetailReview
 import com.high5ive.android.moira.data.retrofit.UserPoolDetailReviewData
 import com.high5ive.android.moira.databinding.ActivityMyReviewBinding
-import com.high5ive.android.moira.databinding.MemberReviewFragmentBinding
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.applicant.review.ApplicantReviewActivity

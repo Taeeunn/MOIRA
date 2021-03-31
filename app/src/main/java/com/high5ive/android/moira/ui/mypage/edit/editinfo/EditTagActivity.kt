@@ -27,7 +27,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 
-class EditTagActivity : AppCompatActivity(), View.OnClickListener{
+class EditTagActivity : AppCompatActivity(), View.OnClickListener {
 
     lateinit var retrofit: Retrofit
     lateinit var myAPI: RetrofitService
@@ -52,7 +52,6 @@ class EditTagActivity : AppCompatActivity(), View.OnClickListener{
         jwt_token = preferences.getString("jwt_token", "").toString()
 
         initRetrofit()
-//        getPositionList()
         getHashTags()
 
         register_button.setOnClickListener(this)
@@ -62,49 +61,6 @@ class EditTagActivity : AppCompatActivity(), View.OnClickListener{
 
         retrofit = RetrofitClient.getInstance() // 2에서 만든 Retrofit client의 instance를 불러옵니다.
         myAPI = retrofit.create(RetrofitService::class.java) // 여기서 retrofit이 우리의 interface를 구현해주고
-    }
-
-    private fun getPositionList() {
-        Runnable {
-
-            myAPI.getPosition(jwt_token).enqueue(object : Callback<PositionResponse> {
-                override fun onFailure(call: Call<PositionResponse>, t: Throwable) {
-                    t.printStackTrace()
-                }
-
-                override fun onResponse(
-                    call: Call<PositionResponse>,
-                    response: Response<PositionResponse>
-                ) {
-                    Log.v("realcode", response.code().toString())
-                    val code: Int = response.body()?.code ?: 0
-                    val msg: String = response.body()?.msg ?: "no msg"
-                    val succeed: Boolean = response.body()?.succeed ?: false
-
-
-
-                    Log.v("code", code.toString())
-                    Log.v("success", succeed.toString())
-                    Log.v("msg", msg)
-
-
-                    if (succeed) {
-
-                        val data: List<PositionResponseItem> = response.body()?.list!!
-                        Log.v("data", data.toString())
-
-                        setTag(data.toMutableList())
-
-                    }
-//                    if (firstLogin){
-//                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
-//                    } else{
-//                        startActivity(Intent(context, MainActivity::class.java))
-//                    }
-
-                }
-            })
-        }.run()
     }
 
     private fun setTag(tagList: MutableList<PositionResponseItem>) {
@@ -149,8 +105,6 @@ class EditTagActivity : AppCompatActivity(), View.OnClickListener{
             R.id.register_button -> {
 
                 editTags(tagIdList)
-
-
             }
         }
     }
@@ -160,30 +114,24 @@ class EditTagActivity : AppCompatActivity(), View.OnClickListener{
             val tagName = tagList[index].hashtagName
             val tagId = tagList[index].hashtagId
 
-            //val chip = Chip(ContextThemeWrapper(context, R.style.MaterialChipsAction))
             val chip = Chip(this)
             chip.setOnClickListener {
 
-                if (chip.textColors == resources.getColorStateList(R.color.white)){
+                if (chip.textColors == resources.getColorStateList(R.color.white)) {
                     tagIdList.remove(tagId)
                     chip.setTextColor(resources.getColor(R.color.black))
-                } else{
+                } else {
 
                     chip.setTextColor(resources.getColor(R.color.white))
                     tagIdList.add(tagId)
                 }
 
-                Log.v("tggg", chip.textColors.toString())
             }
 
 
             val drawable = ChipDrawable.createFromAttributes(this, null, 0, R.style.MaterialChips)
             chip.setChipDrawable(drawable)
             chip.text = tagName
-
-
-
-            //Added click listener on close icon to remove tag from ChipGroup
 
             interest_tag_group.addView(chip)
         }
@@ -212,12 +160,6 @@ class EditTagActivity : AppCompatActivity(), View.OnClickListener{
 
                     setTag2(list.toMutableList())
 
-//                    if (firstLogin){
-//                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
-//                    } else{
-//                        startActivity(Intent(context, MainActivity::class.java))
-//                    }
-
                 }
             })
         }.run()
@@ -225,7 +167,6 @@ class EditTagActivity : AppCompatActivity(), View.OnClickListener{
 
     private fun editTags(tagIdList: List<Int>) {
 
-        Log.v("list", tagIdList.toString())
         var body_data = HashtagEdit(tagIdList)
         myAPI.editTag(jwt_token, body_data).enqueue(object : Callback<HashtagEditResponse> {
             override fun onFailure(call: Call<HashtagEditResponse>, t: Throwable) {
@@ -257,12 +198,6 @@ class EditTagActivity : AppCompatActivity(), View.OnClickListener{
                     setResult(RESULT_OK, intent);
                     finish()
                 }
-
-//                    if (firstLogin){
-//                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
-//                    } else{
-//                        startActivity(Intent(context, MainActivity::class.java))
-//                    }
 
             }
         })

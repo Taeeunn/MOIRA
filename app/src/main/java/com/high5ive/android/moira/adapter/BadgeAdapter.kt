@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.data.Badge
 import com.high5ive.android.moira.data.retrofit.ComplimentMarkWithCountDto
 import com.high5ive.android.moira.databinding.BadgeItemBinding
 

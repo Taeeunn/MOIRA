@@ -11,14 +11,10 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
-import android.widget.ImageView
-import android.widget.LinearLayout
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.afollestad.materialdialogs.MaterialDialog
 import com.bumptech.glide.Glide
-import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import com.high5ive.android.moira.R
@@ -28,25 +24,19 @@ import com.high5ive.android.moira.adapter.CertificateAdapter
 import com.high5ive.android.moira.adapter.LinkAdapter
 import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.databinding.ActivityEditProfileBinding
-import com.high5ive.android.moira.databinding.ActivityTeamDetailBinding
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.mypage.edit.addinfo.award.AddAwardHistoryActivity
 import com.high5ive.android.moira.ui.mypage.edit.addinfo.career.AddCareerActivity
 import com.high5ive.android.moira.ui.mypage.edit.addinfo.certificate.AddCertificateActivity
-import com.high5ive.android.moira.ui.mypage.edit.addinfo.education.AddEducationActivity
 import com.high5ive.android.moira.ui.mypage.edit.addinfo.link.AddLinkActivity
-import com.high5ive.android.moira.ui.mypage.edit.addinfo.tag.AddTagActivity
 import com.high5ive.android.moira.ui.mypage.edit.editinfo.EditIntroActivity
 import com.high5ive.android.moira.ui.mypage.edit.editinfo.EditNicknameActivity
 import com.high5ive.android.moira.ui.mypage.edit.editinfo.EditPositionActivity
 import com.high5ive.android.moira.ui.mypage.edit.editinfo.EditTagActivity
 import gun0912.tedimagepicker.builder.TedImagePicker
 import kotlinx.android.synthetic.main.activity_edit_profile.*
-import kotlinx.android.synthetic.main.activity_new_post.*
 import kotlinx.android.synthetic.main.edit_info.*
-import kotlinx.android.synthetic.main.edit_info.view.*
-import kotlinx.android.synthetic.main.make_recruit_info.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -85,13 +75,6 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
 
         initRetrofit()
         getMyProfileData()
-
-
-//        var tagList = mutableListOf<String>()
-//        tagList.add("관련태그1")
-//        tagList.add("관련태그2")
-//        tagList.add("관련태그3")
-//        setTag(tagList);
 
 
         add_career_btn.setOnClickListener(this)
@@ -148,25 +131,6 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
                     .showCameraTile(false)
                     .start { uri -> showSingleImage(uri) }
 
-//                MaterialDialog(this).show {
-//                    title(R.string.upload_picture)
-//                    cornerRadius(0f)
-//                    neutralButton(R.string.cancle)
-//
-//
-//                    negativeButton(R.string.select_gallery) {
-//
-//
-//                    }
-//
-//                    positiveButton(R.string.take_picture) {
-//
-//                        ImagePicker.with(this@EditProfileActivity)
-//                            .cameraOnly()    //User can only capture image using Camera
-//                            .start()
-//
-//                    }
-//                }
             }
 
             R.id.nickname_btn -> {
@@ -192,7 +156,6 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun showSingleImage(uri: Uri) {
 
-//        member_image.setImageURI(uri)
         editProfileImage(uri)
     }
 
@@ -203,19 +166,6 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
             Activity.RESULT_OK -> {
 
                 getMyProfileData()
-
-
-//                } else {
-//
-//                    val fileUri = data?.data
-//
-//                    member_image.setImageURI(fileUri)
-////                    Log.v("uri", fileUri.toString())
-//                    if (fileUri != null) {
-//                        editProfileImage(fileUri)
-//                    }
-//                }
-
 
             }
         }
@@ -329,7 +279,6 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun editProfileImage(uri: Uri) {
 
-//        Log.v("uri", uri.toString())
         val filePath = getRealPathFromURI(uri)
         val file = File(filePath)
         var fileName = nickname_et.text.toString()
@@ -377,53 +326,8 @@ class EditProfileActivity : AppCompatActivity(), View.OnClickListener {
         val cursor = contentResolver.query(contentUri!!, proj, null, null, null)
         cursor!!.moveToNext()
         val path = cursor.getString(cursor.getColumnIndex(MediaStore.MediaColumns.DATA))
-        val uri = Uri.fromFile(File(path))
         cursor.close()
         return path
     }
 
-//    private fun editMyProfile() {
-//        Runnable {
-//
-//            val hashtagIdList: List<Int> = listOf(1, 2)
-//            val nickname: String = "moiraa"
-//            val positionId: Int = 1
-//            val shortIntroduction: String = "개발자 김돌돌입니다555."
-//
-//            val body_data = MyPageEditProfileUpdateRequestDto(
-//                hashtagIdList,
-//                nickname,
-//                positionId,
-//                shortIntroduction
-//            )
-//            myAPI.editMyProfile(token, body_data).enqueue(object :
-//                Callback<EditProfile> {
-//                override fun onFailure(call: Call<EditProfile>, t: Throwable) {
-//                    t.printStackTrace()
-//                }
-//
-//                override fun onResponse(call: Call<EditProfile>, response: Response<EditProfile>) {
-//                    val code: Int = response.body()?.code ?: 0
-//
-//                    val msg: String = response.body()?.msg ?: "no msg"
-//                    val succeed: Boolean = response.body()?.succeed ?: false
-//
-//                    Log.v("code", code.toString())
-//                    Log.v("success", succeed.toString())
-//                    Log.v("msg", msg)
-//
-//                    if (succeed) {
-//
-//                        val data: EditProfileData = response.body()?.data!!
-//                        Log.v("data", data.toString())
-//
-//
-//                        finish()
-//
-//                    }
-//
-//                }
-//            })
-//        }.run()
-//    }
 }

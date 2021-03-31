@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.data.Review
 import com.high5ive.android.moira.data.retrofit.ApplyUserReviewAllItem
 import com.high5ive.android.moira.databinding.ReviewItemBinding
 

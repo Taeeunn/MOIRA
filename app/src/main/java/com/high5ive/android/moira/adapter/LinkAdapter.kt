@@ -4,10 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.data.retrofit.CareerItem
-import com.high5ive.android.moira.data.retrofit.LinkItem
 import com.high5ive.android.moira.data.retrofit.UserLinkResponseDto
-import com.high5ive.android.moira.databinding.CareerItemBinding
 import com.high5ive.android.moira.databinding.LinkItemBinding
 
 /**

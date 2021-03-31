@@ -3,28 +3,28 @@ package com.high5ive.android.moira.ui.common
 
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.AwardAdapter
 import com.high5ive.android.moira.adapter.CareerAdapter
 import com.high5ive.android.moira.adapter.CertificateAdapter
 import com.high5ive.android.moira.adapter.LinkAdapter
-import com.high5ive.android.moira.data.Award
-import com.high5ive.android.moira.data.retrofit.MyTeamDetail
-import com.high5ive.android.moira.data.retrofit.MyTeamDetailData
+import com.high5ive.android.moira.data.retrofit.ProjectApplyDetail
+import com.high5ive.android.moira.data.retrofit.ProjectApplyDetailData
 import com.high5ive.android.moira.data.retrofit.UserPoolDetailInfo
 import com.high5ive.android.moira.data.retrofit.UserPoolDetailInfoData
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
-import kotlinx.android.synthetic.main.member_info_fragment.*
+import kotlinx.android.synthetic.main.member_info_fragment.award_recycler_view
+import kotlinx.android.synthetic.main.member_info_fragment.career_recycler_view
+import kotlinx.android.synthetic.main.member_info_fragment.certificate_recycler_view
+import kotlinx.android.synthetic.main.member_info_fragment.link_recycler_view
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -36,6 +36,7 @@ class MemberInfoFragment : Fragment() {
     lateinit var myAPI: RetrofitService
     lateinit var token: String
     var index: Int = 1
+    var type: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +45,7 @@ class MemberInfoFragment : Fragment() {
         token = preferences.getString("jwt_token", null).toString()
 
         index = arguments?.getInt("index")?: 1
-        Log.v("applyId", index.toString())
+        type = arguments?.getString("type")?: ""
         initRetrofit()
     }
 
@@ -60,7 +61,13 @@ class MemberInfoFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        getUserProfileInfo()
+        if (type=="user") {
+            getUserProfileInfo()
+        }
+
+        else{
+            getApplicantProfileInfo()
+        }
 
 
 
@@ -84,19 +91,13 @@ class MemberInfoFragment : Fragment() {
                 }
 
                 override fun onResponse(call: Call<UserPoolDetailInfo>, response: Response<UserPoolDetailInfo>) {
-                    val code: Int = response.body()?.code ?: 0
 
-                    val msg: String = response.body()?.msg ?: "no msg"
                     val succeed: Boolean = response.body()?.succeed ?: false
-
-                    Log.v("code", code.toString())
-                    Log.v("success", succeed.toString())
-                    Log.v("msg", msg)
 
                     if(succeed){
 
                         val data: UserPoolDetailInfoData = response.body()?.data!!
-                        Log.v("data", data.toString())
+
 
                         career_recycler_view.apply {
                             layoutManager = LinearLayoutManager(context)
@@ -127,6 +128,55 @@ class MemberInfoFragment : Fragment() {
                 }
             })
         }.run()
+    }
+
+    private fun getApplicantProfileInfo(){
+
+        myAPI.getProjectApplyDetail(token, index).enqueue(object : Callback<ProjectApplyDetail> {
+            override fun onFailure(call: Call<ProjectApplyDetail>, t: Throwable) {
+                t.printStackTrace()
+            }
+
+            override fun onResponse(call: Call<ProjectApplyDetail>, response: Response<ProjectApplyDetail>) {
+                val succeed: Boolean = response.body()?.succeed ?: false
+
+
+                if (succeed) {
+
+                    val data: ProjectApplyDetailData = response.body()?.data!!
+                    Log.v("data", data.toString())
+
+
+
+                    career_recycler_view.apply {
+                        layoutManager = LinearLayoutManager(context)
+                        adapter =
+                            CareerAdapter(data.userCareerResponseDtoList)
+                    }
+
+                    link_recycler_view.apply {
+                        layoutManager = LinearLayoutManager(context)
+                        adapter =
+                            LinkAdapter(data.userLinkResponseDtoList)
+                    }
+
+                    certificate_recycler_view.apply {
+                        layoutManager = LinearLayoutManager(context)
+                        adapter =
+                            CertificateAdapter(data.userLicenseResponseDtoList)
+                    }
+
+                    award_recycler_view.apply {
+                        layoutManager = LinearLayoutManager(context)
+                        adapter =
+                            AwardAdapter(data.userAwardResponseDtoList)
+                    }
+
+                }
+
+            }
+
+        })
     }
 
 }

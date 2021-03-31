@@ -17,8 +17,6 @@ import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import kotlinx.android.synthetic.main.activity_edit_position.*
-import kotlinx.android.synthetic.main.edit_info.*
-import kotlinx.android.synthetic.main.set_nickname_fragment.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -105,11 +103,6 @@ class EditPositionActivity : AppCompatActivity(), View.OnClickListener {
                         setTag(data.toMutableList())
 
                     }
-//                    if (firstLogin){
-//                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
-//                    } else{
-//                        startActivity(Intent(context, MainActivity::class.java))
-//                    }
 
                 }
             })
@@ -141,7 +134,6 @@ class EditPositionActivity : AppCompatActivity(), View.OnClickListener {
                     positionIdList.add(tagId)
                 }
 
-                Log.v("tggg", chip.textColors.toString())
             }
 
             if (categoryId == 1) {
@@ -176,7 +168,7 @@ class EditPositionActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun editPosition(positionId: Int) {
 
-        var body_data = PositionEdit(positionId)
+        val body_data = PositionEdit(positionId)
         myAPI.editPosition(jwt_token, body_data).enqueue(object : Callback<PositionEditResponse> {
             override fun onFailure(call: Call<PositionEditResponse>, t: Throwable) {
                 t.printStackTrace()
@@ -207,12 +199,6 @@ class EditPositionActivity : AppCompatActivity(), View.OnClickListener {
                     setResult(RESULT_OK, intent);
                     finish()
                 }
-
-//                    if (firstLogin){
-//                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
-//                    } else{
-//                        startActivity(Intent(context, MainActivity::class.java))
-//                    }
 
             }
         })

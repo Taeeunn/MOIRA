@@ -14,7 +14,6 @@ import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.TeamAdapter
-import com.high5ive.android.moira.data.Team
 import com.high5ive.android.moira.data.retrofit.MyTeam
 import com.high5ive.android.moira.data.retrofit.MyTeamItem
 import com.high5ive.android.moira.network.RetrofitClient
@@ -23,7 +22,6 @@ import com.high5ive.android.moira.ui.myteam.detail.TeamDetailActivity
 import com.high5ive.android.moira.ui.myteam.evaluate.EvaluateMemberActivity
 import kotlinx.android.synthetic.main.in_progress_team_fragment.*
 import kotlinx.android.synthetic.main.in_progress_team_fragment.recycler_view
-import kotlinx.android.synthetic.main.recruit_post_fragment.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -68,7 +66,6 @@ class InProgressTeamFragment : Fragment() {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
                 when (spinner.getItemAtPosition(position)) {
                     "최신순" -> {
-                        Log.v("itemselect", "최신순")
                         if(sort != "date") {
                             sort = "date"
                             getInProgressTeam()
@@ -76,7 +73,6 @@ class InProgressTeamFragment : Fragment() {
 
                     }
                     "가나다순" -> {
-                        Log.v("itemselect", "가나다순")
                         if(sort != "character") {
                             sort = "character"
                             getInProgressTeam()
@@ -140,9 +136,7 @@ class InProgressTeamFragment : Fragment() {
                                         startActivity(intent)
                                     }
                                 }
-
                         }
-
                     }
 
                 }

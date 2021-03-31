@@ -13,14 +13,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.retrofit.MyProfileLicenseAdd
 import com.high5ive.android.moira.data.retrofit.MyProfileLicenseAddResponse
-import com.high5ive.android.moira.data.retrofit.MyProfileLinkAdd
-import com.high5ive.android.moira.data.retrofit.MyProfileLinkAddResponse
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
-import kotlinx.android.synthetic.main.activity_add_certificate.*
-import kotlinx.android.synthetic.main.activity_add_education.*
-import kotlinx.android.synthetic.main.activity_add_education.register_button
-import kotlinx.android.synthetic.main.activity_add_link.*
+import kotlinx.android.synthetic.main.activity_add_award_history.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

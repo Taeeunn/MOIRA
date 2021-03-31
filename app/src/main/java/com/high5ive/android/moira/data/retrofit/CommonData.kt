@@ -133,3 +133,11 @@ data class CareerItem(
     val startAt: String,
     val task: String
 )
+
+data class SchoolItem(
+    val endAt: String,
+    val majorId: Int,
+    val schoolId: Int,
+    val staredAt: String,
+    val userSchoolStatus: String
+)

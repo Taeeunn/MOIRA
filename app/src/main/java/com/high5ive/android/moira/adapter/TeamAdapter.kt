@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.data.Team
 import com.high5ive.android.moira.data.retrofit.MyTeamItem
 import com.high5ive.android.moira.databinding.TeamItemBinding
 
@@ -50,7 +49,7 @@ class TeamAdapter(val items: List<MyTeamItem>,
 
         Glide.with(holder.binding.root.context)
             .load(items[position].imageUrl)
-            .override(20, 20)
+            .override(100, 100)
             .error(R.drawable.ic_baseline_public_24) // ex) error(R.drawable.error)
             .into(holder.binding.teamImage)
 

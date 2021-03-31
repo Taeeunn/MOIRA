@@ -3,13 +3,10 @@ package com.high5ive.android.moira.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.marginLeft
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.high5ive.android.moira.data.Member
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.retrofit.MyProjectTeammateResponseDTO
-import com.high5ive.android.moira.databinding.MemberItemBinding
 import com.high5ive.android.moira.databinding.TeammateItemBinding
 
 class ProjectTeammateAdapter(val items: List<MyProjectTeammateResponseDTO>,

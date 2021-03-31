@@ -9,21 +9,15 @@ import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.MemberAdapter
-import com.high5ive.android.moira.data.Member
-import com.high5ive.android.moira.data.retrofit.MyTeam
-import com.high5ive.android.moira.data.retrofit.MyTeamItem
 import com.high5ive.android.moira.data.retrofit.TeamMember
 import com.high5ive.android.moira.data.retrofit.TeamMemberItem
 import com.high5ive.android.moira.databinding.ActivityEvaluateMemberBinding
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
-import com.high5ive.android.moira.ui.myteam.detail.TeamDetailActivity
 import kotlinx.android.synthetic.main.activity_evaluate_member.*
-import kotlinx.android.synthetic.main.activity_evaluate_member_detail.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -54,10 +48,6 @@ class EvaluateMemberActivity : AppCompatActivity() {
         index = intent.getIntExtra("index", 1)
 
         initRetrofit()
-
-
-
-
 
     }
 

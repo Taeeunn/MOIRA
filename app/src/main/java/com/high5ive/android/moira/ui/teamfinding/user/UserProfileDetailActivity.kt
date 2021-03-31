@@ -1,6 +1,5 @@
 package com.high5ive.android.moira.ui.teamfinding.user
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -9,7 +8,6 @@ import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.common.MemberViewPagerAdapter
-import com.high5ive.android.moira.ui.message.MessageHistoryActivity
 import kotlinx.android.synthetic.main.activity_user_profile_detail.*
 import kotlinx.android.synthetic.main.my_team_fragment.tabLayout
 import kotlinx.android.synthetic.main.my_team_fragment.viewPager
@@ -20,14 +18,12 @@ class UserProfileDetailActivity : AppCompatActivity() {
     var imageUrl: String = ""
     var nickname: String = ""
     var positionName: String = ""
-    var projectApplyId: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile_detail)
 
-        userId = intent.getIntExtra("index1", 1)
-        projectApplyId = intent.getIntExtra("index2", 1)
+        userId = intent.getIntExtra("index", 1)
         imageUrl = intent.getStringExtra("image")?: ""
         nickname = intent.getStringExtra("nickname")?: ""
         positionName = intent.getStringExtra("position")?: ""
@@ -43,7 +39,7 @@ class UserProfileDetailActivity : AppCompatActivity() {
 
 
         viewPager.adapter =
-            MemberViewPagerAdapter(this, projectApplyId, userId)
+            MemberViewPagerAdapter(this, userId, userId, "user")
         val tabLayoutTextArray = arrayOf("사용자 정보","사용자 평가")
         TabLayoutMediator(tabLayout,viewPager){tab,position->
             tab.text = tabLayoutTextArray[position]

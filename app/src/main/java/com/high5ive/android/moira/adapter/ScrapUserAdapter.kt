@@ -6,9 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.retrofit.ScrapUserPoolItem
-import com.high5ive.android.moira.data.retrofit.UserPoolItem
 import com.high5ive.android.moira.databinding.ScrapUserItemBinding
-import com.high5ive.android.moira.databinding.UserItemBinding
 
 /**
  * @author Taeeun Kim

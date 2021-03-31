@@ -8,24 +8,18 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
-import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.adapter.BadgeAdapter
 import com.high5ive.android.moira.adapter.ReviewAdapter
-import com.high5ive.android.moira.data.Review
 import com.high5ive.android.moira.data.retrofit.ApplyUserReviewAll
 import com.high5ive.android.moira.data.retrofit.ApplyUserReviewAllItem
-import com.high5ive.android.moira.data.retrofit.UserPoolDetailReview
-import com.high5ive.android.moira.data.retrofit.UserPoolDetailReviewData
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import kotlinx.android.synthetic.main.activity_applicant_review.*
 import kotlinx.android.synthetic.main.activity_applicant_review.rating
 import kotlinx.android.synthetic.main.activity_applicant_review.ratingBar
 import kotlinx.android.synthetic.main.activity_applicant_review.recycler_view
-import kotlinx.android.synthetic.main.member_review_fragment.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -65,8 +59,6 @@ class ApplicantReviewActivity : AppCompatActivity() {
 
         getUserReview()
 
-
-
     }
 
     override fun onResume() {
@@ -80,7 +72,6 @@ class ApplicantReviewActivity : AppCompatActivity() {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
                 when (spinner.getItemAtPosition(position)) {
                     "최신순" -> {
-                        Log.v("itemselect", "최신순")
                         if(sort_filter != "date") {
                             sort_filter = "date"
                             getUserReview()
@@ -88,7 +79,6 @@ class ApplicantReviewActivity : AppCompatActivity() {
 
                     }
                     "평점순" -> {
-                        Log.v("itemselect", "평점순")
                         if(sort_filter != "point") {
                             sort_filter = "point"
                             getUserReview()
@@ -149,10 +139,7 @@ class ApplicantReviewActivity : AppCompatActivity() {
                         adapter =
                             ReviewAdapter(list)
                     }
-
-
                 }
-
             }
         })
     }

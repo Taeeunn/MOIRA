@@ -1,6 +1,5 @@
 package com.high5ive.android.moira.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,7 +7,6 @@ import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.data.Recruit
 import com.high5ive.android.moira.data.retrofit.RecruitPostItem
 import com.high5ive.android.moira.databinding.RecruitItemBinding
 
@@ -48,6 +46,7 @@ class RecruitAdapter(val items: List<RecruitPostItem>,
 
         var hashtagNameList: List<String>? = items[position].hashtagList
 
+        holder.binding.tagGroup.removeAllViews()
         if (hashtagNameList!=null) {
             for (index in hashtagNameList.indices) {
                 val tagName = hashtagNameList[index]

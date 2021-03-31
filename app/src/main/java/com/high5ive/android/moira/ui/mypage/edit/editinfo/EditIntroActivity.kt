@@ -12,10 +12,7 @@ import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import kotlinx.android.synthetic.main.activity_edit_intro.*
-import kotlinx.android.synthetic.main.activity_edit_nickname.*
-import kotlinx.android.synthetic.main.activity_edit_nickname.enter_nickname_et
 import kotlinx.android.synthetic.main.activity_edit_nickname.register_button
-import kotlinx.android.synthetic.main.set_nickname_fragment.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

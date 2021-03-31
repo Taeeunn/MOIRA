@@ -1,19 +1,14 @@
 package com.high5ive.android.moira.adapter
 
-import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.data.User
 import com.high5ive.android.moira.data.retrofit.UserPoolItem
 import com.high5ive.android.moira.databinding.UserItemBinding
-import kotlinx.android.synthetic.main.activity_recruit_post_detail.*
 import kotlinx.android.synthetic.main.user_item.view.*
 
 class UserAdapter(val items: List<UserPoolItem>,

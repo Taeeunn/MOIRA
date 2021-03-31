@@ -24,10 +24,8 @@ import com.high5ive.android.moira.databinding.ActivityRecruitPostDetailBinding
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.teamfinding.apply.ApplyActivity
-import com.high5ive.android.moira.ui.teamfinding.apply.ApplyCompleteActivity
 import kotlinx.android.synthetic.main.activity_recruit_post_detail.*
 import kotlinx.android.synthetic.main.activity_recruit_post_detail.tag_group
-import kotlinx.android.synthetic.main.recruit_post_fragment.*
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -76,9 +74,6 @@ class RecruitPostDetailActivity : AppCompatActivity(), View.OnClickListener{
         apply_btn.setOnClickListener(this)
         more_button.setOnClickListener(this)
         favorite_img_btn.setOnClickListener(this)
-
-
-
 
     }
 
@@ -180,9 +175,7 @@ class RecruitPostDetailActivity : AppCompatActivity(), View.OnClickListener{
                     val message = resources.getString(R.string.report_completed) + " " + reportReason
                     Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
 
-
                 }
-
             }
         })
     }
@@ -199,7 +192,7 @@ class RecruitPostDetailActivity : AppCompatActivity(), View.OnClickListener{
                 override fun onResponse(call: Call<RecruitPostDetail>, response: Response<RecruitPostDetail>) {
 
                     if (response.code() == 500) {
-                        var errorBody = JSONObject(response.errorBody()!!.string());
+                        val errorBody = JSONObject(response.errorBody()!!.string());
 
                         val code= errorBody.getInt("code")
                         val msg = errorBody.getString("msg")
@@ -210,7 +203,7 @@ class RecruitPostDetailActivity : AppCompatActivity(), View.OnClickListener{
                         Log.v("msg", msg)
 
                     }
-                    Log.v("tjtjtj", response.code().toString())
+
                     val code: Int = response.body()?.code ?: 0
 
                     val msg: String = response.body()?.msg ?: "no msg"
@@ -245,8 +238,6 @@ class RecruitPostDetailActivity : AppCompatActivity(), View.OnClickListener{
                         }
 
                         setTag(data.hashtagList.toMutableList())
-
-
 
                     }
 
@@ -295,11 +286,9 @@ class RecruitPostDetailActivity : AppCompatActivity(), View.OnClickListener{
                         favorite_img_btn.setBackgroundResource(R.drawable.ic_full_heart)
                         isLiked=true
                     }
-
                 }
 
             }
         })
     }
-
 }

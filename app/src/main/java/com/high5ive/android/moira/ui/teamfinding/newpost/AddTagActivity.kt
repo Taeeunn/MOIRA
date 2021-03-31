@@ -15,7 +15,6 @@ import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import kotlinx.android.synthetic.main.activity_add_tag.*
 import kotlinx.android.synthetic.main.activity_add_tag.tag_group
-import kotlinx.android.synthetic.main.set_tag_fragment.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -38,15 +37,12 @@ class AddTagActivity : AppCompatActivity() {
         val preferences: SharedPreferences =this.getSharedPreferences("moira", Context.MODE_PRIVATE)
         jwt_token = preferences.getString("jwt_token", null).toString()
 
-        Log.v("Jwt", jwt_token)
-
         initRetrofit()
 
         getHashTags()
 
         register_button.setOnClickListener{
 
-            Log.v("list", hashtagNameList.toString())
             val intent = Intent()
             intent.putStringArrayListExtra("list", hashtagNameList)
             setResult(RESULT_OK, intent);
@@ -83,11 +79,6 @@ class AddTagActivity : AppCompatActivity() {
 
                     setTag(list.toMutableList())
 
-//                    if (firstLogin){
-//                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
-//                    } else{
-//                        startActivity(Intent(context, MainActivity::class.java))
-//                    }
 
                 }
             })
@@ -98,7 +89,6 @@ class AddTagActivity : AppCompatActivity() {
         for (index in tagList.indices) {
             val tagName = tagList[index].hashtagName
 
-            //val chip = Chip(ContextThemeWrapper(context, R.style.MaterialChipsAction))
             val chip = Chip(this)
             chip.setOnClickListener {
 
@@ -116,8 +106,6 @@ class AddTagActivity : AppCompatActivity() {
             val drawable = ChipDrawable.createFromAttributes(this, null, 0, R.style.MaterialChips)
             chip.setChipDrawable(drawable)
             chip.text = tagName
-
-            //Added click listener on close icon to remove tag from ChipGroup
 
             tag_group.addView(chip)
         }

@@ -8,20 +8,15 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.data.retrofit.PositionCategory
 import com.high5ive.android.moira.data.retrofit.PositionCategoryResponse
 import com.high5ive.android.moira.data.retrofit.PositionItem
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
-import kotlinx.android.synthetic.main.set_nickname_fragment.*
 import kotlinx.android.synthetic.main.set_position_fragment.*
 import kotlinx.android.synthetic.main.set_position_fragment.to_next_btn
 import kotlinx.android.synthetic.main.set_position_fragment.toolbar
@@ -42,13 +37,6 @@ class SetPositionFragment : Fragment() {
 
     lateinit var jwt_token: String
 
-
-
-    var develop: Boolean = false
-    var plan: Boolean = false
-    var design: Boolean = false
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -66,7 +54,7 @@ class SetPositionFragment : Fragment() {
         jwt_token = preferences.getString("jwt_token", "").toString()
 
         nickname = arguments?.getString("nickname")?: ""
-        Log.v("tnickname", nickname)
+
         initRetrofit()
         getPositionCategory()
 
@@ -156,11 +144,6 @@ class SetPositionFragment : Fragment() {
                     Log.v("msg", msg)
                     Log.v("list", list.toString())
 
-//                    if (firstLogin){
-//                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
-//                    } else{
-//                        startActivity(Intent(context, MainActivity::class.java))
-//                    }
 
                 }
             })

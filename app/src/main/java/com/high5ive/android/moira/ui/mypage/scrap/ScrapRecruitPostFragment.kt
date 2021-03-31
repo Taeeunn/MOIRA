@@ -66,7 +66,6 @@ class ScrapRecruitPostFragment : Fragment() {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
                 when (spinner1.getItemAtPosition(position)) {
                     "개발" -> {
-                        Log.v("itemselect", "개발")
                         if(position_filter != "개발자") {
                             position_filter = "개발자"
                             getScrapRecruitPost()
@@ -74,7 +73,6 @@ class ScrapRecruitPostFragment : Fragment() {
 
                     }
                     "기획" -> {
-                        Log.v("itemselect", "기획")
                         if(position_filter != "기획자") {
                             position_filter = "기획자"
                             getScrapRecruitPost()
@@ -82,7 +80,6 @@ class ScrapRecruitPostFragment : Fragment() {
                     }
 
                     "디자인" -> {
-                        Log.v("itemselect", "디자인")
                         if(position_filter != "디자이너") {
                             position_filter = "디자이너"
                             getScrapRecruitPost()
@@ -106,7 +103,6 @@ class ScrapRecruitPostFragment : Fragment() {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
                 when (spinner2.getItemAtPosition(position)) {
                     "최신순" -> {
-                        Log.v("itemselect", "최신순")
                         if(sort_filter != "date") {
                             sort_filter = "date"
                             getScrapRecruitPost()
@@ -114,7 +110,6 @@ class ScrapRecruitPostFragment : Fragment() {
 
                     }
                     "조회순" -> {
-                        Log.v("itemselect", "조회순")
                         if(sort_filter != "hit") {
                             sort_filter = "hit"
                             getScrapRecruitPost()
@@ -122,7 +117,6 @@ class ScrapRecruitPostFragment : Fragment() {
                     }
 
                     "좋아요순" -> {
-                        Log.v("itemselect", "좋아요순")
                         if(sort_filter != "like") {
                             sort_filter = "like"
                             getScrapRecruitPost()

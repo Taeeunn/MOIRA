@@ -3,7 +3,6 @@ package com.high5ive.android.moira.ui.initial.tag
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -21,9 +20,6 @@ import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
-import com.high5ive.android.moira.ui.initial.OnTransitionListener
-import kotlinx.android.synthetic.main.recruit_post_fragment.*
-import kotlinx.android.synthetic.main.set_nickname_fragment.*
 import kotlinx.android.synthetic.main.set_tag_fragment.*
 import kotlinx.android.synthetic.main.set_tag_fragment.tag_group
 import kotlinx.android.synthetic.main.set_tag_fragment.to_next_btn
@@ -70,13 +66,10 @@ class SetTagFragment : Fragment() {
         jwt_token = preferences.getString("jwt_token", null).toString()
 
         index = arguments?.getInt("index")?: 1
-        Log.v("Jwt", jwt_token)
-        to_next_btn.setOnClickListener {
-//            startActivity(Intent(activity, MainActivity::class.java))
 
+        to_next_btn.setOnClickListener {
             signupUser()
             Log.v("tagIdList", hashtagIdList.toString())
-//            onTransitionListener?.OnTransitionListener()
         }
 
         initRetrofit()
@@ -135,11 +128,6 @@ class SetTagFragment : Fragment() {
                     Log.v("list", list.toString())
 
                     setTag2(list.toMutableList())
-//                    if (firstLogin){
-//                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
-//                    } else{
-//                        startActivity(Intent(context, MainActivity::class.java))
-//                    }
 
                 }
             })
@@ -151,7 +139,6 @@ class SetTagFragment : Fragment() {
             val tagName = tagList[index].hashtagName
             val tagId = tagList[index].hashtagId
 
-            //val chip = Chip(ContextThemeWrapper(context, R.style.MaterialChipsAction))
             val chip = Chip(context)
             Log.v("tggg", chip.textColors.toString())
             chip.setOnClickListener {
@@ -165,7 +152,6 @@ class SetTagFragment : Fragment() {
                     hashtagIdList.add(tagId)
                 }
 
-                Log.v("tggg", chip.textColors.toString())
             }
 
 
@@ -174,10 +160,6 @@ class SetTagFragment : Fragment() {
                 chip.setChipDrawable(drawable)
             }
             chip.text = tagName
-
-
-
-            //Added click listener on close icon to remove tag from ChipGroup
 
             tag_group.addView(chip)
         }
@@ -188,7 +170,6 @@ class SetTagFragment : Fragment() {
             val tagName = tagList[index].positionName
             val tagId = tagList[index].positionId
 
-            //val chip = Chip(ContextThemeWrapper(context, R.style.MaterialChipsAction))
             val chip = Chip(context)
             Log.v("tggg", chip.textColors.toString())
             chip.setOnClickListener {
@@ -199,8 +180,6 @@ class SetTagFragment : Fragment() {
                     positionId = tagId
                     chip.setTextColor(resources.getColor(R.color.white))
                 }
-
-                Log.v("tggg", chip.textColors.toString())
             }
 
 
@@ -209,10 +188,6 @@ class SetTagFragment : Fragment() {
                 chip.setChipDrawable(drawable)
             }
             chip.text = tagName
-
-
-
-            //Added click listener on close icon to remove tag from ChipGroup
 
             position_tag_group.addView(chip)
         }
@@ -232,20 +207,12 @@ class SetTagFragment : Fragment() {
                     val succeed: Boolean = response.body()?.succeed ?: false
                     val list: List<Hashtag> = response.body()?.list ?: emptyList()
 
-
-
                     Log.v("code", code.toString())
                     Log.v("success", succeed.toString())
                     Log.v("msg", msg)
                     Log.v("list", list.toString())
 
                     setTag(list.toMutableList())
-
-//                    if (firstLogin){
-//                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
-//                    } else{
-//                        startActivity(Intent(context, MainActivity::class.java))
-//                    }
 
                 }
             })
@@ -255,12 +222,7 @@ class SetTagFragment : Fragment() {
     private fun signupUser() {
         Runnable {
 
-
-            Log.v("nickname", nickname)
-            Log.v("nickname", hashtagIdList.toString())
-            Log.v("nickname", positionId.toString())
             val body_data = SignUpInfo(hashtagIdList, nickname, positionId)
-            Log.v("body", body_data.toString() )
             myAPI.signupUser(jwt_token, body_data).enqueue(object : Callback<ResponseData> {
                 override fun onFailure(call: Call<ResponseData>, t: Throwable) {
                     t.printStackTrace()
@@ -273,18 +235,8 @@ class SetTagFragment : Fragment() {
                     val msg: String = response.body()?.msg ?: "no msg"
                     val succeed: Boolean = response.body()?.succeed ?: false
 
-
-                    Log.v("api", call.request().header("X-AUTH-TOKEN").toString())
-                    Log.v("api", call.request().body().toString())
-                    Log.v("code", code.toString())
-                    Log.v("success", succeed.toString())
                     Log.v("msg", msg)
 
-//                    if (firstLogin){
-//                        navController.navigate(R.id.action_loginFragment_to_setNicknameFragment)
-//                    } else{
-//                        startActivity(Intent(context, MainActivity::class.java))
-//                    }
 
                     if(succeed){
                         startActivity(Intent(context, MainActivity::class.java))

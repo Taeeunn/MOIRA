@@ -1,6 +1,5 @@
 package com.high5ive.android.moira.ui.teamfinding.newpost
 
-import android.Manifest
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
@@ -20,26 +19,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.list.listItemsSingleChoice
-import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import com.google.android.material.snackbar.Snackbar
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.common.PermissionCheck
-import com.high5ive.android.moira.data.Recruit
 import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import gun0912.tedimagepicker.builder.TedImagePicker
-import gun0912.tedimagepicker.util.ToastUtil.context
-import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.activity_new_post.*
 import kotlinx.android.synthetic.main.dialog_recruit_position.*
-import kotlinx.android.synthetic.main.dialog_user_pool.*
 import kotlinx.android.synthetic.main.dialog_user_pool.view.*
 import kotlinx.android.synthetic.main.make_recruit_info.*
-import kotlinx.android.synthetic.main.make_recruit_info.view.*
-import kotlinx.android.synthetic.main.recruit_post_fragment.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -104,28 +95,6 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
         tag_add.setOnClickListener(this)
 
 
-//            TedBottomPicker.with(this@NewPostActivity)
-//                .setPeekHeight(1600)
-//                .showTitle(false)
-//                .setCompleteButtonText("Done")
-//                .setEmptySelectionText("No Select")
-//                .showMultiImage { uriList ->
-//
-//                    for (uri in uriList) {
-//                        val newImage = ImageView(this)
-//                        newImage.setImageURI(uri)
-//
-//
-//                        val lp = LinearLayout.LayoutParams(
-//                            LinearLayout.LayoutParams.MATCH_PARENT,
-//                            205.toPx(this)
-//                        )
-//                        lp.setMargins(0, 0, 0, 20.toPx(this))
-//                        newImage.layoutParams = lp
-//                        picture_layout.addView(newImage)
-//                    }
-//                }
-
     }
 
     private fun initRetrofit() {
@@ -158,18 +127,13 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
         for (index in tagList.indices) {
             val tagName = tagList[index]
 
-            //val chip = Chip(ContextThemeWrapper(context, R.style.MaterialChipsAction))
             val chip = Chip(this)
             val drawable =
                 ChipDrawable.createFromAttributes(this, null, 0, R.style.MaterialChipsAction)
             chip.setChipDrawable(drawable)
-
             chip.text = tagName
-//            chip.setTextAppearance(R.style.tag_text)
-//            chip.setCloseIconResource(R.drawable.ic_baseline_highlight_off_24)
             chip.setCloseIconSizeResource(R.dimen.tag_close_icon)
             chip.isCloseIconEnabled = true
-            //Added click listener on close icon to remove tag from ChipGroup
             chip.setOnCloseIconClickListener {
                 tagList.remove(tagName)
                 tag_chip_group.removeView(chip)
@@ -229,10 +193,6 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
                 title = project_name_et.text.toString()
                 content = project_content_et.text.toString()
 
-                Log.v("ttt", designer_position_count.toString())
-                Log.v("ttt", developer_position_count.toString())
-                Log.v("ttt", planner_position_count.toString())
-
                 if (title == "") {
                     val msg = "프로젝트 제목을 입력해주세요!"
                     Snackbar.make(v, msg, Snackbar.LENGTH_SHORT).show()
@@ -262,7 +222,7 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
                 Runnable {
 
 
-                    duration?.let { Log.v("duration", it) }
+                    duration.let { Log.v("duration", it) }
 
                     val positionCategoryList = arrayListOf<PositionCategory>()
                     positionCategoryList.add(
@@ -417,31 +377,6 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
                 startActivityForResult(Intent(this, AddTagActivity::class.java), 1)
             }
 
-//            R.id.tag_add -> {
-//                // Dialog만들기
-//                val mDialogView = LayoutInflater.from(context).inflate(R.layout.dialog_user_pool, null)
-//                val mBuilder = AlertDialog.Builder(context)
-//                    .setView(mDialogView)
-//
-//                val  mAlertDialog = mBuilder.show()
-//
-//                //mAlertDialog.onoff.isChecked = userpool_visible
-//
-//                mDialogView.positiveButton.setOnClickListener {
-////                    val onoff = mDialogView.onoff
-////                    if(!userpool_visible && onoff.isChecked){
-////
-////                        displayUserPool()
-////
-////                        Log.v("switch", "on")
-////                    } else if (userpool_visible && !onoff.isChecked){
-////
-////                        displayUserPool()
-////                        Log.v("switch", "off")
-////                    }
-//                    mAlertDialog.dismiss()
-//                }
-
         }
     }
 
@@ -577,7 +512,7 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
 
             val requestBody: RequestBody = RequestBody.create(MediaType.parse("image/*"), file)
             val image: MultipartBody.Part =
-                MultipartBody.Part.createFormData("image", fileName, requestBody)
+                MultipartBody.Part.createFormData("files", fileName, requestBody)
 
             imageList.add(image)
         }
@@ -608,10 +543,6 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
                 Log.v("url", call.request().url().toString())
                 Log.v("body", call.request().body().toString())
 
-                if (succeed) {
-
-
-                }
 
             }
         })
@@ -622,7 +553,6 @@ class NewPostActivity : AppCompatActivity(), View.OnClickListener {
         val cursor = contentResolver.query(contentUri!!, proj, null, null, null)
         cursor!!.moveToNext()
         val path = cursor.getString(cursor.getColumnIndex(MediaStore.MediaColumns.DATA))
-        val uri = Uri.fromFile(File(path))
         cursor.close()
         return path
     }

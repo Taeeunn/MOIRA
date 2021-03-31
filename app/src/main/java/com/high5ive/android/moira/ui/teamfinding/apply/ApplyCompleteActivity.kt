@@ -6,7 +6,6 @@ import android.os.Bundle
 import com.high5ive.android.moira.MainActivity
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.ui.mypage.apply.ApplyListActivity
-import com.high5ive.android.moira.ui.teamfinding.recruit.CommentActivity
 import kotlinx.android.synthetic.main.activity_apply_complete.*
 
 class ApplyCompleteActivity : AppCompatActivity() {

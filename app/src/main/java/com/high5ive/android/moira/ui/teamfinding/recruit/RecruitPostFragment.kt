@@ -12,29 +12,23 @@ import android.widget.AdapterView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.RecruitAdapter
-import com.high5ive.android.moira.data.Recruit
 import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.teamfinding.newpost.NewPostActivity
 import com.high5ive.android.moira.ui.teamfinding.search.RecruitPostSearchActivity
-import com.high5ive.android.moira.ui.teamfinding.search.UserPoolSearchActivity
-import kotlinx.android.synthetic.main.in_progress_team_fragment.*
 import kotlinx.android.synthetic.main.recruit_post_fragment.*
 import kotlinx.android.synthetic.main.recruit_post_fragment.recycler_view
-import kotlinx.android.synthetic.main.team_finding_fragment.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 
 
-//https://mobikul.com/android-chips-dynamicaly-add-remove-tags-chips-view/
 class RecruitPostFragment : Fragment() {
 
     lateinit var retrofit: Retrofit
@@ -49,7 +43,8 @@ class RecruitPostFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val preferences: SharedPreferences = requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
+        val preferences: SharedPreferences =
+            requireActivity().getSharedPreferences("moira", Context.MODE_PRIVATE)
         token = preferences.getString("jwt_token", null).toString()
 
         initRetrofit()
@@ -65,7 +60,6 @@ class RecruitPostFragment : Fragment() {
     }
 
 
-
     override fun onResume() {
         super.onResume()
 
@@ -73,17 +67,7 @@ class RecruitPostFragment : Fragment() {
 
         getUserTag()
 
-        recycler_view.addOnScrollListener(object: RecyclerView.OnScrollListener(){
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-
-//                if (dy > 0){
-//                    val visibleItemCount = layoutManager
-//                }
-            }
-        })
-
-        new_post_btn.setOnClickListener{
+        new_post_btn.setOnClickListener {
             startActivity(Intent(context, NewPostActivity::class.java))
         }
 
@@ -100,24 +84,21 @@ class RecruitPostFragment : Fragment() {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
                 when (spinner1.getItemAtPosition(position)) {
                     "개발" -> {
-                        Log.v("itemselect", "개발")
-                        if(position_filter != "개발자") {
+                        if (position_filter != "개발자") {
                             position_filter = "개발자"
                             getRecruitPostList()
                         }
 
                     }
                     "기획" -> {
-                        Log.v("itemselect", "기획")
-                        if(position_filter != "기획자") {
+                        if (position_filter != "기획자") {
                             position_filter = "기획자"
                             getRecruitPostList()
                         }
                     }
 
                     "디자인" -> {
-                        Log.v("itemselect", "디자인")
-                        if(position_filter != "디자이너") {
+                        if (position_filter != "디자이너") {
                             position_filter = "디자이너"
                             getRecruitPostList()
                         }
@@ -140,24 +121,21 @@ class RecruitPostFragment : Fragment() {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
                 when (spinner2.getItemAtPosition(position)) {
                     "최신순" -> {
-                        Log.v("itemselect", "최신순")
-                        if(sort_filter != "date") {
+                        if (sort_filter != "date") {
                             sort_filter = "date"
                             getRecruitPostList()
                         }
 
                     }
                     "조회순" -> {
-                        Log.v("itemselect", "조회순")
-                        if(sort_filter != "hitCount") {
+                        if (sort_filter != "hitCount") {
                             sort_filter = "hitCount"
                             getRecruitPostList()
                         }
                     }
 
                     "좋아요순" -> {
-                        Log.v("itemselect", "좋아요순")
-                        if(sort_filter != "likeCount") {
+                        if (sort_filter != "likeCount") {
                             sort_filter = "likeCount"
                             getRecruitPostList()
                         }
@@ -173,7 +151,6 @@ class RecruitPostFragment : Fragment() {
     }
 
 
-
     private fun initRetrofit() {
 
         retrofit = RetrofitClient.getInstance() // 2에서 만든 Retrofit client의 instance를 불러옵니다.
@@ -186,19 +163,17 @@ class RecruitPostFragment : Fragment() {
             val tagName = tagList[index]
 
             hashtagList.add(tagName)
-            //val chip = Chip(ContextThemeWrapper(context, R.style.MaterialChipsAction))
             val chip = Chip(context)
-            val drawable = context?.let { ChipDrawable.createFromAttributes(it, null, 0, R.style.MaterialChipsAction) }
+            val drawable = context?.let {
+                ChipDrawable.createFromAttributes(it, null, 0, R.style.MaterialChipsAction)
+            }
             if (drawable != null) {
                 chip.setChipDrawable(drawable)
             }
 
             chip.text = tagName
-//            chip.setTextAppearance(R.style.tag_text)
-//            chip.setCloseIconResource(R.drawable.ic_baseline_highlight_off_24)
             chip.setCloseIconSizeResource(R.dimen.tag_close_icon)
             chip.isCloseIconEnabled = true
-            //Added click listener on close icon to remove tag from ChipGroup
             chip.setOnCloseIconClickListener {
                 tagList.remove(tagName)
                 tag_group.removeView(chip)
@@ -208,8 +183,6 @@ class RecruitPostFragment : Fragment() {
             tag_group.addView(chip)
         }
     }
-
-
 
 
     private fun getUserTag() {
@@ -231,7 +204,7 @@ class RecruitPostFragment : Fragment() {
                     Log.v("success", succeed.toString())
                     Log.v("msg", msg)
 
-                    if(succeed){
+                    if (succeed) {
 
                         val list: List<String> = response.body()?.list!!
 
@@ -250,23 +223,20 @@ class RecruitPostFragment : Fragment() {
     private fun getRecruitPostList() {
         Runnable {
 
-            val page: Int = 0
-            val tag: String = "해시태그1,해시태그2"
-            var hashtagListString =""
+            var hashtagListString = ""
 
             for (index in hashtagList.indices) {
                 val tagName = hashtagList[index]
-                hashtagListString+=tagName
+                hashtagListString += tagName
 
-                if(index!=hashtagList.size-1){
-                    hashtagListString+=","
+                if (index != hashtagList.size - 1) {
+                    hashtagListString += ","
                 }
 
             }
 
-            Log.v("hashtag", hashtagListString)
 
-            myAPI.getRecruitPostList(token, null, page, position_filter, sort_filter, hashtagListString).enqueue(object :
+            myAPI.getRecruitPostList(token, null, 0, position_filter, sort_filter, hashtagListString).enqueue(object :
                 Callback<RecruitPost> {
                 override fun onFailure(call: Call<RecruitPost>, t: Throwable) {
                     t.printStackTrace()
@@ -282,25 +252,24 @@ class RecruitPostFragment : Fragment() {
                     Log.v("success", succeed.toString())
                     Log.v("msg", msg)
 
-                    Log.v("url", call.request().url().toString())
-                    if(succeed){
+                    if (succeed) {
 
                         val list: List<RecruitPostItem> = response.body()?.list!!
                         Log.v("data", list.toString())
 
-                        recycler_view.apply{
+
+                        recycler_view.apply {
                             layoutManager = LinearLayoutManager(context)
                             adapter =
                                 RecruitAdapter(list) { index ->
                                     Toast.makeText(context, "$index", Toast.LENGTH_SHORT).show()
-                                    val intent = Intent(context, RecruitPostDetailActivity::class.java)
+                                    val intent =
+                                        Intent(context, RecruitPostDetailActivity::class.java)
                                     intent.putExtra("index", index)
                                     startActivity(intent)
                                 }
                         }
-
                     }
-
                 }
             })
         }.run()

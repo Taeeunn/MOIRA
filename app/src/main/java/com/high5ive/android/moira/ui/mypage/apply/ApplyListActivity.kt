@@ -6,7 +6,6 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -103,16 +102,10 @@ class ApplyListActivity : AppCompatActivity() {
                         layoutManager = LinearLayoutManager(this@ApplyListActivity)
                         adapter =
                             ApplyAdapter(list) { index, type ->
-                                Toast.makeText(
-                                    this@ApplyListActivity,
-                                    "$index",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Toast.makeText(this@ApplyListActivity, "$index", Toast.LENGTH_SHORT).show()
 
                                 if (type == 0) {
-                                    val intent = Intent(
-                                        this@ApplyListActivity,
-                                        ApplyInfoActivity::class.java
+                                    val intent = Intent(this@ApplyListActivity, ApplyInfoActivity::class.java
                                     )
                                     intent.putExtra("index", index)
                                     startActivity(intent)
@@ -126,19 +119,13 @@ class ApplyListActivity : AppCompatActivity() {
                                         negativeButton(R.string.close)
                                         positiveButton(R.string.apply_cancel) {
                                             applyCancle(index)
-
-
                                         }
-
-
                                     }
                                 }
                             }
                     }
                 }
-
             }
-
         })
     }
 
@@ -170,7 +157,6 @@ class ApplyListActivity : AppCompatActivity() {
                     getWrittenPostList()
 
                 }
-
             }
         })
     }

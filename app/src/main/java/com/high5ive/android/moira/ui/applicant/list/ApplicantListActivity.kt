@@ -5,20 +5,15 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.adapter.ApplyMemberAdapter
-import com.high5ive.android.moira.adapter.MemberAdapter
-import com.high5ive.android.moira.adapter.PositionAdapter
-import com.high5ive.android.moira.data.Member
 import com.high5ive.android.moira.data.retrofit.*
 
 import com.high5ive.android.moira.network.RetrofitClient
@@ -27,7 +22,6 @@ import com.high5ive.android.moira.ui.applicant.profile.ApplicantProfileActivity
 import com.high5ive.android.moira.ui.teamfinding.recruit.RecruitPostDetailActivity
 
 import kotlinx.android.synthetic.main.activity_applicant_list.*
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -65,15 +59,10 @@ class ApplicantListActivity : AppCompatActivity(), View.OnClickListener{
         val imageurl = intent.getStringExtra("imageurl")?: ""
         val title = intent.getStringExtra("title")?: ""
 
-        Log.v("tt", time)
-        Log.v("tt", imageurl)
-        Log.v("tt", title)
 
-        Log.v("index", index.toString())
         initRetrofit()
 
         move_to_contest.setOnClickListener(this)
-
         complete_button.setOnClickListener(this)
 
         views.text = hit.toString()
@@ -109,66 +98,6 @@ class ApplicantListActivity : AppCompatActivity(), View.OnClickListener{
     }
 
 
-//    private fun getRecruitPostDetail() {
-//        Runnable {
-//
-//            myAPI.getRecruitPostDetail(token, index).enqueue(object :
-//                Callback<RecruitPostDetail> {
-//                override fun onFailure(call: Call<RecruitPostDetail>, t: Throwable) {
-//                    t.printStackTrace()
-//                }
-//
-//                override fun onResponse(call: Call<RecruitPostDetail>, response: Response<RecruitPostDetail>) {
-//
-//                    if (response.code() == 500) {
-//                        var errorBody = JSONObject(response.errorBody()!!.string());
-//
-//                        val code= errorBody.getInt("code")
-//                        val msg = errorBody.getString("msg")
-//                        val succeed = errorBody.getString("succeed")
-//
-//                        Log.v("code", code.toString())
-//                        Log.v("success", succeed.toString())
-//                        Log.v("msg", msg)
-//
-//                    }
-//                    Log.v("tjtjtj", response.code().toString())
-//                    val code: Int = response.body()?.code ?: 0
-//
-//                    val msg: String = response.body()?.msg ?: "no msg"
-//                    val succeed: Boolean = response.body()?.succeed ?: false
-//
-//                    Log.v("code", code.toString())
-//                    Log.v("success", succeed.toString())
-//                    Log.v("msg", msg)
-//
-//                    if(succeed){
-//
-//                        val data: RecruitPostDetailData = response.body()?.data!!
-//                        Log.v("data", data.toString())
-//
-//                        binding.applicantlist = data
-//
-//                        if (data.imageUrlList.isNotEmpty()) {
-//                            Glide.with(this@ApplicantListActivity)
-//                                .load(data.imageUrlList[0])
-//                                .override(50, 50)
-//                                .error(R.drawable.ic_baseline_public_24) // ex) error(R.drawable.error)
-//                                .into(binding.contestImage)
-//                        } else{
-//                            Glide.with(this@ApplicantListActivity)
-//                                .load(R.drawable.ic_baseline_public_24)
-//                                .override(50, 50)
-//                                .into(binding.contestImage)
-//                        }
-//
-//
-//                    }
-//
-//                }
-//            })
-//        }.run()
-//    }
 
     private fun getApplicantList(){
 
@@ -181,20 +110,11 @@ class ApplicantListActivity : AppCompatActivity(), View.OnClickListener{
 
             override fun onResponse(call: Call<ProjectApplyUser>, response: Response<ProjectApplyUser>) {
 
-                Log.v("tjtjtj", response.code().toString())
-                val code: Int = response.body()?.code ?: 0
-
-                val msg: String = response.body()?.msg ?: "no msg"
                 val succeed: Boolean = response.body()?.succeed ?: false
-
-                Log.v("code", code.toString())
-                Log.v("success", succeed.toString())
-                Log.v("msg", msg)
 
                 if(succeed){
 
                     val list: List<ProjectApplyUserItem> = response.body()?.list!!
-                    Log.v("data", list.toString())
 
                     recruit_count.text = list.size.toString()
 
@@ -210,7 +130,6 @@ class ApplicantListActivity : AppCompatActivity(), View.OnClickListener{
                                 intent.putExtra("imageurl", applyuser.imageUrl)
                                 intent.putExtra("nickname", applyuser.nickname)
                                 intent.putExtra("introduction", applyuser.shortIntroduction)
-//                                intent.putExtra("userId", applyuser.)
 
                                 startActivity(intent)
                             }
@@ -238,7 +157,6 @@ class ApplicantListActivity : AppCompatActivity(), View.OnClickListener{
 
     private fun progressProject(v: View){
 
-        Log.v("index", index.toString())
         val body_data = ProjectModifyStatusRequestDTO("PROGRESSING")
         myAPI.editProjectStatus(token, index, body_data).enqueue(object :
             Callback<ResponseData> {
@@ -248,21 +166,11 @@ class ApplicantListActivity : AppCompatActivity(), View.OnClickListener{
 
             override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
 
-                Log.v("tjtjtj", response.code().toString())
-                val code: Int = response.body()?.code ?: 0
-
-                val msg: String = response.body()?.msg ?: "no msg"
                 val succeed: Boolean = response.body()?.succeed ?: false
-
-                Log.v("code", code.toString())
-                Log.v("success", succeed.toString())
-                Log.v("msg", msg)
-
                 if(succeed){
 
                     val message = "프로젝트를 시작합니다!"
                     Snackbar.make(v, message, Snackbar.LENGTH_SHORT).show()
-
                 }
 
             }

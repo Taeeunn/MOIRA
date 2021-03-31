@@ -2,7 +2,6 @@ package com.high5ive.android.moira.ui.mypage.scrap
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.viewpager.widget.PagerAdapter.POSITION_NONE
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
 

@@ -13,14 +13,11 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.high5ive.android.moira.R
-import com.high5ive.android.moira.adapter.MemberAdapter
 import com.high5ive.android.moira.adapter.UserAdapter
 import com.high5ive.android.moira.data.retrofit.*
 import com.high5ive.android.moira.network.RetrofitClient
 import com.high5ive.android.moira.network.RetrofitService
 import com.high5ive.android.moira.ui.teamfinding.user.UserProfileDetailActivity
-import gun0912.tedimagepicker.util.ToastUtil.context
-import kotlinx.android.synthetic.main.activity_team_detail.*
 import kotlinx.android.synthetic.main.activity_user_pool_search.*
 import kotlinx.android.synthetic.main.activity_user_pool_search.recycler_view
 import retrofit2.Call
@@ -172,8 +169,6 @@ class UserPoolSearchActivity : AppCompatActivity(), View.OnClickListener{
 
                     val data: UserLikeData = response.body()?.data!!
                     Log.v("data", data.toString())
-
-
 
                 }
 

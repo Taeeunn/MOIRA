@@ -8,9 +8,7 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import com.high5ive.android.moira.R
 import com.high5ive.android.moira.data.retrofit.Hashtag
-import com.high5ive.android.moira.data.retrofit.RecruitPostItem
 import com.high5ive.android.moira.data.retrofit.ScrapRecruitPostItem
-import com.high5ive.android.moira.databinding.RecruitItemBinding
 import com.high5ive.android.moira.databinding.ScrapRecruitItemBinding
 
 /**
@@ -64,7 +62,6 @@ class ScrapRecruitAdapter(val items: List<ScrapRecruitPostItem>,
                 chip.setChipDrawable(drawable)
 
                 chip.text = tagName
-//                holder.binding.tagGroup.addView(chip)
             }
 
         }
